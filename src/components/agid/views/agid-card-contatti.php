@@ -2,14 +2,14 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$agidAsset = AgidDesignAsset::register($this);
+$currentAsset = AgidDesignAsset::register($this);
 
 ?>
 
 
 <div class="agid-card-contatti-container card card-teaser shadow mt-3 rounded <?= $columnWidth ?>">
         <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone"></use>
         </svg>
         <div class="card-body">
             <h5 class="card-title">

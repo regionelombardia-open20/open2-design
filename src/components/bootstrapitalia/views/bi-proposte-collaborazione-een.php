@@ -6,28 +6,28 @@ use open20\design\utility\DateUtility;
 use open20\design\utility\DesignIcon;
 
 $currentAsset = BootstrapItaliaDesignAsset::register($this);
-
 $labelReadMore = (isset($labelReadMore)) ? $labelReadMore : Module::t('amosdesign', 'Dettaglio proposta');
+$idProposal =(isset($idProposal)) ? $idProposal :  '';
+$title =(isset($title)) ? $title :  '';
+$dateEnd =(isset($dateEnd)) ? DateUtility::getDate($dateEnd, 'php:d F Y') :  '';
+$dateSubmit =(isset($dateSubmit)) ? DateUtility::getDate($dateSubmit, 'php:d F Y') :  '';
+$dateUpdate =(isset($dateUpdate)) ? DateUtility::getDate($dateUpdate, 'php:d F Y') :  '';
+
+
 if(!empty($model)) {
-    $idProposta = $model->reference_external;
-    $title = $model->content_title;
-    $dateEnd = $model->datum_deadline;
-    $dateSubmit = $model->datum_submit;
-    $dateUpdate = $model->datum_update;
-    $country = $model->company_country_label;
-    $description = $model->content_summary;
-    $type = $model->getReferenceTypeLabel();
-    $url = $model->getFullViewUrl();
+    //$idProposal = $model->reference_external;
+    //$title = $model->content_title;
+    //$dateEnd = $model->datum_deadline;
+    //$dateSubmit = $model->datum_submit;
+    //$dateUpdate = $model->datum_update;
+    //$country = $model->company_country_label;
+    //$description = $model->content_summary;
+    //$type = $model->getReferenceTypeLabel();
+    //$url = $model->getFullViewUrl();
 }
-if (!empty($dateEnd)) {
-    $dateEnd = DateUtility::getDate($dateEnd, 'php:d F Y');
-}
-if (!empty($dateSubmit)) {
-    $dateSubmit = DateUtility::getDate($dateSubmit, 'php:d F Y');
-}
-if (!empty($dateUpdate)) {
-    $dateUpdate = DateUtility::getDate($dateUpdate, 'php:d F Y');
-}
+
+
+
 
 ?>
 <div class="proposte-collaborazione-wrapper proposte-collaborazione-een col-12">
@@ -44,25 +44,33 @@ if (!empty($dateUpdate)) {
             <?= Module::t('amosdesign', 'Dal mondo') ?>
             </span>
           </div>
-          <div class="date-end bg-tertiary text-white px-2 my-md-1">
-            <small><?= Module::t('amosdesign', 'Scadenza') . ': ' ?></small> <strong><?= $dateEnd ?></strong>
-          </div>
+          <?php if($dateEnd): ?>
+            <div class="date-end bg-tertiary text-white px-2 my-md-1">
+              <small><?= Module::t('amosdesign', 'Scadenza') . ': ' ?></small> <strong><?= $dateEnd ?></strong>
+            </div>
+          <?php endif; ?>
         </div>
 
         <div class="col-auto col-md-12">
           <div class="row variable-gutters">
-            <div class="other-info my-1 col-auto col-md-12">
-              <small><?= Module::t('amosdesign', 'Presentazione') . ': ' ?></small>
-              <strong><?= $dateSubmit ?></strong>
-            </div>
-            <div class="other-info my-1 col-auto col-md-12">
-              <small><?= Module::t('amosdesign', 'Ultimo aggiornamento') . ': ' ?></small>
-              <strong><?= $dateUpdate ?></strong>
-            </div>
-            <div class="other-info my-1 col-auto col-md-12">
-              <small><?= Module::t('amosdesign', 'Paese') . ': '  ?></small>
-              <strong><?= $country ?></strong>
-            </div>
+            <?php if($dateSubmit): ?>
+              <div class="other-info my-1 col-auto col-md-12">
+                <small><?= Module::t('amosdesign', 'Presentazione') . ': ' ?></small>
+                <strong><?= $dateSubmit ?></strong>
+              </div>
+            <?php endif; ?>
+            <?php if($dateUpdate): ?>
+              <div class="other-info my-1 col-auto col-md-12">
+                <small><?= Module::t('amosdesign', 'Ultimo aggiornamento') . ': ' ?></small>
+                <strong><?= $dateUpdate ?></strong>
+              </div>
+            <?php endif; ?>
+            <?php if($country): ?>
+              <div class="other-info my-1 col-auto col-md-12">
+                <small><?= Module::t('amosdesign', 'Paese') . ': '  ?></small>
+                <strong><?= $country ?></strong>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -74,7 +82,9 @@ if (!empty($dateUpdate)) {
             <h3 class="title-three-line"><?= $title ?></h3>
           </a>
           <div class="d-flex align-items-center ml-auto pl-3 mt-1">
-              <?= \open20\design\components\BulletNewWidget::widget(['model' => $model]) ?>
+              <?php if($model): ?>
+                <?= \open20\design\components\BulletNewWidget::widget(['model' => $model]) ?>
+              <?php endif; ?>
             <div class="ml-2">
               <?php
               echo $this->render(
@@ -86,16 +96,22 @@ if (!empty($dateUpdate)) {
         </div>
         <div>
 
-
+        <?php if($description): ?>
           <p class="title-four-line"><?= $description ?></p>
+        <?php endif; ?>
+        <?php if($type): ?>
           <p><span class="badge badge-secondary"><?= $type ?></span></p>
+        <?php endif; ?>
+
         </div>
         <div class="mt-auto d-flex flex-wrap">
-          <div class="blockquote-footer">
+          <?php if($idProposal): ?>
+            <div class="blockquote-footer">
 
-            <span><?= Module::t('amosdesign', 'Identificativo proposta') . ': ' ?></span>
-            <span class="font-italic"><?= $idProposta ?></span>
-          </div>
+              <span><?= Module::t('amosdesign', 'Identificativo proposta') . ': ' ?></span>
+              <span class="font-italic"><?= $idProposal ?></span>
+            </div>
+          <?php endif; ?>
 
           <a class="read-more ml-auto" href="<?= $url ?>" title="<?= $labelReadMore ?>">
             <span class="text"><?= $labelReadMore ?></span>

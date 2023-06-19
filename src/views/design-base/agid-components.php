@@ -270,17 +270,30 @@ echo $this->render('parts/devs-tools');
         </div>
     </section>
 
-    <!--sezione photogallery-->
+    <!--sezione card notizie-->
     <section class="py-5 border-bottom">
         <div>
-          <h2 id="gallery-immagini" class="pb-2">Gallery Immagini</h2>
+          <h2 id="card-generica" class="pb-2">Card notizie</h2>
+          <p>Usate per news ed eventi</p>
         </div>
 
-        <div class="py-5">
+        <div class="py-5 row">
             <?php
             echo $this->render(
-              '@vendor/open20/design/src/components/agid/views/agid-photogallery-carousel',[
-                  
+              '@vendor/open20/design/src/components/agid/views/agid-card-novità',[
+                'image' => 'https://picsum.photos/1600/900?random=4',
+                'day' =>'01',
+                'month' => '02',
+                'year' => '2020',
+                //'category' => 'categoria di prova',
+                'title' => 'titolo della card',
+                'showAvatar' => false,
+                'hideCategory' => true,
+              //'titleSize' => 'xl',
+                'descriptionSize' => 'text-serif py-3 flex-grow-1',
+                'description' =>  'descrizione',
+                'additionalCssExternalClass' => 'd-flex',
+                'widthColumn' => 'col-md-4 col-xs-12',
               ]
             );
             ?>
@@ -311,6 +324,7 @@ echo $this->render('parts/devs-tools');
 
         </div>
     </section>
+
 
     <!--sezione timeline-->
     <section class="py-5 border-bottom">
@@ -538,6 +552,74 @@ echo $this->render('parts/devs-tools');
         ?>
       </div>
     </section>
+
+    <!--sezione photogallery -->
+    <section class="py-5 border-bottom">
+      <div>
+        <h2 id="card-news" class="pb-2">Photogallery</h2>
+      </div>
+      <div class="py-5 row">
+        <?php
+        
+        echo $this->render(
+          '@vendor/open20/design/src/components/agid/views/agid-photogallery',
+          [
+              'images'=>[
+                '1'=>[
+                  'imageSrc' =>'https://picsum.photos/1600/900?random=1',
+                  'caption' =>'prova didascalia 1',
+                  'width' =>'col-12 col-lg-4 col-md-6'
+                ],
+                '2'=>[
+                  'imageSrc' =>'https://picsum.photos/1600/900?random=2',
+                  'caption' =>'prova didascalia 2',
+                  'width' =>'col-12 col-lg-4 col-md-6'
+                ],
+                '3'=>[
+                  'imageSrc' =>'https://picsum.photos/1600/900?random=3',
+                  'caption' =>'prova didascalia 3',
+                  'width' =>'col-12 col-lg-4 col-md-6'
+                ]
+
+              ]
+          ]
+        );
+        ?>
+      </div>
+    </section>
+
+    <!--sezione videogallery -->
+    <section class="py-5 border-bottom">
+      <div>
+        <h2 id="card-news" class="pb-2">Videogallery</h2>
+      </div>
+      <div class="py-5 ">
+        <?php
+        
+        echo $this->render(
+          '@vendor/open20/design/src/components/agid/views/agid-videogallery',
+          [
+              'videos'=>[
+                '1'=>[
+                  'videoSrc' =>'https://www.youtube.com/embed/RaHmGbBOP84',
+                  'width' =>'col-12 col-lg-4 col-md-6'
+                ],
+                '2'=>[
+                  'videoSrc' =>'https://www.youtube.com/embed/RaHmGbBOP84',
+                  'width' =>'col-12 col-lg-4 col-md-6'
+                ],
+                '3'=>[
+                  'videoSrc' =>'https://www.youtube.com/embed/RaHmGbBOP84',
+                  'width' =>'col-12 col-lg-4 col-md-6'
+                ]
+
+              ]
+          ]
+        );
+        ?>
+      </div>
+    </section>
+    
 
     </div>
   </div>

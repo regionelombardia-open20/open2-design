@@ -69,7 +69,7 @@ class Select extends Widget
             throw new InvalidConfigException("Either 'name', or 'model' and 'attribute' properties must be specified.");
         }
         if (!isset($this->options['id'])) {
-            $this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) . '-id' : $this->attribute . '-id';
+            $this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) : $this->attribute ;
         }
 
         parent::init();

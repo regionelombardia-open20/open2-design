@@ -108,7 +108,7 @@ class RadioList extends Widget {
             'options' => $this->options,
             'classInline' => $classInline,
             'items' => $this->items,
-            'inputId' => !empty($this->id)? $this->id: $inputId,
+            'inputId' => !empty($this->id)? $this->id: $inputId
         ]);
     }
 

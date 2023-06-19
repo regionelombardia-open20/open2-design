@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Aria S.p.A.
  * OPEN 2.0
@@ -22,17 +21,11 @@ class BootstrapItaliaDesignAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/open20/design/src/assets/resources/bootstrapitaliacustom';
 
-    // public $biSpriteUrl = '@vendor/open20/design/src/assets/resources/bootstrapitaliacustom/node_modules/bootstrap-italia/dist/svg';
-    // public $materialSpriteUrl = '@vendor/open20/design/src/assets/resources/bootstrapitaliacustom/sprite';
-    // public $jiraSpriteUrl = '@vendor/open20/design/src/assets/resources/bootstrapitaliacustom/sprite';
-
     public $js = [
         'node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js', //mantenere come prima riga
         'js/bootstrap-italia-custom.js',
         'js/owl-carousel-design.js',
-        'js/header-height.js',
-        'js/footer-height.js', 
-        'js/main-height.js',
+        'js/footer-height.js',
         'js/hamburger-menu.js',
         'node_modules/svgxuse/svgxuse.min.js', //per far vedere le icone in IE
     ];
@@ -46,4 +39,15 @@ class BootstrapItaliaDesignAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
     ];
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        if( !(isset(\Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader'])) || (isset(\Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader']) && !(\Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader']))){
+            $this->js[] = 'js/header-height.js';
+        }
+        parent::init();
+    }
 }

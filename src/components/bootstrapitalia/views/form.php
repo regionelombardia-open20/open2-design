@@ -21,7 +21,6 @@ BootstrapItaliaDesignAsset::register($this);
       <input type="text" class="form-control" id="validationCustom01" required>
       <label for="validationCustom01">Nome</label>
       <div class="invalid-feedback">Per favore inserisci il nome.</div>
-      <!-- <div class="valid-feedback">Validato!</div> -->
     </div>
     <div class="form-group col-md-4">
       <input type="text" class="form-control" id="validationCustom02" required>

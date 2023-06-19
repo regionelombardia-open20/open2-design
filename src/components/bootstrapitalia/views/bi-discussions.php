@@ -49,7 +49,7 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
         </div>
         <div class="col-md-5">
             <?php if (isset($communityTitle)) : ?>
-                <div class="mb-1 community-title small text-muted"><strong>Community:</strong> <?= $communityTitle ?></div>
+                <div class="mb-1 community-title small text-muted"><strong><?=Module::t('amosdesign','Community' . ':')?></strong> <?= $communityTitle ?></div>
             <?php endif ?>
             <div class="other-info d-flex small">
                 <div class="d-flex flex-wrap">
@@ -123,7 +123,9 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
                     <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="Numero visite">
                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#eye-outline"></use>
                     </svg>
-<?= $numbersOfVisits ?>
+                            
+                    <?= !empty($numbersOfVisits) ? $numbersOfVisits : '0' ?>
+
                 </div>
                 <div aria-label="Ultima attività nella discussione: " class="d-flex align-items-center" data-toggle="tooltip" title="Ultima attività">
                     <svg class="icon icon-xs d-flex mr-1" role="img" aria-label="Ultima attività">

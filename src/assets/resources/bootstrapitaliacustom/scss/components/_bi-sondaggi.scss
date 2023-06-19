@@ -1,22 +1,23 @@
-.dati-content{
-    .partecipanti-stato{
+.pool-status {
+    .partecipanti-stato {
         // width: 45%;
-        span{
+        span {
             font-size: 0.7777777778rem;
         }
-        .state-new{
+        .state-new {
             color: $brandbook-secondary-color;
         }
-        .state-completed{
+        .state-completed {
             color: $brandbook-primary-color;
         }
-        .state-to-complete{
+        .state-to-complete {
             color: $brandbook-triadic-3-color;
         }
     }
 }
-.object-fit{
-    img{
+
+.object-fit {
+    img {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -25,26 +26,42 @@
 
 // SONDAGGI VISTA CARD
 .container-sondaggi {
-    .image-wrapper{
+    .other-info-item {
+        right: 5px;
+        top: 5px;
+    }
+    .image-wrapper {
         background: $brandbook-primary-color;
-        .sondaggi-image{
+        height: 250px;
+        .visibility {
+            bottom: -13px;
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+        .sondaggi-image {
             opacity: 20%;
             filter: grayscale(100%);
+            object-fit: cover;
+            height: 100%;
         }
-        .sondaggi-date{
+        .sondaggi-date {
             bottom: 33%;
-            span{
-               margin: 0 3px;
+            span {
+                margin: 0 3px;
             }
             .date-start,
-            .date-end{
-                @include media-breakpoint-down(xs) { 
+            .date-end {
+                @include media-breakpoint-down(xs) {
                     font-size: $small-font-size;
-                 }
+                }
             }
         }
+        @include media-breakpoint-down(md) {
+            height: auto;
+        }
     }
-    .badge-new-pubblication{
+    .badge-new-pubblication {
         top: -10px;
         position: absolute;
         z-index: 10;
@@ -52,82 +69,79 @@
         left: 50%;
         justify-content: center;
     }
-     .card-body {
-        a.read-more  {
+    .card-body {
+        a.read-more {
             position: relative;
             bottom: 0;
         }
-    } 
-    .card::after{
+    }
+    .card::after {
         display: none;
     }
     .card-wrapper::after {
         content: '';
         display: block;
         margin-top: 48px;
-        margin-left: 24px;
-    }    
+        //margin-left: 24px;
+    }
 }
 
 // SONDAGGI VISTA A LISTA
 .sondaggi-item-list-wrapper {
     .card-body {
-        span{
+        span {
             line-height: 1;
         }
-        .date-list{
+        .date-list {
             width: 90px;
         }
-        .image-list{
+        .image-list {
             width: 200px;
         }
         @include media-breakpoint-down(md) {
-            .date-list{
+            .date-list {
                 width: 100%;
             }
-            .image-list{
+            .image-list {
                 width: 100%;
             }
-        }        
+        }
     }
-    .date-start{
+    .date-start {
         border-left: 10px solid $brandbook-primary-color;
         padding-left: 5px;
-        span{
+        span {
             padding: 0 2px;
-                 
         }
         @include media-breakpoint-down(md) {
             border: none;
             padding-left: 0;
-            span{
+            span {
                 font-size: 1rem !important;
-            }   
+            }
         }
     }
-    .card a.read-more{
+    .card a.read-more {
         position: relative;
         bottom: 0;
         justify-content: flex-end;
-        width: 30%; 
+        width: 100%;
         @include media-breakpoint-down(xs) {
-            width: 100%; 
+            width: 100%;
         }
     }
-    .card::after{
+    .card::after {
         display: none;
     }
-    .partecipanti-stato{
-        width: 35%;
+    .partecipanti-stato {
+        width: 100%;
     }
     @include media-breakpoint-down(md) {
-        .partecipanti-stato{
+        .partecipanti-stato {
             width: 50%;
         }
-        a.read-more{
+        a.read-more {
             justify-content: flex-end;
-        }    
+        }
     }
 }
-
-

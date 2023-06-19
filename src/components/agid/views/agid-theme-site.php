@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$agidAsset = AgidDesignAsset::register($this);
+$currentAsset = AgidDesignAsset::register($this);
 
 $columnWidth = (isset($columnWidth)) ? $columnWidth : 'col-12';
 $siteBg = (isset($siteBg)) ? $siteBg : 'primary';

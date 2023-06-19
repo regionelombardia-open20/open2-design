@@ -30,19 +30,21 @@ if ($avatarWrapperSize == 'xl') {
   for ($i; $i < min([$numberExpose, $usersNumber]); $i++) {
   ?>
     <?php 
-    $nameSurname = $userProfiles[$i]->nomeCognome;
-    $tooltipText = '<strong>' . $nameSurname . '</strong>' . (isset($tooltipAdditionalInfoAvatarsGroup) ? '<br/><em>' . $tooltipAdditionalInfoAvatarsGroup . '</em>' : '');
-    $imageAvatar = $userProfiles[$i]->getAvatarWebUrl('card_users');
-    $url = $baseUrlProfile . $userProfiles[$i]->id;
-    $arr         = explode(' ', trim($nameSurname));
-    $name        = $arr[0];
-    $surname     = $arr[1];
-    $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
-    $avatarPresence = ($userProfiles[$i]->attivo) ? 'active' : 'hidden';
-    if ($avatarPresence == 'hidden') {
-        $avatarPresenceTitle = 'Assente';
-    } else {
-        $avatarPresenceTitle = 'Attivo';
+    if( $userProfiles[$i]){
+      $nameSurname = $userProfiles[$i]->nomeCognome;
+      $tooltipText = '<strong>' . $nameSurname . '</strong>' . (isset($tooltipAdditionalInfoAvatarsGroup) ? '<br/><em>' . $tooltipAdditionalInfoAvatarsGroup . '</em>' : '');
+      $imageAvatar = $userProfiles[$i]->getAvatarWebUrl('card_users');
+      $url = $baseUrlProfile . $userProfiles[$i]->id;
+      $arr         = explode(' ', trim($nameSurname));
+      $name        = $arr[0];
+      $surname     = $arr[1];
+      $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
+      $avatarPresence = ($userProfiles[$i]->attivo) ? 'active' : 'hidden';
+      if ($avatarPresence == 'hidden') {
+          $avatarPresenceTitle = 'Assente';
+      } else {
+          $avatarPresenceTitle = 'Attivo';
+      }
     }
     ?>
     <li class="avatar-wrapper">
@@ -52,11 +54,15 @@ if ($avatarWrapperSize == 'xl') {
             <p aria-hidden="true"><?= $initials ?></p>
             <span class="sr-only"><?= $nameSurname ?></span>
           <?php else : ?>
-            <img src="<?= $userProfiles[$i]->getAvatarUrl('card_users') ?>" alt="<?= $nameSurname ?>">
+            <?php if($userProfiles[$i]): ?>
+              <img src="<?= $userProfiles[$i]->getAvatarUrl('card_users') ?>" alt="<?= $nameSurname ?>">
+            <?php endif ?>
+
           <?php endif ?>
         </a>
         <?php if ($showAvatarPresence) : ?>
           <div class="avatar-presence <?= $avatarPresence ?>" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Presenza') . ': ' .  $avatarPresenceTitle ?>">
+          
               <span class="sr-only"><?= Module::t('amosdesign', 'Presenza: ') . $avatarPresenceTitle ?> </span>
           </div>
         <?php endif ?>
@@ -88,16 +94,18 @@ if ($avatarWrapperSize == 'xl') {
               <ul class="link-list">
                 <?php for ($i; $i < $usersNumber; $i++) {  ?>
                   <?php
-                  $nameSurname = $userProfiles[$i]->nomeCognome;
-                  $imageAvatar = $userProfiles[$i]->getAvatarWebUrl('card_users');
+                  if($userProfiles[$i]): 
+                    $nameSurname = $userProfiles[$i]->nomeCognome;
+                    $imageAvatar = $userProfiles[$i]->getAvatarWebUrl('card_users');
                     $imageAvatar = str_replace('/it/' ,'/', $imageAvatar);
 
                     $tooltipText = (isset($tooltipAdditionalInfoAvatarsGroup) ? '<em>' . $tooltipAdditionalInfoAvatarsGroup . '</em>' : '');
-                  $url = $baseUrlProfile . $userProfiles[$i]->id;
-                  $arr         = explode(' ', trim($nameSurname));
-                  $name        = $arr[0];
-                  $surname     = $arr[1];
-                  $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
+                    $url = $baseUrlProfile . $userProfiles[$i]->id;
+                    $arr         = explode(' ', trim($nameSurname));
+                    $name        = $arr[0];
+                    $surname     = $arr[1];
+                    $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
+                  endif;
                   ?>
                   <li class="avatar-wrapper">
                     <?php if (!$removeLink || $showTooltip) : ?>
@@ -107,7 +115,10 @@ if ($avatarWrapperSize == 'xl') {
                             <p aria-hidden="true"><?= $initials ?></p>
                             <span class="sr-only"><?= $nameSurname ?></span>
                           <?php else : ?>
-                            <img src="<?= $userProfiles[$i]->getAvatarWebUrl('card_users') ?>" alt="<?= $nameSurname ?>">
+                            <?php if($userProfiles[$i]): ?>
+                              <img src="<?= $userProfiles[$i]->getAvatarWebUrl('card_users') ?>" alt="<?= $nameSurname ?>">
+                            <?php endif ?>
+
                           <?php endif ?>
                         </div>
                         <span><?= $nameSurname ?></span>

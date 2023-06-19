@@ -17,7 +17,6 @@
       <input class="form-control it-date-datepicker it-datepicker-narrow" id="date" type="text" required>
       <label for="date">Date label</label>
       <div class="invalid-feedback">Per favore inserisci la data.</div>
-      <div class="valid-feedback">Validato!</div>
     </div>
   </div>
 </div>

@@ -107,19 +107,33 @@ echo $this->render('parts/devs-tools');
                                             <a class="list-item" href="#avatar"><span>Avatar</span></a>
                                         </li>
 
+                <li>
+                  <a class="list-item" href="#bottoni"><span>Bottoni</span></a>
+                </li>
 
-                                        <!--bottoni-->
-                                        <li>
-                                            <a class="list-item" href="#bottoni"><span>Bottoni</span></a>
-                                        </li>
-                                        <!--carousel-->
-                                        <li>
-                                            <a class="list-item" href="#carousel"><span>Carousel</span></a>
-                                        </li>
-                                        <!--carousel calendario-->
-                                        <li>
-                                            <a class="list-item" href="#calendar-carousel"><span>Carousel calendario</span></a>
-                                        </li>
+                <li>
+                  <a class="list-item" href="#card-preference"><span>Cards Preference</span></a>
+                </li>
+
+                <li>
+                  <a class="list-item" href="#carousel"><span>Carousel</span></a>
+                </li>
+
+                <li>
+                  <a class="list-item" href="#carousel-news"><span>Carousel news</span></a>
+                </li>
+
+                <li>
+                    <a class="list-item" href="#photogallery"><span>Gallery immagini</span></a>
+                </li>
+
+                <li>
+                  <a class="list-item" href="#calendar-carousel"><span>Carousel calendario</span></a>
+                </li>
+
+                <li>
+                  <a class="list-item" href="#card-checkbox"><span>Checkbox Cards Preference</span></a>
+                </li>
 
 
 
@@ -182,10 +196,7 @@ echo $this->render('parts/devs-tools');
                                         <li>
                                             <a class="list-item" href="#news-list"><span>News card</span></a>
                                         </li>
-                                        <!--news carousel-->
-                                        <li>
-                                            <a class="list-item" href="#carousel-news"><span>News carousel</span></a>
-                                        </li>
+                                        
                                         <!--news lista-->
                                         <li>
                                             <a class="list-item" href="#news-list-item"><span>News lista</span></a>
@@ -284,7 +295,7 @@ echo $this->render('parts/devs-tools');
             </nav>
         </div>
         <div id="jsMain" class="col-12 col-lg-9 it-page-sections-container">
-
+        
             <h1 class="no_toc it-page-section" id="introduzione">Componenti Bootstrap Italia Custom</h1>
             <p class="lead mb-0">Componenti personalizzati per plugin Design</p>
             <div class="mt-3">
@@ -493,8 +504,8 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </div>
             </section>
-
-
+            
+        
             <!-- allegati lista-->
             <section class="py-5">
                 <h2 class="it-page-section" id="list-allegati">Allegati Lista</h2>
@@ -552,7 +563,7 @@ echo $this->render('parts/devs-tools');
                     ?>
                 </div>
             </section>
-
+           
             <!--avatar card-->
             <section class="py-5 ">
                 <h2 class="it-page-section" class="mb-3" id="avatar">Avatar</h2>
@@ -750,6 +761,8 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </div>
             </section>
+            <?php /*?>
+            <?php */ ?>
             <!--bottoni-->
             <section class="py-5">
                 <div>
@@ -769,6 +782,7 @@ echo $this->render('parts/devs-tools');
 
                 </div>
             </section>
+            
             <!--carousel-->
             <section class="py-5">
                 <div>
@@ -782,6 +796,7 @@ echo $this->render('parts/devs-tools');
                     ?>
                 </div>
             </section>
+        
             <!--carousel calendario-->
             <section class="py-5">
                 <h2 class="it-page-section" id="calendar-carousel" class="mb-5">Carousel Calendario</h2>
@@ -802,595 +817,724 @@ echo $this->render('parts/devs-tools');
             <section class="py-5">
                 <div>
 
-                    <h2 class="it-page-section" id="checkbox-collapse">Checkbox collapse</h2>
-                    <div class="bd-example">
-                        <?php
-                        echo $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/form-checkbox-collapse-preference'
-                        );
-                        ?>
-                    </div>
+                <h2 id="checkbox-collapse">Checkbox collapse</h2>
+                <?php
+                echo $this->render(
+                    '@vendor/open20/design/src/components/bootstrapitalia/views/form-checkbox-collapse-preference'
+                );
+                ?>
                 </div>
             </section>
+            
             <!--checkbox link privacy-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="Checkbox-link">Checkbox con link privacy</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/check-with-link',
-                        [
-                            'externalLink' => false,
-                            'linkText' => 'link esterno alla privacy',
-                            'privacyLink' => '/preferenceuser/contacts/contacts',
-                            'target' => '_blank',
-                        ]
-                    );
-                    ?>
-                </div>
+            <section class="py-5 border-bottom">
+                <h2 id="Checkbox-link">Checkbox con link privacy</h2>
+                <?=
+                $this->render(
+                    '@vendor/open20/design/src/components/bootstrapitalia/views/check-with-link',
+                    [
+                    'externalLink' => false,
+                    'linkText' => 'link esterno alla privacy',
+                    'privacyLink' => '/preferenceuser/contacts/contacts',
+                    'target' => '_blank',
+                    ]
+                );
+                ?>
             </section>
+
             <!--collapse-->
             <section class="py-5">
-                <div>
+                    <div>
 
-                    <h2 class="it-page-section" id="collapse" class="pb-2">Collapse</h2>
-                    <div class="bd-example">
-                        <?php
-                        echo $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/collapse-preference'
-                        );
-                        ?>
+                        <h2 class="it-page-section" id="collapse" class="pb-2">Collapse</h2>
+                        <div class="bd-example">
+                            <?php
+                            echo $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/collapse-preference'
+                            );
+                            ?>
 
+                        </div>
                     </div>
-                </div>
             </section>
+           
+            <!--news-->
+            <?php if(\Yii::$app->getModule('news')): ?>
+                <section class="py-5 border-bottom">
+                    <h2 id="news">News</h2>
 
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                        [
+                        'category' => 'ULTIME DALLA P.A.',
+                        'image' => 'https://picsum.photos/1600/900?random=6',
+                        'nameSurname' => 'Paolo Bianchi',
+                        'showAvatar' => true,
+                        'newPubblication' => true,
+                        'avatarWrapperSize' => 'lg',
+                        'categorySize' => 'lead',
+                        'titleSize' => 'h3',
+                        'descriptionSize' => 'lead',
+                        'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'date' => '2020-12-12'
+                        ]
+                    );
+                    ?>
+                </section>
+            <?php endif; ?>
+
+            
+            
+            <?php if(\Yii::$app->getModule('news')): ?>
+                <section class="py-5 border-bottom">
+                    <h2 id="news-list-item">Listato News</h2>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                        [
+                        'category' => 'ULTIME DALLA P.A.',
+                        'image' => 'https://picsum.photos/1600/900?random=21',
+                        'nameSurname' => 'Paolo Bianchi',
+                        'showSignature' => true,
+                        'newPubblication' => true,
+                        'titleSize' => 'h5',
+                        'title' => 'Lorem ipsum dolor sit amet',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'date' => '2020-12-12'
+
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                        [
+                        'category' => 'ULTIME DALLA P.A.',
+                        'image' => 'https://picsum.photos/1600/900?random=22',
+                        'nameSurname' => 'Paolo Bianchi',
+                        'showSignature' => true,
+                        'titleSize' => 'h5',
+                        'title' => 'Lorem ipsum dolor sit amet',
+                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'date' => '2020-12-12'
+
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                        [
+                        'category' => 'ULTIME DALLA P.A.',
+                        'image' => 'https://picsum.photos/1600/900?random=2',
+                        'nameSurname' => 'Paolo Bianchi',
+                        'showSignature' => true,
+                        'newPubblication' => true,
+                        'titleSize' => 'h5',
+                        'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                        'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
+                        'date' => '2020-12-12'
+
+                        ]
+                    );
+                    ?>
+                </section>
+            <?php endif; ?>
+
+         
+
+            <!--Organizzazioni-->
+            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+                <section class="py-5 border-bottom">
+                    <h2 id="organization">Organizzazioni</h2>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                        [
+                        'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
+                        'organizzatore' => 'Pesce Azzurro Cefalù',
+                        'removeLink' => true,
+                        'showCtaEsplora' => true,
+                        'showIcon' => true,
+                        ]
+                    );
+                    ?>
+                </section>
+            <?php endif; ?>
+            
+ 
             <!--Community card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="Community-card">Community Card</h2>
-                <p>Le card community mostrano diverse informazioni: </p>
-                <p><strong class="text-uppercase">Tipo di community</strong></strong> <small>(visibile per tutte le size)</small>:<br><strong>Aperta</strong> (isOpenCommunity=>true), <strong>Privata </strong>(isClosedCommunity=>true), <strong>Riservata</strong>(isPrivateCommunity=>true)</p>
-                <p><strong class="text-uppercase">Data di iscrizione</strong> <small>(visibile solo per gli utenti iscritti alla community)</small></p>
-                <div class="bd-example">
-                    <div class="row">
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
-                            [
-                                'image' => 'https://picsum.photos/1600/900?random=' . $i,
-                                'isClosedCommunity' => true,
-                                'dateSigned' => '2020-01-01',
-                                'title' => 'Nome community',
-                                'isSigned' => true,
-                                'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
-                            [
-                                'image' => 'https://picsum.photos/1600/900?random=' . $i,
-                                'isOpenCommunity' => true,
-                                'dateSigned' => '2020-02-28',
-                                'title' => 'Nome community lungo lunghisssimissimo lunghisssimissimo lunghisssimissimo lunghisssimissimo ',
-                                'isSigned' => true,
-                                'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
+            <?php if(\Yii::$app->getModule('community')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="Community-card">Community Card</h2>
+                    <p>Le card community mostrano diverse informazioni: </p>
+                    <p><strong class="text-uppercase">Tipo di community</strong></strong> <small>(visibile per tutte le size)</small>:<br><strong>Aperta</strong> (isOpenCommunity=>true), <strong>Privata </strong>(isClosedCommunity=>true), <strong>Riservata</strong>(isPrivateCommunity=>true)</p>
+                    <p><strong class="text-uppercase">Data di iscrizione</strong> <small>(visibile solo per gli utenti iscritti alla community)</small></p>
+                    <div class="bd-example">
+                        <div class="row">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
+                                [
+                                    'image' => 'https://picsum.photos/1600/900?random=' . $i,
+                                    'isClosedCommunity' => true,
+                                    'dateSigned' => '2020-01-01',
+                                    'title' => 'Nome community',
+                                    'isSigned' => true,
+                                    'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
+                                [
+                                    'image' => 'https://picsum.photos/1600/900?random=' . $i,
+                                    'isOpenCommunity' => true,
+                                    'dateSigned' => '2020-02-28',
+                                    'title' => 'Nome community lungo lunghisssimissimo lunghisssimissimo lunghisssimissimo lunghisssimissimo ',
+                                    'isSigned' => true,
+                                    'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
 
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
-                            [
-                                'image' => 'https://picsum.photos/1600/900?random=' . $i,
-                                'isPrivateCommunity' => true,
-                                'title' => 'Nome community',
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
+                                [
+                                    'image' => 'https://picsum.photos/1600/900?random=' . $i,
+                                    'isPrivateCommunity' => true,
+                                    'title' => 'Nome community',
 
 
-                                'isSigned' => false,
-                                'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
+                                    'isSigned' => false,
+                                    'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
 
-                            ]
-                        );
-                        ?>
+                                ]
+                            );
+                            ?>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
+
             <!--discussioni card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="discussioni-card">Discussioni card</h2>
-                <p>Le card delle discussioni mostrano diverse informazioni:</p>
-                <p><strong class="text-uppercase">Data</strong>: attraverso la variabile <mark><code>$date</code></mark></p>
-                <p><strong class="text-uppercase">Descrizione</strong>: attraverso la variabile <mark><code>$description</code></mark></p>
-                <p><strong class="text-uppercase">Community di riferimento</strong>: attraverso la variabile <mark><code>$communityTitle</code></mark></p>
+            <?php if(\Yii::$app->getModule('discussioni')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="discussioni-card">Discussioni card</h2>
+                    <p>Le card delle discussioni mostrano diverse informazioni:</p>
+                    <p><strong class="text-uppercase">Data</strong>: attraverso la variabile <mark><code>$date</code></mark></p>
+                    <p><strong class="text-uppercase">Descrizione</strong>: attraverso la variabile <mark><code>$description</code></mark></p>
+                    <p><strong class="text-uppercase">Community di riferimento</strong>: attraverso la variabile <mark><code>$communityTitle</code></mark></p>
 
-                <div class="bd-example">
-                    <div class="row variable-gutters">
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                                [
-                                    'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                    'communityTitle' => 'Planner 2.0',
-                                    'date' => '2020-12-12',
-                                    'url' => '#',
-                                    'numbersOfAnswer' => '3',
-                                    'numbersOfVisits' => '4',
-                                    'updatedAt' => '2012-12-12',
-                                    'image' => 'https://picsum.photos/1600/900?random=5',
-                                    'nameSurname' => 'Paolo Bianchi',
-                                    'newPubblication' => true,
-                                    'avatarWrapperSize' => 'md',
-                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.',
-                                    'nameSurnameLastComment' => 'Marco Giusti',
-                                    'lastCommentDiscussion' => 'Ciao, mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                                ]
-                            );
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                                [
-                                    'title' => 'Discussione Planner',
-                                    'date' => '2020-12-12',
-                                    'url' => '#',
-                                    'numbersOfAnswer' => '3',
-                                    'numbersOfVisits' => '4',
-                                    'updatedAt' => '2012-12-12',
-                                    'image' => 'https://picsum.photos/1600/900?random=4',
-                                    'nameSurname' => 'Paolo Bianchi',
-                                    'newPubblication' => true,
-                                    'avatarWrapperSize' => 'md',
-                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
-                                        Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
-                                        Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
-                                ]
-                            );
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                                [
-                                    'title' => 'Discussione con nome un pò più lungo e complesso',
-                                    'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-                                    'date' => '2020-12-12',
-                                    'url' => '#',
-                                    'numbersOfAnswer' => '3',
-                                    'numbersOfVisits' => '4',
-                                    'updatedAt' => '2012-12-12',
-                                    'image' => 'https://picsum.photos/1600/900?random=3',
-                                    'nameSurname' => 'Paolo Bianchi',
-                                    'avatarWrapperSize' => 'md',
-                                    'nameSurnameLastComment' => 'Giorgio Mariano',
-                                    'lastCommentDiscussion' => 'Wow! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
-                                        Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
-                                        Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
-                                ]
-                            );
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                                [
-                                    'title' => 'Discussione Planner',
-                                    'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-                                    'date' => '2020-12-12',
-                                    'url' => '#',
-                                    'numbersOfAnswer' => '3',
-                                    'numbersOfVisits' => '4',
-                                    'updatedAt' => '2012-12-12',
-                                    'image' => 'https://picsum.photos/1600/900?random=2',
-                                    'nameSurname' => 'Paolo Bianchi',
-                                    'newPubblication' => true,
-                                    'avatarWrapperSize' => 'md',
-                                    'nameSurnameLastComment' => 'Luisa Recca',
-                                    'lastCommentDiscussion' => 'Grande! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                                    'description' => 'Sono una descrizione... obbligatoria?'
-                                ]
-                            );
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                                [
-                                    'title' => 'Discussione Planner',
-                                    'communityTitle' => 'Planner 2.0',
-                                    'date' => '2020-12-12',
-                                    'url' => '#',
-                                    'numbersOfAnswer' => '3',
-                                    'numbersOfVisits' => '4',
-                                    'updatedAt' => '2012-12-12',
-                                    'image' => 'https://picsum.photos/1600/900?random=1',
-                                    'nameSurname' => 'Paolo Bianchi',
-                                    'newPubblication' => true,
-                                    'avatarWrapperSize' => 'md',
-                                    'nameSurnameLastComment' => 'Mario Franchi',
-                                    'lastCommentDiscussion' => 'Esatto! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
-              Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
-              Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
-                                ]
-                            );
-                            ?>
+                    <div class="bd-example">
+                        <div class="row variable-gutters">
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                    [
+                                        'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                        'communityTitle' => 'Planner 2.0',
+                                        'date' => '2020-12-12',
+                                        'url' => '#',
+                                        'numbersOfAnswer' => '3',
+                                        'numbersOfVisits' => '4',
+                                        'updatedAt' => '2012-12-12',
+                                        'image' => 'https://picsum.photos/1600/900?random=5',
+                                        'nameSurname' => 'Paolo Bianchi',
+                                        'newPubblication' => true,
+                                        'avatarWrapperSize' => 'md',
+                                        'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.',
+                                        'nameSurnameLastComment' => 'Marco Giusti',
+                                        'lastCommentDiscussion' => 'Ciao, mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                    [
+                                        'title' => 'Discussione Planner',
+                                        'date' => '2020-12-12',
+                                        'url' => '#',
+                                        'numbersOfAnswer' => '3',
+                                        'numbersOfVisits' => '4',
+                                        'updatedAt' => '2012-12-12',
+                                        'image' => 'https://picsum.photos/1600/900?random=4',
+                                        'nameSurname' => 'Paolo Bianchi',
+                                        'newPubblication' => true,
+                                        'avatarWrapperSize' => 'md',
+                                        'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
+                                            Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
+                                            Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                    [
+                                        'title' => 'Discussione con nome un pò più lungo e complesso',
+                                        'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                                        'date' => '2020-12-12',
+                                        'url' => '#',
+                                        'numbersOfAnswer' => '3',
+                                        'numbersOfVisits' => '4',
+                                        'updatedAt' => '2012-12-12',
+                                        'image' => 'https://picsum.photos/1600/900?random=3',
+                                        'nameSurname' => 'Paolo Bianchi',
+                                        'avatarWrapperSize' => 'md',
+                                        'nameSurnameLastComment' => 'Giorgio Mariano',
+                                        'lastCommentDiscussion' => 'Wow! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                        'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
+                                            Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
+                                            Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                    [
+                                        'title' => 'Discussione Planner',
+                                        'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                                        'date' => '2020-12-12',
+                                        'url' => '#',
+                                        'numbersOfAnswer' => '3',
+                                        'numbersOfVisits' => '4',
+                                        'updatedAt' => '2012-12-12',
+                                        'image' => 'https://picsum.photos/1600/900?random=2',
+                                        'nameSurname' => 'Paolo Bianchi',
+                                        'newPubblication' => true,
+                                        'avatarWrapperSize' => 'md',
+                                        'nameSurnameLastComment' => 'Luisa Recca',
+                                        'lastCommentDiscussion' => 'Grande! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                        'description' => 'Sono una descrizione... obbligatoria?'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                    [
+                                        'title' => 'Discussione Planner',
+                                        'communityTitle' => 'Planner 2.0',
+                                        'date' => '2020-12-12',
+                                        'url' => '#',
+                                        'numbersOfAnswer' => '3',
+                                        'numbersOfVisits' => '4',
+                                        'updatedAt' => '2012-12-12',
+                                        'image' => 'https://picsum.photos/1600/900?random=1',
+                                        'nameSurname' => 'Paolo Bianchi',
+                                        'newPubblication' => true,
+                                        'avatarWrapperSize' => 'md',
+                                        'nameSurnameLastComment' => 'Mario Franchi',
+                                        'lastCommentDiscussion' => 'Esatto! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                        'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
+                    Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
+                    Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                    ]
+                                );
+                                ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
+            
             <!--discussioni lista-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="discussioni">Discussioni lista</h2>
-                <p>Gli elementi della lista discussioni mostrano diverse informazioni (oltre a quelle delle card):</p>
-                <p><strong class="text-uppercase">Numero di risposte alla discussione</strong>: attraverso la variabile <mark><code>$numbersOfAnswer</code></mark></p>
-                <p><strong class="text-uppercase">Numero di visite alla discussione</strong>: attraverso la variabile <mark><code>$numbersOfVisits</code></mark></p>
-                <p><strong class="text-uppercase">Data di ultimo aggiornamento</strong>: attraverso la variabile <mark><code>$updatedAt</code></mark></p>
+            <?php if(\Yii::$app->getModule('discussioni')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="discussioni">Discussioni lista</h2>
+                    <p>Gli elementi della lista discussioni mostrano diverse informazioni (oltre a quelle delle card):</p>
+                    <p><strong class="text-uppercase">Numero di risposte alla discussione</strong>: attraverso la variabile <mark><code>$numbersOfAnswer</code></mark></p>
+                    <p><strong class="text-uppercase">Numero di visite alla discussione</strong>: attraverso la variabile <mark><code>$numbersOfVisits</code></mark></p>
+                    <p><strong class="text-uppercase">Data di ultimo aggiornamento</strong>: attraverso la variabile <mark><code>$updatedAt</code></mark></p>
 
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
-                        [
-                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'date' => '2020-12-12',
-                            'url' => '#',
-                            'numbersOfAnswer' => '3',
-                            'numbersOfVisits' => '4',
-                            'updatedAt' => '2012-12-12',
-                            'newPubblication' => true,
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
-                        [
-                            'title' => 'Discussione Planner',
-                            'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-                            'date' => '2020-12-12',
-                            'url' => '#',
-                            'numbersOfAnswer' => '3',
-                            'numbersOfVisits' => '4',
-                            'updatedAt' => '2012-12-12',
-                            'newPubblication' => true,
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
-                        [
-                            'title' => 'Discussione Planner',
-                            'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-                            'date' => '2020-12-12',
-                            'url' => '#',
-                            'numbersOfAnswer' => '3',
-                            'numbersOfVisits' => '4',
-                            'updatedAt' => '2012-12-12',
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
-
-            <!--documenti card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="documents-card">Documenti card</h2>
-                <p>Le card dei documenti mostrano diverse informazioni:</p>
-                <p><strong class="text-uppercase">Estensione del file</strong>: attraverso la variabile <mark><code>$type</code></mark>(che può definire anche una cartella)</p>
-                <p><strong class="text-uppercase">Peso del file</strong>: attraverso la variabile <mark><code>$size</code></mark></p>
-                <p><strong class="text-uppercase">Informazioni aggiuntive</strong>: racchiuse in un tooltip e gestiste attraverso le variabili <mark><code>$nameSurname</code></mark>, <mark><code>$nameFile</code></mark>, <mark><code>$category</code></mark>, <mark><code>$community</code></mark></p>
-
-                <div class="bd-example">
-                    <div class="row variable-gutters">
-
-
+                    <div class="bd-example">
                         <?=
                         $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-                            [
-                                'title' => '2020 Verso la Strategia Regionale per lo Sviluppo Sostenibile',
-                                'fileName' => 'nome_del_file.doc',
-                                'fileUrl' => 'url/di/esempio',
-                                'type' => 'doc',
-                                'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                'nameSurname' => 'Mario Rossi',
-                                'nameFile' => 'nome_esempio_file',
-                                'size' => '300',
-                                'category' => 'Presentazioni e materiale illustrativo',
-                                'community' => 'Gruppo 6 UniBS Crescini',
-                                'dateSyncDrive' => '2012-12-27 12:30:00',
-                                'newPubblication' => true,
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-                            [
-                                'title' => 'ARIA S.p.A., genesi e orizzonti',
-                                'fileName' => 'nome_del_file.zip',
-                                'fileUrl' => 'url/di/esempio',
-                                'type' => 'zip',
-                                'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                'nameSurname' => 'Mario Rossi',
-                                'nameFile' => 'nome_esempio_file',
-                                'size' => '300',
-                                'category' => 'Presentazioni e materiale illustrativo',
-                                'community' => 'Gruppo 6 UniBS Crescini',
-                                'versionFile' => '500',
-                                'newPubblication' => true,
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
                             [
                                 'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                'fileName' => 'nome_del_file.jpg',
-                                'fileUrl' => 'url/di/esempio',
-                                'type' => 'jpg',
-                                'description' => 'io sono una stringa',
-                                'nameSurname' => 'Mario Rossi',
-                                'nameFile' => 'nome_esempio_file',
-                                'size' => '300',
-                                'category' => 'Presentazioni e materiale illustrativo',
-                                'community' => 'Gruppo 6 UniBS Crescini',
-                                'versionFile' => '1',
-                                'allegatiNum' => '2',
+                                'date' => '2020-12-12',
+                                'url' => '#',
+                                'numbersOfAnswer' => '3',
+                                'numbersOfVisits' => '4',
+                                'updatedAt' => '2012-12-12',
+                                'newPubblication' => true,
                             ]
                         );
                         ?>
                         <?=
                         $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
                             [
-                                'title' => 'Documentazione (Rapporto Preliminare VAS, Documento di Orientamento del PPSSC, altro materiale)',
-                                'fileUrl' => 'url/di/esempio',
-                                'typeFolder' => 'folder',
-                                'nameSurname' => 'Mario Rossi',
-                                'nameFile' => 'nome_esempio_file',
-                                'community' => 'Gruppo 6 UniBS Crescini',
+                                'title' => 'Discussione Planner',
+                                'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                                'date' => '2020-12-12',
+                                'url' => '#',
+                                'numbersOfAnswer' => '3',
+                                'numbersOfVisits' => '4',
+                                'updatedAt' => '2012-12-12',
+                                'newPubblication' => true,
                             ]
                         );
                         ?>
                         <?=
                         $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
                             [
-                                'title' => 'Verbale seduta di insediamento',
-                                'fileName' => 'nome_del_file.xls',
-                                'fileUrl' => 'url/di/esempio',
-                                'type' => 'xls',
-                                'description' => 'io sono una stringa',
-                                'nameSurname' => 'Mario Rossi',
-                                'nameFile' => 'nome_esempio_file',
-                                'size' => '300',
-                                'category' => 'Presentazioni e materiale illustrativo',
-                                'community' => 'Gruppo 6 UniBS Crescini',
-                                // 'numberAttachments' => '4'
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-                            [
-                                'title' => 'Guida per i partecipanti - Community Primo Forum pubblico procedura di VAS',
-                                'fileUrl' => 'url/di/esempio',
-                                'description' => 'io sono una stringa',
-                                'nameSurname' => 'Mario Rossi',
-                                'category' => 'Presentazioni e materiale',
-                                'community' => 'Gruppo 6 UniBS Crescini',
-                                'nameFile' => 'nome_esempio_file',
+                                'title' => 'Discussione Planner',
+                                'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                                'date' => '2020-12-12',
+                                'url' => '#',
+                                'numbersOfAnswer' => '3',
+                                'numbersOfVisits' => '4',
+                                'updatedAt' => '2012-12-12',
                             ]
                         );
                         ?>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
+        
+            <!--documenti card-->
+            <?php if(\Yii::$app->getModule('documenti')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="documents-card">Documenti card</h2>
+                    <p>Le card dei documenti mostrano diverse informazioni:</p>
+                    <p><strong class="text-uppercase">Estensione del file</strong>: attraverso la variabile <mark><code>$type</code></mark>(che può definire anche una cartella)</p>
+                    <p><strong class="text-uppercase">Peso del file</strong>: attraverso la variabile <mark><code>$size</code></mark></p>
+                    <p><strong class="text-uppercase">Informazioni aggiuntive</strong>: racchiuse in un tooltip e gestiste attraverso le variabili <mark><code>$nameSurname</code></mark>, <mark><code>$nameFile</code></mark>, <mark><code>$category</code></mark>, <mark><code>$community</code></mark></p>
+
+                    <div class="bd-example">
+                        <div class="row variable-gutters">
+
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                                [
+                                    'title' => '2020 Verso la Strategia Regionale per lo Sviluppo Sostenibile',
+                                    'fileName' => 'nome_del_file.doc',
+                                    'fileUrl' => 'url/di/esempio',
+                                    'type' => 'doc',
+                                    'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                    'nameSurname' => 'Mario Rossi',
+                                    'nameFile' => 'nome_esempio_file',
+                                    'size' => '300',
+                                    'category' => 'Presentazioni e materiale illustrativo',
+                                    'community' => 'Gruppo 6 UniBS Crescini',
+                                    'dateSyncDrive' => '2012-12-27 12:30:00',
+                                    'newPubblication' => true,
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                                [
+                                    'title' => 'ARIA S.p.A., genesi e orizzonti',
+                                    'fileName' => 'nome_del_file.zip',
+                                    'fileUrl' => 'url/di/esempio',
+                                    'type' => 'zip',
+                                    'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                    'nameSurname' => 'Mario Rossi',
+                                    'nameFile' => 'nome_esempio_file',
+                                    'size' => '300',
+                                    'category' => 'Presentazioni e materiale illustrativo',
+                                    'community' => 'Gruppo 6 UniBS Crescini',
+                                    'versionFile' => '500',
+                                    'newPubblication' => true,
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                                [
+                                    'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                    'fileName' => 'nome_del_file.jpg',
+                                    'fileUrl' => 'url/di/esempio',
+                                    'type' => 'jpg',
+                                    'description' => 'io sono una stringa',
+                                    'nameSurname' => 'Mario Rossi',
+                                    'nameFile' => 'nome_esempio_file',
+                                    'size' => '300',
+                                    'category' => 'Presentazioni e materiale illustrativo',
+                                    'community' => 'Gruppo 6 UniBS Crescini',
+                                    'versionFile' => '1',
+                                    'allegatiNum' => '2',
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                                [
+                                    'title' => 'Documentazione (Rapporto Preliminare VAS, Documento di Orientamento del PPSSC, altro materiale)',
+                                    'fileUrl' => 'url/di/esempio',
+                                    'typeFolder' => 'folder',
+                                    'nameSurname' => 'Mario Rossi',
+                                    'nameFile' => 'nome_esempio_file',
+                                    'community' => 'Gruppo 6 UniBS Crescini',
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                                [
+                                    'title' => 'Verbale seduta di insediamento',
+                                    'fileName' => 'nome_del_file.xls',
+                                    'fileUrl' => 'url/di/esempio',
+                                    'type' => 'xls',
+                                    'description' => 'io sono una stringa',
+                                    'nameSurname' => 'Mario Rossi',
+                                    'nameFile' => 'nome_esempio_file',
+                                    'size' => '300',
+                                    'category' => 'Presentazioni e materiale illustrativo',
+                                    'community' => 'Gruppo 6 UniBS Crescini',
+                                    // 'numberAttachments' => '4'
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                                [
+                                    'title' => 'Guida per i partecipanti - Community Primo Forum pubblico procedura di VAS',
+                                    'fileUrl' => 'url/di/esempio',
+                                    'description' => 'io sono una stringa',
+                                    'nameSurname' => 'Mario Rossi',
+                                    'category' => 'Presentazioni e materiale',
+                                    'community' => 'Gruppo 6 UniBS Crescini',
+                                    'nameFile' => 'nome_esempio_file',
+                                ]
+                            );
+                            ?>
+                        </div>
+                    </div>
+                </section>
+            <?php endif; ?>
+
             <!--documenti lista-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="document-list">Documenti lista</h2>
+            <?php if(\Yii::$app->getModule('documenti')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="document-list">Documenti lista</h2>
 
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
-                        [
-                            'date' => '10-01-2021',
-                            'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
-                            'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'category' => 'Categoria di test',
-                            'image' => 'https://picsum.photos/1600/900?random=25',
-                            'type' => 'xls',
-                            'size' => '350',
-                            'nameSurname' => 'Mario Rossi',
-                            'community' => 'Community Common',
-                            'url' => 'url/del/dettaglio',
-                            'fileUrl' => 'url/del/documento',
-                            'fileName' => 'nome_del_documento.pdf',
-                            'newPubblication' => true,
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
+                            [
+                                'date' => '10-01-2021',
+                                'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
+                                'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'category' => 'Categoria di test',
+                                'image' => 'https://picsum.photos/1600/900?random=25',
+                                'type' => 'xls',
+                                'size' => '350',
+                                'nameSurname' => 'Mario Rossi',
+                                'community' => 'Community Common',
+                                'url' => 'url/del/dettaglio',
+                                'fileUrl' => 'url/del/documento',
+                                'fileName' => 'nome_del_documento.pdf',
+                                'newPubblication' => true,
 
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
-                        [
-                            'date' => '12-12-2020',
-                            'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
-                            'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'category' => 'Categoria di test',
-                            'image' => 'https://picsum.photos/1600/900?random=25',
-                            'type' => 'pdf',
-                            'size' => '350',
-                            'nameSurname' => 'Mario Rossi',
-                            'community' => 'Community Common',
-                            'url' => 'url/del/dettaglio',
-                            'fileUrl' => 'url/del/documento',
-                            'fileName' => 'nome_del_documento.pdf',
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
-                        [
-                            'date' => '12-12-2020',
-                            'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
-                            'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'category' => 'Categoria di test',
-                            'image' => 'https://picsum.photos/1600/900?random=25',
-                            'type' => 'pdf',
-                            'size' => '350',
-                            'nameSurname' => 'Mario Rossi',
-                            'community' => 'Community Common',
-                            'url' => 'url/del/dettaglio',
-                            'fileUrl' => 'url/del/documento',
-                            'fileName' => 'nome_del_documento.pdf',
-                            'dateSyncDrive' => '2012-12-27 12:30:00',
-                        ]
-                    );
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
+                            [
+                                'date' => '12-12-2020',
+                                'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
+                                'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'category' => 'Categoria di test',
+                                'image' => 'https://picsum.photos/1600/900?random=25',
+                                'type' => 'pdf',
+                                'size' => '350',
+                                'nameSurname' => 'Mario Rossi',
+                                'community' => 'Community Common',
+                                'url' => 'url/del/dettaglio',
+                                'fileUrl' => 'url/del/documento',
+                                'fileName' => 'nome_del_documento.pdf',
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
+                            [
+                                'date' => '12-12-2020',
+                                'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
+                                'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'category' => 'Categoria di test',
+                                'image' => 'https://picsum.photos/1600/900?random=25',
+                                'type' => 'pdf',
+                                'size' => '350',
+                                'nameSurname' => 'Mario Rossi',
+                                'community' => 'Community Common',
+                                'url' => 'url/del/dettaglio',
+                                'fileUrl' => 'url/del/documento',
+                                'fileName' => 'nome_del_documento.pdf',
+                                'dateSyncDrive' => '2012-12-27 12:30:00',
+                            ]
+                        );
 
-                    ?>
-                </div>
-            </section>
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
 
             <!-- eventi card-->
-            <section class="pt-5 ">
-                <h2 class="it-page-section" id="events-list">Eventi Card</h2>
-                <p>Le card dei documenti mostrano diverse informazioni:</p>
-                <p><strong class="text-uppercase">Data inizio</strong>: attraverso la variabile <mark><code>$dateHourStart</code></mark></p>
-                <p><strong class="text-uppercase">Tipo evento</strong>: attraverso la variabile <mark><code>$type</code></mark></p>
+            <?php if(\Yii::$app->getModule('events')): ?>
+                <section class="pt-5 ">
+                    <h2 class="it-page-section" id="events-list">Eventi Card</h2>
+                    <p>Le card dei documenti mostrano diverse informazioni:</p>
+                    <p><strong class="text-uppercase">Data inizio</strong>: attraverso la variabile <mark><code>$dateHourStart</code></mark></p>
+                    <p><strong class="text-uppercase">Tipo evento</strong>: attraverso la variabile <mark><code>$type</code></mark></p>
 
-                <div class="bd-example">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
-                                [
-                                    'dateHourStart' => '2012-12-27 12:30:00',
-                                    'title' => 'Titolo dell\'evento',
-                                    'summary' => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
-                                    'url' => '/url/di/test',
-                                    'urlCta' => '/url/di/event-signup',
-                                    'type' => 'Evento typeDefault',
-                                    'isPaid' => false,
-                                    'availableSeats' => '48',
-                                    'newPubblication' => true,
-                                    'dateSigned' => '2020-01-01',
+                    <div class="bd-example">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
+                                    [
+                                        'dateHourStart' => '2012-12-27 12:30:00',
+                                        'title' => 'Titolo dell\'evento',
+                                        'summary' => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
+                                        'url' => '/url/di/test',
+                                        'urlCta' => '/url/di/event-signup',
+                                        'type' => 'Evento typeDefault',
+                                        'isPaid' => false,
+                                        'availableSeats' => '48',
+                                        'newPubblication' => true,
+                                        'dateSigned' => '2020-01-01',
 
-                                ]
-                            );
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
-                                [
-                                    'dateHourStart' => '2012-12-27 12:30:00',
-                                    'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                    'summary' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-                                    'url' => '/url/di/test',
-                                    'urlCta' => '/url/di/view',
-                                    'type' => 'Evento typeDefault',
-                                ]
-                            );
-                            ?>
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
+                                    [
+                                        'dateHourStart' => '2012-12-27 12:30:00',
+                                        'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                        'summary' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+                                        'url' => '/url/di/test',
+                                        'urlCta' => '/url/di/view',
+                                        'type' => 'Evento typeDefault',
+                                    ]
+                                );
+                                ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
+            
             <!-- eventi lista-->
-            <section class="pt-5">
-                <h2 class="it-page-section" id="events-list">Eventi Lista</h2>
-                <div class="bd-example">
-                    <div class="event-list-container">
-                        <div class=" row flex-wrap">
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
-                                [
-                                    'dateHourStart' => '2012-12-12 12:00:00',
-                                    'dateHourEnd' => '2012-12-13 15:00:00',
-                                    'title' => 'La comunicazione green ai tempi del covid',
-                                    'type' => 'Tipo evento',
-                                    'newPubblication' => true,
-                                ]
-                            );
-                            ?>
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
-                                [
-                                    'dateHourStart' => '2012-12-12 12:00:00',
-                                    'dateHourEnd' => '2012-12-12 15:00:00',
-                                    'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                    'type' => 'Tipo evento',
-                                    'isPaid' => false,
-                                    'availableSeats' => '48',
-                                    'newPubblication' => true,
-                                ]
-                            );
-                            ?>
-                            <?=
-                            $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
-                                [
-                                    'dateHourStart' => '2012-12-12 12:00:00',
-                                    'title' => 'io sono una stringa da pochi caratteri',
-                                    'type' => 'Tipo evento',
-                                    'isPaid' => true,
-                                    'availableSeats' => '48',
-                                ]
-                            );
-                            ?>
+            <?php if(\Yii::$app->getModule('events')): ?>
+                <section class="pt-5">
+                    <h2 class="it-page-section" id="events-list">Eventi Lista</h2>
+                    <div class="bd-example">
+                        <div class="event-list-container">
+                            <div class=" row flex-wrap">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
+                                    [
+                                        'dateHourStart' => '2012-12-12 12:00:00',
+                                        'dateHourEnd' => '2012-12-13 15:00:00',
+                                        'title' => 'La comunicazione green ai tempi del covid',
+                                        'type' => 'Tipo evento',
+                                        'newPubblication' => true,
+                                    ]
+                                );
+                                ?>
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
+                                    [
+                                        'dateHourStart' => '2012-12-12 12:00:00',
+                                        'dateHourEnd' => '2012-12-12 15:00:00',
+                                        'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                        'type' => 'Tipo evento',
+                                        'isPaid' => false,
+                                        'availableSeats' => '48',
+                                        'newPubblication' => true,
+                                    ]
+                                );
+                                ?>
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
+                                    [
+                                        'dateHourStart' => '2012-12-12 12:00:00',
+                                        'title' => 'io sono una stringa da pochi caratteri',
+                                        'type' => 'Tipo evento',
+                                        'isPaid' => true,
+                                        'availableSeats' => '48',
+                                    ]
+                                );
+                                ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
+            
             <!-- eventi scope-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="events-scope">Eventi scope</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-eventi',
-                        [
-                            'dateHourStart' => '2012-12-27 12:30:00',
-                            'dateHourEnd' => '2012-12-27 12:30:00',
-                            'title' => 'Tavola rotonda sull\'inquinamento nei mari',
-                            'summary' => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tempor magna. Aliquam consectetur tellus et posuere vestibulum. Suspendisse euismod eros est, id rutrum felis cursus at. Duis turpis urna, laoreet quis malesuada rutrum, lobortis nec diam. Phasellus ut nisl enim.',
-                            'url' => '/url/di/test',
-                            'urlCta' => '/url/di/view',
-                            'type' => 'Evento typeDefault',
-                            'isPaid' => true,
-                            'availableSeats' => '48',
-                            'location' => 'Palazzo Roverella',
-                            'address' => 'via della pioppa, 30',
-                            'city' => 'Milano',
-                            'province' => 'MI',
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
+            <?php if(\Yii::$app->getModule('events')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="events-scope">Eventi scope</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-eventi',
+                            [
+                                'dateHourStart' => '2012-12-27 12:30:00',
+                                'dateHourEnd' => '2012-12-27 12:30:00',
+                                'title' => 'Tavola rotonda sull\'inquinamento nei mari',
+                                'summary' => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tempor magna. Aliquam consectetur tellus et posuere vestibulum. Suspendisse euismod eros est, id rutrum felis cursus at. Duis turpis urna, laoreet quis malesuada rutrum, lobortis nec diam. Phasellus ut nisl enim.',
+                                'url' => '/url/di/test',
+                                'urlCta' => '/url/di/view',
+                                'type' => 'Evento typeDefault',
+                                'isPaid' => true,
+                                'availableSeats' => '48',
+                                'location' => 'Palazzo Roverella',
+                                'address' => 'via della pioppa, 30',
+                                'city' => 'Milano',
+                                'province' => 'MI',
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+          
             <!--modali-->
             <section class="py-5">
                 <div>
@@ -1407,497 +1551,504 @@ echo $this->render('parts/devs-tools');
                 </div>
             </section>
             <!--news-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="news">News</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
-                        [
-                            'category' => 'ULTIME DALLA P.A.',
-                            'image' => 'https://picsum.photos/1600/900?random=6',
-                            'nameSurname' => 'Paolo Bianchi',
-                            'showAvatar' => true,
-                            'newPubblication' => true,
-                            'avatarWrapperSize' => 'lg',
-                            'categorySize' => 'lead',
-                            'titleSize' => 'h3',
-                            'descriptionSize' => 'lead',
-                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'date' => '2020-12-12'
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
-            <!--news card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="news-list">News card</h2>
-                <div class="bd-example">
-                    <div class="list-news-container row variable-gutters">
-
+            <?php if(\Yii::$app->getModule('news')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="news">News</h2>
+                    <div class="bd-example">
                         <?=
                         $this->render(
                             '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=6',
+                                'nameSurname' => 'Paolo Bianchi',
+                                'showAvatar' => true,
+                                'newPubblication' => true,
+                                'avatarWrapperSize' => 'lg',
+                                'categorySize' => 'lead',
+                                'titleSize' => 'h3',
+                                'descriptionSize' => 'lead',
+                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+            
+            <!--news card-->
+            <?php if(\Yii::$app->getModule('news')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="news-list">News card</h2>
+                    <div class="bd-example">
+                        <div class="list-news-container row variable-gutters">
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                                [
+                                    'category' => 'ULTIME DALLA P.A.',
+                                    'image' => 'https://picsum.photos/1600/900?random=2',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'newPubblication' => true,
+                                    'showAvatar' => true,
+                                    'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                    //classi per la dimensione font/avatar
+                                    'avatarWrapperSize' => 'md',
+
+                                    'descriptionSize' => 'small',
+                                    'title' => 'Lorem ipsum dolor sit amet',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'date' => '2020-12-12'
+
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                                [
+                                    'category' => 'ULTIME DALLA P.A.',
+                                    'image' => 'https://picsum.photos/1600/900?random=3',
+                                    'nameSurname' => 'Paolo Bianchi',
+
+                                    'showAvatar' => true,
+                                    'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                    'avatarWrapperSize' => 'md',
+                                    'descriptionSize' => 'small',
+                                    'title' => 'Lorem ipsum dolor sit amet',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'date' => '2020-12-12'
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                                [
+                                    'category' => 'ULTIME DALLA P.A.',
+                                    'image' => 'https://picsum.photos/1600/900?random=4',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'newPubblication' => true,
+                                    'showAvatar' => true,
+                                    'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                    'avatarWrapperSize' => 'md',
+                                    'descriptionSize' => 'small',
+                                    'title' => 'Lorem ipsum dolor sit amet',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'date' => '2020-12-12'
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                                [
+                                    'category' => 'ULTIME DALLA P.A.',
+                                    'image' => 'https://picsum.photos/1600/900?random=44',
+                                    'nameSurname' => 'Paolo Bianchi',
+
+                                    'showAvatar' => true,
+                                    'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                    //classi per la dimensione font/avatar
+                                    'avatarWrapperSize' => 'md',
+                                    'descriptionSize' => 'small',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'title' => 'Lorem ipsum dolor sit amet',
+                                    'date' => '2020-12-12'
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                                [
+                                    'category' => 'ULTIME DALLA P.A.',
+                                    'image' => 'https://picsum.photos/1600/900?random=55',
+                                    'nameSurname' => 'Paolo Bianchi',
+
+                                    'showAvatar' => true,
+                                    'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                    'avatarWrapperSize' => 'md',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'descriptionSize' => 'small',
+                                    'title' => 'Lorem ipsum dolor sit amet',
+                                    'date' => '2020-12-12'
+                                ]
+                            );
+                            ?>
+                        </div>
+                </section>
+            <?php endif; ?>
+
+            <!--News Carousel-->
+            <?php if(\Yii::$app->getModule('news')): ?>
+                <section class="py-5">
+                    <div>
+                        <h2 class="it-page-section" id="carousel-news" class="pb-2">News Carousel</h2>
+                    </div>
+                    <div class="bd-example">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-carousel-news'
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+            
+            <!--news lista-->
+            <?php if(\Yii::$app->getModule('news')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="news-list-item">News lista</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=21',
+                                'nameSurname' => 'Paolo Bianchi',
+                                'showSignature' => true,
+                                'newPubblication' => true,
+                                'titleSize' => 'h5',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=22',
+                                'nameSurname' => 'Paolo Bianchi',
+                                'showSignature' => true,
+                                'titleSize' => 'h5',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
                             [
                                 'category' => 'ULTIME DALLA P.A.',
                                 'image' => 'https://picsum.photos/1600/900?random=2',
                                 'nameSurname' => 'Paolo Bianchi',
+                                'showSignature' => true,
                                 'newPubblication' => true,
-                                'showAvatar' => true,
-                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
-                                //classi per la dimensione font/avatar
-                                'avatarWrapperSize' => 'md',
-
-                                'descriptionSize' => 'small',
-                                'title' => 'Lorem ipsum dolor sit amet',
-                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                'date' => '2020-12-12'
-
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
-                            [
-                                'category' => 'ULTIME DALLA P.A.',
-                                'image' => 'https://picsum.photos/1600/900?random=3',
-                                'nameSurname' => 'Paolo Bianchi',
-
-                                'showAvatar' => true,
-                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
-                                'avatarWrapperSize' => 'md',
-                                'descriptionSize' => 'small',
-                                'title' => 'Lorem ipsum dolor sit amet',
-                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                'date' => '2020-12-12'
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
-                            [
-                                'category' => 'ULTIME DALLA P.A.',
-                                'image' => 'https://picsum.photos/1600/900?random=4',
-                                'nameSurname' => 'Paolo Bianchi',
-                                'newPubblication' => true,
-                                'showAvatar' => true,
-                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
-                                'avatarWrapperSize' => 'md',
-                                'descriptionSize' => 'small',
-                                'title' => 'Lorem ipsum dolor sit amet',
-                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                'date' => '2020-12-12'
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
-                            [
-                                'category' => 'ULTIME DALLA P.A.',
-                                'image' => 'https://picsum.photos/1600/900?random=44',
-                                'nameSurname' => 'Paolo Bianchi',
-
-                                'showAvatar' => true,
-                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
-                                //classi per la dimensione font/avatar
-                                'avatarWrapperSize' => 'md',
-                                'descriptionSize' => 'small',
-                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                'title' => 'Lorem ipsum dolor sit amet',
-                                'date' => '2020-12-12'
-                            ]
-                        );
-                        ?>
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
-                            [
-                                'category' => 'ULTIME DALLA P.A.',
-                                'image' => 'https://picsum.photos/1600/900?random=55',
-                                'nameSurname' => 'Paolo Bianchi',
-
-                                'showAvatar' => true,
-                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
-                                'avatarWrapperSize' => 'md',
-                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                                'descriptionSize' => 'small',
-                                'title' => 'Lorem ipsum dolor sit amet',
+                                'titleSize' => 'h5',
+                                'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
                                 'date' => '2020-12-12'
                             ]
                         );
                         ?>
                     </div>
-            </section>
-            <!--News Carousel-->
-            <section class="py-5">
-                <div>
-                    <h2 class="it-page-section" id="carousel-news" class="pb-2">News Carousel</h2>
-                </div>
-                <div class="bd-example">
-                    <?php
-                    echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-carousel-news'
-                    );
-                    ?>
-                </div>
-            </section>
-            <!--news lista-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="news-list-item">News lista</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
-                        [
-                            'category' => 'ULTIME DALLA P.A.',
-                            'image' => 'https://picsum.photos/1600/900?random=21',
-                            'nameSurname' => 'Paolo Bianchi',
-                            'showSignature' => true,
-                            'newPubblication' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Lorem ipsum dolor sit amet',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'date' => '2020-12-12'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
-                        [
-                            'category' => 'ULTIME DALLA P.A.',
-                            'image' => 'https://picsum.photos/1600/900?random=22',
-                            'nameSurname' => 'Paolo Bianchi',
-                            'showSignature' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Lorem ipsum dolor sit amet',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'date' => '2020-12-12'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
-                        [
-                            'category' => 'ULTIME DALLA P.A.',
-                            'image' => 'https://picsum.photos/1600/900?random=2',
-                            'nameSurname' => 'Paolo Bianchi',
-                            'showSignature' => true,
-                            'newPubblication' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
-                            'date' => '2020-12-12'
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
+                </section>
+            <?php endif; ?>
+            
             <!--Organizzazioni card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="organization">Organizzazioni card</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
-                        [
-                            'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
-                            'organizzatore' => 'Pesce Azzurro Cefalù',
-                            'removeLink' => true,
-                            'showCtaEsplora' => true,
-                            'showIcon' => true,
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
-            <!--organizzazioni lista-->
-            <section class="py-5 ">
-                <h2 class="it-page-section" id="organization-list">Organizzazioni lista</h2>
-                <div class="bd-example">
-                    <div class="row variable-gutters users-list-container justify-content-start">
+            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="organization">Organizzazioni card</h2>
+                    <div class="bd-example">
                         <?=
                         $this->render(
                             '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
                             [
-                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=1',
-                                'organizzatore' => 'Fidagel',
-                                'removeLink' => true,
-                                'showCtaEsplora' => true,
-                                'additionalClass' => 'border-light border-bottom py-3',
-                                'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
-                            ]
-                        );
-                        ?>
-
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
-                            [
-                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=2',
+                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
                                 'organizzatore' => 'Pesce Azzurro Cefalù',
                                 'removeLink' => true,
                                 'showCtaEsplora' => true,
-                                'additionalClass' => 'border-light border-bottom py-3',
-                                'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
-
+                                'showIcon' => true,
                             ]
                         );
                         ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+            
+            <!--organizzazioni lista-->
+            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+                <section class="py-5 ">
+                    <h2 class="it-page-section" id="organization-list">Organizzazioni lista</h2>
+                    <div class="bd-example">
+                        <div class="row variable-gutters users-list-container justify-content-start">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                                [
+                                    'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=1',
+                                    'organizzatore' => 'Fidagel',
+                                    'removeLink' => true,
+                                    'showCtaEsplora' => true,
+                                    'additionalClass' => 'border-light border-bottom py-3',
+                                    'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+                                ]
+                            );
+                            ?>
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                                [
+                                    'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=2',
+                                    'organizzatore' => 'Pesce Azzurro Cefalù',
+                                    'removeLink' => true,
+                                    'showCtaEsplora' => true,
+                                    'additionalClass' => 'border-light border-bottom py-3',
+                                    'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+
+                                ]
+                            );
+                            ?>
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                                [
+                                    'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=3',
+                                    'organizzatore' => 'Ittica Taddeo Lucia & Co',
+                                    'removeLink' => true,
+                                    'showCtaEsplora' => true,
+                                    'additionalClass' => 'border-light border-bottom py-3',
+                                    'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+
+                                ]
+                            );
+                            ?>
+                        </div>
+
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            <!--Organizzazioni Scope-->
+            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+                <section class="py-5 ">
+                    <h2 class="it-page-section" id="scope-organizzazioni">Organizzazioni scope</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-organizzazioni',
+                            [
+                                'espositoreImage' => 'https://picsum.photos/1600/900?random=10',
+                                'espositoreTitle' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'espositoreSito' => 'www.dragoconserve.it',
+                                'espositorePIva' => '012345678912',
+                                'espositoreReferente' => 'Giuliano Bianco',
+                                'espositoreIndirizzo' => 'Via Stentiello 10/a Siracusa',
+                                'espositoreEmail' => 'info@dragoconserve.it',
+                                'espositoreTelefono' => '090 1234567',
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            <!--Podcast lista-->
+            <?php if(\Yii::$app->getModule('podcast')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="podcast-list">Podcast lista</h2>
+                    <div class="bd-example">
+                        <div class="d-flex">
+                            <div class="podcast-list-container col-12">
+                                <div class=" row flex-wrap">
+                                    <?=
+                                    $this->render(
+                                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
+                                        [
+                                            'lastEpisodeDate' => '25 Settembre 2020',
+                                            'podcastDescription' => 'Lorem ipsum dolor sit amet',
+                                            'podcastName' => 'La comunicazione green ',
+                                            'podcastCategory' => 'Categoria',
+                                            'podcastCover' => 'https://picsum.photos/1600/900?random=25',
+
+                                        ]
+                                    );
+                                    ?>
+                                    <?=
+                                    $this->render(
+                                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
+                                        [
+                                            'lastEpisodeDate' => '25 Settembre 2020',
+
+                                            'podcastName' => 'io sono una stringa cortina ',
+                                            'podcastCategory' => 'informatica',
+                                            'podcastCover' => 'https://picsum.photos/1600/900?random=55',
+
+                                        ]
+                                    );
+                                    ?>
+                                    <?=
+                                    $this->render(
+                                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
+                                        [
+                                            'lastEpisodeDate' => '25 Luglio 2020',
+                                            'podcastDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui eros, feugiat at scelerisque sed, ultrices eget ex.  ',
+                                            'podcastName' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                            'podcastCategory' => 'innovazione',
+                                            'podcastCover' => 'https://picsum.photos/1600/900?random=15',
+
+                                        ]
+                                    );
+                                    ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            <!--podcast card-->
+            <?php if(\Yii::$app->getModule('podcast')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="podcast-puntate-list">Podcast card </h2>
+                    <div class="bd-example">
+                        <div class="d-flex">
+                            <div class="event-list-container">
+                                <div class=" row flex-wrap">
+
+
+
+                                    <?=
+                                    $this->render(
+                                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast-puntata',
+                                        [
+                                            'podcastCover' => 'https://picsum.photos/1600/900?random=45',
+                                            'podcastName' => 'io sono una stringa cortina ',
+                                            'podcastDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui eros, feugiat at scelerisque sed, ultrices eget ex. Nunc a tortor et eros iaculis tincidunt at hendrerit dolor. ',
+                                            'episodeDate' => '25 Settembre 2020',
+                                            'episodeDuration' => '35',
+                                        ]
+                                    );
+                                    ?>
+
+                                    <?=
+                                    $this->render(
+                                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast-puntata',
+                                        [
+                                            'podcastCover' => 'https://picsum.photos/1600/900?random=46',
+                                            'podcastName' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                            'podcastDescription' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                            'episodeDate' => '25 Settembre 2020',
+
+                                        ]
+                                    );
+                                    ?>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            <?php endif; ?>
+            
+            
+            <!--proposte di collaborazione-->
+            <?php if(\Yii::$app->getModule('partnershipprofiles')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="proposte-collaborazione">Proposte di collaborazione</h2>
+                    <div class="bd-example">
 
                         <?=
                         $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
                             [
-                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=3',
-                                'organizzatore' => 'Ittica Taddeo Lucia & Co',
-                                'removeLink' => true,
-                                'showCtaEsplora' => true,
-                                'additionalClass' => 'border-light border-bottom py-3',
-                                'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+                                'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(293),
+                                //                            'dateEnd' => '12-12-2021',
+                                //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                //                            'newPubblication' => true,
+                                //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                                //                            'forUsers' => 'Tutti gli utenti',
+                                //                            'status' => 'Validata',
+                                //                            'numInteressi' => '8',
+                                'url'=> '#',
+                                'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'shortTitle' => 'io sono una stringa cortina',
+                                'expireDate' => '10/04/2022',
+                                'publishedAt' => '09/06/2021',
+                                'pubblicationRule' => 'Tutti',
+                                'status' => 'Attivo',
 
                             ]
                         );
                         ?>
-                    </div>
-
-                </div>
-            </section>
-            <!--Organizzazioni Scope-->
-            <section class="py-5 ">
-                <h2 class="it-page-section" id="scope-organizzazioni">Organizzazioni scope</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-organizzazioni',
-                        [
-                            'espositoreImage' => 'https://picsum.photos/1600/900?random=10',
-                            'espositoreTitle' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'espositoreSito' => 'www.dragoconserve.it',
-                            'espositorePIva' => '012345678912',
-                            'espositoreReferente' => 'Giuliano Bianco',
-                            'espositoreIndirizzo' => 'Via Stentiello 10/a Siracusa',
-                            'espositoreEmail' => 'info@dragoconserve.it',
-                            'espositoreTelefono' => '090 1234567',
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
-            <!--Podcast lista-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="podcast-list">Podcast lista</h2>
-                <div class="bd-example">
-                    <div class="d-flex">
-                        <div class="podcast-list-container col-12">
-                            <div class=" row flex-wrap">
-                                <?=
-                                $this->render(
-                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
-                                    [
-                                        'lastEpisodeDate' => '25 Settembre 2020',
-                                        'podcastDescription' => 'Lorem ipsum dolor sit amet',
-                                        'podcastName' => 'La comunicazione green ',
-                                        'podcastCategory' => 'Categoria',
-                                        'podcastCover' => 'https://picsum.photos/1600/900?random=25',
-
-                                    ]
-                                );
-                                ?>
-                                <?=
-                                $this->render(
-                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
-                                    [
-                                        'lastEpisodeDate' => '25 Settembre 2020',
-
-                                        'podcastName' => 'io sono una stringa cortina ',
-                                        'podcastCategory' => 'informatica',
-                                        'podcastCover' => 'https://picsum.photos/1600/900?random=55',
-
-                                    ]
-                                );
-                                ?>
-                                <?=
-                                $this->render(
-                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
-                                    [
-                                        'lastEpisodeDate' => '25 Luglio 2020',
-                                        'podcastDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui eros, feugiat at scelerisque sed, ultrices eget ex.  ',
-                                        'podcastName' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                        'podcastCategory' => 'innovazione',
-                                        'podcastCover' => 'https://picsum.photos/1600/900?random=15',
-
-                                    ]
-                                );
-                                ?>
-                            </div>
-                        </div>
+                   
 
                     </div>
-                </div>
-            </section>
-            <!--podcast card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="podcast-puntate-list">Podcast card </h2>
-                <div class="bd-example">
-                    <div class="d-flex">
-                        <div class="event-list-container">
-                            <div class=" row flex-wrap">
-
-
-
-                                <?=
-                                $this->render(
-                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast-puntata',
-                                    [
-                                        'podcastCover' => 'https://picsum.photos/1600/900?random=45',
-                                        'podcastName' => 'io sono una stringa cortina ',
-                                        'podcastDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui eros, feugiat at scelerisque sed, ultrices eget ex. Nunc a tortor et eros iaculis tincidunt at hendrerit dolor. ',
-                                        'episodeDate' => '25 Settembre 2020',
-                                        'episodeDuration' => '35',
-                                    ]
-                                );
-                                ?>
-
-                                <?=
-                                $this->render(
-                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast-puntata',
-                                    [
-                                        'podcastCover' => 'https://picsum.photos/1600/900?random=46',
-                                        'podcastName' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                        'podcastDescription' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                        'episodeDate' => '25 Settembre 2020',
-
-                                    ]
-                                );
-                                ?>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--proposte di collaborazione-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="proposte-collaborazione">Proposte di collaborazione</h2>
-                <div class="bd-example">
-
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
-                        [
-                            'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(293),
-                            //                            'dateEnd' => '12-12-2021',
-                            //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            //                            'newPubblication' => true,
-                            //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                            //                            'forUsers' => 'Tutti gli utenti',
-                            //                            'status' => 'Validata',
-                            //                            'numInteressi' => '8',
-
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
-                        [
-                            'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(292),
-
-                            //                            'dateEnd' => '12-12-2021',
-                            //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            //                            'newPubblication' => true,
-                            //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                            //                            'forUsers' => 'Tutti gli utenti',
-                            //                            'status' => 'Validata',
-                            //                            'numInteressi' => '88'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
-                        [
-                            'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(291),
-
-                            //                            'dateEnd' => '12-12-2021',
-                            //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            //
-                            //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                            //                            'forUsers' => 'Tutti gli utenti',
-                            //                            'status' => 'Validata',
-                            //                            'numInteressi' => '0'
-                        ]
-                    );
-                    ?>
-
-                </div>
-            </section>
-
+                </section>
+            <?php endif; ?>
+          
             <!--proposte di collaborazione een-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="proposte-collaborazione-een">Proposte di collaborazione EEN</h2>
-                <div class="bd-example">
+            <?php if(\Yii::$app->getModule('een')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="proposte-collaborazione-een">Proposte di collaborazione EEN</h2>
+                    <div class="bd-example">
 
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
-                        [
-                            'dateEnd' => '12-12-2021',
-                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'newPubblication' => true,
-                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                            'type' => 'Technology Request',
-                            'country' => 'Italia',
-                            'dateUpdate' => '12-02-2021',
-                            'dateSubmit' => '12-02-2021',
-                            'idProposta' => 'TRCZ20200806001'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
-                        [
-                            'dateEnd' => '12-12-2021',
-                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'newPubblication' => true,
-                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                            'type' => 'Technology Request',
-                            'country' => 'Czech',
-                            'dateUpdate' => '12-02-2021',
-                            'dateSubmit' => '12-02-2021',
-                            'idProposta' => 'TRCZ20200806001'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
-                        [
-                            'dateEnd' => '12-12-2021',
-                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                            'type' => 'Technology Request',
-                            'country' => 'Poland',
-                            'dateUpdate' => '12-02-2021',
-                            'dateSubmit' => '12-02-2021',
-                            'idProposta' => 'TRCZ20200806001'
-                        ]
-                    );
-                    ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
+                            [
+                                'dateEnd' => '12-12-2021',
+                                'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'newPubblication' => true,
+                                'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                                'type' => 'Technology Request',
+                                'country' => 'Italia',
+                                'dateUpdate' => '12-02-2021',
+                                'dateSubmit' => '12-02-2021',
+                                'idProposta' => 'TRCZ20200806001'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
+                            [
+                                'dateEnd' => '12-12-2021',
+                                'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'newPubblication' => true,
+                                'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                                'type' => 'Technology Request',
+                                'country' => 'Czech',
+                                'dateUpdate' => '12-02-2021',
+                                'dateSubmit' => '12-02-2021',
+                                'idProposta' => 'TRCZ20200806001'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
+                            [
+                                'dateEnd' => '12-12-2021',
+                                'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                                'type' => 'Technology Request',
+                                'country' => 'Poland',
+                                'dateUpdate' => '12-02-2021',
+                                'dateSubmit' => '12-02-2021',
+                                'idProposta' => 'TRCZ20200806001'
+                            ]
+                        );
+                        ?>
 
-                </div>
-            </section>
+                    </div>
+                </section>
+            <?php endif; ?>
 
             <!--risultati di ricerca lista-->
             <section class="py-5">
@@ -1943,78 +2094,87 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </div>
             </section>
+            
             <!--sondaggi card-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="sondaggi-card">Sondaggi card</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-card',
-                        [
-                            'image' => 'https://picsum.photos/1600/900?random=21',
-                            'newPubblication' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elikadbf anfiownf inwolnwklf inwocnwnv lnwlcnwov lwnlwnvwsnvownclsnvoiwnvwevoun vv',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'dateStart' => '2020-09-12',
-                            'dateEnd' => '2020-12-12',
-                            'pollState' => '2'
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
+            <?php if(\Yii::$app->getModule('sondaggi')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="sondaggi-card">Sondaggi card</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-card',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=21',
+                                'newPubblication' => true,
+                                'titleSize' => 'h5',
+                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elikadbf anfiownf inwolnwklf inwocnwnv lnwlcnwov lwnlwnvwsnvownclsnvoiwnvwevoun vv',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'dateStart' => '2020-09-12',
+                                'dateEnd' => '2020-12-12',
+                                'pollState' => '2',
+                                'visibility' => 'Pubblico per attività'
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            
             <!-- sondaggi lista-->
-            <section class="py-5">
-                <h2 class="it-page-section" id="sondaggi-lista">Sondaggi lista</h2>
-                <div class="bd-example">
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-item-list',
-                        [
-                            'image' => 'https://picsum.photos/1600/900?random=2',
-                            'newPubblication' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'dateStart' => '2020-09-12',
-                            'dateEnd' => '2020-12-12',
-                            'pollState' => '1'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-item-list',
-                        [
-                            'image' => 'https://picsum.photos/1600/900?random=22',
-                            'newPubblication' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'dateStart' => '2020-09-12',
-                            'dateEnd' => '2020-12-12',
-                            'pollState' => '2'
-                        ]
-                    );
-                    ?>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-item-list',
-                        [
-                            'image' => 'https://picsum.photos/1600/900?random=6',
-                            'newPubblication' => true,
-                            'titleSize' => 'h5',
-                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                            'dateStart' => '2020-09-12',
-                            'dateEnd' => '2020-12-12',
-                            'pollState' => '3'
-                        ]
-                    );
-                    ?>
-                </div>
-            </section>
+            <?php if(\Yii::$app->getModule('sondaggi')): ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="sondaggi-lista">Sondaggi lista</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=2',
+                                'newPubblication' => true,
+                                'titleSize' => 'h5',
+                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'dateStart' => '2020-09-12',
+                                'dateEnd' => '2020-12-12',
+                                'pollState' => '1'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=22',
+                                'newPubblication' => true,
+                                'titleSize' => 'h5',
+                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'dateStart' => '2020-09-12',
+                                'dateEnd' => '2020-12-12',
+                                'pollState' => '2'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=6',
+                                'newPubblication' => true,
+                                'titleSize' => 'h5',
+                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'dateStart' => '2020-09-12',
+                                'dateEnd' => '2020-12-12',
+                                'pollState' => '3'
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
             <!--torna indietro-->
             <section class="py-5">
                 <h2 class="it-page-section" id="back-button">Torna Indietro</h2>
@@ -2027,102 +2187,108 @@ echo $this->render('parts/devs-tools');
                 </div>
             </section>
             <!--tag-->
-            <section class="py-5">
-                <div>
-                    <h2 class="it-page-section" id="tag-manage" class="pb-2">Tag </h2>
-                </div>
+            <?php if(\Yii::$app->getModule('tag')): ?>
+                <section class="py-5">
+                    <div>
+                        <h2 class="it-page-section" id="tag-manage" class="pb-2">Tag </h2>
+                    </div>
 
 
-                <div class="bd-example">
-                    <?php
-                    echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag-manage',
-                        [
-                            'targetTagTitle' => 'Gli interessi su OPEN 2',
-                            'source' => [
-                                '1' => [
-                                    'id' => 'checkbox-1',
-                                    'name' => 'Nome a caso',
-                                ],
-                                '2' => [
-                                    'id' => 'checkbox-2',
-                                    'name' => 'Elemento 2',
-                                ],
-                                '3' => [
-                                    'id' => 'checkbox-3',
-                                    'name' => 'checkbox',
-                                ],
+                    <div class="bd-example">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag-manage',
+                            [
+                                'targetTagTitle' => 'Gli interessi su OPEN 2',
+                                'source' => [
+                                    '1' => [
+                                        'id' => 'checkbox-1',
+                                        'name' => 'Nome a caso',
+                                    ],
+                                    '2' => [
+                                        'id' => 'checkbox-2',
+                                        'name' => 'Elemento 2',
+                                    ],
+                                    '3' => [
+                                        'id' => 'checkbox-3',
+                                        'name' => 'checkbox',
+                                    ],
 
-                            ],
-                            'target' => [
-                                '4' => [
-                                    'id' => 'checkbox-4',
-                                    'name' => 'Elemento 4',
                                 ],
-                                '5' => [
-                                    'id' => 'checkbox-5',
-                                    'name' => 'Elemento 5',
-                                ],
-                                '6' => [
-                                    'id' => 'checkbox-6',
-                                    'name' => 'Elemento 6',
-                                ],
-                                '7' => [
-                                    'id' => 'checkbox-7',
-                                    'name' => 'Elemento 7',
-                                ],
-                                '8' => [
-                                    'id' => 'checkbox-8',
-                                    'name' => 'Elemento 8',
-                                ],
-                                '9' => [
-                                    'id' => 'checkbox-9',
-                                    'name' => 'Elemento 9',
-                                ],
+                                'target' => [
+                                    '4' => [
+                                        'id' => 'checkbox-4',
+                                        'name' => 'Elemento 4',
+                                    ],
+                                    '5' => [
+                                        'id' => 'checkbox-5',
+                                        'name' => 'Elemento 5',
+                                    ],
+                                    '6' => [
+                                        'id' => 'checkbox-6',
+                                        'name' => 'Elemento 6',
+                                    ],
+                                    '7' => [
+                                        'id' => 'checkbox-7',
+                                        'name' => 'Elemento 7',
+                                    ],
+                                    '8' => [
+                                        'id' => 'checkbox-8',
+                                        'name' => 'Elemento 8',
+                                    ],
+                                    '9' => [
+                                        'id' => 'checkbox-9',
+                                        'name' => 'Elemento 9',
+                                    ],
 
-                            ],
-                            'manageLinkLabel' => 'Vai alla gestione completa dei tag nel tuo profilo',
-                            'manageLinkTitle' => 'Vai alla gestione completa dei tag nel tuo profilo',
-                            'manageLinkCssClass' => 'font-weight-semibold',
-                            'manageLinkHref' => '#',
-                            'submitButtonLabel' => 'Salva',
-                            'infoTooltip' => 'Informazioni per la corretta compilazione',
+                                ],
+                                'manageLinkLabel' => 'Vai alla gestione completa dei tag nel tuo profilo',
+                                'manageLinkTitle' => 'Vai alla gestione completa dei tag nel tuo profilo',
+                                'manageLinkCssClass' => 'font-weight-semibold',
+                                'manageLinkHref' => '#',
+                                'submitButtonLabel' => 'Salva',
+                                'infoTooltip' => 'Informazioni per la corretta compilazione',
 
-                        ]
-                    );
-                    ?>
-                </div>
+                            ]
+                        );
+                        ?>
+                    </div>
 
-            </section>
+                </section>
+            <?php endif; ?>
+            
             <!--tag-element-->
-            <section class="py-5">
-                <div>
-                    <h2 class="it-page-section" id="tag" class="pb-2">Tag</h2>
-                </div>
+            <?php if(\Yii::$app->getModule('tag')): ?>
+                <section class="py-5">
+                    <div>
+                        <h2 class="it-page-section" id="tag" class="pb-2">Tag</h2>
+                    </div>
 
-                <div class="bd-example">
-                    <?php
-                    echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
-                        [
-                            'label' => 'Design',
-                        ]
-                    );
-                    ?>
-                    <?php
-                    echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
-                        [
-                            'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
-                            'depth' => '2',
-                            'treeDepthLabels' => ['Tematiche Strategiche Regionali', 'AGROALIMENTARE']
-                        ]
-                    );
-                    ?>
+                    <div class="bd-example">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
+                            [
+                                'label' => 'Design',
+                            ]
+                        );
+                        ?>
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
+                            [
+                                'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
+                                'depth' => '2',
+                                'treeDepthLabels' => ['Tematiche Strategiche Regionali', 'AGROALIMENTARE']
+                            ]
+                        );
+                        ?>
 
-                </div>
+                    </div>
 
-            </section>
+                </section>
+            <?php endif; ?>
+
 
             <!--Utenti-->
             <section class="py-5 ">
@@ -2134,9 +2300,12 @@ echo $this->render('parts/devs-tools');
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
                         [
                             'nameSurname' => 'Paolo Bianchi',
-                            'avatarWrapperSize' => 'md',
+                            'avatarWrapperSize' => 'xl',
                             'url' => '#',
+                            'userEmail'=>'prova@gmail.com',
                             'additionalInfo' => 'Programmatore',
+                            'isNewUser'=>true,
+                            'descrizionrBreve'=>'Lorem ipsum',
                             'collaborazionePrevalente' => 'Unità di Ricerca INSTM presso Dipartimento di Scienza dei Materiali - Univ- Milano Bicocca',
                             'facilitatore' => 'Redazione Open Innovation',
                             'statoProfilo' => 'Validato',
@@ -2150,9 +2319,12 @@ echo $this->render('parts/devs-tools');
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
                         [
                             'nameSurname' => 'Michelito La Fresca',
-                            'avatarWrapperSize' => 'md',
+                            'avatarWrapperSize' => 'xl',
+                            'isNewUser'=>true,
                             'url' => '#',
+                            'userEmail'=>'prova@gmail.com',
                             'additionalInfo' => 'Web Designer',
+                            'descrizionrBreve'=>'Lorem ipsum',
                             'collaborazionePrevalente' => 'Elite Division srl',
                             'facilitatore' => 'Marco Bianchi',
                             'statoProfilo' => 'Modifica in corso',
@@ -2166,8 +2338,11 @@ echo $this->render('parts/devs-tools');
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
                         [
                             'nameSurname' => 'Luca Lodiato',
-                            'avatarWrapperSize' => 'md',
+                            'avatarWrapperSize' => 'xl',
+                            'isNewUser'=>true,
                             'url' => '#',
+                            'userEmail'=>'prova@gmail.com',
+                            'descrizionrBreve'=>'Lorem ipsum',
                             'additionalInfo' => 'Presidentissimo',
                             'collaborazionePrevalente' => 'Mads srl',
                             'facilitatore' => 'Angelo Rocchi',
@@ -2182,8 +2357,10 @@ echo $this->render('parts/devs-tools');
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
                         [
                             'nameSurname' => 'Marcello Aiello',
-                            'avatarWrapperSize' => 'md',
+                            'avatarWrapperSize' => 'xl',
                             'url' => '#',
+                            'userEmail'=>'prova@gmail.com',
+                            'descrizionrBreve'=>'Lorem ipsum',
                             'additionalInfo' => 'maestro',
                             'collaborazionePrevalente' => 'Divita snc',
                             'facilitatore' => 'Andrea Fiori',
@@ -2221,33 +2398,54 @@ echo $this->render('parts/devs-tools');
                     <h2 class="it-page-section" id="widget-mio-profilo" class="pb-2">Widget Il mio profilo</h2>
                 </div>
                 <div class="bd-example">
-                    <?php
-                    $tag1 = $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
-                        [
-                            'label' => 'Design',
-                        ]
-                    );
-                    ?>
-                    <?php
-                    $tag2 = $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
-                        [
-                            'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
-                            'depth' => '2',
-                            'treeDepthLabels' => ['Tematiche Strategiche Regionali', 'AGROALIMENTARE']
-                        ]
-                    );
-                    $userTags = $tag1 . $tag2;
-                    ?>
+                
+                        
                     <?php
                     echo $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-widget-myprofile',
                         [
                             'numberNewContent' => '1',
-                            'image' => 'https://picsum.photos/1600/900?random=2',
+                            'avatarUrl' => 'https://picsum.photos/1600/900?random=2',
+                            'prevalentPartnershipName' => 'Collaborazione prevalente',
+                            'nameSurname' => 'Paolo Guestesi',
                             'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborea',
-                            'userTags' => $userTags
+                            'isFacilitator' => true,
+                            'isCommunityManager' => true,
+                            'tags' => [
+                               1=>[
+                                'label' => 'Design',
+                                'depth' => '1',
+        
+                               ],
+                               2 =>[
+                                'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
+                                'depth' => '2',
+                                
+                               ]
+                            ],
+                            'totCounter' => 4,
+                            'counters' =>[
+                                   1=>[
+                                       'url' => '#',
+                                       'name' => 'Notizie',
+                                       'counter' => '2',
+                                   ],
+                                   2=>[
+                                    'url' => '#',
+                                    'name' => 'Discussioni',
+                                    'counter' => '10',
+                                   ],
+                                   3=>[
+                                    'url' => '#',
+                                    'name' => 'Prposte di collaborazione',
+                                    'counter' => '1',
+                                   ],
+                                   4=>[
+                                    'url' => '#',
+                                    'name' => 'Proposte dal mondo',
+                                    'counter' => '2',
+                                   ]
+                            ],
                         ]
                     );
                     ?>
@@ -2257,6 +2455,7 @@ echo $this->render('parts/devs-tools');
                 </div>
 
             </section>
+
 
             <!--form-->
             <section class="py-5 border-bottom border-top">
@@ -2273,10 +2472,10 @@ echo $this->render('parts/devs-tools');
                     <pre>
                     <code class="language-php">
                     echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/nome-vista-componente', 
-                        [ //array chiave-valore con i parametri 
-                        'nome-variabile' => 'valore variabile', 
-                        ... 
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/nome-vista-componente',
+                        [ //array chiave-valore con i parametri
+                        'nome-variabile' => 'valore variabile',
+                        ...
                         ]
                     );
                     </code>
@@ -2442,7 +2641,8 @@ echo $this->render('parts/devs-tools');
                     </div>
             </section>
 
-
+   
+            
             <section class="py-5 border-bottom">
                 <h2 class="it-page-section" id="toggle" class="mb-5">Toggles</h2>
                 <div>
@@ -2498,7 +2698,7 @@ echo $this->render('parts/devs-tools');
                 );
                 ?>
             </section>
-
+    
         </div>
     </div>
 </div>

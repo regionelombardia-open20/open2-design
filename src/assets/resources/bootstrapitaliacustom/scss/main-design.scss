@@ -26,8 +26,6 @@
 @import "bi-link-override";
 @import "bi-card-override";
 @import "typography-design";
-@import "header-design";
-@import "footer-design";
 @import "layout-content-design";
 @import "assistance-design";
 @import "divider-design";
@@ -45,7 +43,6 @@
 //COMPONENTS
 
 @import "components/bi-steppers-wizard";
-@import "components/bi-card-preference";
 @import "components/bi-checkbox-list-tags";
 @import "components/bi-owl-carousel";
 @import "components/bi-collapse";
@@ -71,6 +68,8 @@
 
 //LAYOUT PARTS
 @import "layout-parts/bi-header-search";
+@import "layout-parts/header-design";
+@import "layout-parts/footer-design";
 
 //UIKIT CMS
 

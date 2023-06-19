@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$agidAsset = AgidDesignAsset::register($this);
+$currentAsset = AgidDesignAsset::register($this);
 
 $columnWidth = (isset($columnWidth)) ? $columnWidth : 'col-12';
 $topicIcon = (isset($topicIcon)) ? $topicIcon : 'help-circle-outline';
@@ -36,7 +36,7 @@ $topicIcon = (isset($topicIcon)) ? $topicIcon : 'help-circle-outline';
                 <div class="uk-container">
                     <div>
                         <svg class="icon icon-padded rounded-circle icon-primary bg-100 d-flex  mr-1 icon-xl" role="img" aria-label="Numero risposte">
-                            <use xlink:href="<?= $agidAsset->baseUrl ?>/sprite/material-sprite.svg#alert-outline"></use>
+                            <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#alert-outline"></use>
                         </svg>
                     </div>
                     </div>

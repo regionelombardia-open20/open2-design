@@ -39,13 +39,13 @@ $titlePreventCreate       = (isset($titlePreventCreate)) ? $titlePreventCreate :
     'Accedi o registrati alla piattaforma {platformName} per creare un contenuto',
     ['platformName' => \Yii::$app->name]
 );
-$titleCanNotCreate = (!empty($titlePreventCreate)) ? $titlePreventCreate : Module::t(
+$titleCanNotCreate = (!empty($titleCanNotCreate)) ? $titleCanNotCreate : Module::t(
     'amoslayout',
     'Non hai il permesso per creare un contenuto della piattaforma {platformName}',
     ['platformName' => \Yii::$app->name]
 );
 
-$titlePreventSecondAction = (isset($titlePreventCreate)) ? $titlePreventCreate : Module::t(
+$titlePreventSecondAction = (isset($titlePreventSecondAction)) ? $titlePreventSecondAction : Module::t(
     'amosdesign',
     'Accedi o registrati alla piattaforma {platformName} per eseguire questa operazione',
     ['platformName' => \Yii::$app->name]
@@ -80,14 +80,14 @@ if (isset($moduleCwh) && !empty($moduleCwh->getCwhScope())) {
 <div class="bi-plugin-header d-flex flex-wrap flex-sm-nowrap mb-3">
     <div class="d-flex flex-wrap">
         <div class="d-flex flex-wrap align-items-center">
-            <div class="h2 d-flex align-items-center title-<?= $modelLabel ?> text-uppercase mr-2 mb-0"><?= $titleSection ?>
+            <h2 class="h2 d-flex align-items-center title-<?= $modelLabel ?> text-uppercase mr-2 mb-0"><?= $titleSection ?>
                 <?php if ($bulletCountNumber > 0) : ?>
                     <span class="badge badge-pill badge-danger bullet-count-testata-plugin small ml-3">
                         <?= $bulletCountNumber ?>
                         <span class="sr-only"><?= Module::t('amosdesign', 'Nuove') ?></span>
                     </span>
                 <?php endif; ?>
-            </div>
+            </h2>
 
             <div>
                 <?php if (!empty($urlLinkAll)) : ?>
@@ -117,7 +117,7 @@ if (isset($moduleCwh) && !empty($moduleCwh->getCwhScope())) {
                                         </svg> <span><?= $labelCreate ?></span>
                                     </a>
                                 <?php else : ?>
-                                    <button class="cta link-create-<?= $modelLabel ?> <?= $btnClass ?> btn-primary disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= $titleScopePreventCreate ?>">
+                                    <button class="cta link-create-<?= $modelLabel ?> <?= $btnClass ?> btn-primary disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= $titleScopePreventCreate ?>" aria-disabled="true">
                                         <svg class="icon" role="img">
                                             <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#plus-circle-outline"></use>
                                         </svg> <span><?= $labelCreate ?></span>
@@ -180,7 +180,7 @@ if (isset($moduleCwh) && !empty($moduleCwh->getCwhScope())) {
                                         <span><?= $labelCreate ?></span>
                                     </a>
                                 <?php } else { ?>
-                                    <button class="cta link-create-<?= $modelLabel ?> flexbox align-items-center btn btn-xs btn-primary disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= ($isGuest ? $titlePreventCreate : $titleCanNotCreate) ?>">
+                                    <button class="cta link-create-<?= $modelLabel ?> flexbox align-items-center btn btn-xs btn-primary disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= ($isGuest ? $titlePreventCreate : $titleCanNotCreate) ?>" aria-disabled="true">
                                         <span class="am am-plus-circle-o"></span>
                                         <span><?= $labelCreate ?></span>
                                     </button>
@@ -230,14 +230,14 @@ if (isset($moduleCwh) && !empty($moduleCwh->getCwhScope())) {
             <?php else : ?>
                 <div class="btn-wrapper">
                     <?php if (!$hideCreate) : ?>
-                        <a href="<?= (isset($urlCreate)) ? $urlCreate : \Yii::$app->params['linkConfigurations']['loginLinkCommon'] ?>" class="cta link-create-<?= $modelLabel ?> <?= $btnClass ?> btn-primary disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= $titlePreventCreate ?>">
+                        <a href="<?= (isset($urlCreate)) ? $urlCreate : \Yii::$app->params['linkConfigurations']['loginLinkCommon'] ?>" class="cta link-create-<?= $modelLabel ?> <?= $btnClass ?> btn-primary disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= $titlePreventCreate ?>" aria-disabled="true">
                             <svg class="icon" role="img">
                                 <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#plus-circle-outline"></use>
                             </svg> <span><?= $labelCreate ?></span>
                         </a>
                     <?php endif; ?>
                     <?php if (!$hideSecondAction) : ?>
-                        <a href="<?= (isset($urlSecondAction)) ? $urlSecondAction : \Yii::$app->params['linkConfigurations']['loginLinkCommon'] ?>" class="cta link-create-<?= $modelLabel ?> <?= $btnClass ?> btn-primary-outline disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= $titlePreventSecondAction ?>">
+                        <a href="<?= (isset($urlSecondAction)) ? $urlSecondAction : \Yii::$app->params['linkConfigurations']['loginLinkCommon'] ?>" class="cta link-create-<?= $modelLabel ?> <?= $btnClass ?> btn-primary-outline disabled disabled-with-pointer-events" data-toggle="tooltip" title="<?= $titlePreventSecondAction ?>" aria-disabled="true">
                             <svg class="icon" role="img">
                                 <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#<?= $iconSecondAction ?>"></use>
                             </svg> <span><?= $labelSecondAction ?></span>

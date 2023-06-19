@@ -133,3 +133,16 @@
   width: 14px;
   padding: 0;
 }
+
+.wrap-modules {
+  .vh-50{
+    .el-image{
+      max-height: 50vh;
+      margin: 0 auto;
+      display: block;
+    }
+  } 
+}
+
+
+

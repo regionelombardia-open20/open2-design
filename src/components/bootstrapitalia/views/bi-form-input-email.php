@@ -19,4 +19,3 @@ $ariaDescribedBy = (isset($options['aria-describedby'])) ? 'aria-describedby="de
 <?php endif ?>
 <label for="<?= $inputId ?>"><?= $label ?><?= ($required) ? Html::tag('span','*',['class'=>'required-asterisk']) : ''?></label>
 <div class="invalid-feedback">Per favore inserisci <?= $label ?>.</div>
-<div class="valid-feedback">Validato!</div>

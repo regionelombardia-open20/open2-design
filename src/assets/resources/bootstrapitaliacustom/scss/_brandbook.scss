@@ -1,7 +1,7 @@
 /* BRANDBOOK RL 25-7-19 */
 
 /* COLORS */
-$brandbook-primary-color: #2a7a38;
+$brandbook-primary-color: #297a38;
 $brandbook-secondary-color: #003354;
 
 $brandbook-neutral-1-color: #e6e9f2;
@@ -20,11 +20,11 @@ $brandbook-btn-tertiary-color: #5e7887;
 $height-header-slim-wrapper-d: 58px; // height desktop
 $height-header-slim-wrapper-m: 56px; // height mobile
 $height-it-small-header-d: 94px; // height desktop
-$height-it-small-header-m: 64px; // height mobile
+$height-it-small-header-m: 94px; // height mobile
 
 /* LOGHI RL */
 $global-height-logo: 54px;
-$margin-between-logo: 24px;
+$space-between-logo: 24px;
 $height-logo-RL: $global-height-logo;
 $width-logo-RL: 194px;
 $height-logo-ARIA: $global-height-logo;
@@ -49,16 +49,15 @@ $brandbook-theme-colors: (
     "brandbook-btn-tertiary": $brandbook-btn-tertiary-color,
 );
 
-.logo-RL-design {
-    // width: $width-logo-RL;
-    // height: $height-logo-RL;
-    // margin-right: $margin-between-logo;
+.logo-RL-design > .it-brand-text > img {
+    width: $width-logo-RL;
+    height: $height-logo-RL;
 }
-.logo-RL-top-design {
-    //width: $width-logo-RL-top;
-    // height: $height-logo-RL-top;
+.logo-RL-top-design > img {
+    width: $width-logo-RL-top;
+    max-height: $height-logo-RL-top;
 }
-.logo-ARIA-design {
+.logo-ARIA-design > .it-brand-text > img {
     width: $width-logo-ARIA;
     height: $height-logo-ARIA;
 }

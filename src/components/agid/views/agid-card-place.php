@@ -2,14 +2,14 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$agidAsset = AgidDesignAsset::register($this);
+$currentAsset = AgidDesignAsset::register($this);
 
 ?>
 
 
 <div class="<?= $columnWidth ?> agid-card-place-container card card-teaser shadow mt-3 rounded">
     <svg class="icon">
-        <use xlink:href="<?= $agidAsset->baseUrl ?>/sprite/material-sprite.svg#pin"></use>    
+        <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#pin"></use>    
     </svg>
     <div class="card-body">
         <h5 class="card-title">

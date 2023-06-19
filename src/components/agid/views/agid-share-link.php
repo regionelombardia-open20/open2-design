@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$agidAsset = AgidDesignAsset::register($this);
+$currentAsset = AgidDesignAsset::register($this);
 
 ?>
 
@@ -10,7 +10,7 @@ $agidAsset = AgidDesignAsset::register($this);
 <div class="agid-share-link dropdown d-inline">
   <button class="btn btn-dropdown dropdown-toggle" type="button" id="shareActions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <svg class="icon">
-    <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-share"></use>
+    <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-share"></use>
     </svg>
     <small>Condividi</small>
   </button>
@@ -20,7 +20,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-facebook"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-facebook"></use>
             </svg>
             <span>Facebook</span>
           </a>
@@ -28,7 +28,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-twitter"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-twitter"></use>
             </svg>
             <span>Twitter</span>
           </a>
@@ -36,7 +36,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-linkedin"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-linkedin"></use>
             </svg>
             <span>Linkedin</span>
           </a>
@@ -44,7 +44,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-whatsapp"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-whatsapp"></use>
             </svg>
             <span>Whatsapp</span>
           </a>

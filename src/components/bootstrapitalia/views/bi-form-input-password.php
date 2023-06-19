@@ -81,4 +81,3 @@ if (isset($options['enableStrengthMeter'])) {
   <?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?>
 </label>
 <div class="invalid-feedback">Per favore inserisci <?= $label ?>.</div>
-<div class="valid-feedback">Validato!</div>

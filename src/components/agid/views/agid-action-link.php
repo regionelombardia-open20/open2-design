@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$agidAsset = AgidDesignAsset::register($this);
+$currentAsset = AgidDesignAsset::register($this);
 
 ?>
 
@@ -10,7 +10,7 @@ $agidAsset = AgidDesignAsset::register($this);
 <div class="agid-action-link dropdown d-inline">
   <button class="btn btn-dropdown dropdown-toggle" type="button" id="viewActions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <svg class="icon">
-      <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-more-items"></use>
+      <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-more-items"></use>
     </svg>
     <small>Vedi azioni</small>
   </button>
@@ -20,7 +20,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-download"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-download"></use>
             </svg>
             <span>Scarica</span>
           </a>
@@ -28,7 +28,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-print"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-print"></use>
             </svg>
             <span>Stampa</span>
           </a>
@@ -36,7 +36,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-hearing"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-hearing"></use>
             </svg>
             <span>Ascolta</span>
           </a>
@@ -44,7 +44,7 @@ $agidAsset = AgidDesignAsset::register($this);
         <li>
           <a class="list-item" href="#">
             <svg class="icon">
-            <use xlink:href="<?= $agidAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-mail"></use>
+            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-mail"></use>
             </svg>
             <span>Invia</span>
           </a>

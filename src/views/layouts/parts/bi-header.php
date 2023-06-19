@@ -1,6 +1,7 @@
 <?php
 /* components */
 
+use open20\amos\core\module\BaseAmosModule;
 use open20\design\utility\CmsLanguageUtility;
 use open20\amos\core\helpers\Html;
 use open20\amos\core\utilities\CurrentUser;
@@ -10,6 +11,7 @@ use open20\amos\chat\AmosChat;
 use open20\amos\myactivities\AmosMyActivities;
 use open20\amos\admin\AmosAdmin;
 use open20\design\Module;
+use yii\helpers\Url;
 
 ?>
 
@@ -39,12 +41,12 @@ if (!$disableSettings) {
     $menuOrdinamentiDashboard = Html::tag(
         'li',
         Html::a(
-            Html::tag('span', Yii::t('amoscore', 'Ordinamenti dashboard')),
+            Html::tag('span', Module::t('amosdesign', 'Ordinamenti dashboard')),
             'javascript:void(0);',
             [
                 'id' => 'dashboard-edit-button',
                 'class' => 'list-item',
-                'title' => Yii::t('amoscore', 'Impostazioni ordinamenti dashboard')
+                'title' => Module::t('amosdesign', 'Impostazioni ordinamenti dashboard')
             ]
         )
     );
@@ -55,11 +57,11 @@ if (!$disableSettings) {
     $menuGestisciWidget = Html::tag(
         'li',
         Html::a(
-            Html::tag('span', Yii::t('amoscore', 'Gestisci widget')),
+            Html::tag('span', Module::t('amosdesign', 'Gestisci widget')),
             '/dashboard/manager?module=' . AmosDashboard::getModuleName() . '&slide=1',
             [
                 'class' => 'list-item',
-                'title' => Yii::t('amoscore', 'Impostazioni gestione widget')
+                'title' => Module::t('amosdesign', 'Impostazioni gestione widget')
             ]
         )
     );
@@ -68,10 +70,9 @@ if (!$disableSettings) {
 /* languages */
 $actualLang = CmsLanguageUtility::getAppLanguage();
 $languages = CmsLanguageUtility::getTranslationMenu();
-$uniqueLang = true;
+$uniqueLang = (count($languages) <= 1);
 if (!empty($languages) && ($languages != '')) {
     foreach ($languages as $lang) {
-        $uniqueLang = false;
         $menuLanguages .= Html::tag('li', $lang);
     }
 }
@@ -79,7 +80,7 @@ if (!empty($languages) && ($languages != '')) {
 
 
 /* user menu */
-if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
+if (!$hideUserMenu && !Yii::$app->user->isGuest) {
     $userModule      = CurrentUser::getUserProfile();
     /* info generiche */
     $userImage       = str_replace("/it", "", $userModule->getAvatarUrl('table_small'));
@@ -87,11 +88,11 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
     $userAltImg = strtoupper(substr($userModule->nome, 0, 1) . substr($userModule->cognome, 0, 1));
 
     if ($userModule->sesso == 'Maschio') {
-        $userWelcomeMessage = Yii::t('amoscore', 'Benvenuto<br>') . ' ' . $userNomeCognome;
+        $userWelcomeMessage = BaseAmosModule::t('amoscore', 'Benvenuto') . '<br> ' . $userNomeCognome;
     } else if ($userModule->sesso == 'Femmina') {
-        $userWelcomeMessage = Yii::t('amoscore', 'Benvenuta<br>') . ' ' . $userNomeCognome;
+        $userWelcomeMessage = BaseAmosModule::t('amoscore', 'Benvenuta') . '<br> ' . $userNomeCognome;
     } else {
-        $userWelcomeMessage = Yii::t('amoscore', 'Benvenuto/a<br>') . ' ' . $userNomeCognome;
+        $userWelcomeMessage = BaseAmosModule::t('amoscore', 'Benvenuto/a') . '<br> ' . $userNomeCognome;
     }
 
     $menuUser = Html::tag(
@@ -109,11 +110,11 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
     $menuUser .= Html::tag(
         'li',
         Html::a(
-            Html::tag('span', Yii::t('amoscore', 'Il mio profilo')),
+            Html::tag('span', Module::t('amosdesign', 'Il mio profilo')),
             [(isset($customUserProfileLink) ? $customUserProfileLink : '/' . AmosAdmin::getModuleName() . '/user-profile/update'), 'id' => $userModule->id],
             [
                 'class' => 'list-item p-0',
-                'title' => Yii::t('amoscore', 'Il mio profilo')
+                'title' => Module::t('amosdesign', 'Il mio profilo')
             ]
         ),
         [
@@ -122,15 +123,33 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
     );
 
     /* logout */
+    if (!empty($customUserMenuLogoutLink)) {
+        $btnLogoutUrl = [$customUserMenuLogoutLink];
+        $redirectLogoutParam = 'redir';
+    } elseif (Yii::$app->isCmsApplication()) {
+        $btnLogoutUrl = ['/site/logout'];
+        $redirectLogoutParam = 'redir';
+    } else {
+        $btnLogoutUrl = ['/' . AmosAdmin::getModuleName() . '/security/logout'];
+        $redirectLogoutParam = 'backTo';
+    }
+    /** @var \open20\amos\socialauth\Module $socialAuthModule */
+    $socialAuthModule = Yii::$app->getModule('socialauth');
+    if (YII_ENV_PROD && !is_null($socialAuthModule) && ($socialAuthModule->enableSpid === true)) {
+        $btnLogoutUrl[$redirectLogoutParam] = Url::to([
+            '/Shibboleth.sso/Logout',
+            'return' => 'https://idpcwrapper.crs.lombardia.it/PublisherMetadata/Logout?dest=' . urlencode(Url::to('/', true))
+        ], true);
+    }
     $menuUser .= Html::tag(
         'li',
         Html::a(
-            Html::tag('span', Yii::t('amoscore', 'Esci ')) .
-                '<svg class="icon icon-primary right"><use xlink:href="' . $currentAsset->baseUrl . '/sprite/material-sprite.svg#exit-to-app"></use>',
-            [!empty($customUserMenuLogoutLink) ? $customUserMenuLogoutLink : '/' . AmosAdmin::getModuleName() . '/security/logout'],
+            Html::tag('span', Module::t('amosdesign', 'Esci')) .
+                '<svg class="icon icon-primary right"><use xlink:href="' . $currentAsset->baseUrl . '/sprite/material-sprite.svg#exit-to-app"></use></svg>',
+            $btnLogoutUrl,
             [
                 'class' => 'list-item p-0',
-                'title' => Yii::t('amoscore', 'Esci')
+                'title' => Module::t('amosdesign', 'Esci')
             ]
         ),
         [
@@ -146,11 +165,11 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
         $menuUser .= Html::tag(
             'li',
             Html::a(
-                Html::tag('span', Yii::t('amoscore', 'Privacy Policy')),
+                Html::tag('span', Module::t('amosdesign', 'Privacy Policy')),
                 $privacyPolicyLink,
                 [
                     'class' => 'list-item p-0',
-                    'title' => Yii::t('amoscore', 'Informativa sulla privacy')
+                    'title' => Module::t('amosdesign', 'Informativa sulla privacy')
                 ]
             ),
             [
@@ -163,11 +182,11 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
         $menuUser .= Html::tag(
             'li',
             Html::a(
-                Html::tag('span', Yii::t('amoscore', 'Cookie Policy')),
+                Html::tag('span', Module::t('amosdesign', 'Cookie Policy')),
                 $cookiePolicyLink,
                 [
                     'class' => 'list-item p-0',
-                    'title' => Yii::t('amoscore', 'Informativa sui cookies')
+                    'title' => Module::t('amosdesign', 'Informativa sui cookies')
                 ]
             ),
             [
@@ -182,11 +201,11 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
         $menuUser .= Html::tag(
             'li',
             Html::a(
-                Html::tag('span', Yii::t('amoscore', 'De-impersonate'), ['class' => 'text-danger font-weight-bold']),
+                Html::tag('span', Module::t('amosdesign', 'De-impersonate'), ['class' => 'text-danger font-weight-bold']),
                 '/' . AmosAdmin::getModuleName() . '/security/deimpersonate',
                 [
                     'class' => 'list-item p-0',
-                    'title' => Yii::t('amoscore', 'De-impersonate')
+                    'title' => Module::t('amosdesign', 'De-impersonate')
                 ]
             ),
             [
@@ -196,6 +215,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
     }
 }
 ?>
+
 <?php if (!($hideGlobalSearch)) : ?>
     <?php
     //MODALE DI RICERCA NON UTILIZZATA - TODO DELETE
@@ -208,13 +228,13 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
     ?>
 <?php endif ?>
 
-<?php if (!($hideHamburgerMenu)) : ?>
+<?php if (!($hideHamburgerMenu) && $alwaysHamburgerMenu) : ?>
     <!-- MODALE PER HAMBURGER MENU -->
     <div class="modal-always-hamburger-menu modal it-dialog-scrollable fade" tabindex="-1" role="dialog" id="alwaysHamburgerMenu">
         <div class="modal-dialog modal-dialog-left" role="document">
             <div class="modal-content">
                 <div class="modal-header px-4">
-                    <div class="it-brand-wrapper d-flex">
+                    <div class="it-brand-wrapper d-flex align-items-center">
                         <?= $this->render("bi-logo"); ?>
                     </div>
 
@@ -243,7 +263,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                         <div class="it-header-slim-right-zone">
                             <?php if (!$disableSettings && !$disablePlatformLinks && ($ordinamentiDashboard || $gestisciWidget)) : ?>
                                 <div class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-toggle-second="tooltip" data-placement="left" aria-expanded="false" title="<?= Yii::t('amoscore', 'Impostazioni') ?>">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-toggle-second="tooltip" data-placement="left" aria-expanded="false" title="<?= Module::t('amosdesign', 'Impostazioni') ?>">
                                         <svg class="icon">
                                             <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#ic_settings"></use>
                                         </svg>
@@ -270,7 +290,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                             <?php endif; ?>
 
                             <!-- CHAT MODULE -->
-                            <?php if (!CurrentUser::isPlatformGuest()) : ?>
+                            <?php if (!Yii::$app->user->isGuest) : ?>
                                 <?php if (\Yii::$app->getModule('chat')) : ?>
                                     <?php
                                     $chatModuleWidget          = new \open20\amos\chat\widgets\icons\WidgetIconChat();
@@ -287,6 +307,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                                 <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#forum"></use>
                                             </svg>
                                             <?= $menuChatModuleBulletCount ?>
+                                            <span class="sr-only"><?= AmosChat::t('amoschat', 'Messaggi privati') ?></span>
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -309,6 +330,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                                 <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#bell"></use>
                                             </svg>
                                             <?= $menuMyActivitiesModuleBulletCount ?>
+                                            <span class="sr-only"><?= AmosChat::t('amoschat', 'Notifiche sulle mie attività') ?></span>
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -316,7 +338,8 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
 
                             <!-- USER -->
                             <?php if (!$hideUserMenu) : ?>
-                                <?php if (CurrentUser::isPlatformGuest()) : ?>
+
+                                <?php if (Yii::$app->user->isGuest) : ?>
                                     <?php if ($customUserMenuLoginLink) {
                                         $loginUrl = $customUserMenuLoginLink;
                                     } else {
@@ -337,13 +360,13 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                                         <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#key-variant"></use>
                                                     </svg>
                                                 </span>
-                                                <span class="d-none d-sm-block">Accedi o Registrati</span>
+                                                <span class="d-none d-sm-block"><?= Module::t('amosdesign', 'Accedi o Registrati') ?></span>
                                             </a>
                                         <?php endif ?>
                                     </div>
                                 <?php else : ?>
                                     <div class="dropdown menu-profile">
-                                        <a href="#" class="btn btn-primary btn-icon btn-full  dropdown-toggle" role="button" id="dropdownMenuProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a id="dropdownMenuProfile" href="#" class="btn btn-primary btn-icon btn-full dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= Module::t('amosdesign', 'Apri menu utente') ?>">
                                             <span class="rounded-icon">
                                                 <img class="icon icon-primary rounded-circle" src="<?= $userImage ?>" alt="<?= $userAltImg ?>">
                                             </span>
@@ -371,7 +394,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                             <!-- LANGUAGES -->
                             <?php if (!$hideLangSwitchMenu) : ?>
                                 <div class="nav-item dropdown menu-translation border-left border-white pl-2">
-                                    <a class="nav-link dropdown-toggle" href="javascript::void(0)" title="Lingua corrente <?= $actualLang ?>" id="dropdownMenuTranslation" data-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle pr-0" href="javascript::void(0)" title="Lingua corrente <?= $actualLang ?>" id="dropdownMenuTranslation" data-toggle="dropdown" aria-expanded="false">
                                         <?= $actualLang ?>
                                         <svg class="icon icon-sm">
                                             <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
@@ -382,7 +405,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                             <ul class="link-list">
                                                 <?php if ($uniqueLang) : ?>
                                                     <li>
-                                                        <p class="p-2 mb-0"><?= Yii::t('amoscore', 'Non sono disponibili altre lingue') ?></p>
+                                                        <p class="p-2 mb-0"><?= Module::t('amosdesign', 'Non sono disponibili altre lingue') ?></p>
                                                     </li>
                                                 <?php else : ?>
                                                     <?= $menuLanguages ?>
@@ -392,9 +415,6 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                     </div>
                                 </div>
                             <?php endif ?>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -412,16 +432,12 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                             </div>
                             <div class="it-right-zone">
                                 <?php if ($showSocial) : ?>
-
-
-                                    <?php
-                                    echo $this->render("bi-header-social", [
+                                    <?= $this->render("bi-header-social", [
                                         'currentAsset' => $currentAsset,
-                                    ]);
-                                    ?>
+                                    ]); ?>
                                 <?php endif ?>
                                 <?php if (!($hideGlobalSearch)) : ?>
-                                    <?php if (isset($pageSearchLink)) { ?>
+                                    <?php if (isset($pageSearchLink)): ?>
                                         <div class="it-search-wrapper">
                                             <span class="d-none d-md-block"><?= Module::t('amosdesign', 'Cerca') ?></span>
                                             <a class="search-link rounded-icon" aria-label="<?= Module::t('amosdesign', 'Cerca') ?>" title="<?= Module::t('amosdesign', 'Vai alla pagina di ricerca della piattaforma')  . ' ' . \Yii::$app->name ?>" href="<?= $pageSearchLink ?>">
@@ -430,7 +446,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                                 </svg>
                                             </a>
                                         </div>
-                                    <?php }; ?>
+                                    <?php endif ?>
                                 <?php endif ?>
                             </div>
                         </div>
@@ -444,7 +460,6 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                     <div class="<?= ($fluidContainerHeader) ? 'container-fluid' : 'container' ?>">
                         <div class="row">
                             <div class="col-12">
-
                                 <!--start nav-->
                                 <nav class="navbar navbar-expand-lg has-megamenu">
                                     <button class="custom-navbar-toggler" type="button" aria-controls="hamburgerMenu" aria-expanded="false" aria-label="Toggle navigation" data-target="#hamburgerMenu">
@@ -454,16 +469,27 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                                     </button>
                                     <div class="navbar-collapsable" id="hamburgerMenu" style="display: none;">
                                         <div class="overlay" style="display: none;"></div>
-                                        <div class="close-div">
-                                            <button class="btn close-menu" type="button">
-                                                <span class="it-close sr-only">close</span>
-                                                <svg class="icon">
-                                                    <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#close"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
                                         <div class="menu-wrapper z-index-1">
+                                            <div class="header-logo-hamburger close-div">
+                                                <div class="it-brand-wrapper d-flex flex-column flex-sm-row">
+                                                    <?= $this->render("bi-logo"); ?>
+                                                </div>
+                                                <button class="btn close-menu" type="button">
+                                                    <span class="it-close sr-only">close</span>
+                                                    <svg class="icon">
+                                                        <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
                                             <?= $cmsDefaultMenu ?> 
+                                            <?php
+                                            if($customPlatformPluginMenu):
+                                                echo $this->render($customPlatformPluginMenu, [
+                                                    'currentAsset' => $currentAsset,
+                                                ]);
+                                                endif;
+                                            ?>
+                                       
                                             <?php if ($showSecondaryMenu) : ?>
                                                 <?= $cmsSecondaryMenu ?>
                                             <?php endif ?>
@@ -482,9 +508,7 @@ if (!$hideUserMenu && !CurrentUser::isPlatformGuest()) {
                         <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#menu"></use>
                     </svg>
                 </button>
-
             <?php endif ?>
         <?php endif; ?>
     </div>
-
 </div>

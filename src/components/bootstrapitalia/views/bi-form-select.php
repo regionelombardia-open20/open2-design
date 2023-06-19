@@ -42,7 +42,8 @@ if($multiple){
             <?php if ($enableGroup) { ?>
                 <?php foreach ($items as $labelGroup => $itemsValue) {?>
                         <optgroup label="<?= $labelGroup ?>">
-                            <?php foreach ($itemsValue as $key => $optionLabel) {?>
+                            <?php foreach ($itemsValue as $key => $optionLabel) {
+                                ?>
                                 <?php $isSelected = (is_array($value)) ? in_array($key, $value) : ($value == $key); ?>
                                 <option value="<?= $key ?>" <?= $isSelected ? 'selected' : '' ?>><?= $optionLabel ?></option>
                             <?php } ?>
@@ -50,7 +51,9 @@ if($multiple){
                 <?php } ?>
             <?php } else { ?>
                 <?php foreach ($items as $key => $optionLabel) { ?>
-                    <option value="<?= $key ?>" <?= ($value == $key) ? 'selected' : '' ?>><?= $optionLabel ?></option>
+                    <?php
+                    $isSelected = (is_array($value)) ? in_array($key, $value) : ($value == $key);?>
+                    <option value="<?= $key ?>" <?= $isSelected ? 'selected' : '' ?>><?= $optionLabel ?></option>
                 <?php } ?>
             <?php } ?>
         </select>

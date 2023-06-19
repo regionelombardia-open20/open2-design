@@ -48,7 +48,8 @@ $isActionDisabledClass = ($isActionDisabled) ? 'action-disabled' : '';
                                 <img src="<?= $baseIconsUrl . $topic->getIcon() ?>" alt="icona <?= $topic->getLabel() ?>" class="mr-3">
                                 <span class="h6"><?= $topic->getLabel() ?></span>
                             </div>
-                            <p class="card-text"><?= $topic->getDescription() ?></p>
+                            <p class="card-text mb-3"><?= $topic->getDescription() ?></p>
+                            <div class="d-flex align-items-end mt-auto">
 
                             <?php
                             if (!empty($additionalView)) {
@@ -57,11 +58,15 @@ $isActionDisabledClass = ($isActionDisabled) ? 'action-disabled' : '';
                                 ]);
                             }
                             ?>
-                            <a class="simple-link stretched-link" href="#" data-tagId="<?= $topic->getId() ?>" id="single-selection-list-topics-icon-to-remove-anchor-id-<?= $topic->getId() ?>">
-                                <svg class="icon icon-sm icon-primary" role="img" aria-label="Icona per gestire la preferenza">
+                            <a class="stretched-link ml-auto btn-icon d-block" href="#" data-tagId="<?= $topic->getId() ?>" id="single-selection-list-topics-icon-to-remove-anchor-id-<?= $topic->getId() ?>">
+                            <span class="rounded-icon rounded-primary mx-auto rounded-circle p-1">
+                                <svg class="icon icon-white" role="img" aria-label="Icona per gestire la preferenza">
                                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#heart"></use>
                                 </svg>
-                                <span><?= (!is_null($linkLabel)) ? $linkLabel : Yii::t('design', 'Gestisci preferenza') ?></span></a>
+                            </span>
+                                <div class="font-weight-bold mx-auto small"><?= (!is_null($linkLabel)) ? $linkLabel : Yii::t('design', 'Gestisci') ?></div>
+                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

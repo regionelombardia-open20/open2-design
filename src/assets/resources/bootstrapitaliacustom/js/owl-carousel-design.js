@@ -76,5 +76,6 @@ $('.it-carousel-landscape-abstract-one-cols .owl-carousel').owlCarousel({
   }
 
 });
-$(".owl-prev").html('<span class="mdi mdi-chevron-left"></span>');
-$(".owl-next").html('<span class="mdi mdi-chevron-right"></span>');
+$(".owl-prev").html('<span class="mdi mdi-chevron-left"></span><span class="sr-only">Slider precedenti</span>');
+$(".owl-next").html('<span class="mdi mdi-chevron-right"></span><span class="sr-only">Slider successive</span>');
+$(".owl-dot").html('<span></span><span class="sr-only">Slide</span>');

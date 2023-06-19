@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    DesignPackage
+ */
+
 use open20\design\assets\BootstrapItaliaDesignAsset;
-use open20\amos\admin\AmosAdmin;
 use open20\design\Module;
 
 $currentAsset = BootstrapItaliaDesignAsset::register($this);
@@ -20,7 +27,8 @@ foreach ($contacts as $contact) {
     $userprofileGroup[] = $contact['userProfile'];
 }
 ?>
-<div class="bi-widget-myprofile-wrapper bg-secondary">
+
+<div class="bi-widget-myprofile-wrapper bg-secondary py-3">
     <div class="container">
         <div class="d-flex align-items-center flex-wrap position-relative">
             <?=
@@ -32,12 +40,12 @@ foreach ($contacts as $contact) {
                     'url' => $userProfileUrl,
                     'additionalInfo' => $prevalentPartnershipName,
                     //          'extraTextSize' => $extraTextSize,
-                    'nameSurname' => $model->nomeCognome,
+                    'nameSurname' => $nameSurname,
                     'showAvatar' => true,
                     'avatarWrapperSize' => 'xl',
                     'showWelcomeLabel' => true,
                     'isFacilitator' => $isFacilitator,
-                    'isCommunityManager' => $isFacilitator,
+                    'isCommunityManager' => $isCommunityManager,
 
                 ]
             );
@@ -69,6 +77,7 @@ foreach ($contacts as $contact) {
                 </div>
             <?php endif; ?>
         </div>
+      
         <?php if (!empty($tags)) : ?>
             <div id="widgetMyProfile" class="<?= $widgetOpened ?>">
                 <div class="collapse-body mt-2 px-0 pt-3 pb-2">
@@ -76,8 +85,10 @@ foreach ($contacts as $contact) {
                         <div class="row">
                             <div class="col">
                                 <div>
-                                    <?php $i = 1; ?>
+                                
+                                    
                                     <?php foreach ($tags as $tag) { ?>
+
                                         <?=
 
                                         $this->render(
@@ -91,14 +102,14 @@ foreach ($contacts as $contact) {
                                             ]
                                         );
                                         ?>
+                                       
                                     <?php
                                         if ($i == $maxTags) {
                                             break;
                                         }
                                         $i++;
                                     } ?>
-                                    <!--                -->
-                                    <? //= $userTags ?>
+                                   
                                 </div>
                             </div>
                             <div class="col-md-2 text-right">
@@ -123,7 +134,7 @@ foreach ($contacts as $contact) {
                                             '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
                                             [
                                                 'label' => $tag->nome,
-                                                'depth' => '1',
+                                                'depth' => $tag->lvl,
                                                 'path' => $tag->path,
                                                 'tagRoot' => $tag->tagRoot->nome
 
@@ -162,6 +173,7 @@ foreach ($contacts as $contact) {
                                             <p class="small text-uppercase font-weight-bold mb-0"><?= Module::t('amosdesign', 'Ultimi utenti con cui sei entrato in contatto') ?></p>
                                         </div>
                                         <div class="col-lg-6 d-md-flex justify-content-md-end align-items-end">
+                                       
                                             <?php echo
                                             $this->render(
                                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-group-stacked',
@@ -174,9 +186,13 @@ foreach ($contacts as $contact) {
                                                         'Partecipante'
                                                     ),
                                                     'removeLink' => false,
+                                                   
+
                                                 ]
                                             );
                                             ?>
+
+
                                         </div>
                                     </div>
 
@@ -192,7 +208,7 @@ foreach ($contacts as $contact) {
                                         <div class="col-lg-9 d-flex flex-wrap justify-content-end align-items-end">
                                             <?php foreach ($communities as $community) { ?>
                                                 <div class="community-image rounded ml-1 ml-md-3">
-                                                    <a href="<?= '/community/join/open-join?id=' . $community['id'] ?>" data-toogle="tooltip" title="<?= Module::t('amosdesign', 'Vai alla community: ') . $community['name'] ?>">
+                                                    <a href="<?= '/community/join/open-join?id=' . $community['id'] ?>" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Vai alla community: ') . $community['name'] ?>">
                                                         <img alt="immagine community" class="h-100 w-100" src="<?= $community['communityLogoUrl'] ?>">
                                                     </a>
                                                 </div>

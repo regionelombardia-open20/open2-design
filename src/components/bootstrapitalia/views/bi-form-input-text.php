@@ -1,6 +1,8 @@
 <?php
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
+
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -15,7 +17,7 @@ use yii\helpers\Html;
 $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'required' : '';
 
 $placeholder = (isset($options['placeholder'])) ? 'placeholder="' . $options['placeholder'] . '"' : false;
-$ariaDescribedBy = (isset($options['aria-describedby'])) ? 'aria-describedby="describedBy' . $inputId . '"' : false;
+$ariaDescribedBy = (isset($options['ariaDescribedBy'])) ? 'aria-describedby="describedBy' . $inputId . '"' : false;
 $infoTooltip = (isset($options['infoTooltip'])) ? $options['infoTooltip'] . '"' : false;
 $readOnlyText = ($readonly == true) ? 'readonly' : '';
 ?>
@@ -31,11 +33,10 @@ $readOnlyText = ($readonly == true) ? 'readonly' : '';
                         <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-info-circle"></use>
                     </svg>
                 </span>
-                <span class="sr-only">Informazioni per la corretta compilazione</span>
+                <span class="sr-only"><?=Module::t('amosdesign','Informazioni per la corretta compilazione')?></span>
             </a>
         <?php endif ?>
     </small>
 <?php endif ?>
 <label for="<?= $inputId ?>"><?= $label ?><?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?></label>
-<div class="invalid-feedback">Per favore inserisci <?= $label ?>.</div>
-<div class="valid-feedback">Validato!</div>
+<div class="invalid-feedback"><?=Module::t('amosdesign','Per favore inserisci') . ' ' . $label . '.' ?></div>

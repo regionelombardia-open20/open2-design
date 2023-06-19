@@ -1,7 +1,6 @@
 .dropdown-menu {
     padding: 0.5rem;
-    top: 0px !important;
-
+    //top: 0px !important; 
     .link-list-wrapper {
         ul {
             li {
@@ -18,8 +17,6 @@
     &.dropdown-menu {
         &::before {
             left: 80%
-
         }
     }
-
 }

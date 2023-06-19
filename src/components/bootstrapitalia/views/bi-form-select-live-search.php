@@ -15,7 +15,6 @@
       <div class="bootstrap-select-wrapper">
         <label>Comune</label>
         <div class="invalid-feedback">Non validato</div>
-        <div class="valid-feedback">Validato!</div>
         <select title="Scegli una opzione" data-live-search="true" data-live-search-placeholder="Cerca opzioni">
           <option value="1">Milano</option>
           <option value="2">Mantova</option>

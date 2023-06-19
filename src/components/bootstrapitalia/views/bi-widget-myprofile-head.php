@@ -1,7 +1,15 @@
 <?php
 
-use open20\design\assets\BootstrapItaliaDesignAsset;
+/**
+ * Aria S.p.A.
+ * OPEN 2.0
+ *
+ *
+ * @package    DesignPackage
+ */
+
 use open20\amos\admin\AmosAdmin;
+use open20\design\assets\BootstrapItaliaDesignAsset;
 use open20\design\Module;
 
 $currentAsset = BootstrapItaliaDesignAsset::register($this);
@@ -13,20 +21,19 @@ $amosadmin = AmosAdmin::getModuleName();
 
 $modelId = $model->id;
 
-
 $js = <<<JS
-      $.ajax({
-       url: '/$amosadmin/user-profile-ajax/my-profile-widget-ajax',
-       type: 'get',
-       data: {
-            id : $modelId
-             },
-       success: function (data) {
-          $('#widget-myprofile-home').html(data);
-          $('[data-toggle="tooltip"]').tooltip();
-          $('[data-toggle-second="tooltip"]').tooltip();
-       }
-  });
+$.ajax({
+    url: '/design/design-ajax/my-profile-widget-ajax',
+    type: 'get',
+    data: {
+        id : $modelId
+    },
+    success: function (data) {
+        $('#widget-myprofile-home').html(data);
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle-second="tooltip"]').tooltip();
+    }
+});
 JS;
 
 $this->registerJs($js);
@@ -38,7 +45,6 @@ $this->registerJs($js);
                 $this->render(
                     '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
                     [
-
                         'imageAvatar' => $avatarUrl,
                         'url' => $userProfileUrl,
                         'additionalInfo' => $prevalentPartnershipName,
@@ -49,7 +55,6 @@ $this->registerJs($js);
                         'showWelcomeLabel' => true,
                         'isFacilitator' => $isFacilitator,
                         'isCommunityManager' => $isFacilitator,
-
                     ]
                 );
             ?>
@@ -59,8 +64,6 @@ $this->registerJs($js);
                     <span class="sr-only"><?= Module::t('amosdesign', 'Caricamento dati utente in corso') . '...' ?></span>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>

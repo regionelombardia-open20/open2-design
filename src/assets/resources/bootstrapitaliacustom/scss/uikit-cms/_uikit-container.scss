@@ -4,6 +4,9 @@
     .uk-section {
         .uk-container {
             @extend .container;
+            .uk-container {
+                padding: 0;
+            }
         }
 
     }

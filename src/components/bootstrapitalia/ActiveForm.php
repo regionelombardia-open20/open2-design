@@ -60,6 +60,7 @@ class ActiveForm extends YiiActiveForm
         $attributes = Json::htmlEncode($this->attributes);
         $view       = $this->getView();
         ActiveFormAsset::register($view);
+        $view->registerJs("jQuery('#$id').yiiActiveForm($attributes, $options);");
         // $view->registerJs("(function() {
         //     'use strict';
         //     window.addEventListener('load', function() {

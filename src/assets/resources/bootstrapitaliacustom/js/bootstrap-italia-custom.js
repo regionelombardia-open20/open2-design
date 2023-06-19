@@ -1,4 +1,4 @@
-// ATTIVAZIONE TOOLTIP E POPOVER
+/* ATTIVAZIONE TOOLTIP E POPOVER */
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle-second="tooltip"]').tooltip();
@@ -11,7 +11,7 @@ $('.popover-dismiss').popover({
 })
 
 
-// EFFETTO SHRINK HEADER
+/* EFFETTO SHRINK HEADER */
 $(document).on("scroll", function () {
   if
     ($(document).scrollTop() > 200) {
@@ -22,7 +22,7 @@ $(document).on("scroll", function () {
   }
 });
 
-// DATE PICKER 
+/* DATE PICKER */
 $(document).ready(function () {
   $('.it-date-datepicker').datepicker({
     inputFormat: ["dd/MM/yyyy"],
@@ -44,7 +44,7 @@ $(document).ready(function () {
 });
 
 
-// PUSH UP ASSISTANNCE
+/* PUSH UP ASSISTANNCE */
 $(document).on("scroll", function () {
   if
     ($(document).scrollTop() >= 99) {
@@ -78,7 +78,7 @@ $(document).on("scroll", function () {
 $(document).ready(function () {
   window.setTimeout( function(){
     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    var isEdge = /Edg/.test(navigator.userAgent)
+    var isEdge = /Edg/.test(navigator.userAgent);
     if ((isChrome)||(isEdge)) {
       var allInputInPage = $('input:not([type="hidden"]):not([type="checkbox"])');
       $('input:-webkit-autofill').each(function () {

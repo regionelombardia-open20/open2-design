@@ -14,27 +14,23 @@ use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
-
 $image = (isset($image)) ? $image :  'https://picsum.photos/800/450?random=6';
 
 $isGuest = (isset($isGuest)) ? $isGuest :  \Yii::$app->user->isGuest;
 $isSigned = (isset($isSigned)) ? $isSigned :  false;
+if (isset($hideAllCtaGuest) && $hideAllCtaGuest) {
+    $hideAllCtaGuest = \Yii::$app->user->isGuest;
+}
 
 if ($isSigned) {
     $dateSigned = (isset($dateSigned)) ? \Yii::$app->formatter->asDate($dateSigned, 'php:d M Y') :  false;
+    $url = $urlSigned;
 }
 
 $isClosedCommunity = (isset($isClosedCommunity)) ? $isClosedCommunity : false;
 $isPrivateCommunity = (isset($isPrivateCommunity)) ? $isPrivateCommunity : false;
 $isWaitingToSigned = (isset($isWaitingToSigned)) ? $isWaitingToSigned : false;
 
-if ($isSigned) {
-    $url = $urlSigned;
-}
-
-if (isset($hideAllCtaGuest) && $hideAllCtaGuest) {
-    $hideAllCtaGuest = \Yii::$app->user->isGuest;
-}
 
 $labelCtaSubscribe = (isset($customLabelCtaSubscribe)) ? $customLabelCtaSubscribe : Module::t('amosdesign', 'Richiedi iscrizione');
 $labelCtaWaiting = (isset($customLabelCtaWaiting)) ? $customLabelCtaWaiting : Module::t('amosdesign', 'Richiesta iscrizione inviata');
@@ -51,6 +47,7 @@ if ($isClosedCommunity) {
     $tooltipIcon = "lock";
 } else {
     //isOpenCommunity
+    $url = $urlSigned;
     $tooltipTitle = Module::t('amosdesign', "Community aperta");
     $tooltipClass = "bg-success";
     $tooltipIcon = "lock-open";
@@ -61,7 +58,7 @@ $(document).ready(function () {
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
 
-    if (msie > 0|| !!navigator.userAgent.match(/Trident.*rv\:11\./)) //Seleziona solo IE
+    if (msie > 0|| !!navigator.userAgent.match(/Trident.*rv\:11\./)) /*Seleziona solo IE*/
     {   
         var max = 55;
         var tot, str;
@@ -95,6 +92,7 @@ $this->registerJs($js);
             <svg class="icon icon-white icon-sm p-1 rounded-circle <?= $tooltipClass ?>" role="img">
                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#<?= $tooltipIcon ?>"></use>
             </svg>
+            <span class="sr-only"><?= $tooltipTitle ?></span>
         </a>
     </div>
     <div class="community-title-container mw-100 py-3 ">
@@ -112,12 +110,11 @@ $this->registerJs($js);
 
         <?php if (!$hideAllCtaGuest) : ?>
             <?php if ($isSigned) : ?>
-                <?php if($dateSigned): ?>
+                <?php if ($dateSigned) : ?>
                     <small class="text-muted mt-2">
                         <?= Module::t('amosdesign', 'Iscritto il') . ' ' ?><?= $dateSigned ?>
                     </small>
                 <?php endif ?>
-                
                 <div class="button-container w-100 d-flex justify-content-center border-top">
                     <a href="<?= $url ?>" class="btn btn-link btn-xs mt-2 font-weight-bold"><?= $labelCtaView ?></a>
                 </div>
@@ -139,16 +136,10 @@ $this->registerJs($js);
                                 <span class="sr-only"><?= $labelCtaWaitingTooltip ?></span>
                             </a>
                         </small>
-                        <div class=" w-100 d-flex justify-content-center border-top">
-                            <div class="button-container w-100 d-flex justify-content-center border-top">
-                                <a href="<?= $url ?>" class="btn btn-link btn-xs mt-2 font-weight-bold"><?= $labelCtaView ?></a>
-                            </div>
-                        </div>
-                    <?php else : ?>
-                        <div class="button-container w-100 d-flex justify-content-center border-top">
-                            <a href="<?= $url ?>" class="btn btn-primary btn-xs mt-2"><?= $labelCtaView ?></a>
-                        </div>
                     <?php endif ?>
+                    <div class="button-container w-100 d-flex justify-content-center border-top">
+                        <a href="<?= $url ?>" class="btn btn-primary btn-xs mt-2"><?= $labelCtaView ?></a>
+                    </div>
 
                 <?php else : ?>
                     <!-- $isClosedCommunity -->

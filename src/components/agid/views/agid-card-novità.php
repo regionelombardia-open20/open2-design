@@ -24,7 +24,7 @@ $titleForLink = str_replace('"', '\'\'', $title);
 
 $labelReadMore = (isset($labelReadMore)) ? $labelReadMore : 'Leggi tutto';
 $titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la novità' . ' ' . $titleForLink;
-
+$showContextMenu = (isset($showContextMenu)) ? $showContextMenu : true;
 ?>
 
 <div class="container-news <?= $widthColumn ?> <?= $carouselClass ?> <?= $additionalCssExternalClass?>">
@@ -56,7 +56,10 @@ $titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la novità' .
                         <div class="ml-2">
                             <?php
                             echo $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                                [
+                                    'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                                ]
                             );
                             ?>
                         </div>
@@ -112,7 +115,7 @@ $titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la novità' .
 
 
                 <a href="<?= $url ?>" class=" link-list-title " title="Vai alla news <?= $titleForLink ?>">
-                    <p class="card-title mb-2 <?= $titleSize ?>"><?= $title ?></p>
+                    <p class="card-title mb-2 font-weight-bold <?= $titleSize ?>"><?= $title ?></p>
                 </a>
 
                 <div class=" <?= $descriptionSize ?> card-description font-weight-light">

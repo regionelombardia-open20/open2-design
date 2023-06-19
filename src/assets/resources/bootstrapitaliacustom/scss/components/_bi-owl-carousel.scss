@@ -1,6 +1,4 @@
 .owl-carousel-design {
-  overflow: hidden;
-
   .owl-carousel {
     //Aggiunta per carousel HP per IE
     @media #{map-get($device-media-queries, onlyIe)} {

@@ -29,8 +29,12 @@ $labelReadMore = (isset($labelReadMore)) ? $labelReadMore : 'Leggi';
 $titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la notizia' . ' ' . $title;
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-lg-4 col-md-6';
 
-if (strlen($description) > 150)
-   $description = strip_tags($description, 0, 147) . '...';
+if (strlen($description) > 150) {
+   $description = \open20\amos\core\utilities\StringUtils::truncateHTML(
+        $description,
+        147
+    );
+}
 ?>
 
 <div class="container-news <?= $widthColumn ?> <?= $carouselClass ?>">
@@ -91,8 +95,9 @@ if (strlen($description) > 150)
                         ]
                     );
                     ?>
+                    <hr class="w-75 my-2 ml-0">
                 <?php endif; ?>
-                <hr class="w-75 my-2 ml-0">
+
                 <?php if (!$hideCategory) : ?>
                    
                     <span class="card-category text-secondary text-uppercase badge font-weight-normal mb-0 <?= $customCategoryClass ?> text-uppercase rounded-0" <?php if ((!empty($colorBgCategory))) : ?> style="background-color: <?= $colorBgCategory ?> !important; padding: 4px; " <?php endif; ?>><strong <?php if ((!empty($colorTextCategory))) : ?> style="color: <?= $colorTextCategory ?> " <?php endif; ?>><?= $category ?></strong></span>
@@ -103,10 +108,9 @@ if (strlen($description) > 150)
                     <a href="<?= $url ?>" class=" link-list-title d-inline" title="Vai alla news <?= $title ?>">
                         <?= $title ?>
                     </a>
-
                     <?php if (!empty($contentScopesAvatar)) : ?>
                         <a href="javascript:void(0)" data-toggle="tooltip" title="<?= $contentScopesAvatar ?>">
-                            <svg class="icon icon-sm icon-secondary" role="img" aria-label="Numero visite">
+                            <svg class="icon icon-sm icon-secondary" role="img" aria-label="News in community">
                                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#account-supervisor-circle"></use>
                             </svg>
                             <span class="sr-only"><?= $contentScopesAvatar ?></span>
@@ -117,20 +121,22 @@ if (strlen($description) > 150)
 
 
 
-               
-                    <?php if ((!empty($abstract))) : ?>
-                        <p class=" <?= $descriptionSize ?> card-description font-weight-light title-four-line">
+
+                <?php if ((!empty($abstract))) : ?>
+                    <p class=" <?= $descriptionSize ?> card-description font-weight-light title-four-line">
                         <?= $abstract ?>
-                        </p>
-                    <?php else : ?>
-                        <div class=" <?= $descriptionSize ?> card-description font-weight-light mb-4">
+                    </p>
+                <?php else : ?>
+                    <div class=" <?= $descriptionSize ?> card-description font-weight-light mb-4">
                         <?= $description ?>
-                        </div>
-                    <?php endif; ?>
-                
+                    </div>
+                <?php endif; ?>
+
                 <?php if ($showSignature) : ?>
                     <span class="card-signature"><?= 'di' . ' ' . $nameSurname ?> </span>
                 <?php endif; ?>
+
+                
                 <a class="read-more" href="<?= $url ?>" title="<?= $titleReadMore ?>">
                     <span class="text"><?= $labelReadMore ?></span>
                 </a>

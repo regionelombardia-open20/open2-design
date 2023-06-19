@@ -22,16 +22,20 @@ class ActiveField extends yiiActiveField
      * override of error options
      * @var string[]
      */
-    public $errorOptions = ['class' => 'invalid-feedback d-block server-side-error'];
+    const ERROROptions = ['class' => 'invalid-feedback d-block server-side-error'];
+    
+    
+    public function init() {
+        parent::init();
+        $this->errorOptions = self::ERROROptions;
+    }
 
     public function inputCalendar($options = [], $inputFormat = "d/m/Y")
     {
         $this->template = "{input}\n{hint}\n{error}";
         $Id             = Html::getInputId($this->model, $this->attribute);
-        $required       = ($this->model->isAttributeRequired($attribute)) ? 'required'
-                : '';
-        $name           = isset($options['name']) ? $options['name'] : Html::getInputName($this->model,
-                $this->attribute);
+        $required       = ($this->model->isAttributeRequired($attribute)) ? 'required' : '';
+        $name           = isset($options['name']) ? $options['name'] : Html::getInputName($this->model, $this->attribute);
         if (isset($options['value'])) {
             $value = $options['value'];
             unset($options['value']);
@@ -39,13 +43,11 @@ class ActiveField extends yiiActiveField
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
         $this->adjustLabelFor($options);
-        $label = Html::activeLabel($this->model, $this->attribute,
-                ['class' => "control-label"]);
+        $label = Html::activeLabel($this->model, $this->attribute, ['class' => "control-label"]);
 
         $html = "<div class='it-datepicker-wrapper'>".
             "<input class='form-control it-date-datepicker' name='".$name."' id='".$Id."' type='text'
-                      value='".$value."' placeholder='".(isset($options['placeholder'])
-                ? $options['placeholder'] : $inputFormat)."' ".$required.">";
+                      value='".$value."' placeholder='".(isset($options['placeholder']) ? $options['placeholder'] : $inputFormat)."' ".$required.">";
 
         $html                   = $html.$label."<div class='invalid-feedback'>Per favore inserisci <?= $attribute ?>.</div></div>";
         $this->parts['{input}'] = $html;
@@ -100,7 +102,7 @@ JS;
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
         $input->value           = $value;
-        $input->type = 'search';
+        $input->type            = 'search';
         $this->parts['{input}'] = $input->run();
         return $this;
     }
@@ -123,7 +125,7 @@ JS;
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
         $input->value           = $value;
-        $input->type = 'textarea';
+        $input->type            = 'textarea';
         $this->parts['{input}'] = $input->run();
         return $this;
     }
@@ -150,19 +152,18 @@ JS;
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
         $input->value           = $value;
-        $input->type = 'password';
+        $input->type            = 'password';
         $this->parts['{input}'] = $input->run();
         return $this;
     }
-    
-    
+
     /**
      * @inheritdoc
      */
     public function radioList($items, $options = [])
     {
-        $radio = new RadioList(['model' => $this->model, 'attribute' => $this->attribute, 'items' => $items, 'options' => $options]);
-        $this->template = "{input}\n{error}";
+        $radio          = new RadioList(['model' => $this->model, 'attribute' => $this->attribute, 'items' => $items, 'options' => $options]);
+        $this->template = isset($options['template'])? $options['template']: "{label}{input}\n{error}";
         if (isset($options['value'])) {
             $value = $options['value'];
             unset($options['value']);
@@ -179,7 +180,6 @@ JS;
      */
     public function select($items, $options = [])
     {
-        $select = new Select(['model' => $this->model, 'attribute' => $this->attribute, 'items' => $items, 'options' => $options]);
         $this->template = "{input}\n{error}";
         if (isset($options['value'])) {
             $value = $options['value'];
@@ -187,15 +187,20 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
-        $select->value           = $value;
+        if (isset($options['label'])) {
+            $label = $options['label'];
+            unset($options['label']);
+        }
+        $select         = new Select(['model' => $this->model, 'attribute' => $this->attribute, 'label' => $label, 'items' => $items, 'options' => $options]);
+        $select->value          = $value;
         $this->parts['{input}'] = $select->run();
         return $this;
     }
 
-/**
+    /**
      * @inheritdoc
      */
-    public function checkbox($options = [])
+    public function checkbox($options = [], $enclosedByLabel = true)
     {
 
         if (isset($options['label'])) {
@@ -203,7 +208,7 @@ JS;
             unset($options['label']);
         }
 
-       $checkbox = new CheckBox(['model' => $this->model, 'attribute' => $this->attribute, 'label' => $label, 'options' => $options]);
+        $checkbox       = new CheckBox(['model' => $this->model, 'attribute' => $this->attribute, 'label' => $label, 'options' => $options]);
         $this->template = "{input}\n{error}";
         if (isset($options['value'])) {
             $value = $options['value'];
@@ -211,26 +216,26 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
-        $checkbox->value           = $value;
+        $checkbox->value        = $value;
         $this->parts['{input}'] = $checkbox->run();
         return $this;
     }
-    
+
     /**
      * @inheritdoc
      */
     public function checkboxList($items, $options = [])
     {
-       $checkbox = new CheckBox(['model' => $this->model, 'attribute' => $this->attribute, 'items' => $items,
+        $checkbox       = new CheckBox(['model' => $this->model, 'attribute' => $this->attribute, 'items' => $items,
             'options' => $options]);
-        $this->template = "{input}\n{error}";
+        $this->template = "{label}{input}\n{error}";
         if (isset($options['value'])) {
             $value = $options['value'];
             unset($options['value']);
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
-        $checkbox->value           = $value;
+        $checkbox->value        = $value;
         $this->parts['{input}'] = $checkbox->run();
         return $this;
     }
