@@ -7,6 +7,20 @@
   .last-contents-wrapper {
     @include get-color-contrast($secondary);
   }
+
+  .avatar-wrapper {
+    .avatar-box-img {
+      .avatar {
+        border: 2px solid #FFF;
+      }
+      .info-box-avatar {
+        bottom: -6px;
+        .info-avatar {
+          border: 2px solid #fff;
+        }
+      }
+    }
+  }
  
   .avatar > p {
     @extend .text-secondary;

@@ -47,13 +47,15 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <?php if (isset($communityTitle)) : ?>
                 <div class="mb-1 community-title small text-muted"><strong><?=Module::t('amosdesign','Community' . ':')?></strong> <?= $communityTitle ?></div>
             <?php endif ?>
             <div class="other-info d-flex small">
-                <div class="d-flex flex-wrap">
-
+                <div class="d-flex flex-wrap align-items-center">
+                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="Numero visite">
+                        <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#calendar"></use>
+                    </svg>
                     <div class="pr-3 mb-0 "><?= $date ?></div>
                 </div>
                 <a class="read-more d-inline ml-auto ml-md-0" href="<?= $url ?>" title="<?= Module::t('amosdesign',
@@ -63,7 +65,7 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
         </div>
 
 
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-2 col-sm-6">
 
             <div class="user-list-container d-flex">
                     <?php if (!empty($showAvatar)) : ?>
@@ -88,9 +90,9 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
                         </div>
                     <?php endif; ?>
 
-                    <?php if (!empty($avatarsGroup)) { ?>
+                    <!-- < ?php if (!empty($avatarsGroup)) { ?>
                         <div class="partecipant-list">
-                            <?=
+                            < ?=
                             $this->render(
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-group-stacked',
                                 [
@@ -104,7 +106,7 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
                             );
                             ?>
                         </div>
-                    <?php } ?>
+                    < ?php } ?> -->
             </div>
 
 
