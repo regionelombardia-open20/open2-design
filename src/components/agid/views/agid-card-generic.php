@@ -44,13 +44,27 @@ if(is_array($tags)){
                 
             </div>
         <?php } ?>
-        <div class="px-4 flex-grow-1">
+        <div class="px-4 flex-grow-1 d-flex flex-column">
             <div class="h5  ">  
                 <a class="text-black" title="Esplora avviso" href="<?= $urlDetail ?>"><?= $cardTitle ?></a>
             </div>
-            <div class="text-serif pt-3">
-                <div>
+            <div class="text-serif pt-3 flex-grow-1 d-flex flex-column">
+                <div class="flex-grow-1">
                     <?= $cardText ?>
+                </div>
+                <div class="mt-2">
+                    <?php if( isset($start_date) && (null != $start_date) ) : ?>
+                        <p>
+                            <span class="font-weight-bold">Data pubblicazione:</span><span> <?= ucfirst(\Yii::$app->formatter->asDate($start_date, 'php:d F Y')) ?></span>
+                        </p>
+                    <?php endif; ?>
+
+                    <?php if( isset($end_date) && (null != $end_date) ) : ?>
+                        <p>
+                        <span class="font-weight-bold">Data scadenza: </span><span><?= ucfirst(\Yii::$app->formatter->asDate($end_date, 'php:d F Y')) ?></span>
+                        </p>
+
+                    <?php endif; ?>
                 </div>
                 <?php if($refArea){ ?>
                     <div class="mt-3">

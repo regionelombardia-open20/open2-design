@@ -1,17 +1,32 @@
 <?php
-/* components */
 
 use open20\amos\core\module\BaseAmosModule;
+use open20\amos\layout\interfaces\AddHeaderNavItemsInterface;
 use open20\design\utility\CmsLanguageUtility;
 use open20\amos\core\helpers\Html;
 use open20\amos\core\utilities\CurrentUser;
-/* modules */
 use open20\amos\dashboard\AmosDashboard;
 use open20\amos\chat\AmosChat;
 use open20\amos\myactivities\AmosMyActivities;
 use open20\amos\admin\AmosAdmin;
 use open20\design\Module;
 use yii\helpers\Url;
+
+/** @var AmosAdmin $adminModule */
+$adminModule = AmosAdmin::instance();
+
+/** @var \open20\amos\layout\Module $layoutModule */
+$layoutModule = \open20\amos\layout\Module::instance();
+
+$addItems = false;
+if (interface_exists("open20\amos\layout\interfaces\AddHeaderNavItemsInterface") && $layoutModule->hasProperty('addHeaderNavItemsClass')) { // This if only to not add the require of amos-layout...
+    if (!empty($layoutModule->addHeaderNavItemsClass)) {
+        $addItemsObj = Yii::createObject($layoutModule->addHeaderNavItemsClass);
+        if ($addItemsObj instanceof AddHeaderNavItemsInterface) {
+            $addItems = true;
+        }
+    }
+}
 
 ?>
 
@@ -141,6 +156,20 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
             'return' => 'https://idpcwrapper.crs.lombardia.it/PublisherMetadata/Logout?dest=' . urlencode(Url::to('/', true))
         ], true);
     }
+    /* change user */
+    if ($adminModule->hasMethod('loggedUserCanChangeProfile') && $adminModule->loggedUserCanChangeProfile()) {
+        $menuUser .= Html::tag(
+            'li',
+            Html::a(
+                Html::tag('span', Module::t('amoslayout', '#change_user_label')),
+                ['/' . AmosAdmin::getModuleName() . '/change-user/my-users-list'],
+                [
+                    'class' => 'list-item p-0',
+                    'title' => Module::t('amoslayout', '#change_user_description')
+                ]
+            )
+        );
+    }
     $menuUser .= Html::tag(
         'li',
         Html::a(
@@ -261,6 +290,9 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                             <?= $this->render("bi-logo-navbar"); ?>
                         </div>
                         <div class="it-header-slim-right-zone">
+                            <?php if ($addItems): ?>
+                                <?= $addItemsObj->addBiItemsToBegin(); ?>
+                            <?php endif; ?>
                             <?php if (!$disableSettings && !$disablePlatformLinks && ($ordinamentiDashboard || $gestisciWidget)) : ?>
                                 <div class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-toggle-second="tooltip" data-placement="left" aria-expanded="false" title="<?= Module::t('amosdesign', 'Impostazioni') ?>">
@@ -415,6 +447,9 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                     </div>
                                 </div>
                             <?php endif ?>
+                            <?php if ($addItems): ?>
+                                <?= $addItemsObj->addBiItemsToEnd(); ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
