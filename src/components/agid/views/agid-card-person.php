@@ -11,19 +11,13 @@ $topicIcon = (isset($topicIcon)) ? $topicIcon : 'help-circle-outline';
 $filterString='';
 if(count($tags)>1){
     foreach($tags as $t){
-       
         $filterString=$filterString .' filtro-'. str_replace(' ', '_', strtolower($t->nome));
-
-     
-        
     }
 }else{
     $tags=str_replace(' ', '_', $tags); 
     $filterString=$filterString .' filtro-'. strtolower($tags);
 }
-
 ?>
-
 
 <div class="<?= $columnWidth ?> agid-generic-card-container <?= $additionalCssExternalClass ?>">
     <div class="py-3 h-100 d-flex flex-column shadow">
@@ -60,19 +54,13 @@ if(count($tags)>1){
                     <div>
                         <p>
                             <strong>Area di riferimento:</strong>
-                            
                             <?php 
                             $i=0;
                             foreach ($refArea as $key => $value) : ?>
-                                        <!--< ?php print_r($value); ?>-->
-                                        
-            
-                                        <a href="<?=$value?>" title="Vai alla pagina <?= $key?>">
-                                            <?= $key?> 
-                                        </a>
-                                        <?php if($i<count($refArea)-1){ ?>
-                                        , 
-                                        <?php } ?>
+                                <!-- < ?php print_r($value); ?> -->            
+                                <a href="<?=$value?>" title="Vai alla pagina <?= $key?>">
+                                    <span><?= $key?></span><?= ($i<count($refArea)-1) ? "," : ""; ?>
+                                </a>   
                             <?php 
                             $i++;
                             endforeach; ?>
@@ -81,7 +69,6 @@ if(count($tags)>1){
 
                 <?php } ?>
                 
-
                 <?php 
                     /* ??? ritorno con struttura errata dell'array refArea dalla vista _itemCardAgidPerson
                         <?php 

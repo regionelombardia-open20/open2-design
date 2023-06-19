@@ -34,7 +34,7 @@ if(isset($htmlOptions))
 
 $jsInputSearch = <<< JS
 
-var input = document.getElementById({$inputId});
+var input = document.getElementById('{$inputId}');
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
    event.preventDefault();
