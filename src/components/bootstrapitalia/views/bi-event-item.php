@@ -34,7 +34,7 @@ $dateEnd = DateUtility::getDate($dateHourEnd);
 
 <div class="event-list-item-container col-12 py-3 border-bottom d-flex ">
     <!--data container-->
-    <div class="card-calendar event-calendar text-center d-flex flex-column rounded-0 mr-3 justify-content-center border border-primary p-2">
+    <div class="card-calendar event-calendar text-center d-flex flex-column rounded-0 mr-3 justify-content-center border border-secondary bg-secondary p-2">
         <span class="card-day font-weight-bold  h5 mb-0"><?= $dayStart ?></span>
         <span class="card-month text-uppercase font-weight-bold  small"><?= $monthStart ?></span>
     </div>
@@ -56,7 +56,7 @@ $dateEnd = DateUtility::getDate($dateHourEnd);
                 <?php endif ?>
             </p>
             <a class="event-title " href="<?= $url ?>" title="Maggiori informazioni sull\'evento <?= $title ?>">
-                <h3 class="mb-0 h5"><?= $title ?></h3>
+                <h3 class="mb-0 h5 font-weight-bold"><?= $title ?></h3>
             </a>
             </div>
            <!-- <span class="event-info badge badge-< ?= $classType ?> mb-0">

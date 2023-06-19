@@ -7,7 +7,6 @@
         }
 
         .date {
-            background-color: #f7f9fa;
             .day-event {
                 @extend .h2;
             }
@@ -119,4 +118,6 @@
 .event-calendar {
     //box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     width: 60px;
+    @include get-color-contrast($secondary);
+
 }

@@ -3,7 +3,7 @@
 use open20\design\assets\AgidDesignAsset;
 use open20\design\utility\DateUtility;
 
-$currentAsset = AgidDesignAsset::register($this);
+$agidAsset = AgidDesignAsset::register($this);
 
 $columnWidth = (isset($columnWidth)) ? $columnWidth : 'col-12';
 $topicIcon = (isset($topicIcon)) ? $topicIcon : 'help-circle-outline';

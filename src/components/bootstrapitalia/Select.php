@@ -88,6 +88,11 @@ class Select extends Widget
         $inputId = $this->options['id'];
         $dataAction = $this->options['data-action'];
         $relatedId = $this->options['related-id'];
+        $multiple = false;
+
+        if(isset($this->options['multiple'])){
+            $multiple = $this->options['multiple'];
+        }
 
         if ($this->model === null) {
             $name = $this->name;
@@ -95,7 +100,16 @@ class Select extends Widget
         } else {
             $name = BaseHtml::getInputName($this->model, $this->attribute);
             $label = (is_null($this->label)) ? $this->model->getAttributeLabel($this->attribute) : $this->label;
+            $attribute = $this->attribute;
+            if(!empty($this->model->$attribute)) {
+                $this->value = $this->model->$attribute;
+            }
         }
+
+        if($multiple){
+            $name.='[]';
+        }
+
 
         return $this->render('bi-form-select', [
             'model' => $this->model,
@@ -108,6 +122,7 @@ class Select extends Widget
             'inputId' => $inputId,
             'dataAction' => $dataAction,
             'relatedId' => $relatedId,
+            'multiple' => $multiple,
             'placeholder' => isset($this->options['placeholder'])? $this->options['placeholder']: '',
         ]);
     }

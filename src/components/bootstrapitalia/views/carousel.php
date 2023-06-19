@@ -10,11 +10,12 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
-$bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
+$currentAsset = BootstrapItaliaDesignAsset::register($this);
 
+$landscapeColsNumber = (isset($landscapeColsNumber)) ? $landscapeColsNumber : 'four';
 
 ?>
-<div class="it-carousel-wrapper it-carousel-landscape-abstract-four-cols owl-carousel-preference-centre">
+<div class="it-carousel-wrapper it-carousel-landscape-abstract-<?= $landscapeColsNumber ?>-cols owl-carousel-design">
   <div class="it-carousel-all owl-carousel">
     <div class="it-single-slide-wrapper">
       <!--start card-->
@@ -24,7 +25,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -41,7 +42,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -58,7 +59,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -75,7 +76,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -92,7 +93,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -109,7 +110,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
@@ -126,7 +127,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
           [
             'cardLabel' => 'Card Label',
             'cardIcon' => [
-              'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
+              'baseIconUrl' => $currentAsset->baseUrl,
               'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
             ],
             'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'

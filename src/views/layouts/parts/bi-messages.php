@@ -16,13 +16,13 @@ $FlashMsg = Yii::$app->session->getAllFlashes(true);
 
 <?php if (!empty($FlashMsg)) : ?> 
 
-    <div class="container-messages container mt-2">
+    <div class="container-messages container">
     <?php endif; ?>
     <?php
     foreach ($FlashMsg as $type => $message) :
         if (!is_array($message)) : ?>
 
-            <div class="alert alert-<?= $type ?> alert-dismissible fade show" role="alert">
+            <div class="alert alert-<?= $type ?> alert-dismissible fade show mt-2" role="alert">
                 <?= $message ?>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -38,7 +38,7 @@ $FlashMsg = Yii::$app->session->getAllFlashes(true);
             else:
             foreach ($message as $msg) : ?>
 
-                <div class="alert alert-<?= $type ?> alert-dismissible fade show" role="alert">
+                <div class="alert alert-<?= $type ?> alert-dismissible fade show mt-2" role="alert">
                     <?= $msg ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

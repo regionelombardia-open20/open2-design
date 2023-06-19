@@ -25,3 +25,4 @@ $theme-colors: (
 $theme-colors: map-merge($theme-colors, $components-colors);
 $theme-colors: map-merge($theme-colors, $text-colors);
 $theme-colors: map-merge($theme-colors, $social-colors);
+$theme-colors: map-merge($theme-colors, $file-colors);

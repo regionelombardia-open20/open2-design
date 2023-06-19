@@ -46,15 +46,13 @@ $isActionDisabledClass = ($isActionDisabled) ? 'action-disabled' : '';
                                 <img src="<?= $baseIconsUrl . $topic->getIcon() ?>" alt="icona <?= $topic->getLabel() ?>" class="mr-3">
                                 <span class="h6"><?= $topic->getLabel() ?></span>
                             </div>
-                            <p class="card-text d-none d-sm-block mb-3"><?= $topic->getDescription() ?></p>
+                            <p class="card-text d-none d-sm-block"><?= $topic->getDescription() ?></p>
 
-                            <a class="stretched-link ml-auto btn-icon d-block mt-auto" href="#" data-tagId="<?= $topic->getId() ?>" id="single-selection-list-topics-icon-anchor-id-<?= $topic->getId() ?>" title="Attiva la tematica">
-                            <span class="rounded-icon rounded-primary mx-auto rounded-circle p-1">        
-                            <svg class="icon icon-white" role="img" aria-label="Icona per gestire la preferenza">
+                            <a class="simple-link stretched-link" href="#" data-tagId="<?= $topic->getId() ?>" id="single-selection-list-topics-icon-anchor-id-<?= $topic->getId() ?>">
+                                <svg class="icon icon-sm icon-primary" role="img" aria-label="Icona per gestire la preferenza">
                                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#heart-outline"></use>
                                 </svg>
-                                </span>
-                                <div class="font-weight-bold mx-auto small"><?= (!is_null($linkLabel))? $linkLabel: Yii::t('amoscore', 'Attiva') ?></div></a>
+                                <span><?= (!is_null($linkLabel))? $linkLabel: Yii::t('amoscore', 'Attiva preferenza') ?></span></a>
                         </div>
                     </div>
                 </div>

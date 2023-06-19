@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$currentAsset = AgidDesignAsset::register($this);
+$agidAsset = AgidDesignAsset::register($this);
 
 $siteBg = (isset($siteBg)) ? $siteBg : 'primary';
 

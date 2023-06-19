@@ -10,9 +10,9 @@ $PrismJSAsset = PrismJSAsset::register($this);
 <div class="py-4">
 
     <?=
-        $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-back-button'
-        );
+    $this->render(
+        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-back-button'
+    );
     ?>
 
     <h1>LISTA CONFIGURAZIONI DESIGN</h1>
@@ -44,7 +44,8 @@ $PrismJSAsset = PrismJSAsset::register($this);
                     <strong>logoUrl</strong> : link associato; se passato 'frontendUrl' andrà a rimpiazzarsi con Yii::$app->params['platform']['frontendUrl'], stessa cosa per 'backendUrl'
                 </li>
                 <li>
-                    <strong>logoTitle</strong> : title link </li>
+                    <strong>logoTitle</strong> : title link
+                </li>
                 <li>
                     <strong>logoUrlTarget</strong> : target link
                 </li>
@@ -85,21 +86,16 @@ $PrismJSAsset = PrismJSAsset::register($this);
         <div class="col-md-5">
             <p class="text-uppercase font-weight-bold">Lista configurazioni</p>
             <hr>
-            <h3>Head</h3>
-            <ul>
-                <li>
-
-                    <strong>
-                    customPlatformHead
-                        <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformHead']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : path view custom
-                </li>
-               
-            </ul>
             <h3>Header</h3>
             <ul>
+                <li>
+                    <strong>
+                        disableThemeLightHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['disableThemeLightHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => disabilita classe theme-light
+                </li>
                 <li>
                     <strong>
                         fluidContainerHeader
@@ -107,6 +103,82 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             <span class="badge badge-success">Attivo</span>
                         <?php endif ?>
                     </strong> : if true switch container class with container-fluid, also enabled as a <u>view parameter</u>
+                </li>
+
+                <li>
+                    <strong>
+                        customUserNotLoggedHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['customUserNotLoggedHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : path list link user not logged view custom
+                </li>
+                <li>
+                    <strong>
+                        hideGlobalSearchHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => hide global search
+                </li>
+                <li>
+                    <strong>
+                        disableSmallHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['disableSmallHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => disable class it-small-header
+                </li>
+                <li>
+                    <strong>
+                        showSocialHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['showSocialHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => show social in header
+                </li>
+                <li>
+                    <strong>
+                        enableHeaderStickyHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => abilita sticky header
+                </li>
+                <li>
+                    <strong>
+                        hideAssistance
+                        <?php if (\Yii::$app->params['assistance']['hideAssistanceHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : false => show assistance in header
+                </li>
+            </ul>
+            <h3>Menu</h3>
+            <ul>
+                <li>
+                    <strong>
+                        hideHamburgerMenuHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['hideHamburgerMenuHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => hide hamburger menu
+                </li>
+                <li>
+                    <strong>
+                        showAlwaysHamburgerMenuHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['showAlwaysHamburgerMenuHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => hamburger menu persistent for all media
+                </li>
+                <li>
+                    <strong>
+                        hideLangSwitchMenuHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['hideLangSwitchMenuHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => hide language switcher menu
                 </li>
                 <li>
                     <strong>
@@ -118,17 +190,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
                 </li>
                 <li>
                     <strong>
-                    customPlatformPluginMenu
-                        <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformPluginMenu']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : path view custom for plugin menu
-                </li>
-
-
-                
-                <li>
-                    <strong>
                         hideUserMenuHeader
                         <?php if (\Yii::$app->params['layoutConfigurations']['hideUserMenuHeader']) : ?>
                             <span class="badge badge-success">Attivo</span>
@@ -137,80 +198,21 @@ $PrismJSAsset = PrismJSAsset::register($this);
                 </li>
                 <li>
                     <strong>
-                        customUserNotLoggedHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['customUserNotLoggedHeader']) : ?>
+                        showSecondaryMenuHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['showSecondaryMenuHeader']) : ?>
                             <span class="badge badge-success">Attivo</span>
                         <?php endif ?>
-                    </strong> : path list link user not logged view custom
+                    </strong> : true => visualizza un menu secondario sulla parte destra della navbar
                 </li>
                 <li>
-
                     <strong>
-                        hideHamburgerMenuHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['hideHamburgerMenuHeader']) : ?>
+                        hideCmsMenuPluginHeader
+                        <?php if (\Yii::$app->params['layoutConfigurations']['hideCmsMenuPluginHeader']) : ?>
                             <span class="badge badge-success">Attivo</span>
                         <?php endif ?>
-                    </strong> : true => hide hamburger menu
+                    </strong> : true => nasconde il menu di default dei plugin
                 </li>
-                <li>
-
-                    <strong>
-                        showAlwaysHamburgerMenuHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['showAlwaysHamburgerMenuHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => hamburger menu persistent for all media
-                </li>
-                <li>
-
-                    <strong>
-                        hideLangSwitchMenuHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['hideLangSwitchMenuHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => hide language switcher menu
-                </li>
-                <li>
-
-                    <strong>
-                        hideGlobalSearchHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => hide global search
-                </li>
-
-                <li>
-
-                    <strong>
-                        hideUserMenuHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['hideUserMenuHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => hide user menu, also enabled as a <u>view parameter</u>
-                </li>
-                <li>
-
-                    <strong>
-                    disableSmallHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['disableSmallHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => disable class it-small-header
-                </li>
-                <li>
-
-                    <strong>
-                        showSocialHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['showSocialHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => show social in header
-                </li>
-
             </ul>
-
-
             <h3>Footer</h3>
             <ul>
                 <li>
@@ -221,6 +223,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             <span class="badge badge-success">Attivo</span>
                         <?php endif ?>
                     </strong> : path view custom
+                </li>
+                <li>
+                    <strong>
+                        showSocialFooter
+                        <?php if (\Yii::$app->params['layoutConfigurations']['showSocialFooter']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : true => show social in header
                 </li>
                 <li>
 
@@ -252,23 +262,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
                         <?php endif ?>
                     </strong> : true => hide login form and render only login buttons
                 </li>
-                
-
-
             </ul>
-            <h3>Disabilitare header chiaro</h3>
-            <ul>
-                <li>
-
-                    <strong>
-                        disableThemeLightHeader
-                        <?php if (\Yii::$app->params['layoutConfigurations']['disableThemeLightHeader']) : ?>
-                            <span class="badge badge-success">Attivo</span>
-                        <?php endif ?>
-                    </strong> : true => disabilita classe theme-light
-                </li>
-            </ul>
-
             <h3>Breadcrumbs</h3>
             <ul>
                 <li>
@@ -280,6 +274,17 @@ $PrismJSAsset = PrismJSAsset::register($this);
                     </strong> : hide breadcrumbs in layout, also enabled as a <u>view parameter</u>
                 </li>
             </ul>
+            <h3>Privacy Pilicy</h3>
+            <ul>
+                <li>
+                    <strong>
+                        customPlatformPrivacyCheck
+                        <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformPrivacyCheck']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : path view custom
+                </li>
+            </ul>
         </div>
         <div class="col-md-7">
             <p class="text-uppercase">Esempio</p>
@@ -287,9 +292,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
             <pre>
 <code class="language-php">
 'layoutConfigurations' => [
-    'customPlatformHead' => '@common/views/layouts/parts/bi-head',
     'customPlatformFooter' => '@common/views/layouts/parts/footer-custom',
-    'customPlatformPluginMenu' => '@common/views/layouts/parts/plugin-menu-custom',
     'customUserMenuHeader' => '@common/views/layouts/parts/header-usermenu-custom',
     'fluidContainerHeader' => false,
     'hideHamburgerMenuHeader' => false,
@@ -297,22 +300,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
     'hideGlobalSearchHeader' => true,
     'hideUserMenuHeader' => false,
     'hideSpidDescriptionLogin' => true,
+    'hideIdpcButtonInfo' => true,
     'hideCookieBar' => true,
     'showLiteModeLogin' => false,
     'showSocialHeader' => false,
-    'disableSmallHeader' => true
+    'disableSmallHeader' => true,
+    'hideAssistance' => \Yii::$app->params['assistance']['hideAssistanceHeader'])
 ],
 </code>
-</pre>
-            <h3>Configurazioni social in header</h3>
-            <pre>
-<code class="language-php">
-    'socialConfigurations' => [
-        'facebook' => 'https://facebook.com',
-        'instagram' => 'https://instagram.com',
-    ]
-</code>
-</pre>
         </div>
     </div>
 
@@ -324,7 +319,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
             <hr>
             <ul>
                 <li>
-
                     <strong>
                         privacyPolicyLinkCommon
                         <?php if (\Yii::$app->params['linkConfigurations']['privacyPolicyLinkCommon']) : ?>
@@ -376,11 +370,19 @@ $PrismJSAsset = PrismJSAsset::register($this);
                 </li>
                 <li>
                     <strong>
-                    userProfileLinkCommon
+                        userProfileLinkCommon
                         <?php if (\Yii::$app->params['layoutConfigurations']['userProfileLinkCommon']) : ?>
                             <span class="badge badge-success">Attivo</span>
                         <?php endif ?>
                     </strong> : override user profile url
+                </li>
+                <li>
+                    <strong>
+                        pageSearchLinkCommon
+                        <?php if (\Yii::$app->params['linkConfigurations']['pageSearchLinkCommon']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : search page url
                 </li>
             </ul>
         </div>
@@ -397,6 +399,152 @@ $PrismJSAsset = PrismJSAsset::register($this);
 ],
 </code>
 </pre>
+        </div>
+    </div>
+
+
+
+    <h2 class="mt-5">Configurazioni contenitori menu CMS</h2>
+    <p>Array unico di configurazione denominato <strong>menuCmsConfigurations</strong> (gli override valgono per tutta la piattaforma)</p>
+    <div class="row variable-gutters mt-5">
+        <div class="col-md-6">
+            <p class="text-uppercase font-weight-bold">Lista configurazioni</p>
+            <hr>
+            <ul>
+                <li>
+                    <strong>
+                        mainCmsMenu
+                        <?php if (\Yii::$app->params['menuCmsConfigurations']['mainCmsMenu']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : override main cms menu container (default is 'default')
+                </li>
+                <li>
+                    <strong>
+                        secondaryCmsMenu
+                        <?php if (\Yii::$app->params['menuCmsConfigurations']['secondaryCmsMenu']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : override secondary cms menu container (default is 'secondary')
+                </li>
+                <li>
+                    <strong>
+                        footerCmsMenu
+                        <?php if (\Yii::$app->params['menuCmsConfigurations']['footerCmsMenu']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : override footer cms menu container (default is 'footer')
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p class="text-uppercase">Esempio</p>
+            <hr>
+            <pre>
+                <code class="language-php">
+                'menuCmsConfigurations' => [
+                        'mainCmsMenu' => 'mainMenuDesign',
+                        'footerCmsMenu' => 'footerMenuDesign'
+                    ],
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <hr>
+    <h2 class="mt-5">Configurazioni assistenza</h2>
+    <p>Array unico di configurazione denominato <strong>assistance</strong> (gli override valgono per tutta la piattaforma)</p>
+    <div class="row variable-gutters mt-5">
+        <div class="col-md-6">
+            <p class="text-uppercase font-weight-bold">Lista configurazioni</p>
+            <hr>
+            <ul>
+                <li>
+                    <strong>
+                        hideAssistanceHeader
+                        <?php if (\Yii::$app->params['assistance']['hideAssistanceHeader']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : false => show assistance in header
+                </li>
+                <li>
+                    <strong>
+                        type
+                        <?php if (\Yii::$app->params['assistance']['type']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong>: <?= \Yii::$app->params['assistance']['type'] ?> => decide la modalità di uso dell'assistenza: url o email
+                </li>
+                <li>
+                    <strong>
+                        email
+                        <?php if (\Yii::$app->params['assistance']['email']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : <?= \Yii::$app->params['assistance']['email'] ?> => indirizzo email dell'asistenza
+                </li>
+                <li>
+                    <strong>
+                        url
+                        <?php if (\Yii::$app->params['assistance']['url']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : <?= \Yii::$app->params['assistance']['url'] ?> => url della pagina di assistenza
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p class="text-uppercase">Esempio</p>
+            <hr>
+            <pre>
+<code class="language-php">
+'assistance' => [
+        'hideAssistanceHeader' => false, //disable the assistance button
+        'type' => 'url', //Assistance button mode: url or email
+        'email' => 'ticket@openinnovationlombardia.it', //Assistance mail
+        'url' => 'tickets' //Url to the assistance page
+    ],
+</code>
+            </pre>
+        </div>
+    </div>
+    <hr>
+    <h2 class="mt-5">Configurazioni Social</h2>
+    <p>Array unico di configurazione denominato <strong>socialConfigurations</strong> (gli override valgono per tutta la piattaforma)</p>
+    <div class="row variable-gutters mt-5">
+        <div class="col-md-6">
+            <p class="text-uppercase font-weight-bold">Lista configurazioni</p>
+            <hr>
+            <ul>
+                <li>
+                    <strong>
+                        facebook
+                        <?php if (\Yii::$app->params['socialConfigurations']['facebook']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : link a facebook
+                </li>
+                <li>
+                    <strong>
+                        instagram
+                        <?php if (\Yii::$app->params['socialConfigurations']['instagram']) : ?>
+                            <span class="badge badge-success">Attivo</span>
+                        <?php endif ?>
+                    </strong> : link a instagram
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p class="text-uppercase">Esempio</p>
+            <hr>
+            <pre>
+<code class="language-php">
+'socialConfigurations' => [
+        'facebook' => 'https://facebook.com',
+        'instagram' => 'https://instagram.com',
+    ]
+</code>
+            </pre>
         </div>
     </div>
 </div>

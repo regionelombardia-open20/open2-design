@@ -16,30 +16,22 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 
-
-
 <head>
-<?php if ((isset(\Yii::$app->params['layoutConfigurations']['customPlatformHead']))) : ?>
-        <?php
-        $customPlatformHead = \Yii::$app->params['layoutConfigurations']['customPlatformHead'];
-        echo $this->render($customPlatformHead, [
-            'currentAsset' => $currentAsset,
-        ]);
-?>
-<?php else: ?>
-    
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-head", [
         'currentAsset' => $currentAsset
     ]); ?>
-<?php endif ?>
 </head>
 
-<body class="bg-body position-relative">
+<body class="bg-body position-relative d-flex flex-column">
     <?php $this->beginBody() ?>
 
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-skiplink", [
         'currentAsset' => $currentAsset,
     ]); ?>
+
+    <?php
+    $cmsDefaultMenu .= $cmsPluginMenu
+    ?>
 
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-header", [
         'currentAsset' => $currentAsset,
@@ -52,6 +44,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         'hideLangSwitchMenu' => \Yii::$app->params['layoutConfigurations']['hideLangSwitchMenuHeader'],
         'hideGlobalSearch' => \Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeader'],
         'hideUserMenu' => ((\Yii::$app->params['layoutConfigurations']['hideUserMenuHeader']) || (\Yii::$app->view->params['hideUserMenuHeader'])),
+        'hideAssistance' => \Yii::$app->params['assistance']['hideAssistanceHeader'],
         'fluidContainerHeader' => ((\Yii::$app->params['layoutConfigurations']['fluidContainerHeader']) || (\Yii::$app->view->params['fluidContainerHeader'])),
         'customUserMenu' => \Yii::$app->params['layoutConfigurations']['customUserMenuHeader'],
         'customUserNotLogged' => \Yii::$app->params['layoutConfigurations']['customUserNotLoggedHeader'],
@@ -63,6 +56,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         'disableThemeLight' => \Yii::$app->params['layoutConfigurations']['disableThemeLightHeader'],
         'disableSmallHeader' => \Yii::$app->params['layoutConfigurations']['disableSmallHeader'],
         'enableHeaderSticky' => \Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader'],
+        'pageSearchLink' => \Yii::$app->params['linkConfigurations']['pageSearchLinkCommon'],
     ]); ?>
 
     <div id="mainContent" class="d-flex <?= \Yii::$app->view->params['customClassMainContent'] ?>">
@@ -78,19 +72,21 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
                 ]); ?>
             <?php endif ?>
 
-            <?php if (\Yii::$app->view->params['enablePLuginHeader']) : ?>
+            <?php if (\Yii::$app->view->params['enablePluginHeader']) : ?>
                 <?= $this->render(
                     "parts" . DIRECTORY_SEPARATOR . "bi-plugin-header",
                     [
                         'title' => $this->titlePlugin,
                         'helpText' => $this->textPluginHeader,
+                        'hideViewAll' => true
                     ]
                 ); ?>
             <?php endif ?>
 
-            <?php if ((\Yii::$app->view->params['enablePLuginToolbar'])) : ?>
+            <?php if ((\Yii::$app->view->params['enablePluginToolbar'])) : ?>
                 <?= $this->render(
-                    "parts" . DIRECTORY_SEPARATOR . "bi-plugin-toolbar"); ?>
+                    "parts" . DIRECTORY_SEPARATOR . "bi-plugin-toolbar"
+                ); ?>
             <?php endif ?>
 
             <?php if ($this instanceof AmosView) : ?>
@@ -116,7 +112,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-footer", [
             'currentAsset' => $currentAsset,
             'cmsFooterMenu' => $cmsFooterMenu,
-            'cmsDefaultMenu' => $cmsDefaultMenu
+            'showSocial' => \Yii::$app->params['layoutConfigurations']['showSocialFooter'],
         ]); ?>
     <?php endif; ?>
 
@@ -126,7 +122,20 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
             'cookiePolicyLink' => \Yii::$app->params['linkConfigurations']['cookiePolicyLinkCommon']
         ]); ?>
     <?php endif ?>
-
+    <!-- ASSISTANCE -->
+<?php if (!$hideAssistance) : ?>
+  <?php
+  $isMail = ((isset(Yii::$app->params['assistance']['type']) && Yii::$app->params['assistance']['type'] == 'email') || (!isset(Yii::$app->params['assistance']['type']) && isset(\Yii::$app->params['email-assistenza']))) ? true : false;
+  $mailAddress = isset(Yii::$app->params['assistance']['email']) ? Yii::$app->params['assistance']['email'] : (isset(\Yii::$app->params['email-assistenza']) ? \Yii::$app->params['email-assistenza'] : '');
+  $urlAssistance = !empty(Yii::$app->params['assistance']['url']) ? \Yii::$app->params['platform']['backendUrl'] . '/' . Yii::$app->params['assistance']['url'] : '#';
+  ?>
+     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-assistance", [
+        'currentAsset' => $currentAsset,
+        'isMail' => $isMail,
+        'mailAddress' => $mailAddress,
+        'urlAssistance' => $urlAssistance
+    ]); ?>
+<?php endif ?>
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-backtotop", [
         'currentAsset' => $currentAsset,
     ]); ?>

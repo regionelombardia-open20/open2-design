@@ -10,5 +10,7 @@
  */
 
 return [
-    
+    "accedi o registrati alla piattaforma"  => 'accedi o registrati alla piattaforma',
+    'Non hai il permesso per creare contenuti' => 'Non hai il permesso per creare contenuti',
+
 ];

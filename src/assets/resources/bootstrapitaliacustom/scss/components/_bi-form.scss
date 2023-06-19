@@ -9,6 +9,7 @@
         //fix js per larghezza label su accordion o modale
         width: auto !important;
         color: $label-form-text-color;
+        line-height: calc(2.667rem - 1px);
     }
     //per autocomplete
     input.js-fake-not-readonly[readonly] {
@@ -105,6 +106,7 @@ textarea::placeholder {
     textarea {
         border: 1px solid $gray-secondary;
         border-radius: 4px;
+        height: 2.667rem;
     }
 
     .it-datepicker-wrapper {
@@ -178,6 +180,7 @@ textarea::placeholder {
     }
     .password-icon {
         right: 1px;
+        z-index: 2;
     }
 }
 // FAKE LABEL ON TOP OF RADIO LIST

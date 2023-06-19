@@ -29,10 +29,11 @@ class BootstrapItaliaDesignAsset extends AssetBundle
     public $js = [
         'node_modules/bootstrap-italia/dist/js/bootstrap-italia.bundle.min.js', //mantenere come prima riga
         'js/bootstrap-italia-custom.js',
-        'js/carousel-preference.js',
+        'js/owl-carousel-design.js',
         'js/header-height.js',
         'js/footer-height.js', 
         'js/main-height.js',
+        'js/hamburger-menu.js',
         'node_modules/svgxuse/svgxuse.min.js', //per far vedere le icone in IE
     ];
 

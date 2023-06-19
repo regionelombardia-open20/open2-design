@@ -4,35 +4,59 @@ use open20\design\assets\BootstrapItaliaDesignAsset;
 use open20\design\assets\PrismJSAsset;
 use open20\design\components\bootstrapitalia\CheckBoxListTopicsIcon;
 use open20\design\components\bootstrapitalia\CheckBoxListTags;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
-$PrismJSAsset = PrismJSAsset::register($this);
+$PrismJSAsset         = PrismJSAsset::register($this);
 ?>
 
 <style>
-  h2[id]:before {
-    content: "";
-    display: block;
-    height: 120px;
-    margin: -120px 0 0;
-  }
+    #jsMenu {
+        position: sticky !important;
+        top: 5rem;
+        height: calc(100vh - 5rem);
+        overflow-y: auto;
+    }
 
-  h3[id]:before {
-    content: "";
-    display: block;
-    height: 120px;
-    margin: -120px 0 0;
-  }
+    h2[id]:before {
+        content: "";
+        display: block;
+        height: 120px;
+        margin: -120px 0 0;
+    }
 
-  .square {
-    width: 100px;
-    height: 100px;
-  }
+    h3[id]:before {
+        content: "";
+        display: block;
+        height: 120px;
+        margin: -120px 0 0;
+    }
+
+    section>h3 {
+        margin-top: 20px;
+    }
+
+    .square {
+        width: 100px;
+        height: 100px;
+    }
+
+    .bd-example {
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border: solid #f3f3f5;
+        border-width: 4px;
+        border-radius: 4px;
+    }
+
+    .bd-example-btn .btn {
+        margin: 4px;
+    }
 </style>
 
 <?php
-$date = new DateTime();
-$date = $date->format('php:d/m/Y');
+$date                 = new DateTime();
+$date                 = $date->format('php:d/m/Y');
 ?>
 
 
@@ -40,1741 +64,2441 @@ $date = $date->format('php:d/m/Y');
 echo $this->render('parts/devs-tools');
 ?>
 
-<div class="container-fluid mt-5">
-  <div class="row justify-content-between">
-    <div id="jsMenu" class="col-lg-3" style="position: sticky; top: 6rem; height: calc(100vh - 6rem); overflow-y: auto;">
-      <nav class="inline-menu">
-        <div class="link-list-wrapper">
-          <ul class="link-list">
-            <li><a class="list-item large medium right-icon" href="<?= Yii::$app->params['platform']['frontendUrl'] ?>/design/design-base/configurations" target="_blank"><span>Configurazioni</span><svg class="icon icon-sm icon-primary">
-                  <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-external-link"></use>
-                </svg></a>
+<div class="mt-3 container-fluid">
+    <div class="row">
+        <div id="jsMenu" class="col-12 col-lg-3">
+            <nav class="navbar it-navscroll-wrapper navbar-expand-lg it-bottom-navscroll it-right-side py-3 py-lg-0">
+                <button class="custom-navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarNav">
+                    <span class="it-list"></span>Apri menu
+                </button>
+                <div class="navbar-collapsable" id="navbarNav" style="display: none;">
+                    <div class="overlay" style="display: none;"></div>
+                    <div class="close-div sr-only">
+                        <button class="btn close-menu" type="button">
+                            <span class="it-close"></span>close
+                        </button>
+                    </div>
+                    <a class="it-back-button" href="#" style="display: none;">
+                        <svg class="icon icon-sm icon-primary align-top">
+                            <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-chevron-left"></use>
+                        </svg>
+                        <span>Indietro</span>
+                    </a>
+                    <div class="menu-wrapper">
+                        <div class="link-list-wrapper">
+                            <ul class="link-list">
 
-            </li>
-            <li>
-              <a class="list-item large medium" href="#colori"><span>Colori</span></a>
-            </li>
-            <li><a class="list-item large medium right-icon" href="#collapseOne" data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne"><span>Componenti</span><svg class="icon icon-xs icon-primary right">
-                  <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
-                </svg></a>
-              <ul class="link-sublist collapse " id="collapseOne">
-
-                <li>
-                  <a class="list-item" href="#avatar"><span>Avatar</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#avatar-sovrapposti"><span>Avatar sovrapposti</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#bottoni"><span>Bottoni</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#card-preference"><span>Cards Preference</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#carousel"><span>Carousel</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#carousel-news"><span>Carousel news</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#photogallery"><span>Gallery immagini</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#calendar-carousel"><span>Carousel calendario</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#card-checkbox"><span>Checkbox Cards Preference</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#Checkbox-link"><span>Checkbox con link alla privacy</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#checkbox-collapse"><span>Checkbox collapse</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#collapse"><span>Collapse</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#Community"><span>Community</span></a>
-                </li>
+                                <li>
+                                    <a class="list-item large medium" href="#introduzione"><span>Introduzione</span></a>
+                                </li>
+                                <li>
+                                    <a class="list-item large medium" href="#colori"><span>Colori</span></a>
+                                </li>
+                                <li><a class="list-item large medium right-icon" href="#collapseOne" data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne"><span>Componenti</span><svg class="icon icon-xs icon-primary right">
+                                            <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                                        </svg></a>
+                                    <ul class="link-sublist collapse " id="collapseOne">
+                                        <!--allegati lista-->
+                                        <li>
+                                            <a class="list-item" href="#list-allegati"><span>Allegati lista</span></a>
+                                        </li>
+                                        <!--avatar card-->
+                                        <li>
+                                            <a class="list-item" href="#avatar"><span>Avatar</span></a>
+                                        </li>
 
 
-                <li>
-                  <a class="list-item" href="#discussioni"><span>Discussioni</span></a>
-                </li>
-                <li>
-                  <a class="list-item" href="#discussioni-card"><span>Discussioni card</span></a>
-                </li>
+                                        <!--bottoni-->
+                                        <li>
+                                            <a class="list-item" href="#bottoni"><span>Bottoni</span></a>
+                                        </li>
+                                        <!--carousel-->
+                                        <li>
+                                            <a class="list-item" href="#carousel"><span>Carousel</span></a>
+                                        </li>
+                                        <!--carousel calendario-->
+                                        <li>
+                                            <a class="list-item" href="#calendar-carousel"><span>Carousel calendario</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#documents-card"><span>Documenti card</span></a>
-                </li>
-                <li>
-                  <a class="list-item" href="#document-list"><span>Documenti lista</span></a>
-                </li>
 
-                <li>
-                  <a class="list-item" href="#events"><span>Eventi</span></a>
-                </li>
 
-                <li>
-                  <a class="list-item" href="#list-avatar"><span>Lista di avatar</span></a>
-                </li>
-                <li>
-                  <a class="list-item" href="#view-list-avatar"><span>Lista utenti</span></a>
-                </li>
-                <li>
-                  <a class="list-item" href="#Community-list"><span>Lista di community</span></a>
-                </li>
 
-                <li>
-                  <a class="list-item" href="#events-list"><span>Lista eventi</span></a>
-                </li>
+                                        <!--checkbox link privacy-->
+                                        <li>
+                                            <a class="list-item" href="#Checkbox-link"><span>Checkbox con link alla privacy</span></a>
+                                        </li>
+                                        <!--checkbox collapse-->
+                                        <li>
+                                            <a class="list-item" href="#checkbox-collapse"><span>Checkbox collapse</span></a>
+                                        </li>
+                                        <!--collapse-->
+                                        <li>
+                                            <a class="list-item" href="#collapse"><span>Collapse</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#news-list"><span>Lista News card</span></a>
-                </li>
-                <li>
-                  <a class="list-item" href="#news-list-item"><span>Listato News</span></a>
-                </li>
-                <li>
-                  <a class="list-item" href="#organization-list"><span>Lista organizzazioni</span></a>
-                </li>
+                                        <!--community lista-->
+                                        <li>
+                                            <a class="list-item" href="#Community-card"><span>Community card</span></a>
+                                        </li>
+                                        <!--discussioni card-->
+                                        <li>
+                                            <a class="list-item" href="#discussioni-card"><span>Discussioni card</span></a>
+                                        </li>
+                                        <!--discussioni lista-->
+                                        <li>
+                                            <a class="list-item" href="#discussioni"><span>Discussioni lista</span></a>
+                                        </li>
+                                        <!--documenti card-->
+                                        <li>
+                                            <a class="list-item" href="#documents-card"><span>Documenti card</span></a>
+                                        </li>
+                                        <!--documenti lista-->
+                                        <li>
+                                            <a class="list-item" href="#document-list"><span>Documenti lista</span></a>
+                                        </li>
+                                        <!--eventi card-->
+                                        <li>
+                                            <a class="list-item" href="#events"><span>Eventi card</span></a>
+                                        </li>
+                                        <!--eventi lista-->
+                                        <li>
+                                            <a class="list-item" href="#events-list"><span>Lista eventi</span></a>
+                                        </li>
+                                        <!--eventi scope-->
+                                        <li>
+                                            <a class="list-item" href="#events-scope"><span>Eventi scope</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#podcast-list"><span>Lista podcast</span></a>
-                </li>
+                                        <!--modali-->
+                                        <li>
+                                            <a class="list-item" href="#modal"><span>Modali</span></a>
+                                        </li>
+                                        <!--news-->
+                                        <li>
+                                            <a class="list-item" href="#news"><span>News</span></a>
+                                        </li>
+                                        <!--news card-->
+                                        <li>
+                                            <a class="list-item" href="#news-list"><span>News card</span></a>
+                                        </li>
+                                        <!--news carousel-->
+                                        <li>
+                                            <a class="list-item" href="#carousel-news"><span>News carousel</span></a>
+                                        </li>
+                                        <!--news lista-->
+                                        <li>
+                                            <a class="list-item" href="#news-list-item"><span>News lista</span></a>
+                                        </li>
+                                        <!--organizzazioni card-->
+                                        <li>
+                                            <a class="list-item" href="#organization"><span>Organizzazioni card</span></a>
+                                        </li>
+                                        <!--organizzazioni lista-->
+                                        <li>
+                                            <a class="list-item" href="#organization-list"><span>Organizzazioni lista</span></a>
+                                        </li>
+                                        <!--organizzazioni scope-->
+                                        <li>
+                                            <a class="list-item" href="#scope-organizzazioni"><span>Organizzazioni scope</span></a>
+                                        </li>
+                                        <!--podcast lista-->
+                                        <li>
+                                            <a class="list-item" href="#podcast-list"><span>Podcast lista</span></a>
+                                        </li>
+                                        <!--podcast puntate-->
+                                        <li>
+                                            <a class="list-item" href="#podcast-puntate-list"><span>Podcast card</span></a>
+                                        </li>
+                                        <!--proposte di collaborazione-->
+                                        <li>
+                                            <a class="list-item" href="#proposte-collaborazione"><span>Proposte di collaborazione</span></a>
+                                        </li>
+                                        <!--proposte di collaborazione een-->
+                                        <li>
+                                            <a class="list-item" href="#proposte-collaborazione-een"><span>Proposte di collaborazione EEN</span></a>
+                                        </li>
+                                        <!--risultati ricerca-->
+                                        <li>
+                                            <a class="list-item" href="#search-results-item"><span>Risultati della Ricerca lista</span></a>
+                                        </li>
+                                        <!--sondaggi card-->
+                                        <li>
+                                            <a class="list-item" href="#sondaggi-card"><span>Sondaggi card</span></a>
+                                        </li>
+                                        <!--sondaggi lista-->
+                                        <li>
+                                            <a class="list-item" href="#sondaggi-lista"><span>Sondaggi lista</span></a>
+                                        </li>
+                                        <!--tag-->
+                                        <li>
+                                            <a class="list-item" href="#tag"><span>Tag</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="list-item" href="#tag-manage"><span>Tag manage</span></a>
+                                        </li>
+                                        <!--torna indietro-->
+                                        <li>
+                                            <a class="list-item" href="#back-button"><span>Torna indietro</span></a>
+                                        </li>
+                                        <!--utenti lista-->
+                                        <li>
+                                            <a class="list-item" href="#view-list-avatar"><span>Utenti lista</span></a>
+                                        </li>
+                                        <!--wizard-->
+                                        <li>
+                                            <a class="list-item" href="#wizard"><span>Wizard Steps</span></a>
+                                        </li>
+                                        <!--wizard-->
+                                        <li>
+                                            <a class="list-item" href="#widget-mio-profilo"><span>Widget Mio profilo</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#podcast-puntate-list"><span>Lista puntate podcast</span></a>
-                </li>
 
-                <li>
-                  <a class="list-item" href="#modal"><span>Modali</span></a>
-                </li>
+                                    </ul>
+                                </li>
 
-                <li>
-                  <a class="list-item" href="#modal-preference"><span>Modali preferenze</span></a>
-                </li>
+                                <li><a class="list-item large medium right-icon" href="#collapseTwo" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo"><span>Form</span><svg class="icon icon-xs icon-primary right">
+                                            <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                                        </svg></a>
+                                    <ul class="link-sublist collapse" id="collapseTwo">
 
-                <li>
-                  <a class="list-item" href="#news"><span>News</span></a>
-                </li>
+                                        <li><a class="list-item" href="#formExample"><span>Singoli componenti</span></a>
+                                        </li>
+                                        <li><a class="list-item" href="#vari-input"><span>Vari input</span></a>
+                                        </li>
+                                        <li><a class="list-item" href="#form-rounded"><span>Stile rounded</span></a>
+                                        </li>
+                                        <li><a class="list-item" href="#toggle"><span>Toggles</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="list-item large medium right-icon" href="#icone"><span>Icone</span></a>
+                                </li>
 
-                <li>
-                  <a class="list-item" href="#organization"><span>Organizzazioni</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#events-scope"><span>Scope eventi</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#scope-organizzazioni"><span>Scope organizzazioni</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#back-button"><span>Torna indietro</span></a>
-                </li>
-
-                <li>
-                  <a class="list-item" href="#wizard"><span>Wizard Steps</span></a>
-                </li>
-              </ul>
-            </li>
-
-            <li><a class="list-item large medium right-icon" href="#collapseTwo" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo"><span>Form</span><svg class="icon icon-xs icon-primary right">
-                  <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
-                </svg></a>
-              <ul class="link-sublist collapse" id="collapseTwo">
-
-                <li><a class="list-item" href="#formExample"><span>Singoli componenti</span></a>
-                </li>
-                <li><a class="list-item" href="#vari-input"><span>Vari input</span></a>
-                </li>
-                <li><a class="list-item" href="#form-rounded"><span>Stile rounded</span></a>
-                </li>
-                <li><a class="list-item" href="#toggle"><span>Toggles</span></a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a class="list-item large medium right-icon" href="#icone"><span>Icone</span></a>
-            </li>
-            <li><a class="list-item large medium right-icon" href="https://italia.github.io/bootstrap-italia/docs/come-iniziare/introduzione/" target="_blank"><span>Sito Bootstrap Italia</span><svg class="icon icon-sm icon-primary">
-                  <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-external-link"></use>
-                </svg></a>
-
-            </li>
-          </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-    <div id="jsMain" class="col-lg-9 px-5">
+        <div id="jsMain" class="col-12 col-lg-9 it-page-sections-container">
 
-      <h1 class="no_toc">Componenti Bootstrap Italia Custom</h1>
-      <p class="lead mb-0">Componenti personalizzati per plugin Design</p>
-
-      <!--colori-->
-      <section class="py-5 border-bottom">
-        <h2 id="colori">Colori</h2>
-        <p>Colori usati nella piattaforma</p>
-        <p><strong class="h3">Brandbook colors:</strong></p>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-primary">#2a7a38</div>
-            <span>$brandbook-primary</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-secondary">#003354</div>
-            <span>$brandboook-secondary</span>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-neutral-1">#e6e9f2</div>
-            <span>$brandbook-neutral-1</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 border brandbook-theme-bg-brandbook-neutral-2">#fcfcff</div>
-            <span>$brandbook-neutral-2</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-neutral-3">#003354</div>
-            <span>$brandbook-neutral-3</span>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-triadic-2">#008758</div>
-            <span>$brandbook-triadic-2</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-triadic-1">#a66300</div>
-            <span>$brandbook-triadic-1</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-triadic-3">#d92828</div>
-            <span>$brandbook-triadic-3</span>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-btn-primary">#2a7a38</div>
-            <span>$brandbook-btn-primary</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square border p-3 brandbook-theme-bg-brandbook-btn-secondary">#ffffff</div>
-            <span>$brandbook-btn-secondary</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 brandbook-theme-bg-brandbook-btn-tertiary">#5E7887</div>
-            <span>$brandbook-btn-tertiary</span>
-          </div>
-        </div>
-        <hr>
-        <p><strong class="h3">Theme colors:</strong></p>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-primary">#2a7a38</div>
-            <span>$primary</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-secondary">#5E7887</div>
-            <span>$secondary</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-tertiary">#003354</div>
-            <span>$tertiary</span>
-          </div>
-        </div>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-success">#008758</div>
-            <span>$green-accessible</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-warning">#a66300</div>
-            <span>$orange-accessible</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-danger">#d92828</div>
-            <span>$red-accessible</span>
-          </div>
-        </div>
-        <hr>
-        <p><strong class="h3">Social colors:</strong></p>
-        <div class="row mb-4">
-          <div class="col-md-2 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-linkedin">#0177b5</div>
-            <span>$linkedin</span>
-          </div>
-          <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-facebook">#4867aa</div>
-            <span>$facebook</span>
-          </div>
-          <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-google">#ea4335</div>
-            <span>$google</span>
-          </div>
-          <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-twitter">#32ccfe</div>
-            <span>$twitter</span>
-          </div>
-          <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-youtube">#be1b1e</div>
-            <span>$youtube</span>
-          </div>
-          <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-spid">#0066cc</div>
-            <span>$spid</span>
-          </div>
-        </div>
-        <hr>
-        <p><strong class="h3">Components colors:</strong></p>
-        <div class="row mb-4">
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-card-preference-bg">#eaf1eb</div>
-            <span>$card-preference-bg</span>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-tooltip-bg">#5e7887</div>
-            <span>$tooltip-bg</span>
-          </div>
-        </div>
-        <hr>
-        <p><strong class="h3">Text colors:</strong></p>
-        <div class="row mb-4">
-          <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
-            <div class="square p-3 design-theme-bg-text-muted">#435960</div>
-            <span>$text-muted-custom</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <div>
-          <!-- BUTTONS -->
-          <h2 id="bottoni" class="pb-2">Bottoni</h2>
-          <div class="mb-3">
-            <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-outline-primary">Primary outline</button>
-            <button type="button" class="btn btn-secondary">Secondary</button>
-            <button type="button" class="btn btn-outline-secondary">Secondary outline</button>
-            <button type="button" class="btn btn-tertiary">Tertiary</button>
-            <button type="button" class="btn btn-outline-tertiary">Tertiary outline</button>
-            <button type="button" class="btn btn-primary disabled">Button disabled</button>
-            <button type="button" class="btn btn-link">Link</button>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <div>
-          <h2 id="modal" class="pb-2">Modali</h2>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Bottone per modale generica
-          </button>
-
-          <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/modal_validation'
-          );
-          ?>
-        </div>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <div>
-          <h2 id="modal-preference" class="pb-2">Modali preferenze</h2>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#preferenceActivationSuccessModal">
-            Modale preferenza attivata
-          </button>
-
-          <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/modal_activation_success'
-          );
-          ?>
-
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#preferenceActivationFailedModal">
-            Modale preferenza non attivata
-          </button>
-
-          <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/modal_activation_failed'
-          );
-          ?>
-        </div>
-      </section>
-
-      <!--torna indietro-->
-      <section class="py-5 border-bottom">
-        <h2 id="back-button">Torna Indietro</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-back-button'
-          );
-        ?>
-      </section>
-
-
-      <!-- CARD PREFERENCE -->
-      <section class="py-5 border-bottom">
-
-        <h2 id="card-preference" class="pb-2">Cards Preference</h2>
-
-        <div class="row align-items-end">
-          <div class=" d-flex flex-column col-md-6 px-3">
-            <div>
-              <h3 id="card-preference-default">Card di default</h3>
+            <h1 class="no_toc it-page-section" id="introduzione">Componenti Bootstrap Italia Custom</h1>
+            <p class="lead mb-0">Componenti personalizzati per plugin Design</p>
+            <div class="mt-3">
+                <a class="btn btn-primary btn-icon" href="https://italia.github.io/bootstrap-italia/docs/come-iniziare/introduzione/" target="_blank">
+                    <span class="pr-1">Sito Bootstrap Italia</span>
+                    <svg class="icon icon-white">
+                        <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-external-link"></use>
+                    </svg>
+                </a>
             </div>
-
-            <?php
-            echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/card_preference',
-              [
-                'cardIcon' => [
-                  'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
-                  'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
-                ],
-                'cardLabel' => 'Card Label',
-                'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-              ]
-            );
-            ?>
-
-          </div>
-          <div class=" d-flex flex-column col-md-6 px-3">
-            <div>
-              <h3 id="card-preference-actve">Card attiva <br> param 'isActive'=> true</h3>
+            <div class="mt-3">
+                <a class="btn btn-primary btn-icon" href="<?= Yii::$app->params['platform']['frontendUrl'] ?>/design/design-base/configurations" target="_blank">
+                    <span class="pr-1">Configurazioni</span>
+                    <svg class="icon icon-white">
+                        <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-external-link"></use>
+                    </svg>
+                </a>
             </div>
-            <div>
-              <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/card_preference',
-                [
-                  'cardIcon' => [
-                    'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
-                    'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
-                  ],
-                  'cardLabel' => 'Card Label',
-                  'isActive' => true,
-                  'cardId' => 'idProva',
-                  'baseId' => 'prima-parte-per-',
-                  'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-                ]
-              );
-              ?>
-            </div>
-          </div>
-          <div class=" d-flex flex-column col-md-6 px-3">
-            <div>
-              <h3 id="card-preference-disabled">Card disattiva <br> param 'isActionDisabled' => true</h3>
-            </div>
-            <div>
-              <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/card_preference',
-                [
-                  'isActionDisabled' => true,
-                  'cardLabel' => 'Card Label',
-                  'cardIcon' => [
-                    'baseIconUrl' => $bootstrapItaliaAsset->baseUrl,
-                    'iconUrl' => '/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-telephone',
-                  ],
-                  'cardDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-                ]
-              );
-              ?>
-            </div>
-          </div>
-          <div class=" d-flex flex-column col-md-6 px-3">
-            <div>
-              <h3 id="card-preference-empty">Card Vuota <br> param 'emptyCard[]'</h3>
-              <p>emptyCard['emptyTitleMessage']: Titolo messaggio card vuota</p>
-              <p>emptyCard['emptyMessage']: Messaggio card vuota</p>
-            </div>
-            <div>
-              <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/card_preference',
-                [
-                  'emptyCard' => [
-                    'emptyTitleMessage' => 'Titolo messaggio card vuota',
-                    'emptyMessage' => 'Messaggio card vuota:<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-                  ]
-                ]
-              );
-              ?>
-            </div>
-          </div>
-        </div>
+            <section class="py-5 border-bottom">
+                <h2>Standard immagini</h2>
+                <p>
+                <ul>
+                    <li>formato: 16:9</li>
+                    <li>larghezza: 1920px (min. 1300px)</li>
+                    <li>dpi: 72 (minimo)</li>
+                </ul>
+                </p>
+            </section>
+            <!--colori-->
+            <section class="py-5 border-bottom">
+                <h2 class="it-page-section" id="colori">Colori</h2>
+                <p>Colori usati nella piattaforma</p>
+                <p><strong class="h3">Brandbook colors:</strong></p>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-primary">#2a7a38</div>
+                        <span>$brandbook-primary</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-secondary">#003354</div>
+                        <span>$brandboook-secondary</span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-neutral-1">#e6e9f2</div>
+                        <span>$brandbook-neutral-1</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 border brandbook-theme-bg-brandbook-neutral-2">#fcfcff</div>
+                        <span>$brandbook-neutral-2</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-neutral-3">#003354</div>
+                        <span>$brandbook-neutral-3</span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-triadic-2">#008758</div>
+                        <span>$brandbook-triadic-2</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-triadic-1">#a66300</div>
+                        <span>$brandbook-triadic-1</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-triadic-3">#d92828</div>
+                        <span>$brandbook-triadic-3</span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-btn-primary">#2a7a38</div>
+                        <span>$brandbook-btn-primary</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square border p-3 brandbook-theme-bg-brandbook-btn-secondary">#ffffff</div>
+                        <span>$brandbook-btn-secondary</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 brandbook-theme-bg-brandbook-btn-tertiary">#5E7887</div>
+                        <span>$brandbook-btn-tertiary</span>
+                    </div>
+                </div>
+                <hr>
+                <p><strong class="h3">Theme colors:</strong></p>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-primary">#2a7a38</div>
+                        <span>$primary</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-secondary">#5E7887</div>
+                        <span>$secondary</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-tertiary">#003354</div>
+                        <span>$tertiary</span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-success">#008758</div>
+                        <span>$green-accessible</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-warning">#a66300</div>
+                        <span>$orange-accessible</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-danger">#d92828</div>
+                        <span>$red-accessible</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="bd-example my-5">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-3">
+                            <p>Tinte e ombre</p>
+                            <div class="c-line primary-bg-a1">a1</div>
+                            <div class="c-line primary-bg-a2">a2</div>
+                            <div class="c-line primary-bg-a3">a3</div>
+                            <div class="c-line primary-bg-a4">a4</div>
+                            <div class="c-line white-color primary-bg-a5">a5</div>
+                            <div class="c-line white-color primary-bg-a6">a6</div>
+                            <div class="c-line white-color primary-bg-a7">a7</div>
+                            <div class="c-line white-color primary-bg-a8">a8</div>
+                            <div class="c-line white-color primary-bg-a9">a9</div>
+                            <div class="c-line white-color primary-bg-a10">a10</div>
+                            <div class="c-line white-color primary-bg-a11">a11</div>
+                            <div class="c-line white-color primary-bg-a12">a12</div>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <p>Toni</p>
+                            <div class="c-line primary-bg-b1 white-color">b1</div>
+                            <div class="c-line primary-bg-b2 white-color">b2</div>
+                            <div class="c-line primary-bg-b3 white-color">b3</div>
+                            <div class="c-line primary-bg-b4 white-color">b4</div>
+                            <div class="c-line primary-bg-b5 white-color">b5</div>
+                            <div class="c-line primary-bg-b6 white-color">b6</div>
+                            <div class="c-line primary-bg-b7 white-color">b7</div>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <p>Variazione di saturazione</p>
+                            <div class="c-line primary-bg-c1">c1</div>
+                            <div class="c-line primary-bg-c2">c2</div>
+                            <div class="c-line primary-bg-c3">c3</div>
+                            <div class="c-line primary-bg-c4">c4</div>
+                            <div class="c-line primary-bg-c5">c5</div>
+                            <div class="c-line primary-bg-c6">c6</div>
+                            <div class="c-line primary-bg-c7">c7</div>
+                            <div class="c-line primary-bg-c8">c8</div>
+                            <div class="c-line primary-bg-c9">c9</div>
+                            <div class="c-line white-color primary-bg-c10">c10</div>
+                            <div class="c-line white-color primary-bg-c11">c11</div>
+                            <div class="c-line white-color primary-bg-c12">c12</div>
+                        </div>
+                    </div>
+                </div>
+                <p><strong class="h3">Social colors:</strong></p>
+                <div class="row mb-4">
+                    <div class="col-md-2 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-linkedin">#0177b5</div>
+                        <span>$linkedin</span>
+                    </div>
+                    <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-facebook">#4867aa</div>
+                        <span>$facebook</span>
+                    </div>
+                    <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-google">#ea4335</div>
+                        <span>$google</span>
+                    </div>
+                    <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-twitter">#32ccfe</div>
+                        <span>$twitter</span>
+                    </div>
+                    <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-youtube">#be1b1e</div>
+                        <span>$youtube</span>
+                    </div>
+                    <div class="col-md-2 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-spid">#0066cc</div>
+                        <span>$spid</span>
+                    </div>
+                </div>
+                <hr>
+                <p><strong class="h3">Components colors:</strong></p>
+                <div class="row mb-4">
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-card-preference-bg">#eaf1eb</div>
+                        <span>$card-preference-bg</span>
+                    </div>
+                    <div class="col-md-3 mt-4 mt-md-0 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-tooltip-bg">#5e7887</div>
+                        <span>$tooltip-bg</span>
+                    </div>
+                </div>
+                <hr>
+                <p><strong class="h3">Text colors:</strong></p>
+                <div class="row mb-4">
+                    <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center">
+                        <div class="square p-3 design-theme-bg-text-muted">#435960</div>
+                        <span>$text-muted-custom</span>
+                    </div>
+                </div>
+            </section>
 
-      </section>
 
-      <!--Checkbox Cards Preference-->
-      <section class="py-5 border-bottom">
-        <div>
-          <h2 id="card-checkbox" class="pb-2">Checkbox Cards Preference</h2>
-
-          <?php
-
-          echo CheckBoxListTopicsIcon::widget([
-            'model' => $model,
-            'attribute' => 'attribute',
-            'choices' => $choices,
-            'classContainer' => 'col-lg-3 col-md-6',
-
-          ]);
-
-          ?>
-        </div>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <div>
-          <h2 id="card-checkbox" class="pb-2">Checkbox Tags List </h2>
-          <h4>Size sm</h4>
-          <div class="d-flex flex-wrap">
-            <?php
-
-            echo CheckBoxListTags::widget([
-              'model' => $model,
-              'attribute' => 'attribute',
-              'choices' => $tags,
-              'tagWrapperSize' => 'sm',
-
-            ]);
+            <!-- allegati lista-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="list-allegati">Allegati Lista</h2>
+                <div class="bd-example">
 
 
-            ?>
-          </div>
-          <h4>Size md</h4>
-          <div class="d-flex flex-wrap">
-            <?php
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-attachments-item',
+                        [
 
-            echo CheckBoxListTags::widget([
-              'model' => $model,
-              'attribute' => 'attribute',
-              'choices' => $tags,
-              'tagWrapperSize' => 'md',
+                            'type' => 'xls',
+                            'size' => '350',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'nome_del_documento',
 
-            ]);
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-attachments-item',
+                        [
+
+                            'type' => 'pdf',
+                            'size' => '350',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'nome_del_documento',
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-attachments-item',
+                        [
+
+                            'type' => 'doc',
+                            'size' => '350',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'nome_del_documento',
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-attachments-item',
+                        [
+
+                            'type' => 'xxx',
+                            'size' => '350',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'aaaaaaaaasjaksjksjaksjadksjdksdjdkfjdkfjdfkdjfkdjfkdjfkdjfkdjfkdjfdkfjdkfjdkfjdkfjdkfjdkfjdfkjdfkdjfkdjfdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdfkdjfkdjfkdjfkdjfkdjfdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkjfdkfjdkfjdkfjdkfjdkfjdkjf',
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+
+            <!--avatar card-->
+            <section class="py-5 ">
+                <h2 class="it-page-section" class="mb-3" id="avatar">Avatar</h2>
+                <h3>Avatar size</h3>
+                <p>Per scegliere la dimensione bisogna impostare la variabile <mark><code>avatarWrapperSize</code></mark></p>
+                <p>Size: <mark><code>xs</code></mark>, <mark><code>sm</code></mark>, <mark><code>md</code></mark>, <mark><code>lg</code></mark> e <mark><code>xl</code></mark></p>
+                <div class="bd-example">
+
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                                [
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'avatarWrapperSize' => 'xl',
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-4 mb-4">
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                                [
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'avatarWrapperSize' => 'lg'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-4 mb-4">
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                                [
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'avatarWrapperSize' => 'md'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-4 mb-4">
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                                [
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'avatarWrapperSize' => 'sm'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-4 mb-4">
+
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                                [
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'avatarWrapperSize' => 'xs'
+                                ]
+                            );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+
+                <!--avatar lista-->
+
+                <h3>Avatar card</h3>
+                <p>Le card avatar possono mostrare diverse informazioni: </p>
+                <p><strong class="text-uppercase">Stato del profilo utente</strong> <small>(visibili solo per i size da <mark><code>md</code></mark> in su)</small>:<br><strong>Validato</strong> (di default è nascosto), <strong>Non validato</strong>, <strong>Modifica in corso</strong> e <strong>Da validare</strong> </p>
+                <p><strong class="text-uppercase">Tipo di utente</strong> <small>(visibili solo per il size <mark><code>xl</code></mark>)</small>:<br><strong>Facilitatore</strong> e/o <strong>Community manager</strong>.</p>
+                <div class="bd-example">
+                    <div class="users-list-container d-flex justify-content-start flex-wrap ">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                            [
+                                'nameSurname' => 'Mario Rossi',
+                                'avatarWrapperSize' => 'xl',
+                                'additionalClass' => 'border-bottom py-4',
+                                'singleElementsWidthFullsize' => 'col-md-4',
+                                'singleElementsWidthMobile' => 'col-xs-6',
+                                'statoProfilo' => 'Validato',
+                                'avatarPresence' => 'active',
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                            [
+                                'nameSurname' => 'Mario Rossi',
+                                'avatarWrapperSize' => 'xl',
+                                'additionalClass' => 'border-bottom py-4',
+                                'singleElementsWidthFullsize' => 'col-md-4',
+                                'singleElementsWidthMobile' => 'col-xs-6',
+                                'additionalInfo' => 'Consulente Marketing',
+                                'statoProfilo' => 'Non validato',
+                                'isFacilitator' => true
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                            [
+                                'nameSurname' => 'Mario Rossi',
+                                'avatarWrapperSize' => 'xl',
+                                'additionalClass' => 'border-bottom py-4',
+                                'singleElementsWidthFullsize' => 'col-md-4',
+                                'singleElementsWidthMobile' => 'col-xs-6',
+                                'additionalInfo' => 'Consulente Marketing',
+                                'showCtaJoin' => 'true',
+                                'ctaJoinMsg' => 'Invia messaggio',
+                                'statoProfilo' => 'Modifica in corso',
+                                'isFacilitator' => true,
+                                'isCommunityManager' => true,
+                                'avatarPresence' => 'active',
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
+                            [
+                                'nameSurname' => 'Massimiliano Giovannini',
+                                'avatarWrapperSize' => 'xl',
+                                'additionalClass' => 'border-bottom py-4',
+                                'singleElementsWidthFullsize' => 'col-md-4',
+                                'singleElementsWidthMobile' => 'col-xs-6',
+                                'additionalInfo' => 'Consulente Marketing',
+                                'showCtaMsg' => 'true',
+                                'ctaMsg' => 'Collegati',
+                                'statoProfilo' => 'Da validare'
+                            ]
+                        );
+                        ?>
+
+                    </div>
+                </div>
+
+                <!--avatar sovrapposti-->
+
+                <h3>Avatar sovrapposti</h3>
+                <p>Il listato può subire variazioni quali:</p>
+                <p><strong class="text-uppercase">Status dell'utente</strong>in piattaforma settando <strong>showAvatarPresence</strong></p>
+                <p><strong class="text-uppercase">Grandezza dell'avatar</strong> settando <strong>avatarWrapperSize</strong> a <mark><code>xs</code></mark>, <mark><code>sm</code></mark>, <mark><code>md</code></mark>, <mark><code>lg</code></mark> e <mark><code>xl</code></mark></p>
+                <div class="bd-example">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-group-stacked',
+                                [
+                                    'numberExpose' => 4,
+                                    'usersNumber' => 6,
+                                    'userProfiles' => $userProfiles,
+                                    'tooltipAdditionalInfoAvatarsGroup' => isset($tooltipAdditionalInfoAvatarsGroup) ?: Module::t(
+                                        'amosdesign',
+                                        'Partecipante'
+                                    ),
+                                    'removeLink' => false,
+                                    'showAvatarPresence' => true,
+                                ]
+                            );
+                            ?>
+                        </div>
+
+                        <div class="col-md-4">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-group-stacked',
+                                [
+                                    'numberExpose' => 4,
+                                    'usersNumber' => 6,
+                                    'userProfiles' => $userProfiles,
+                                    'tooltipAdditionalInfoAvatarsGroup' => isset($tooltipAdditionalInfoAvatarsGroup) ?: Module::t(
+                                        'amosdesign',
+                                        'Partecipante'
+                                    ),
+                                    'removeLink' => false,
+                                    'avatarWrapperSize' => 'md',
+                                ]
+                            );
+                            ?>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--bottoni-->
+            <section class="py-5">
+                <div>
+                    <!-- BUTTONS -->
+                    <h2 class="it-page-section" id="bottoni" class="pb-2">Bottoni</h2>
+                    <div class="bd-example bd-example-btn">
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-outline-primary">Primary outline</button>
+                        <button type="button" class="btn btn-secondary">Secondary</button>
+                        <button type="button" class="btn btn-outline-secondary">Secondary outline</button>
+                        <button type="button" class="btn btn-tertiary">Tertiary</button>
+                        <button type="button" class="btn btn-outline-tertiary">Tertiary outline</button>
+                        <button type="button" class="btn btn-primary disabled">Button disabled</button>
+                        <button type="button" class="btn btn-primary disabled disabled-with-pointer-events">Button disabled with pointer events</button>
+                        <button type="button" class="btn btn-link">Link</button>
+                    </div>
+
+                </div>
+            </section>
+            <!--carousel-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="carousel" class="pb-2">Carousel</h2>
+                </div>
+                <div class="bd-example">
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/carousel'
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--carousel calendario-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="calendar-carousel" class="mb-5">Carousel Calendario</h2>
+                <div class="bd-example">
+                    <!-- 2 variabili: ognuna per dire quale è la label attivo/disattivo -->
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-calendar-carousel',
+                        [
+                            //array con i filtri che voglio impostare
+                            'filterList' => ['Tutto', 'Consigli-comunali', 'Eventi', 'Scadenze'],
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--checkbox collapse-->
+            <section class="py-5">
+                <div>
+
+                    <h2 class="it-page-section" id="checkbox-collapse">Checkbox collapse</h2>
+                    <div class="bd-example">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/form-checkbox-collapse-preference'
+                        );
+                        ?>
+                    </div>
+                </div>
+            </section>
+            <!--checkbox link privacy-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="Checkbox-link">Checkbox con link privacy</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/check-with-link',
+                        [
+                            'externalLink' => false,
+                            'linkText' => 'link esterno alla privacy',
+                            'privacyLink' => '/preferenceuser/contacts/contacts',
+                            'target' => '_blank',
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--collapse-->
+            <section class="py-5">
+                <div>
+
+                    <h2 class="it-page-section" id="collapse" class="pb-2">Collapse</h2>
+                    <div class="bd-example">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/collapse-preference'
+                        );
+                        ?>
+
+                    </div>
+                </div>
+            </section>
+
+            <!--Community card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="Community-card">Community Card</h2>
+                <p>Le card community mostrano diverse informazioni: </p>
+                <p><strong class="text-uppercase">Tipo di community</strong></strong> <small>(visibile per tutte le size)</small>:<br><strong>Aperta</strong> (isOpenCommunity=>true), <strong>Privata </strong>(isClosedCommunity=>true), <strong>Riservata</strong>(isPrivateCommunity=>true)</p>
+                <p><strong class="text-uppercase">Data di iscrizione</strong> <small>(visibile solo per gli utenti iscritti alla community)</small></p>
+                <div class="bd-example">
+                    <div class="row">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=' . $i,
+                                'isClosedCommunity' => true,
+                                'dateSigned' => '2020-01-01',
+                                'title' => 'Nome community',
+                                'isSigned' => true,
+                                'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=' . $i,
+                                'isOpenCommunity' => true,
+                                'dateSigned' => '2020-02-28',
+                                'title' => 'Nome community lungo lunghisssimissimo lunghisssimissimo lunghisssimissimo lunghisssimissimo ',
+                                'isSigned' => true,
+                                'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
+
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
+                            [
+                                'image' => 'https://picsum.photos/1600/900?random=' . $i,
+                                'isPrivateCommunity' => true,
+                                'title' => 'Nome community',
 
 
-            ?>
-          </div>
-        </div>
-      </section>
+                                'isSigned' => false,
+                                'widthColumn' => 'col-lg-4' . ' col-md-6' . ' col-sm-12'
 
-      <section class="py-5 border-bottom">
-        <div>
-          <h2 id="carousel" class="pb-2">Carousel</h2>
-        </div>
-        <div>
-          <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/carousel'
-          );
-          ?>
-        </div>
-      </section>
+                            ]
+                        );
+                        ?>
+                    </div>
+                </div>
+            </section>
+            <!--discussioni card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="discussioni-card">Discussioni card</h2>
+                <p>Le card delle discussioni mostrano diverse informazioni:</p>
+                <p><strong class="text-uppercase">Data</strong>: attraverso la variabile <mark><code>$date</code></mark></p>
+                <p><strong class="text-uppercase">Descrizione</strong>: attraverso la variabile <mark><code>$description</code></mark></p>
+                <p><strong class="text-uppercase">Community di riferimento</strong>: attraverso la variabile <mark><code>$communityTitle</code></mark></p>
 
-
-      <section class="py-5 border-bottom">
-        <div>
-          <h2 id="wizard" class="pb-2">Wizard steps </h2>
-        </div>
-
-        <div class=" py-5">
-          <div class="container">
-
-
-
-            <?php
-            echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/wizard_steps'
-            );
-            ?>
-
-
-
-          </div>
-        </div>
-      </section>
-
-
-
-
-      <section class="py-5 border-bottom">
-        <div>
-
-          <h2 id="collapse" class="pb-2">Collapse</h2>
-          <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/collapse-preference'
-          );
-          ?>
-
-        </div>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <div>
-
-          <h2 id="checkbox-collapse">Checkbox collapse</h2>
-          <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/form-checkbox-collapse-preference'
-          );
-          ?>
-        </div>
-      </section>
-
-      <!--checkbox link privacy-->
-      <section class="py-5 border-bottom">
-        <h2 id="Checkbox-link">Checkbox con link privacy</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/check-with-link',
-            [
-              'externalLink' => false,
-              'linkText' => 'link esterno alla privacy',
-              'privacyLink' => '/preferenceuser/contacts/contacts',
-              'target' => '_blank',
-            ]
-          );
-        ?>
-      </section>
-
-      <!--news-->
-      <section class="py-5 border-bottom">
-        <h2 id="news">News</h2>
-
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
-            [
-              'category' => 'ULTIME DALLA P.A.',
-              'image' => 'https://picsum.photos/1600/900?random=6',
-              'nameSurname' => 'Paolo Bianchi',
-              'showAvatar' => true,
-              'newPubblication' => true,
-              'avatarWrapperSize' => 'lg',
-              'categorySize' => 'lead',
-              'titleSize' => 'h3',
-              'descriptionSize' => 'lead',
-              'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
-              'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-              'date' => '2020-12-12'
-            ]
-          );
-        ?>
-      </section>
-
-      <!--lista news-->
-      <section class="py-5 border-bottom">
-        <h2 id="news-list">Lista News card</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-news',
-            [
-              'elementsForRow' => '3'
-            ]
-          );
-        ?>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <h2 id="news-list-item">Listato News</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
-            [
-              'category' => 'ULTIME DALLA P.A.',
-              'image' => 'https://picsum.photos/1600/900?random=21',
-              'nameSurname' => 'Paolo Bianchi',
-              'showSignature' => true,
-              'newPubblication' => true,
-              'titleSize' => 'h5',
-              'title' => 'Lorem ipsum dolor sit amet',
-              'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-              'date' => '2020-12-12'
-
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
-            [
-              'category' => 'ULTIME DALLA P.A.',
-              'image' => 'https://picsum.photos/1600/900?random=22',
-              'nameSurname' => 'Paolo Bianchi',
-              'showSignature' => true,
-              'titleSize' => 'h5',
-              'title' => 'Lorem ipsum dolor sit amet',
-              'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-              'date' => '2020-12-12'
-
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
-            [
-              'category' => 'ULTIME DALLA P.A.',
-              'image' => 'https://picsum.photos/1600/900?random=2',
-              'nameSurname' => 'Paolo Bianchi',
-              'showSignature' => true,
-              'newPubblication' => true,
-              'titleSize' => 'h5',
-              'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-              'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
-              'date' => '2020-12-12'
-
-            ]
-          );
-        ?>
-      </section>
-
-      <!--Carousel News-->
-      <section class="py-5 border-bottom">
-        <h2 id="news-list-item">Listato News</h2>
-        <?php
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/carousel-news'
-          );
-        ?>
-      </section>       
-
-      <!--carousel immagini-->
-      <div class="py-5"> 
-        <h2 id="photogallery">Listato News</h2>
-            <?php
-            echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-photogallery-carousel',[
-                  
-              ]
-            );
-            ?>
-
-            
-        </div>
-
-      <!--Organizzazioni-->
-      <section class="py-5 border-bottom">
-        <h2 id="organization">Organizzazioni</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
-            [
-              'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
-              'organizzatore' => 'Pesce Azzurro Cefalù',
-              'removeLink' => true,
-              'showCtaEsplora' => true,
-              'showIcon' => true,
-            ]
-          );
-        ?>
-      </section>
-
-      <!--lista organizzazioni-->
-      <section class="py-5 ">
-        <h2 id="organization-list">Lista di organizzazioni</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-organizzazioni',
-            [
-              'elementsForRow' => '3',
-            ]
-          );
-        ?>
-      </section>
-
-      <!--Scope organizzazioni-->
-      <section class="py-5 ">
-        <h2 id="scope-organizzazioni">Scope organizzazioni</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-organizzazioni',
-            [
-              'espositoreImage' => 'https://picsum.photos/1600/900?random=10',
-              'espositoreTitle' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-              'espositoreSito' => 'www.dragoconserve.it',
-              'espositorePIva' => '012345678912',
-              'espositoreReferente' => 'Giuliano Bianco',
-              'espositoreIndirizzo' => 'Via Stentiello 10/a Siracusa',
-              'espositoreEmail' => 'info@dragoconserve.it',
-              'espositoreTelefono' => '090 1234567',
-            ]
-          );
-        ?>
-      </section>
-
-      <!--avatar-->
-      <section class="py-5 border-bottom">
-        <h2 id="avatar">Avatar</h2>
-        <div class="row align-items-center">
-          <div class="col-md-4 mb-4">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
-                [
-                  'nameSurname' => 'Paolo Bianchi',
-                  'avatarWrapperSize' => 'xl'
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-4 mb-4">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
-                [
-                  'nameSurname' => 'Paolo Bianchi',
-                  'avatarWrapperSize' => 'lg'
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-4 mb-4">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
-                [
-                  'nameSurname' => 'Paolo Bianchi',
-                  'avatarWrapperSize' => 'md'
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-4 mb-4">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
-                [
-                  'nameSurname' => 'Paolo Bianchi',
-                  'avatarWrapperSize' => 'sm'
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-4 mb-4">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar',
-                [
-                  'nameSurname' => 'Paolo Bianchi',
-                  'avatarWrapperSize' => 'xs'
-                ]
-              );
-            ?>
-          </div>
-        </div>
-      </section>
-
-      <!--lista avatar-->
-      <section class="py-5 ">
-        <h2 id="list-avatar">Lista di avatar card</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-avatar',
-            [
-              'avatarWrapperSize' => 'xl',
-              'elementsForRow' => '3',
-            ]
-          );
-        ?>
-      </section>
-      <!--lista avatar-->
-      <section class="py-5 ">
-        <h2 id="view-list-avatar">Listato utenti</h2>
-
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-avatar-user',
-            [
-              'nameSurname' => 'Paolo Bianchi',
-              'avatarWrapperSize' => 'md',
-              'url' => '#',
-              'additionalInfo' => 'Programmatore',
-              'collaborazionePrevalente' => 'Unità di Ricerca INSTM presso Dipartimento di Scienza dei Materiali - Univ- Milano Bicocca',
-              'facilitatore' => 'Redazione Open Innovation',
-              'statoProfilo' => 'Validato',
-              'showCtaMsg' => 'true',
-              'ctaMsg' => 'Collegati',
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-avatar-user',
-            [
-              'nameSurname' => 'Michelito La Fresca',
-              'avatarWrapperSize' => 'md',
-              'url' => '#',
-              'additionalInfo' => 'Web Designer',
-              'collaborazionePrevalente' => 'Elite Division srl',
-              'facilitatore' => 'Marco Bianchi',
-              'statoProfilo' => 'Modifica in corso',
-              'showCtaMsg' => 'true',
-              'ctaMsg' => 'Collegati',
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-avatar-user',
-            [
-              'nameSurname' => 'Luca Lodiato',
-              'avatarWrapperSize' => 'md',
-              'url' => '#',
-              'additionalInfo' => 'Presidentissimo',
-              'collaborazionePrevalente' => 'Mads srl',
-              'facilitatore' => 'Angelo Rocchi',
-              'statoProfilo' => 'Non validato',
-              'showCtaJoin' => 'true',
-              'ctaJoinMsg' => 'Invia messaggio',
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-avatar-user',
-            [
-              'nameSurname' => 'Marcello Aiello',
-              'avatarWrapperSize' => 'md',
-              'url' => '#',
-              'additionalInfo' => 'maestro',
-              'collaborazionePrevalente' => 'Divita snc',
-              'facilitatore' => 'Andrea Fiori',
-              'statoProfilo' => 'Da validare',
-              'showCtaJoin' => 'true',
-              'ctaJoinMsg' => 'Invia messaggio',
-            ]
-          );
-        ?>
-
-      </section>
-
-      <!--lista avatar sovrapposti-->
-      <section class="py-5 border-bottom">
-        <h2 id="avatar-sovrapposti">Avatar sovrapposti</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-group-stacked',
-            [
-
-              'numberExpose' => 5,
-              'usersNumber' => 7
-            ]
-
-          );
-        ?>
-      </section>
-
-      <!--discussioni-->
-      <section class="py-5 border-bottom">
-        <h2 id="discussioni">Discussioni listato</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
-            [
-              'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-              'date' => '2020-12-12',
-              'url' => '#',
-              'numbersOfAnswer' => '3',
-              'numbersOfVisits' => '4',
-              'updatedAt' => '2012-12-12',
-              'newPubblication' => true,
-
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
-            [
-              'title' => 'Discussione Planner',
-              'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-              'date' => '2020-12-12',
-              'url' => '#',
-              'numbersOfAnswer' => '3',
-              'numbersOfVisits' => '4',
-              'updatedAt' => '2012-12-12',
-              'newPubblication' => true,
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
-            [
-              'title' => 'Discussione Planner',
-              'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-              'date' => '2020-12-12',
-              'url' => '#',
-              'numbersOfAnswer' => '3',
-              'numbersOfVisits' => '4',
-              'updatedAt' => '2012-12-12',
-
-            ]
-          );
-        ?>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <h2 id="discussioni-card" class="mb-5">Discussioni card</h2>
-
-        <div class="row variable-gutters">
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                [
-                  'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                  'communityTitle' => 'Planner 2.0',
-                  'date' => '2020-12-12',
-                  'url' => '#',
-                  'numbersOfAnswer' => '3',
-                  'numbersOfVisits' => '4',
-                  'updatedAt' => '2012-12-12',
-                  'image' => 'https://picsum.photos/1600/900?random=5',
-                  'nameSurname' => 'Paolo Bianchi',
-                  'newPubblication' => true,
-                  'avatarWrapperSize' => 'md',
-                  'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.',
-                  'nameSurnameLastComment' => 'Marco Giusti',
-                  'lastCommentDiscussion' => 'Ciao, mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                [
-                  'title' => 'Discussione Planner',
-                  'date' => '2020-12-12',
-                  'url' => '#',
-                  'numbersOfAnswer' => '3',
-                  'numbersOfVisits' => '4',
-                  'updatedAt' => '2012-12-12',
-                  'image' => 'https://picsum.photos/1600/900?random=4',
-                  'nameSurname' => 'Paolo Bianchi',
-                  'newPubblication' => true,
-                  'avatarWrapperSize' => 'md',
-                  'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
+                <div class="bd-example">
+                    <div class="row variable-gutters">
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                [
+                                    'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                    'communityTitle' => 'Planner 2.0',
+                                    'date' => '2020-12-12',
+                                    'url' => '#',
+                                    'numbersOfAnswer' => '3',
+                                    'numbersOfVisits' => '4',
+                                    'updatedAt' => '2012-12-12',
+                                    'image' => 'https://picsum.photos/1600/900?random=5',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'newPubblication' => true,
+                                    'avatarWrapperSize' => 'md',
+                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.',
+                                    'nameSurnameLastComment' => 'Marco Giusti',
+                                    'lastCommentDiscussion' => 'Ciao, mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                [
+                                    'title' => 'Discussione Planner',
+                                    'date' => '2020-12-12',
+                                    'url' => '#',
+                                    'numbersOfAnswer' => '3',
+                                    'numbersOfVisits' => '4',
+                                    'updatedAt' => '2012-12-12',
+                                    'image' => 'https://picsum.photos/1600/900?random=4',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'newPubblication' => true,
+                                    'avatarWrapperSize' => 'md',
+                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
+                                        Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
+                                        Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                [
+                                    'title' => 'Discussione con nome un pò più lungo e complesso',
+                                    'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                                    'date' => '2020-12-12',
+                                    'url' => '#',
+                                    'numbersOfAnswer' => '3',
+                                    'numbersOfVisits' => '4',
+                                    'updatedAt' => '2012-12-12',
+                                    'image' => 'https://picsum.photos/1600/900?random=3',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'avatarWrapperSize' => 'md',
+                                    'nameSurnameLastComment' => 'Giorgio Mariano',
+                                    'lastCommentDiscussion' => 'Wow! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
+                                        Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
+                                        Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                [
+                                    'title' => 'Discussione Planner',
+                                    'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                                    'date' => '2020-12-12',
+                                    'url' => '#',
+                                    'numbersOfAnswer' => '3',
+                                    'numbersOfVisits' => '4',
+                                    'updatedAt' => '2012-12-12',
+                                    'image' => 'https://picsum.photos/1600/900?random=2',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'newPubblication' => true,
+                                    'avatarWrapperSize' => 'md',
+                                    'nameSurnameLastComment' => 'Luisa Recca',
+                                    'lastCommentDiscussion' => 'Grande! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                    'description' => 'Sono una descrizione... obbligatoria?'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
+                                [
+                                    'title' => 'Discussione Planner',
+                                    'communityTitle' => 'Planner 2.0',
+                                    'date' => '2020-12-12',
+                                    'url' => '#',
+                                    'numbersOfAnswer' => '3',
+                                    'numbersOfVisits' => '4',
+                                    'updatedAt' => '2012-12-12',
+                                    'image' => 'https://picsum.photos/1600/900?random=1',
+                                    'nameSurname' => 'Paolo Bianchi',
+                                    'newPubblication' => true,
+                                    'avatarWrapperSize' => 'md',
+                                    'nameSurnameLastComment' => 'Mario Franchi',
+                                    'lastCommentDiscussion' => 'Esatto! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
+                                    'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
               Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
               Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                ]
+                            );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--discussioni lista-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="discussioni">Discussioni lista</h2>
+                <p>Gli elementi della lista discussioni mostrano diverse informazioni (oltre a quelle delle card):</p>
+                <p><strong class="text-uppercase">Numero di risposte alla discussione</strong>: attraverso la variabile <mark><code>$numbersOfAnswer</code></mark></p>
+                <p><strong class="text-uppercase">Numero di visite alla discussione</strong>: attraverso la variabile <mark><code>$numbersOfVisits</code></mark></p>
+                <p><strong class="text-uppercase">Data di ultimo aggiornamento</strong>: attraverso la variabile <mark><code>$updatedAt</code></mark></p>
+
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
+                        [
+                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'date' => '2020-12-12',
+                            'url' => '#',
+                            'numbersOfAnswer' => '3',
+                            'numbersOfVisits' => '4',
+                            'updatedAt' => '2012-12-12',
+                            'newPubblication' => true,
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
+                        [
+                            'title' => 'Discussione Planner',
+                            'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                            'date' => '2020-12-12',
+                            'url' => '#',
+                            'numbersOfAnswer' => '3',
+                            'numbersOfVisits' => '4',
+                            'updatedAt' => '2012-12-12',
+                            'newPubblication' => true,
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions',
+                        [
+                            'title' => 'Discussione Planner',
+                            'communityTitle' => 'Planner 2.0 ma con nome più lungo',
+                            'date' => '2020-12-12',
+                            'url' => '#',
+                            'numbersOfAnswer' => '3',
+                            'numbersOfVisits' => '4',
+                            'updatedAt' => '2012-12-12',
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+
+            <!--documenti card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="documents-card">Documenti card</h2>
+                <p>Le card dei documenti mostrano diverse informazioni:</p>
+                <p><strong class="text-uppercase">Estensione del file</strong>: attraverso la variabile <mark><code>$type</code></mark>(che può definire anche una cartella)</p>
+                <p><strong class="text-uppercase">Peso del file</strong>: attraverso la variabile <mark><code>$size</code></mark></p>
+                <p><strong class="text-uppercase">Informazioni aggiuntive</strong>: racchiuse in un tooltip e gestiste attraverso le variabili <mark><code>$nameSurname</code></mark>, <mark><code>$nameFile</code></mark>, <mark><code>$category</code></mark>, <mark><code>$community</code></mark></p>
+
+                <div class="bd-example">
+                    <div class="row variable-gutters">
+
+
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            [
+                                'title' => '2020 Verso la Strategia Regionale per lo Sviluppo Sostenibile',
+                                'fileName' => 'nome_del_file.doc',
+                                'fileUrl' => 'url/di/esempio',
+                                'type' => 'doc',
+                                'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'nameSurname' => 'Mario Rossi',
+                                'nameFile' => 'nome_esempio_file',
+                                'size' => '300',
+                                'category' => 'Presentazioni e materiale illustrativo',
+                                'community' => 'Gruppo 6 UniBS Crescini',
+                                'dateSyncDrive' => '2012-12-27 12:30:00',
+                                'newPubblication' => true,
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            [
+                                'title' => 'ARIA S.p.A., genesi e orizzonti',
+                                'fileName' => 'nome_del_file.zip',
+                                'fileUrl' => 'url/di/esempio',
+                                'type' => 'zip',
+                                'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'nameSurname' => 'Mario Rossi',
+                                'nameFile' => 'nome_esempio_file',
+                                'size' => '300',
+                                'category' => 'Presentazioni e materiale illustrativo',
+                                'community' => 'Gruppo 6 UniBS Crescini',
+                                'versionFile' => '500',
+                                'newPubblication' => true,
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            [
+                                'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                'fileName' => 'nome_del_file.jpg',
+                                'fileUrl' => 'url/di/esempio',
+                                'type' => 'jpg',
+                                'description' => 'io sono una stringa',
+                                'nameSurname' => 'Mario Rossi',
+                                'nameFile' => 'nome_esempio_file',
+                                'size' => '300',
+                                'category' => 'Presentazioni e materiale illustrativo',
+                                'community' => 'Gruppo 6 UniBS Crescini',
+                                'versionFile' => '1',
+                                'allegatiNum' => '2',
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            [
+                                'title' => 'Documentazione (Rapporto Preliminare VAS, Documento di Orientamento del PPSSC, altro materiale)',
+                                'fileUrl' => 'url/di/esempio',
+                                'typeFolder' => 'folder',
+                                'nameSurname' => 'Mario Rossi',
+                                'nameFile' => 'nome_esempio_file',
+                                'community' => 'Gruppo 6 UniBS Crescini',
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            [
+                                'title' => 'Verbale seduta di insediamento',
+                                'fileName' => 'nome_del_file.xls',
+                                'fileUrl' => 'url/di/esempio',
+                                'type' => 'xls',
+                                'description' => 'io sono una stringa',
+                                'nameSurname' => 'Mario Rossi',
+                                'nameFile' => 'nome_esempio_file',
+                                'size' => '300',
+                                'category' => 'Presentazioni e materiale illustrativo',
+                                'community' => 'Gruppo 6 UniBS Crescini',
+                                // 'numberAttachments' => '4'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
+                            [
+                                'title' => 'Guida per i partecipanti - Community Primo Forum pubblico procedura di VAS',
+                                'fileUrl' => 'url/di/esempio',
+                                'description' => 'io sono una stringa',
+                                'nameSurname' => 'Mario Rossi',
+                                'category' => 'Presentazioni e materiale',
+                                'community' => 'Gruppo 6 UniBS Crescini',
+                                'nameFile' => 'nome_esempio_file',
+                            ]
+                        );
+                        ?>
+                    </div>
+                </div>
+            </section>
+            <!--documenti lista-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="document-list">Documenti lista</h2>
+
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
+                        [
+                            'date' => '10-01-2021',
+                            'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
+                            'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'category' => 'Categoria di test',
+                            'image' => 'https://picsum.photos/1600/900?random=25',
+                            'type' => 'xls',
+                            'size' => '350',
+                            'nameSurname' => 'Mario Rossi',
+                            'community' => 'Community Common',
+                            'url' => 'url/del/dettaglio',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'nome_del_documento.pdf',
+                            'newPubblication' => true,
+
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
+                        [
+                            'date' => '12-12-2020',
+                            'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
+                            'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'category' => 'Categoria di test',
+                            'image' => 'https://picsum.photos/1600/900?random=25',
+                            'type' => 'pdf',
+                            'size' => '350',
+                            'nameSurname' => 'Mario Rossi',
+                            'community' => 'Community Common',
+                            'url' => 'url/del/dettaglio',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'nome_del_documento.pdf',
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
+                        [
+                            'date' => '12-12-2020',
+                            'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
+                            'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'category' => 'Categoria di test',
+                            'image' => 'https://picsum.photos/1600/900?random=25',
+                            'type' => 'pdf',
+                            'size' => '350',
+                            'nameSurname' => 'Mario Rossi',
+                            'community' => 'Community Common',
+                            'url' => 'url/del/dettaglio',
+                            'fileUrl' => 'url/del/documento',
+                            'fileName' => 'nome_del_documento.pdf',
+                            'dateSyncDrive' => '2012-12-27 12:30:00',
+                        ]
+                    );
+
+                    ?>
+                </div>
+            </section>
+
+            <!-- eventi card-->
+            <section class="pt-5 ">
+                <h2 class="it-page-section" id="events-list">Eventi Card</h2>
+                <p>Le card dei documenti mostrano diverse informazioni:</p>
+                <p><strong class="text-uppercase">Data inizio</strong>: attraverso la variabile <mark><code>$dateHourStart</code></mark></p>
+                <p><strong class="text-uppercase">Tipo evento</strong>: attraverso la variabile <mark><code>$type</code></mark></p>
+
+                <div class="bd-example">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
+                                [
+                                    'dateHourStart' => '2012-12-27 12:30:00',
+                                    'title' => 'Titolo dell\'evento',
+                                    'summary' => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
+                                    'url' => '/url/di/test',
+                                    'urlCta' => '/url/di/event-signup',
+                                    'type' => 'Evento typeDefault',
+                                    'isPaid' => false,
+                                    'availableSeats' => '48',
+                                    'newPubblication' => true,
+                                    'dateSigned' => '2020-01-01',
+
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
+                                [
+                                    'dateHourStart' => '2012-12-27 12:30:00',
+                                    'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                    'summary' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+                                    'url' => '/url/di/test',
+                                    'urlCta' => '/url/di/view',
+                                    'type' => 'Evento typeDefault',
+                                ]
+                            );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- eventi lista-->
+            <section class="pt-5">
+                <h2 class="it-page-section" id="events-list">Eventi Lista</h2>
+                <div class="bd-example">
+                    <div class="event-list-container">
+                        <div class=" row flex-wrap">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
+                                [
+                                    'dateHourStart' => '2012-12-12 12:00:00',
+                                    'dateHourEnd' => '2012-12-13 15:00:00',
+                                    'title' => 'La comunicazione green ai tempi del covid',
+                                    'type' => 'Tipo evento',
+                                    'newPubblication' => true,
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
+                                [
+                                    'dateHourStart' => '2012-12-12 12:00:00',
+                                    'dateHourEnd' => '2012-12-12 15:00:00',
+                                    'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                    'type' => 'Tipo evento',
+                                    'isPaid' => false,
+                                    'availableSeats' => '48',
+                                    'newPubblication' => true,
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event-item',
+                                [
+                                    'dateHourStart' => '2012-12-12 12:00:00',
+                                    'title' => 'io sono una stringa da pochi caratteri',
+                                    'type' => 'Tipo evento',
+                                    'isPaid' => true,
+                                    'availableSeats' => '48',
+                                ]
+                            );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- eventi scope-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="events-scope">Eventi scope</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-eventi',
+                        [
+                            'dateHourStart' => '2012-12-27 12:30:00',
+                            'dateHourEnd' => '2012-12-27 12:30:00',
+                            'title' => 'Tavola rotonda sull\'inquinamento nei mari',
+                            'summary' => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tempor magna. Aliquam consectetur tellus et posuere vestibulum. Suspendisse euismod eros est, id rutrum felis cursus at. Duis turpis urna, laoreet quis malesuada rutrum, lobortis nec diam. Phasellus ut nisl enim.',
+                            'url' => '/url/di/test',
+                            'urlCta' => '/url/di/view',
+                            'type' => 'Evento typeDefault',
+                            'isPaid' => true,
+                            'availableSeats' => '48',
+                            'location' => 'Palazzo Roverella',
+                            'address' => 'via della pioppa, 30',
+                            'city' => 'Milano',
+                            'province' => 'MI',
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--modali-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="modal" class="pb-2">Modali</h2>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Bottone per modale generica
+                    </button>
+
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/modal_validation'
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--news-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="news">News</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                        [
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=6',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showAvatar' => true,
+                            'newPubblication' => true,
+                            'avatarWrapperSize' => 'lg',
+                            'categorySize' => 'lead',
+                            'titleSize' => 'h3',
+                            'descriptionSize' => 'lead',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'date' => '2020-12-12'
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--news card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="news-list">News card</h2>
+                <div class="bd-example">
+                    <div class="list-news-container row variable-gutters">
+
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=2',
+                                'nameSurname' => 'Paolo Bianchi',
+                                'newPubblication' => true,
+                                'showAvatar' => true,
+                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                //classi per la dimensione font/avatar
+                                'avatarWrapperSize' => 'md',
+
+                                'descriptionSize' => 'small',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'date' => '2020-12-12'
+
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=3',
+                                'nameSurname' => 'Paolo Bianchi',
+
+                                'showAvatar' => true,
+                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                'avatarWrapperSize' => 'md',
+                                'descriptionSize' => 'small',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=4',
+                                'nameSurname' => 'Paolo Bianchi',
+                                'newPubblication' => true,
+                                'showAvatar' => true,
+                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                'avatarWrapperSize' => 'md',
+                                'descriptionSize' => 'small',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=44',
+                                'nameSurname' => 'Paolo Bianchi',
+
+                                'showAvatar' => true,
+                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                //classi per la dimensione font/avatar
+                                'avatarWrapperSize' => 'md',
+                                'descriptionSize' => 'small',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'image' => 'https://picsum.photos/1600/900?random=55',
+                                'nameSurname' => 'Paolo Bianchi',
+
+                                'showAvatar' => true,
+                                'widthColumn' => 'col-lg-4 col-md-6 col-sm-12',
+                                'avatarWrapperSize' => 'md',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                'descriptionSize' => 'small',
+                                'title' => 'Lorem ipsum dolor sit amet',
+                                'date' => '2020-12-12'
+                            ]
+                        );
+                        ?>
+                    </div>
+            </section>
+            <!--News Carousel-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="carousel-news" class="pb-2">News Carousel</h2>
+                </div>
+                <div class="bd-example">
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-carousel-news'
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--news lista-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="news-list-item">News lista</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                        [
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=21',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showSignature' => true,
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'date' => '2020-12-12'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                        [
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=22',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showSignature' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'date' => '2020-12-12'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
+                        [
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=2',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showSignature' => true,
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
+                            'date' => '2020-12-12'
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--Organizzazioni card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="organization">Organizzazioni card</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                        [
+                            'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
+                            'organizzatore' => 'Pesce Azzurro Cefalù',
+                            'removeLink' => true,
+                            'showCtaEsplora' => true,
+                            'showIcon' => true,
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--organizzazioni lista-->
+            <section class="py-5 ">
+                <h2 class="it-page-section" id="organization-list">Organizzazioni lista</h2>
+                <div class="bd-example">
+                    <div class="row variable-gutters users-list-container justify-content-start">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                            [
+                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=1',
+                                'organizzatore' => 'Fidagel',
+                                'removeLink' => true,
+                                'showCtaEsplora' => true,
+                                'additionalClass' => 'border-light border-bottom py-3',
+                                'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+                            ]
+                        );
+                        ?>
+
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                            [
+                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=2',
+                                'organizzatore' => 'Pesce Azzurro Cefalù',
+                                'removeLink' => true,
+                                'showCtaEsplora' => true,
+                                'additionalClass' => 'border-light border-bottom py-3',
+                                'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+
+                            ]
+                        );
+                        ?>
+
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
+                            [
+                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=3',
+                                'organizzatore' => 'Ittica Taddeo Lucia & Co',
+                                'removeLink' => true,
+                                'showCtaEsplora' => true,
+                                'additionalClass' => 'border-light border-bottom py-3',
+                                'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+
+                            ]
+                        );
+                        ?>
+                    </div>
+
+                </div>
+            </section>
+            <!--Organizzazioni Scope-->
+            <section class="py-5 ">
+                <h2 class="it-page-section" id="scope-organizzazioni">Organizzazioni scope</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-organizzazioni',
+                        [
+                            'espositoreImage' => 'https://picsum.photos/1600/900?random=10',
+                            'espositoreTitle' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'espositoreSito' => 'www.dragoconserve.it',
+                            'espositorePIva' => '012345678912',
+                            'espositoreReferente' => 'Giuliano Bianco',
+                            'espositoreIndirizzo' => 'Via Stentiello 10/a Siracusa',
+                            'espositoreEmail' => 'info@dragoconserve.it',
+                            'espositoreTelefono' => '090 1234567',
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--Podcast lista-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="podcast-list">Podcast lista</h2>
+                <div class="bd-example">
+                    <div class="d-flex">
+                        <div class="podcast-list-container col-12">
+                            <div class=" row flex-wrap">
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
+                                    [
+                                        'lastEpisodeDate' => '25 Settembre 2020',
+                                        'podcastDescription' => 'Lorem ipsum dolor sit amet',
+                                        'podcastName' => 'La comunicazione green ',
+                                        'podcastCategory' => 'Categoria',
+                                        'podcastCover' => 'https://picsum.photos/1600/900?random=25',
+
+                                    ]
+                                );
+                                ?>
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
+                                    [
+                                        'lastEpisodeDate' => '25 Settembre 2020',
+
+                                        'podcastName' => 'io sono una stringa cortina ',
+                                        'podcastCategory' => 'informatica',
+                                        'podcastCover' => 'https://picsum.photos/1600/900?random=55',
+
+                                    ]
+                                );
+                                ?>
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast',
+                                    [
+                                        'lastEpisodeDate' => '25 Luglio 2020',
+                                        'podcastDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui eros, feugiat at scelerisque sed, ultrices eget ex.  ',
+                                        'podcastName' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                        'podcastCategory' => 'innovazione',
+                                        'podcastCover' => 'https://picsum.photos/1600/900?random=15',
+
+                                    ]
+                                );
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--podcast card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="podcast-puntate-list">Podcast card </h2>
+                <div class="bd-example">
+                    <div class="d-flex">
+                        <div class="event-list-container">
+                            <div class=" row flex-wrap">
 
 
 
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                [
-                  'title' => 'Discussione con nome un pò più lungo e complesso',
-                  'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-                  'date' => '2020-12-12',
-                  'url' => '#',
-                  'numbersOfAnswer' => '3',
-                  'numbersOfVisits' => '4',
-                  'updatedAt' => '2012-12-12',
-                  'image' => 'https://picsum.photos/1600/900?random=3',
-                  'nameSurname' => 'Paolo Bianchi',
-                  'avatarWrapperSize' => 'md',
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast-puntata',
+                                    [
+                                        'podcastCover' => 'https://picsum.photos/1600/900?random=45',
+                                        'podcastName' => 'io sono una stringa cortina ',
+                                        'podcastDescription' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui eros, feugiat at scelerisque sed, ultrices eget ex. Nunc a tortor et eros iaculis tincidunt at hendrerit dolor. ',
+                                        'episodeDate' => '25 Settembre 2020',
+                                        'episodeDuration' => '35',
+                                    ]
+                                );
+                                ?>
 
-                  'nameSurnameLastComment' => 'Giorgio Mariano',
-                  'lastCommentDiscussion' => 'Wow! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                  'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
-              Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
-              Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
+                                <?=
+                                $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-podcast-puntata',
+                                    [
+                                        'podcastCover' => 'https://picsum.photos/1600/900?random=46',
+                                        'podcastName' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                        'podcastDescription' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                                        'episodeDate' => '25 Settembre 2020',
 
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                [
-                  'title' => 'Discussione Planner',
-                  'communityTitle' => 'Planner 2.0 ma con nome più lungo',
-                  'date' => '2020-12-12',
-                  'url' => '#',
-                  'numbersOfAnswer' => '3',
-                  'numbersOfVisits' => '4',
-                  'updatedAt' => '2012-12-12',
-                  'image' => 'https://picsum.photos/1600/900?random=2',
-                  'nameSurname' => 'Paolo Bianchi',
-
-                  'newPubblication' => true,
-                  'avatarWrapperSize' => 'md',
-
-                  'nameSurnameLastComment' => 'Luisa Recca',
-                  'lastCommentDiscussion' => 'Grande! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                  'description' => 'Sono una descrizione... obbligatoria?'
-
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-discussions-card',
-                [
-                  'title' => 'Discussione Planner',
-                  'communityTitle' => 'Planner 2.0',
-                  'date' => '2020-12-12',
-                  'url' => '#',
-                  'numbersOfAnswer' => '3',
-                  'numbersOfVisits' => '4',
-                  'updatedAt' => '2012-12-12',
-                  'image' => 'https://picsum.photos/1600/900?random=1',
-                  'nameSurname' => 'Paolo Bianchi',
-
-                  'newPubblication' => true,
-                  'avatarWrapperSize' => 'md',
-
-                  'nameSurnameLastComment' => 'Mario Franchi',
-                  'lastCommentDiscussion' => 'Esatto! Mi sembra un ottimo spunto, in Commissione stiamo già lavorando da qualche mese ad una proposta per le imprese green, vi terremo aggiornati.',
-                  'description' => 'La perdita di biodiversità e il commercio delle specie selvatiche sono le cause della pandemia.
-              Il rischio che le malattie siano trasmesse all’uomo è in crescita come risultato dell’avanzamento della distruzione di habitat prima intatti e della crescita del commercio (spesso illegale) di specie selvatiche.
-              Quali lezioni impariamo dalla crisi avviata dal Coronavirus per una nuova strategia a favore della biodiversità e per la riduzione del diffondersi delle epidemie?'
-
-                ]
-              );
-            ?>
-          </div>
-        </div>
-
-      </section>
-      <!--community-->
-      <section class="py-5 border-bottom">
-        <h2 id="Community">Community</h2>
-
-        <div class="row mt-4">
-          <div class="col-md-4">
-            <h3>Community Aperta</h3>
-            <h3>isOpenCommunity => true</h3>
-            <?php
-            echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
-              [
-                'image' => 'https://picsum.photos/800/450?random=1',
-                'title' => 'Chiacchere',
-                'isOpenCommunity' => true,
-                'isSigned' => true,
-              ]
-            );
-            ?>
-          </div>
-          <div class="col-md-4">
-            <h3>Community Riservata</h3>
-            <h3>isReservedCommunity => true</h3>
-            <?php
-            echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
-              [
-                'image' => 'https://picsum.photos/1600/900?random=2',
-                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborea',
-                'isReservedCommunity' => true,
-                'isSigned' => true,
-
-              ]
-            );
-            ?>
-          </div>
-          <div class="col-md-4">
-            <h3>Community Privata</h3>
-            <h3>isPrivateCommunity => true</h3>
-            <?php
-            echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-community',
-              [
-                'image' => 'https://picsum.photos/1600/900?random=3',
-                'title' => 'Chiacchere',
-                'isPrivateCommunity' => true,
-                'isSigned' => true,
-
-              ]
-            );
-            ?>
-          </div>
-        </div>
-      </section>
-
-      <!--lista community-->
-      <section class="py-5 border-bottom">
-        <h2 id="Community-list">Lista di community</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-community',
-            [
-              'numberOfElements' => 4,
-              'elementsForRow' => 3,
-              
-            ]
-          );
-        ?>
-      </section>
-
-      <!--eventi-->
-      <section class="py-5 border-bottom">
-        <h2 id="events">Eventi</h2>
-        <div class="row">
-          <div class="col-md-12">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
-                [
-                  'dateHourStart' => '2012-12-27 12:30:00',
-                  'title' => 'Titolo dell\'evento',
-                  'summary'  => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
-                  'url' => '/url/di/test',
-                  'urlCta' => '/url/di/event-signup',
-                  'type' => 'Evento typeDefault',
-                  'isPaid' => true,
-                  'availableSeats' => '48',
-                  
-                ]
-              );
-            ?>
-          </div>
-        </div>
-      </section>
-
-      <!--lista eventi-->
-      <section class="pt-5 ">
-        <h2 id="events-list">Lista eventi</h2>
-
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-event',
-            [
-              'numberOfElements'  => 3,
-              
-            ]
-          );
-        ?>
-      </section>
-
-      <!--card eventi-->
-      <section class="pt-5 ">
-        <h2 id="events-list">Card eventi</h2>
-
-        <div class="row">
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
-                [
-                  'dateHourStart' => '2012-12-27 12:30:00',
-                  'title' => 'Titolo dell\'evento',
-                  'summary'  => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
-                  'url' => '/url/di/test',
-                  'urlCta' => '/url/di/event-signup',
-                  'type' => 'Evento typeDefault',
-                  'isPaid' => false,
-                  'availableSeats' => '48',
-                  'newPubblication' => true,
-                ]
-              );
-            ?>
-          </div>
-          <div class="col-md-6">
-            <?=
-              $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-event',
-                [
-                  'dateHourStart' => '2012-12-27 12:30:00',
-                  'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                  'summary'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-                  'url' => '/url/di/test',
-                  'urlCta' => '/url/di/view',
-                  'type' => 'Evento typeDefault',
-                ]
-              );
-            ?>
-          </div>
-        </div>
-      </section>
-
-      <!--scope eventi-->
-      <section class="py-5 border-bottom">
-        <h2 id="events-scope">Scope Eventi</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-scope-eventi',
-            [
-              'dateHourStart' => '2012-12-27 12:30:00',
-              'dateHourEnd' => '2012-12-27 12:30:00',
-              'title' => 'Tavola rotonda sull\'inquinamento nei mari',
-              'summary'  => 'con Mario Rossi, Sandro Verdi e Nicoletta Bianchi',
-              'description'  => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tempor magna. Aliquam consectetur tellus et posuere vestibulum. Suspendisse euismod eros est, id rutrum felis cursus at. Duis turpis urna, laoreet quis malesuada rutrum, lobortis nec diam. Phasellus ut nisl enim.',
-              'url' => '/url/di/test',
-              'urlCta' => '/url/di/view',
-              'type' => 'Evento typeDefault',
-              'isPaid' => true,
-              'availableSeats' => '48',
-              'location' => 'Palazzo Roverella',
-              'address' => 'via della pioppa, 30',
-              'city' => 'Milano',
-              'province' => 'MI',
-            ]
-          );
-        ?>
-      </section>
-
-      <!--card documenti-->
-      <section class="py-5 border-bottom">
-        <h2 id="documents-card">Documenti card</h2>
-        <div class="row variable-gutters">
+                                    ]
+                                );
+                                ?>
 
 
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-              [
-                'title' => '2020 Verso la Strategia Regionale per lo Sviluppo Sostenibile',
-                'fileName' => 'nome_del_file.doc',
-                'fileUrl' => 'url/di/esempio',
-                'type' => 'doc',
-                'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                'nameSurname' => 'Mario Rossi',
-                'size' => '300',
-                'category' => 'Presentazioni e materiale illustrativo',
-                'community' => 'Gruppo 6 UniBS Crescini',
-                'dateSyncDrive' => '2012-12-27 12:30:00',
-                'newPubblication' => true,
-              ]
-            );
-          ?>
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-              [
-                'title' => 'ARIA S.p.A., genesi e orizzonti',
-                'fileName' => 'nome_del_file.zip',
-                'fileUrl' => 'url/di/esempio',
-                'type' => 'zip',
-                'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                'nameSurname' => 'Mario Rossi',
-                'size' => '300',
-                'category' => 'Presentazioni e materiale illustrativo',
-                'community' => 'Gruppo 6 UniBS Crescini',
-                'versionFile' => '500',
-                'newPubblication' => true,
-              ]
-            );
-          ?>
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-              [
-                'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                'fileName' => 'nome_del_file.jpg',
-                'fileUrl' => 'url/di/esempio',
-                'type' => 'jpg',
-                'description' => 'io sono una stringa',
-                'nameSurname' => 'Mario Rossi',
-                'size' => '300',
-                'category' => 'Presentazioni e materiale illustrativo',
-                'community' => 'Gruppo 6 UniBS Crescini',
-                'versionFile' => '1',
-              ]
-            );
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--proposte di collaborazione-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="proposte-collaborazione">Proposte di collaborazione</h2>
+                <div class="bd-example">
+
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
+                        [
+                            'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(293),
+                            //                            'dateEnd' => '12-12-2021',
+                            //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            //                            'newPubblication' => true,
+                            //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                            //                            'forUsers' => 'Tutti gli utenti',
+                            //                            'status' => 'Validata',
+                            //                            'numInteressi' => '8',
+
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
+                        [
+                            'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(292),
+
+                            //                            'dateEnd' => '12-12-2021',
+                            //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            //                            'newPubblication' => true,
+                            //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                            //                            'forUsers' => 'Tutti gli utenti',
+                            //                            'status' => 'Validata',
+                            //                            'numInteressi' => '88'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
+                        [
+                            'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(291),
+
+                            //                            'dateEnd' => '12-12-2021',
+                            //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            //
+                            //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                            //                            'forUsers' => 'Tutti gli utenti',
+                            //                            'status' => 'Validata',
+                            //                            'numInteressi' => '0'
+                        ]
+                    );
+                    ?>
+
+                </div>
+            </section>
+
+            <!--proposte di collaborazione een-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="proposte-collaborazione-een">Proposte di collaborazione EEN</h2>
+                <div class="bd-example">
+
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
+                        [
+                            'dateEnd' => '12-12-2021',
+                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'newPubblication' => true,
+                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                            'type' => 'Technology Request',
+                            'country' => 'Italia',
+                            'dateUpdate' => '12-02-2021',
+                            'dateSubmit' => '12-02-2021',
+                            'idProposta' => 'TRCZ20200806001'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
+                        [
+                            'dateEnd' => '12-12-2021',
+                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'newPubblication' => true,
+                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                            'type' => 'Technology Request',
+                            'country' => 'Czech',
+                            'dateUpdate' => '12-02-2021',
+                            'dateSubmit' => '12-02-2021',
+                            'idProposta' => 'TRCZ20200806001'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione-een',
+                        [
+                            'dateEnd' => '12-12-2021',
+                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
+                            'type' => 'Technology Request',
+                            'country' => 'Poland',
+                            'dateUpdate' => '12-02-2021',
+                            'dateSubmit' => '12-02-2021',
+                            'idProposta' => 'TRCZ20200806001'
+                        ]
+                    );
+                    ?>
+
+                </div>
+            </section>
+
+            <!--risultati di ricerca lista-->
+            <section class="py-5">
+
+                <h2 class="it-page-section" id="search-results-item">Risultati Ricerca lista</h2>
+                <div class="bd-example">
+                    <div class="it-list-wrapper list-search">
+                        <ul class="it-list">
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-search-results-item',
+                                [
+                                    'image' => 'https://picsum.photos/1600/900?random=2',
+                                    'type' => 'news',
+                                    'title' => 'Lorem ipsum dolor sit amet, consectetur ricerca 1',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-search-results-item',
+                                [
+                                    'image' => 'https://picsum.photos/1600/900?random=22',
+                                    'type' => 'type',
+                                    'title' => 'Lorem ipsum dolor sit amet, consectetur ricerca 2',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                ]
+                            );
+                            ?>
+                            <?=
+                            $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-search-results-item',
+                                [
+                                    'image' => 'https://picsum.photos/1600/900?random=6',
+                                    'type' => 'contenuto',
+                                    'title' => 'Ricerca 3 elit Lorem ipsum dolor sit amet elit',
+                                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                ]
+                            );
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!--sondaggi card-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="sondaggi-card">Sondaggi card</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-card',
+                        [
+                            'image' => 'https://picsum.photos/1600/900?random=21',
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elikadbf anfiownf inwolnwklf inwocnwnv lnwlcnwov lwnlwnvwsnvownclsnvoiwnvwevoun vv',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'dateStart' => '2020-09-12',
+                            'dateEnd' => '2020-12-12',
+                            'pollState' => '2'
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!-- sondaggi lista-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="sondaggi-lista">Sondaggi lista</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-item-list',
+                        [
+                            'image' => 'https://picsum.photos/1600/900?random=2',
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'dateStart' => '2020-09-12',
+                            'dateEnd' => '2020-12-12',
+                            'pollState' => '1'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-item-list',
+                        [
+                            'image' => 'https://picsum.photos/1600/900?random=22',
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'dateStart' => '2020-09-12',
+                            'dateEnd' => '2020-12-12',
+                            'pollState' => '2'
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-sondaggi-item-list',
+                        [
+                            'image' => 'https://picsum.photos/1600/900?random=6',
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'dateStart' => '2020-09-12',
+                            'dateEnd' => '2020-12-12',
+                            'pollState' => '3'
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--torna indietro-->
+            <section class="py-5">
+                <h2 class="it-page-section" id="back-button">Torna Indietro</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-back-button'
+                    );
+                    ?>
+                </div>
+            </section>
+            <!--tag-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="tag-manage" class="pb-2">Tag </h2>
+                </div>
 
 
-          ?>
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-              [
-                'title' => 'Documentazione (Rapporto Preliminare VAS, Documento di Orientamento del PPSSC, altro materiale)',
-                'fileUrl' => 'url/di/esempio',
-                'typeFolder' => 'folder',
-                'nameSurname' => 'Mario Rossi',
-                'community' => 'Gruppo 6 UniBS Crescini',
-              ]
-            );
+                <div class="bd-example">
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag-manage',
+                        [
+                            'targetTagTitle' => 'Gli interessi su OPEN 2',
+                            'source' => [
+                                '1' => [
+                                    'id' => 'checkbox-1',
+                                    'name' => 'Nome a caso',
+                                ],
+                                '2' => [
+                                    'id' => 'checkbox-2',
+                                    'name' => 'Elemento 2',
+                                ],
+                                '3' => [
+                                    'id' => 'checkbox-3',
+                                    'name' => 'checkbox',
+                                ],
 
-          ?>
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-              [
-                'title' => 'Verbale seduta di insediamento',
-                'fileName' => 'nome_del_file.xls',
-                'fileUrl' => 'url/di/esempio',
-                'type' => 'xls',
-                'description' => 'io sono una stringa',
-                'nameSurname' => 'Mario Rossi',
-                'size' => '300',
-                'category' => 'Presentazioni e materiale illustrativo',
-                'community' => 'Gruppo 6 UniBS Crescini',
-                // 'numberAttachments' => '4'
-              ]
-            );
+                            ],
+                            'target' => [
+                                '4' => [
+                                    'id' => 'checkbox-4',
+                                    'name' => 'Elemento 4',
+                                ],
+                                '5' => [
+                                    'id' => 'checkbox-5',
+                                    'name' => 'Elemento 5',
+                                ],
+                                '6' => [
+                                    'id' => 'checkbox-6',
+                                    'name' => 'Elemento 6',
+                                ],
+                                '7' => [
+                                    'id' => 'checkbox-7',
+                                    'name' => 'Elemento 7',
+                                ],
+                                '8' => [
+                                    'id' => 'checkbox-8',
+                                    'name' => 'Elemento 8',
+                                ],
+                                '9' => [
+                                    'id' => 'checkbox-9',
+                                    'name' => 'Elemento 9',
+                                ],
 
-          ?>
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
-              [
-                'title' => 'Guida per i partecipanti - Community Primo Forum pubblico procedura di VAS',
-                'fileUrl' => 'url/di/esempio',
-                'description' => 'io sono una stringa',
-                'nameSurname' => 'Mario Rossi',
-                'category' => 'Presentazioni e materiale',
-                'community' => 'Gruppo 6 UniBS Crescini',
-              ]
-            );
+                            ],
+                            'manageLinkLabel' => 'Vai alla gestione completa dei tag nel tuo profilo',
+                            'manageLinkTitle' => 'Vai alla gestione completa dei tag nel tuo profilo',
+                            'manageLinkCssClass' => 'font-weight-semibold',
+                            'manageLinkHref' => '#',
+                            'submitButtonLabel' => 'Salva',
+                            'infoTooltip' => 'Informazioni per la corretta compilazione',
 
-          ?>
-        </div>
-      </section>
+                        ]
+                    );
+                    ?>
+                </div>
 
+            </section>
+            <!--tag-element-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="tag" class="pb-2">Tag</h2>
+                </div>
 
-      <!--lista documenti-->
-      <section class="py-5 border-bottom">
-        <h2 id="document-list">Lista documenti</h2>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
-            [
-              'date' => '2012-12-12',
-              'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
-              'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-              'category' => 'Categoria di test',
-              'image' => 'https://picsum.photos/1600/900?random=25',
-              'type' => 'pdf',
-              'size' => '350 kb',
-              'nameSurname' => 'Mario Rossi',
-              'community' => 'Community Common',
-              'url' => 'url/del/dettaglio',
-              'fileUrl' => 'url/del/documento',
-              'fileName' => 'nome_del_documento.pdf',
-              'newPubblication' => true,
-            ]
-          );
-        ?>
-        <?=
-          $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-item',
-            [
-              'date' => '2012-12-12',
-              'description' => 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet',
-              'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-              'category' => 'Categoria di test',
-              'image' => 'https://picsum.photos/1600/900?random=25',
-              'type' => 'pdf',
-              'size' => '350 kb',
-              'nameSurname' => 'Mario Rossi',
-              'community' => 'Community Common',
-              'url' => 'url/del/dettaglio',
-              'fileUrl' => 'url/del/documento',
-              'fileName' => 'nome_del_documento.pdf',
-            ]
-          );
-        ?>
-      </section>
+                <div class="bd-example">
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
+                        [
+                            'label' => 'Design',
+                        ]
+                    );
+                    ?>
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
+                        [
+                            'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
+                            'depth' => '2',
+                            'treeDepthLabels' => ['Tematiche Strategiche Regionali', 'AGROALIMENTARE']
+                        ]
+                    );
+                    ?>
 
-      <!--lista podcast-->
-      <section class="py-5 border-bottom">
-        <h2 id="podcast-list">Lista podcast</h2>
-        <div class="d-flex">
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-podcast'
-            );
-          ?>
-        </div>
-      </section>
+                </div>
 
-      <!--lista puntate-->
-      <section class="py-5 border-bottom">
-        <h2 id="podcast-puntate-list">Lista puntate </h2>
-        <div class="d-flex">
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-podcast-puntata'
-            );
-          ?>
-        </div>
-      </section>
+            </section>
 
-      <section class="py-5 border-bottom">
-        <h2 id="calendar-carousel" class="mb-5">Carousel Calendario</h2>
-        <div>
-          <!-- 2 variabili: ognuna per dire quale è la label attivo/disattivo -->
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-calendar-carousel',
-              [
-                //array con i filtri che voglio impostare
-                'filterList' => ['Tutto', 'Consigli-comunali', 'Eventi', 'Scadenze'],
-              ]
-            );
-          ?>
-        </div>
-      </section>
+            <!--Utenti-->
+            <section class="py-5 ">
+                <h2 class="it-page-section" id="view-list-avatar">Utenti lista</h2>
+                <div class="bd-example">
 
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
+                        [
+                            'nameSurname' => 'Paolo Bianchi',
+                            'avatarWrapperSize' => 'md',
+                            'url' => '#',
+                            'additionalInfo' => 'Programmatore',
+                            'collaborazionePrevalente' => 'Unità di Ricerca INSTM presso Dipartimento di Scienza dei Materiali - Univ- Milano Bicocca',
+                            'facilitatore' => 'Redazione Open Innovation',
+                            'statoProfilo' => 'Validato',
+                            'showCtaMsg' => 'true',
+                            'ctaMsg' => 'Collegati',
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
+                        [
+                            'nameSurname' => 'Michelito La Fresca',
+                            'avatarWrapperSize' => 'md',
+                            'url' => '#',
+                            'additionalInfo' => 'Web Designer',
+                            'collaborazionePrevalente' => 'Elite Division srl',
+                            'facilitatore' => 'Marco Bianchi',
+                            'statoProfilo' => 'Modifica in corso',
+                            'showCtaMsg' => 'true',
+                            'ctaMsg' => 'Collegati',
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
+                        [
+                            'nameSurname' => 'Luca Lodiato',
+                            'avatarWrapperSize' => 'md',
+                            'url' => '#',
+                            'additionalInfo' => 'Presidentissimo',
+                            'collaborazionePrevalente' => 'Mads srl',
+                            'facilitatore' => 'Angelo Rocchi',
+                            'statoProfilo' => 'Non validato',
+                            'showCtaJoin' => 'true',
+                            'ctaJoinMsg' => 'Invia messaggio',
+                        ]
+                    );
+                    ?>
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-user',
+                        [
+                            'nameSurname' => 'Marcello Aiello',
+                            'avatarWrapperSize' => 'md',
+                            'url' => '#',
+                            'additionalInfo' => 'maestro',
+                            'collaborazionePrevalente' => 'Divita snc',
+                            'facilitatore' => 'Andrea Fiori',
+                            'statoProfilo' => 'Da validare',
+                            'showCtaJoin' => 'true',
+                            'ctaJoinMsg' => 'Invia messaggio',
+                        ]
+                    );
+                    ?>
 
+                </div>
+            </section>
+            <!--wizard-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="wizard" class="pb-2">Wizard steps </h2>
+                </div>
 
-
-      <!--form-->
-      <section class="py-5 border-bottom">
-        <div>
-          <h1 id="formExample" class="no_toc">Form</h1>
-
-          <h2 class="mb-2">Singoli componenti</h2>
-          <p> Elenco dei singoli componenti che possono essere inseriti in un form.
-            Ogni volta che si istanzia uno di questi elementi è possibile passare al componente renderizzato i parametri di cui si hanno bisogno
-            (per esempio il valore del placeholder, il valore dell'id dell'input..).
-          </p>
-          <p>Per fare questo passaggio viene passato un array chiave valore mentre viene chiamato il render del componente, nel seguente modo:
-          </p>
-          <pre>
-          <code class="language-php">
-          echo $this->render(
-            '@vendor/open20/design/src/components/bootstrapitalia/views/nome-vista-componente', 
-            [ //array chiave-valore con i parametri 
-            'nome-variabile' => 'valore variabile', 
-            ... 
-            ]
-          );
-          </code>
-          </pre>
-          <p class="mb-4">In seguito poi nella vista verranno visualizzati i valori delle variabili passate.
-          </p>
-          <p class="mb-4">Elenco options custom (da implementare nei componenti che ancora non le prevedono)
-            <ul>
-              <li>ariaDescribedBy: testo aggiuntivo di supporto alla compilazione del campo (nominato anche hint)</li>
-              <li>helperTooltip: testo aggiuntivo di supporto alla label per la comprensione del campo</li>
-              <li>infoTooltip: testo aggiuntivo di supporto per la compilazione corretta del campo (dipende dalla presenza di ariaDescribedBy)</li>
-            </ul>
-          </p>
-          <div class="my-3">
-            <h2 class="mb-2">Checkbox</h2>
-            <!--checkbox-->
-            <div>
-              <div class="form-group">
+                <div class="bd-example">
 
 
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-checkbox',
-                  [
-                    'label' => 'Checkbox',
-                    'inputId' => 'EsempioCheckbox'
-                  ]
-                );
-                ?>
-              </div>
-            </div>
-            <!--radio button -->
-            <div>
-              <h2 class="mt-4">Radio button</h2>
-              <div class="form-group">
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-radio-button',
-                  [
-                    'label' => 'Checkbox',
-                    'inputId' => 'EsempioRadioButton'
-                  ]
-                );
-                ?>
-              </div>
-            </div>
-            <!--datepicker-->
-            <h2 class="my-5">Date picker</h2>
-            <div class="form-group">
-              <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-datepicker',
-                [
-                  'label' => 'Checkbox',
-                  'inputId' => 'EsempioCalendar'
-                ]
-              );
-              ?>
-            </div>
-            <!--select-->
-            <h2 class="my-5">Select con campo cerca</h2>
-            <div class="form-group">
-              <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-select-live-search',
-                [
-                  'label' => 'Input campo select',
-                  'inputId' => 'EsempioSelect'
-                ]
-              );
-              ?>
-            </div>
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/wizard_steps'
+                    );
+                    ?>
 
-            <!--input textarea-->
-            <h2 class="my-5">Text area</h2>
-            <div class="form-group">
-              <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-textarea',
-                [
-                  'label' => 'Input campo textarea',
-                  'inputId' => 'EsempioTextArea'
 
-                ]
-              );
-              ?>
-            </div>
+                </div>
+            </section>
 
-            <!--input email e pwd-->
-            <h2 id="vari-input" class="my-5">Vari input</h2>
-            <div>
-              <div class="form-group">
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-email',
-                  [
-                    'label' => 'Input campo Email',
-                    'inputId' => 'EsempioEmail',
-                    'type' => 'email'
-                  ]
-                );
-                ?>
-              </div>
-              <div class="form-group">
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-password',
-                  [
-                    'label' => 'Input campo Password',
-                    'inputId' => 'EsempioPassword',
-                    'type' => 'password'
-                  ]
-                );
-                ?>
-              </div>
-              <div class="form-group">
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-text',
-                  [
-                    'label' => 'Input campo testo generico',
-                    'inputId' => 'EsempioTestoGenerico',
-                    'type' => 'text',
-                    'options' => [
-                      'aria-describedby' => 'aria-describedby options',
-                      'infoTooltip' => 'tooltip info text'
+            <!--widget il mio profilo-->
+            <section class="py-5">
+                <div>
+                    <h2 class="it-page-section" id="widget-mio-profilo" class="pb-2">Widget Il mio profilo</h2>
+                </div>
+                <div class="bd-example">
+                    <?php
+                    $tag1 = $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
+                        [
+                            'label' => 'Design',
+                        ]
+                    );
+                    ?>
+                    <?php
+                    $tag2 = $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-tag',
+                        [
+                            'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
+                            'depth' => '2',
+                            'treeDepthLabels' => ['Tematiche Strategiche Regionali', 'AGROALIMENTARE']
+                        ]
+                    );
+                    $userTags = $tag1 . $tag2;
+                    ?>
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-widget-myprofile',
+                        [
+                            'numberNewContent' => '1',
+                            'image' => 'https://picsum.photos/1600/900?random=2',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut laborea',
+                            'userTags' => $userTags
+                        ]
+                    );
+                    ?>
+
+
+
+                </div>
+
+            </section>
+
+            <!--form-->
+            <section class="py-5 border-bottom border-top">
+                <div>
+                    <h1 id="formExample" class="no_toc">Form</h1>
+
+                    <h2 class="it-page-section" class="mb-2">Singoli componenti</h2>
+                    <p> Elenco dei singoli componenti che possono essere inseriti in un form.
+                        Ogni volta che si istanzia uno di questi elementi è possibile passare al componente renderizzato i parametri di cui si hanno bisogno
+                        (per esempio il valore del placeholder, il valore dell'id dell'input..).
+                    </p>
+                    <p>Per fare questo passaggio viene passato un array chiave valore mentre viene chiamato il render del componente, nel seguente modo:
+                    </p>
+                    <pre>
+                    <code class="language-php">
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/nome-vista-componente', 
+                        [ //array chiave-valore con i parametri 
+                        'nome-variabile' => 'valore variabile', 
+                        ... 
+                        ]
+                    );
+                    </code>
+                    </pre>
+                    <p class="mb-4">In seguito poi nella vista verranno visualizzati i valori delle variabili passate.
+                    </p>
+                    <p class="mb-4">Elenco options custom (da implementare nei componenti che ancora non le prevedono)
+                    <ul>
+                        <li>ariaDescribedBy: testo aggiuntivo di supporto alla compilazione del campo (nominato anche hint)</li>
+                        <li>helperTooltip: testo aggiuntivo di supporto alla label per la comprensione del campo</li>
+                        <li>infoTooltip: testo aggiuntivo di supporto per la compilazione corretta del campo (dipende dalla presenza di ariaDescribedBy)</li>
+                    </ul>
+                    <div class="my-3">
+                        <h2 class="it-page-section" class="mb-2">Checkbox</h2>
+                        <!--checkbox-->
+                        <div>
+                            <div class="form-group">
+
+
+                                <?php
+                                echo $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-checkbox',
+                                    [
+                                        'label' => 'Checkbox',
+                                        'inputId' => 'EsempioCheckbox'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                        </div>
+                        <!--radio button -->
+                        <div>
+                            <h2 class="it-page-section" class="mt-4">Radio button</h2>
+                            <div class="form-group">
+                                <?php
+                                echo $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-radio-button',
+                                    [
+                                        'label' => 'Checkbox',
+                                        'inputId' => 'EsempioRadioButton'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                        </div>
+                        <!--datepicker-->
+                        <h2 class="it-page-section" class="my-5">Date picker</h2>
+                        <div class="form-group">
+                            <?php
+                            echo $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-datepicker',
+                                [
+                                    'label' => 'Checkbox',
+                                    'inputId' => 'EsempioCalendar'
+                                ]
+                            );
+                            ?>
+                        </div>
+                        <!--select-->
+                        <h2 class="it-page-section" class="my-5">Select con campo cerca</h2>
+                        <div class="form-group">
+                            <?php
+                            echo $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-select-live-search',
+                                [
+                                    'label' => 'Input campo select',
+                                    'inputId' => 'EsempioSelect'
+                                ]
+                            );
+                            ?>
+                        </div>
+
+                        <!--input textarea-->
+                        <h2 class="it-page-section" class="my-5">Text area</h2>
+                        <div class="form-group">
+                            <?php
+                            echo $this->render(
+                                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-textarea',
+                                [
+                                    'label' => 'Input campo textarea',
+                                    'inputId' => 'EsempioTextArea'
+                                ]
+                            );
+                            ?>
+                        </div>
+
+                        <!--input email e pwd-->
+                        <h2 class="it-page-section" id="vari-input" class="my-5">Vari input</h2>
+                        <div>
+                            <div class="form-group">
+                                <?php
+                                echo $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-email',
+                                    [
+                                        'label' => 'Input campo Email',
+                                        'inputId' => 'EsempioEmail',
+                                        'type' => 'email'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php
+                                echo $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-password',
+                                    [
+                                        'label' => 'Input campo Password',
+                                        'inputId' => 'EsempioPassword',
+                                        'type' => 'password'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php
+                                echo $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-text',
+                                    [
+                                        'label' => 'Input campo testo generico',
+                                        'inputId' => 'EsempioTestoGenerico',
+                                        'type' => 'text',
+                                        'options' => [
+                                            'aria-describedby' => 'aria-describedby options',
+                                            'infoTooltip' => 'tooltip info text'
+                                        ]
+                                    ]
+                                );
+                                ?>
+                            </div>
+                            <div class="form-group">
+                                <?php
+                                echo $this->render(
+                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-search',
+                                    [
+                                        'label' => 'Input campo ricerca',
+                                        'inputId' => 'EsempioInputRicerca',
+                                        'type' => 'search'
+                                    ]
+                                );
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h2 class="it-page-section" id="form-rounded" class="mb-2">Form rounded</h2>
+                    <p>Classi tag form:
+                    <p>
+                    <ul>
+                        <li>needs-validation: per i campi obbligatori del form richiede l'inserimento dei dati tramite avviso in caso di non avvenuta compilazione; </li>
+                        <li>form-rounded: classe che inserisce bordo agli input del form, sovrascrivendo gli input senza bordi di Bootstrap Italia. Nell'esempio sotto il form contiene la classe form-rounded.</li>
+                    </ul>
+                    <div class="my-4">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/form',
+                            [
+                                'label' => 'Checkbox',
+                                'inputId' => 'EsempioCheckbox'
+                            ]
+                        );
+                        ?>
+                    </div>
+            </section>
+
+
+            <section class="py-5 border-bottom">
+                <h2 class="it-page-section" id="toggle" class="mb-5">Toggles</h2>
+                <div>
+
+                    <!-- 2 variabili: ognuna per dire quale è la label attivo/disattivo -->
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-toggle',
+                        [
+                            'labelOn' => 'Attivo',
+                            'labelOff' => 'Disattivo',
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
+
+            <!--icone-->
+            <section class="py-5 border-bottom">
+                <h2 class="it-page-section" id="icone">Icone</h2>
+                <p class="lead">Informazioni e suggerimenti per l’utilizzo di icone con <a href="https://italia.github.io/bootstrap-italia/docs/utilities/icone/" target="_blank"><strong>Bootstrap Italia</strong></a> e <a href="https://materialdesignicons.com/" target="_blank"><strong>Material Design</strong></a>.</p>
+                <p>Utility per la stampa delle icone di BI e Material:</p>
+                <p><strong>BOOTSTRAP ITALIA:</strong> <mark><code> echo(DesignIcon::show('nome-icona', DesignIcon::ICON_BI))</code></mark></p>
+                <p><strong>MATERIAL:</strong> <mark><code> echo(DesignIcon::show('nome-icona', DesignIcon::ICON_MD))</code></mark></p>
+                <p>Di default viene stampata l'svg con la classe 'icon', per modificarla:<mark><code>echo (DesignIcon::show('nome-icona', DesignIcon::ICON_BI, 'classe'))</code></mark></p>
+
+            </section>
+
+            <section class="py-5 border-bottom">
+                <h2 class="it-page-section" id="icone">Toolbar plugin</h2>
+                <p class="lead">Attivabile con \Yii::$app->view->params['enablePluginToolbar'] = TRUE</p>
+                <div>
+
+                    <!-- 2 variabili: ognuna per dire quale è la label attivo/disattivo -->
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/views/layouts/parts/bi-plugin-toolbar',
+                        []
+                    );
+                    ?>
+                </div>
+            </section>
+
+            <section class="py-5 border-bottom">
+                <h2 class="it-page-section" id="moreLessText">More-Less Text</h2>
+                <?=
+                $this->render(
+                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-more-less-text',
+                    [
+                        'content' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        'limit' => '100'
                     ]
-                  ]
                 );
                 ?>
-              </div>
-              <div class="form-group">
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-search',
-                  [
-                    'label' => 'Input campo ricerca',
-                    'inputId' => 'EsempioInputRicerca',
-                    'type' => 'search'
-                  ]
-                );
-                ?>
-              </div>
-            </div>
+            </section>
 
-          </div>
-
-          <h2 id="form-rounded" class="mb-2">Form rounded</h2>
-          <p>Classi tag form:<p>
-              <ul>
-                <li>needs-validation: per i campi obbligatori del form richiede l'inserimento dei dati tramite avviso in caso di non avvenuta compilazione; </li>
-                <li>form-rounded: classe che inserisce bordo agli input del form, sovrascrivendo gli input senza bordi di Bootstrap Italia. Nell'esempio sotto il form contiene la classe form-rounded.</li>
-              </ul>
-              <div class="my-4">
-                <?php
-                echo $this->render(
-                  '@vendor/open20/design/src/components/bootstrapitalia/views/form',
-                  [
-                    'label' => 'Checkbox',
-                    'inputId' => 'EsempioCheckbox'
-                  ]
-                );
-                ?>
-              </div>
-      </section>
-
-
-      <section class="py-5 border-bottom">
-        <h2 id="toggle" class="mb-5">Toggles</h2>
-        <div>
-
-          <!-- 2 variabili: ognuna per dire quale è la label attivo/disattivo -->
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-toggle',
-              [
-                'labelOn' => 'Attivo',
-                'labelOff' => 'Disattivo',
-              ]
-            );
-          ?>
         </div>
-      </section>
-
-      <!--icone-->
-      <section class="py-5 border-bottom">
-        <h1 id="icone">Icone</h1>
-        <p class="lead">Informazioni e suggerimenti per l’utilizzo di icone con <a href="https://italia.github.io/bootstrap-italia/docs/utilities/icone/" target="_blank"><strong>Bootstrap Italia</strong></a> e <a href="https://materialdesignicons.com/" target="_blank"><strong>Material Design</strong></a>.</p>
-      </section>
-
-      <section class="py-5 border-bottom">
-        <h2 id="icone">Toolbar plugin</h2>
-        <p class="lead">Attivabile con \Yii::$app->view->params['enablePLuginToolbar'] = TRUE</p>
-        <div>
-
-          <!-- 2 variabili: ognuna per dire quale è la label attivo/disattivo -->
-          <?=
-            $this->render(
-              '@vendor/open20/design/src/views/layouts/parts/bi-plugin-toolbar',
-              []
-            );
-          ?>
-        </div>
-      </section>
-
     </div>
-  </div>
 </div>

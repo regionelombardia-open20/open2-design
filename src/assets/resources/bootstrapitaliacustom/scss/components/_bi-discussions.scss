@@ -4,6 +4,13 @@
             font-size: 0.8rem;
         }
     }
+    .user-list-container{
+        .admin-container{
+            .avatar-wrapper .avatar{
+                border: 2px solid $white;
+            }
+        }
+    }
 }
 .discussion-container-card {
     .other-info-item {

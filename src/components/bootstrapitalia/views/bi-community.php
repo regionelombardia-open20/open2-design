@@ -10,29 +10,48 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
 
 $image = (isset($image)) ? $image :  'https://picsum.photos/800/450?random=6';
+
+$isGuest = (isset($isGuest)) ? $isGuest :  \Yii::$app->user->isGuest;
 $isSigned = (isset($isSigned)) ? $isSigned :  false;
 
-$labelCtaSubscribe = (isset($customLabelCtaSubscribe)) ? $customLabelCtaSubscribe : 'Richiedi iscrizione';
-$labelCtaWaiting = (isset($customLabelCtaWaiting)) ? $customLabelCtaWaiting : 'Richiesta iscrizione inviata';
-$labelCtaWaitingTooltip = (isset($customLabelCtaWaitingTooltip)) ? $customLabelCtaWaitingTooltip : 'Sei in attesa che un community manager convalidi la richiesta per poter accedere alla community';
-$labelCtaView = (isset($labelCtaView)) ? $labelCtaView : 'Accedi alla community';
+if ($isSigned) {
+    $dateSigned = (isset($dateSigned)) ? \Yii::$app->formatter->asDate($dateSigned, 'php:d M Y') :  false;
+}
 
-if ($isReservedCommunity) {
-    $tooltipTitle = "Community riservata";
+$isClosedCommunity = (isset($isClosedCommunity)) ? $isClosedCommunity : false;
+$isPrivateCommunity = (isset($isPrivateCommunity)) ? $isPrivateCommunity : false;
+$isWaitingToSigned = (isset($isWaitingToSigned)) ? $isWaitingToSigned : false;
+
+if ($isSigned) {
+    $url = $urlSigned;
+}
+
+if (isset($hideAllCtaGuest) && $hideAllCtaGuest) {
+    $hideAllCtaGuest = \Yii::$app->user->isGuest;
+}
+
+$labelCtaSubscribe = (isset($customLabelCtaSubscribe)) ? $customLabelCtaSubscribe : Module::t('amosdesign', 'Richiedi iscrizione');
+$labelCtaWaiting = (isset($customLabelCtaWaiting)) ? $customLabelCtaWaiting : Module::t('amosdesign', 'Richiesta iscrizione inviata');
+$labelCtaWaitingTooltip = (isset($customLabelCtaWaitingTooltip)) ? $customLabelCtaWaitingTooltip : Module::t('amosdesign', 'Sei in attesa che un community manager convalidi la richiesta per poter accedere alla community');
+$labelCtaView = (isset($labelCtaView)) ? $labelCtaView : Module::t('amosdesign', 'Visita la community');
+
+if ($isClosedCommunity) {
+    $tooltipTitle = Module::t('amosdesign', "Community ristretta ai partecipanti");
     $tooltipClass = "bg-danger";
-    $tooltipIcon = "domino-mask";
+    $tooltipIcon = "eye-off";
 } else if ($isPrivateCommunity) {
-    $tooltipTitle = "Community privata";
+    $tooltipTitle = Module::t('amosdesign', "Community riservata ai partecipanti");
     $tooltipClass = "bg-warning";
     $tooltipIcon = "lock";
 } else {
     //isOpenCommunity
-    $tooltipTitle = "Community aperta";
+    $tooltipTitle = Module::t('amosdesign', "Community aperta");
     $tooltipClass = "bg-success";
     $tooltipIcon = "lock-open";
 }
@@ -59,16 +78,18 @@ $this->registerJs($js);
 
 ?>
 
-<div class="community-container p-3 <?= $widthColumn ?> d-flex flex-column justify-content-center align-items-center mb-5">
+<div class="community-container p-3 <?= $widthColumn ?> d-flex flex-column justify-content-center align-items-center mb-3 mb-md-5">
     <div class="position-relative">
-        <div class="community-image">
-            <?php if ($isReservedCommunity && !$isSigned) { ?>
-                <img alt="immagine community" class="rounded h-100 w-100" src="<?= $image ?>">
-            <?php } else { ?>
+        <div class="community-image rounded">
+            <?php if ($hideAllCtaGuest) : ?>
+                <img alt="immagine community" class="h-100 w-100" src="<?= $image ?>">
+            <?php elseif ($isClosedCommunity && !$isSigned) : ?>
+                <img alt="immagine community" class=" h-100 w-100" src="<?= $image ?>">
+            <?php else : ?>
                 <a href="<?= $url ?>" title="<?= $title ?>">
-                    <img alt="immagine community" class="rounded h-100 w-100" src="<?= $image ?>">
+                    <img alt="immagine community" class="h-100 w-100" src="<?= $image ?>">
                 </a>
-            <?php } ?>
+            <?php endif; ?>
         </div>
         <a href="javascript::void(0)" class="position-absolute" data-toggle="tooltip" title="<?= $tooltipTitle ?>">
             <svg class="icon icon-white icon-sm p-1 rounded-circle <?= $tooltipClass ?>" role="img">
@@ -76,44 +97,63 @@ $this->registerJs($js);
             </svg>
         </a>
     </div>
-    <div class="community-title-container py-3 ">
-        <?php if ($isReservedCommunity && !$isSigned) { ?>
-            <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center overflow-hidden"><?= $title ?></h3>
-        <?php } else { ?>
-            <a href="<?= $url ?>" class=" title-two-line link-list-title " title="Vai alla community <?= $title ?>">
-                <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center overflow-hidden"><?= $title ?></h3>
-            </a>
-        <?php } ?>
-    </div>
-    <div class="mt-auto">
-
-
-        <?php if ($isSigned) : ?>
-            <div class="button-container w-100 d-flex justify-content-center border-top">
-                <a href="<?= $url ?>" class="btn btn-primary btn-xs mt-4"><?= $labelCtaView ?></a>
-            </div>
+    <div class="community-title-container mw-100 py-3 ">
+        <?php if ($hideAllCtaGuest) : ?>
+            <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center title-two-line text-truncate"><?= $title ?></h3>
+        <?php elseif ($isClosedCommunity && !$isSigned) : ?>
+            <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center title-two-line text-truncate"><?= $title ?></h3>
         <?php else : ?>
-            <?php if ($isOpenCommunity) : ?>
+            <a href="<?= $url ?>" class="link-list-title " title="Vai alla community <?= $title ?>">
+                <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center overflow-hidden title-two-line text-truncate"><?= $title ?></h3>
+            </a>
+        <?php endif ?>
+    </div>
+    <div class="mt-auto text-center">
+
+        <?php if (!$hideAllCtaGuest) : ?>
+            <?php if ($isSigned) : ?>
+                <?php if($dateSigned): ?>
+                    <small class="text-muted mt-2">
+                        <?= Module::t('amosdesign', 'Iscritto il') . ' ' ?><?= $dateSigned ?>
+                    </small>
+                <?php endif ?>
+                
                 <div class="button-container w-100 d-flex justify-content-center border-top">
-                    <a href="<?= $url ?>" class="btn btn-secondary btn-xs my-3 mt-4"><?= $labelCtaView ?></a>
-                </div>
-            <?php elseif ($isReservedCommunity) : ?>
-                <div class=" w-100 d-flex justify-content-center border-top">
-                    <p class="d-flex align-items-end text-muted mt-4">
-                        <?= $labelCtaWaiting ?>
-                        <a href="javascript::void(0)" class="bi-form-field-tooltip-info" data-toggle="tooltip" data-html="true" data-original-title="Sei in attesa che un community manager convalidi la richiesta per poter accedere alla community">
-                            <span class="icon ml-1">
-                                <svg class="icon icon-xs design-theme-fill-text-muted">
-                                    <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-info-circle"></use>
-                                </svg>
-                            </span>
-                            <span class="sr-only">Sei in attesa di risposta da parte dei community manager</span>
-                        </a>
-                    </p>
+                    <a href="<?= $url ?>" class="btn btn-link btn-xs mt-2 font-weight-bold"><?= $labelCtaView ?></a>
                 </div>
             <?php else : ?>
-                <!-- $isPrivateCommunity -->
-                <!-- I can see private community only isSigned -->
+                <?php if ($isOpenCommunity) : ?>
+                    <div class="button-container w-100 d-flex justify-content-center border-top">
+                        <a href="<?= $url ?>" class="btn btn-primary btn-xs mt-2"><?= $labelCtaView ?></a>
+                    </div>
+                <?php elseif ($isPrivateCommunity) : ?>
+                    <?php if ($isWaitingToSigned) : ?>
+                        <small class="d-flex align-items-end text-muted mt-2">
+                            <?= $labelCtaWaiting ?>
+                            <a href="javascript::void(0)" class="bi-form-field-tooltip-info" data-toggle="tooltip" data-html="true" data-original-title="<?= $labelCtaWaitingTooltip ?>">
+                                <span class="icon ml-1">
+                                    <svg class="icon icon-xs design-theme-fill-text-muted">
+                                        <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-info-circle"></use>
+                                    </svg>
+                                </span>
+                                <span class="sr-only"><?= $labelCtaWaitingTooltip ?></span>
+                            </a>
+                        </small>
+                        <div class=" w-100 d-flex justify-content-center border-top">
+                            <div class="button-container w-100 d-flex justify-content-center border-top">
+                                <a href="<?= $url ?>" class="btn btn-link btn-xs mt-2 font-weight-bold"><?= $labelCtaView ?></a>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <div class="button-container w-100 d-flex justify-content-center border-top">
+                            <a href="<?= $url ?>" class="btn btn-primary btn-xs mt-2"><?= $labelCtaView ?></a>
+                        </div>
+                    <?php endif ?>
+
+                <?php else : ?>
+                    <!-- $isClosedCommunity -->
+                    <!-- I can see closed community only isSigned -->
+                <?php endif ?>
             <?php endif ?>
         <?php endif ?>
     </div>

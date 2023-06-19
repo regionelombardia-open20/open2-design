@@ -1,8 +1,7 @@
-.owl-carousel-news, .owl-carousel-preference-centre {
+.owl-carousel-design {
   overflow: hidden;
 
   .owl-carousel {
-
     //Aggiunta per carousel HP per IE
     @media #{map-get($device-media-queries, onlyIe)} {
       .owl-item {
@@ -17,24 +16,6 @@
 
       .it-single-slide-wrapper {
         height: 100%;
-
-        .container-news {
-          .card-wrapper {
-            height: 100%;
-
-            .card {
-
-              .img-responsive-wrapper,
-              .card-body {
-                @include media-breakpoint-up(xl) {
-                  width: 50%;
-                  @extend .mx-2;
-                }
-              }
-            }
-          }
-        }
-
       }
     }
 
@@ -55,7 +36,6 @@
         span {
           color: $primary;
         }
-
       }
 
       .owl-prev {
@@ -69,6 +49,7 @@
 
     .owl-dots {
       margin-top: 20px;
+      margin-bottom: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -96,8 +77,27 @@
           height: 10px;
           display: block;
           -webkit-backface-visibility: visible;
-          transition: opacity .2s ease;
+          transition: opacity 0.2s ease;
           border-radius: 30px;
+        }
+      }
+    }
+  }
+
+  // CAROUSEL NEWS
+  &.it-carousel-landscape-abstract-one-cols{
+    .container-news {
+      .card-wrapper {
+        height: 100%;
+
+        .card {
+          .img-responsive-wrapper,
+          .card-body {
+            @include media-breakpoint-up(xl) {
+              width: 50%;
+              @extend .mx-2;
+            }
+          }
         }
       }
     }
@@ -105,6 +105,6 @@
 }
 
 // CAROUSEL CALENDARIO
-.calendar-section .it-carousel-wrapper  .owl-stage{
+.calendar-section .it-carousel-wrapper .owl-stage {
   display: flex;
 }

@@ -1,5 +1,12 @@
+<?php
+
+use open20\design\Module;
+?>
 <div class="d-flex align-items-center">
-  <a href="#" aria-hidden="true" title="torna su" data-attribute="back-to-top" class="back-to-top back-to-top-small shadow">
-    <svg class="icon icon-light"><use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-arrow-up"></use></svg>
+  <a href="javascript::void(0)" aria-hidden="true" data-attribute="back-to-top" class="back-to-top back-to-top-small shadow z-index-1031">
+    <svg class="icon icon-light">
+      <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-arrow-up"></use>
+    </svg>
+    <span class="sr-only"><?= Module::t('amosdesign', 'Torna in cima alla pagina') ?></span>
   </a>
 </div>

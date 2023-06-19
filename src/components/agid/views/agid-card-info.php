@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$currentAsset = AgidDesignAsset::register($this);
+$agidAsset = AgidDesignAsset::register($this);
 
 ?>
 
@@ -10,7 +10,7 @@ $currentAsset = AgidDesignAsset::register($this);
 <div class="agid-card-info-container callout <?= $columnWidth ?>">
     <div class="callout-title">
         <svg class="icon">
-            <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#information-outline"></use>    
+            <use xlink:href="<?= $agidAsset->baseUrl ?>/sprite/material-sprite.svg#information-outline"></use>    
         </svg>
     </div>
     <p><?= $cardInfoText ?></p>

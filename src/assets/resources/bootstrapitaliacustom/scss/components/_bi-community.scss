@@ -1,18 +1,21 @@
 .community-container {
     height: auto;
     .community-image {
-        height: 60px;
-        width: 86px;
+        height: 90px;
+        width: 132px;
         overflow: hidden;
-
+        background-color: #FFF;
+        
         img {
             object-position: center;
             object-fit: cover;
+            min-height: 90px;
+            min-width: 132px;
         }
     }
 
     .community-title {
-        display: -webkit-box;
+        // display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }

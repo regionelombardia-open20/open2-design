@@ -12,9 +12,10 @@ use open20\amos\core\module\BaseAmosModule;
 use yii\helpers\VarDumper;
 
 /**
- * 
+ *
  */
-class CheckBox extends Widget {
+class CheckBox extends Widget
+{
 
 
     /**
@@ -52,42 +53,47 @@ class CheckBox extends Widget {
      */
     public $options = [];
 
-    public $inline = true; 
-    
+    public $inline = true;
+
     /**
-     * @var array the list of items for radio input 
+     * @var array the list of items for radio input
      */
     public $items = [];
-    
+
     /**
      * Initializes the widget.
      * If you override this method, make sure you call the parent implementation first.
      */
-    public function init() {
+    public function init()
+    {
         if ($this->name === null && !$this->hasModel()) {
             throw new InvalidConfigException("Either 'name', or 'model' and 'attribute' properties must be specified.");
         }
         if (!isset($this->options['id'])) {
             $this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) : $this->getId();
         }
+
         parent::init();
     }
 
     /**
      * @return bool whether this widget is associated with a data model.
      */
-    protected function hasModel() {
+    protected function hasModel()
+    {
         return $this->model instanceof Model && $this->attribute !== null;
     }
 
     public function run()
     {
-        
-        if ($this->model === null) {
-            $inputId = $this->attribute . '-id';
-        } else {
-            $inputId = BaseHtml::getInputId($this->model, $this->attribute) . '-id';
-        }
+
+        // Questo calcolo è già stato fatto in init. $this->options['id'] contiene già il valore calcolato
+//        if ($this->model === null) {
+//            $inputId = $this->attribute . '-id';
+//        } else {
+//            $inputId = BaseHtml::getInputId($this->model, $this->attribute) . '-id';
+//        }
+        $inputId = $this->options['id'];
 
         if ($this->model === null) {
             $name = $this->name;
@@ -96,14 +102,36 @@ class CheckBox extends Widget {
             $name = BaseHtml::getInputName($this->model, $this->attribute);
             $label = (is_null($this->label)) ? $this->model->getAttributeLabel($this->attribute) : $this->label;
         }
-    
+
+        if (!empty($this->options['value'])) {
+            $this->value = $this->options['value'];
+        }
+
+        // default values
+        if (!isset($this->options['required'])) {
+            $isRequired = isset($this->model) ? $this->model->isAttributeRequired($this->attribute) : false;
+            $this->options['required'] = $isRequired;
+        }
+
+        if (empty($this->options['class'])) {
+            $this->options['class'] = 'form-check-input';
+        }
+
+        if (!isset($this->options['checked'])) {
+            $attribute = $this->attribute;
+            if (!empty($this->model->$attribute)) {
+                $this->options['checked'] = true;
+            }
+        }
+
         return $this->render('bi-form-checkbox', [
             'model' => $this->model,
             'attribute' => $this->attribute,
             'name' => $name,
+            'value' => $this->value,
             'options' => $this->options,
             'items' => $this->items,
-            'inputId' => !empty($this->id)? $this->id: $inputId,
+            'inputId' => !empty($this->id) ? $this->id : $inputId,
             'label' => $label
         ]);
     }

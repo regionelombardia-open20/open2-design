@@ -44,6 +44,17 @@ $(document).ready(function () {
 });
 
 
+// PUSH UP ASSISTANNCE
+$(document).on("scroll", function () {
+  if
+    ($(document).scrollTop() >= 99) {
+    $(".bi-assistance").addClass("push-up");
+  }
+  else {
+    $(".bi-assistance").removeClass("push-up");
+  }
+});
+
 /**
  * Google Chrome fix autocomplete input field
  */
@@ -67,7 +78,8 @@ $(document).ready(function () {
 $(document).ready(function () {
   window.setTimeout( function(){
     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if (isChrome) {
+    var isEdge = /Edg/.test(navigator.userAgent)
+    if ((isChrome)||(isEdge)) {
       var allInputInPage = $('input:not([type="hidden"]):not([type="checkbox"])');
       $('input:-webkit-autofill').each(function () {
         $('label[for="' + $(this).attr('id') + '"').addClass('active');

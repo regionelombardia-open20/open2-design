@@ -4,6 +4,7 @@ $externalLink = (isset($externalLink)) ? $externalLink :  true;
 $linkText = (isset($linkText)) ? $linkText :  'leggi l\'informativa sulla privacy';
 $target = (isset($target)) ? $target :  '_self';
 $title = (isset($title)) ? $title :  'leggi l\'informativa sulla privacy';
+$privacyLink = (isset($privacyLink)) ? $privacyLink : \Yii::$app->params['linkConfigurations']['privacyPolicyLinkCommon'];
 
 ?>
 

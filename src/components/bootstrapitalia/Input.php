@@ -59,6 +59,11 @@ class Input extends Widget
      */
     public $value;
 
+//    /**
+//     * @var boolean
+//     */
+//    public $readonly = false;
+
     /**
      * @var array the HTML attributes for the input tag.
      */
@@ -111,6 +116,7 @@ class Input extends Widget
             'label' => $label,
             'options' => $this->options,
             'inputId' => $inputId,
+            'readonly' => (isset($this->options['readonly'])? $this->options['readonly']: false),
         ]);
     }
 }

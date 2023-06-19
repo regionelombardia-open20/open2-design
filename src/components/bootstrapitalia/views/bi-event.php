@@ -1,7 +1,7 @@
 <?php
 
 use open20\design\utility\DateUtility;
-
+use open20\design\Module;
 use open20\design\assets\BootstrapItaliaDesignAsset;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
@@ -22,13 +22,13 @@ if (strpos($urlCta, 'view') !== false) {
     $urlCta = (isset($urlCta)) ? $urlCta : $url;
     $titleLinkCta = (isset($titleLinkCta)) ?: 'Maggiori informazioni sull\'evento' . ' ' . $title;
     $labelCta = $labelCtaView;
-    $classCta = 'btn-secondary';
+    $classCta = 'btn-link px-0';
 }
 if (strpos($urlCta, 'open-join') !== false) {
     $urlCta = (isset($urlCta)) ? $urlCta : $url;
     $titleLinkCta = (isset($titleLinkCta)) ?: 'Maggiori informazioni sull\'evento' . ' ' . $title;
     $labelCta = $labelCtaView;
-    $classCta = 'btn-secondary';
+    $classCta = 'btn-link px-0';
 }
 
 $classType = strtolower($type);
@@ -49,15 +49,15 @@ $hourStart = DateUtility::getDateHour($dateHourStart, 'php:H:i');
     <div class="d-flex flex-column-reverse flex-md-row h-100">
         <div class="time-event d-flex flex-row flex-md-column mb-3 mb-md-0 mr-md-3">
             <div class="date py-2 px-2 px-sm-3 d-flex flex-md-column justify-content-md-center align-items-center text-uppercase flex-md-grow-1">
-                <p class="day-event pr-1 pr-md-0 font-weight-bold mb-0 h2"><?= $dayStart ?></p>
-                <p class="month-event font-weight-bold pr-1 pr-md-0 mb-0 h4"><?= $monthStart ?></p>
-                <p class="year-event font-weight-normal mb-0 h4"><?= $yearStart ?></p>
+                <p class="day-event pr-1 pr-md-0 font-weight-bold mb-0"><?= $dayStart ?></p>
+                <p class="month-event font-weight-bold pr-1 pr-md-0 mb-0"><?= $monthStart ?></p>
+                <p class="year-event font-weight-normal mb-0"><?= $yearStart ?></p>
             </div>
-            <div class="hour d-flex align-items-center justify-content-start py-3 px-2 px-sm-3 ml-auto bg-secondary text-white">
-                <svg class="icon icon-sm d-flex icon-white smr-1" role="img" aria-label="Ora di inizio evento">
+            <div class="hour d-flex align-items-center justify-content-start py-3 px-2 px-sm-3 ml-auto">
+                <svg class="icon icon-sm d-flex smr-1" role="img" aria-label="Ora di inizio evento">
                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#clock-outline"></use>
                 </svg>
-                <p class="mb-0 ml-2"><?= $hourStart ?></p>
+                <p class="mb-0"><?= $hourStart ?></p>
             </div>
 
         </div>
@@ -97,7 +97,21 @@ $hourStart = DateUtility::getDateHour($dateHourStart, 'php:H:i');
         </a>
         <p class="event-summary mb-0"><?= $summary ?></p>
     <?php endif ?>
-    <a href="<?= $urlCta ?>" class="btn <?= $classCta ?> my-3 align-self-start" title="<?= $titleLinkCta ?>">
-        <?= $labelCta ?>
-    </a>
+    <?php if($dateSigned): ?>
+        <div class="d-flex flex-column-reverse flex-sm-row justify-content-sm-between align-items-sm-end">
+        <a href="<?= $urlCta ?>" class="btn <?= $classCta ?> mt-3 align-self-start mx-0" title="<?= $titleLinkCta ?>">
+            <?= $labelCta ?>
+        </a>
+    
+        <small class="d-flex align-items-end text-muted mt-2">
+            <?= Module::t('amosdesign', 'Iscritto il') . ' ' ?><?= $dateSigned ?>
+        </small>
+        </div>
+        
+    <?php else: ?>
+        <a href="<?= $urlCta ?>" class="btn <?= $classCta ?> my-3 align-self-start mx-0" title="<?= $titleLinkCta ?>">
+            <?= $labelCta ?>
+        </a>
+    <?php endif ?>
+
 </div>

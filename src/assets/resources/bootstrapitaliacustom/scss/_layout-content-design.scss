@@ -1,4 +1,5 @@
 body {
+  min-height: 100vh;
   @if $background-image-default != 'unset' {
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -33,4 +34,7 @@ body {
     padding-right: 12px;
     padding-left: 12px;
   }
+}
+.list-view-design {
+  @extend .variable-gutters;
 }

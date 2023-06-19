@@ -17,9 +17,10 @@ $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'requir
 $placeholder = (isset($options['placeholder'])) ? 'placeholder="' . $options['placeholder'] . '"' : false;
 $ariaDescribedBy = (isset($options['aria-describedby'])) ? 'aria-describedby="describedBy' . $inputId . '"' : false;
 $infoTooltip = (isset($options['infoTooltip'])) ? $options['infoTooltip'] . '"' : false;
+$readOnlyText = ($readonly == true) ? 'readonly' : '';
 ?>
 
-<input type="<?= $type ?>" name="<?= $name ?>" class="form-control" <?= $placeholder ?> <?= $ariaDescribedBy ?> id="<?= $inputId ?>" value="<?= $value ?>" <?= $required ?>>
+<input type="<?= $type ?>" name="<?= $name ?>" class="form-control" <?= $placeholder ?> <?= $ariaDescribedBy ?> id="<?= $inputId ?>" value="<?= $value ?>" <?= $required ?> <?= $readOnlyText ?> >
 <?php if ($ariaDescribedBy) : ?>
     <small id="describedBy<?= $inputId ?>" class="form-text text-muted">
         <?= $options['aria-describedby'] ?>

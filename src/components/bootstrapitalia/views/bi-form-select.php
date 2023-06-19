@@ -7,53 +7,81 @@ use yii\web\View;
 $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'required' : '';
 
 ?>
-<div class="position-absolute z-index-1">
-  <div class="progress-spinner progress-spinner-double size-sm progress-spinner-active z-index-1 position-relative" id="spinner-<?= $inputId ?>" style="display: none;">
-    <div class="progress-spinner-inner"></div>
-    <div class="progress-spinner-inner"></div>
-    <span class="sr-only">Caricamento...</span>
-  </div>
-</div>
 
-<div class="bootstrap-select-wrapper" id="<?= $inputId ?>-wrapper">
-  <label><?= $label ?><?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?></label>
-  <select title="<?= $placeholder ?>" data-live-search="true" data-live-search-placeholder="Cerca" name="<?= $name ?>" id="<?= $inputId ?>">
-    <?php
-    foreach ($items as $key => $optionLabel) :
-    ?>
-      <option value="<?= $key ?>" <?= ($value == $key) ? 'selected' : '' ?>><?= $optionLabel ?></option>
-    <?php
-    endforeach;
-    ?>
-  </select>
-</div>
+<?php
+$enableGroup = false;
+$tmp = reset($items);
+if($tmp){
+    if(is_array($tmp)){
+        $enableGroup = true;
+    }
+}
+?>
+
+    <div class="position-absolute z-index-1">
+        <div class="progress-spinner progress-spinner-double size-sm progress-spinner-active z-index-1 position-relative"
+             id="spinner-<?= $inputId ?>" style="display: none;">
+            <div class="progress-spinner-inner"></div>
+            <div class="progress-spinner-inner"></div>
+            <span class="sr-only">Caricamento...</span>
+        </div>
+    </div>
+
+<?php
+$attrMultiple = '';
+if($multiple){
+    $attrMultiple = 'multiple="true"';
+}
+?>
+
+    <div class="bootstrap-select-wrapper" id="<?= $inputId ?>-wrapper">
+        <label><?= $label ?><?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?></label>
+        <select <?=$attrMultiple?> title="<?= $placeholder ?>" data-live-search="true" data-live-search-placeholder="Cerca" name="<?= $name ?>" id="<?= $inputId ?>">
+<!--            <option value="" title="Scegli una opzione" data-content="Annulla <span class='reset-label'></span>"></option>-->
+
+            <?php if ($enableGroup) { ?>
+                <?php foreach ($items as $labelGroup => $itemsValue) {?>
+                        <optgroup label="<?= $labelGroup ?>">
+                            <?php foreach ($itemsValue as $key => $optionLabel) {?>
+                                <?php $isSelected = (is_array($value)) ? in_array($key, $value) : ($value == $key); ?>
+                                <option value="<?= $key ?>" <?= $isSelected ? 'selected' : '' ?>><?= $optionLabel ?></option>
+                            <?php } ?>
+                        </optgroup>
+                <?php } ?>
+            <?php } else { ?>
+                <?php foreach ($items as $key => $optionLabel) { ?>
+                    <option value="<?= $key ?>" <?= ($value == $key) ? 'selected' : '' ?>><?= $optionLabel ?></option>
+                <?php } ?>
+            <?php } ?>
+        </select>
+    </div>
 
 <?php
 if (isset($dataAction)) :
-  $csrParam = Yii::$app->request->csrfParam;
-  $csrValue = Yii::$app->request->getCsrfToken();
+    $csrParam = Yii::$app->request->csrfParam;
+    $csrValue = Yii::$app->request->getCsrfToken();
 
-  $this->registerJs(
-    <<<JS
+    $this->registerJs(
+        <<<JS
 
 let onSelectChange = function() {
     $('.dropdown-menu li.selected')
       .find('input[type="checkbox"]')
-      .prop('checked', true)
+      .prop('checked', true);
     $('.dropdown-menu li:not(.selected)')
       .find('input[type="checkbox"]')
       .prop('checked', false)
-  }
+  };
 
 // Allows to rewrite options dynamically with an object in the form of
 jQuery.fn.setOptionsToSelect = function(optionsData) {
-    var selectElement = $(this).find('select')
+    var selectElement = $(this).find('select');
 
     // Destroying selectElement
     $(selectElement)
       .off('changed.bs.select')
       .selectpicker('destroy')
-      .empty()
+      .empty();
 
     // Appending options according to the optionsData object
     optionsData.forEach(function(x) {
@@ -64,12 +92,12 @@ jQuery.fn.setOptionsToSelect = function(optionsData) {
           selected: x.selected,
         })
       )
-    })
+    });
 
     // Refreshing selectElement
     $(selectElement)
       .selectpicker('refresh')
-      .on('changed.bs.select', onSelectChange)
+      .on('changed.bs.select', onSelectChange);
 
     return this
   };
@@ -160,9 +188,9 @@ jQuery.fn.setOptionsToSelect = function(optionsData) {
 
 
 JS
-,
-    View::POS_READY
-  );
+        ,
+        View::POS_READY
+    );
 
 endif;
 

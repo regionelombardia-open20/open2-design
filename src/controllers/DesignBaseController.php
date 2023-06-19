@@ -40,9 +40,8 @@ class DesignBaseController extends BackendController
                             'agid-components'
                         ],
                         'allow' => true,
-                        'roles' => ['?','@'],
+                        'roles' => ['?', '@'],
                     ],
-
                 ],
             ],
             'verbs' => [
@@ -56,8 +55,8 @@ class DesignBaseController extends BackendController
 
     public function actionComponents()
     {
-
-        $model = new TestModelCheckBox();
+       
+        $model   = new TestModelCheckBox();
         $choices = [
             new TestModelCheckBoxIcon('Label1', 'Description1', 'icon1', '1'),
             new TestModelCheckBoxIcon('Label2', 'Description2', 'icon2', '2'),
@@ -71,44 +70,53 @@ class DesignBaseController extends BackendController
 
         $tags = [
             new Tag([
-                'nome' => 'Label 1 Label 1 Label 1 Label 1 Label 1', 
-                'descrizione' => 'Descrizione Label 1', 
+                'nome' => 'Label 1 Label 1 Label 1 Label 1 Label 1',
+                'descrizione' => 'Descrizione Label 1',
                 'created_at' => date("Y-m-d H:i:s"),
                 'created_by' => 1,
                 'removable' => false,
                 ]),
             new Tag([
-                'nome' => 'Label 2', 
-                'descrizione' => 'Descrizione Label 2', 
+                'nome' => 'Label 2',
+                'descrizione' => 'Descrizione Label 2',
                 'created_at' => date("Y-m-d H:i:s"),
                 'created_by' => 2,
                 'removable' => false,
                 ]),
             new Tag([
-                'nome' => 'Label 3', 
-                'descrizione' => 'Descrizione Label 3', 
+                'nome' => 'Label 3',
+                'descrizione' => 'Descrizione Label 3',
                 'created_at' => date("Y-m-d H:i:s"),
                 'created_by' => 3,
                 'removable' => false,
                 ]),
             new Tag([
-                'nome' => 'Label 4', 
-                'descrizione' => 'Descrizione Label 4', 
+                'nome' => 'Label 4',
+                'descrizione' => 'Descrizione Label 4',
                 'created_at' => date("Y-m-d H:i:s"),
                 'created_by' => 4,
                 'removable' => false,
                 ]),
         ];
 
-        
+
 
         $this->setUpLayout('bi-main-layout');
         $this->view->params['fluidContainerHeader'] = true;
 
-        return $this->render("components", [
-            'model' => $model,
-            'choices' => $choices,
-            'tags' => $tags
+        $avatars          = [];
+        $userProfileClass = \open20\amos\admin\AmosAdmin::instance()->createModel('UserProfile');
+        $usrs             = $userProfileClass::find()->limit(6)->all();
+        foreach ($usrs as $usr) {
+            $avatars[] = $usr;
+        }
+       
+        return $this->render("components",
+                [
+                'model' => $model,
+                'choices' => $choices,
+                'tags' => $tags,
+                'userProfiles' => $avatars,
         ]);
     }
 
@@ -127,6 +135,4 @@ class DesignBaseController extends BackendController
 
         return $this->render("configurations");
     }
-
-    
 }

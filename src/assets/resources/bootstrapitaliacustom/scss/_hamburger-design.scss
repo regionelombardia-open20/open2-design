@@ -1,0 +1,200 @@
+.modal-always-hamburger-menu {
+  .modal-dialog.modal-dialog-left {
+    margin: 0;
+    .modal-content {
+      .modal-header {
+        .close {
+          padding: 18px 12px;
+        }
+
+        .logo-RL-design {
+          @extend .mr-4;
+        }
+      }
+
+      .modal-body {
+        @extend .px-0;
+
+        .navbar-nav {
+          float: none;
+
+          &.cms-menu-container-default {
+
+            .nav-item {
+              @extend .border-bottom;
+              @extend .border-light;
+
+              .nav-link {
+                @extend .font-weight-semibold;
+                @extend .p-3;
+                color: #000000;
+                @extend .px-4;
+
+                @extend .text-uppercase;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+
+                .icon {
+                  @extend .ml-auto;
+                  fill: $black;
+                }
+
+                &:hover {
+                  text-decoration: underline;
+                }
+
+                // NON VISIBILE NEI PLUGIN 
+                // &.active {
+                //   border-left: 5px solid $primary;
+                //   background-color: lighten($primary, 65);
+                // }
+              }
+            }
+
+            .dropdown-menu {
+              position: static !important;
+              box-shadow: none;
+              transform: inherit !important;
+              top: inherit !important;
+              left: inherit !important;
+              margin-top: 0 !important;
+              margin-bottom: 20px;
+              @extend .px-4,
+              .py-0;
+
+              &::before {
+                content: inherit;
+              }
+
+              .dropdown-submenu {
+                border-bottom: none !important;
+
+                .nav-link {
+                  text-transform: inherit !important;
+                  font-weight: normal !important;
+                  padding: 0 !important;
+
+                  +.dropdown-menu {
+                    &.show {
+                      background-color: $brandbook-neutral-1-color;
+                      padding: $dropdown-item-padding-x;
+                    }
+                  }
+                }
+              }
+
+              .link-list-wrapper {
+                ul {
+                  li {
+                    a {
+                      span {
+                        color: #000;
+                        margin-right: 0px;
+                      }
+                    }
+
+
+                  }
+
+
+                }
+              }
+
+            }
+            .bullet-navbar {
+              border: 0;
+              border-radius: 50%;
+              width: 10px;
+              height: 10px;
+            }
+
+            .bullet-parent {
+              .bullet-navbar {
+                margin-top: 0;
+                margin-left: 6px;
+              }
+              + .bullet-navbar {
+                margin-left: 6px;
+              }
+            }
+            >li:nth-child(1) {
+
+
+              &.dropdown {
+                background-color: $secondary;
+                // order: -1;
+                border-bottom: none !important;
+
+                @extend .shadow-sm,
+                .mb-3;
+
+                >a {
+                  display: flex;
+                  align-items: center;
+                  @extend .lead;
+                  @include get-color-contrast($secondary);
+
+                  .icon {
+                    @extend .icon-light;
+
+                  }
+
+                }
+
+                >.dropdown-menu {
+                  background-color: darken($secondary, 3);
+                  @extend .px-4,
+                  .py-3,
+                  .mb-0;
+
+                  a {
+                    @include get-color-contrast($secondary);
+
+                    span {
+                      @include get-color-contrast($secondary);
+                    }
+
+                    .icon {
+                      @extend .icon-light;
+
+                    }
+                  }
+
+                  .dropdown-submenu {
+                    .dropdown-menu {
+                      &.show {
+                        background-color: darken($secondary, 9);
+                        @extend .p-3;
+
+                        .dropdown-submenu {
+                          .dropdown-toggle {
+                            .icon-expand {
+                              transform: scaleY(1);
+                            }
+
+                          }
+
+                          &.show {
+                            .icon-expand {
+                              transform: scaleY(-1);
+                            }
+
+                          }
+                        }
+
+
+
+                      }
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

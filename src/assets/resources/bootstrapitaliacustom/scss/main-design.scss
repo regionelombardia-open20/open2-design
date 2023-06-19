@@ -21,6 +21,10 @@
 @import "bi-avatar-override";
 @import "bi-alert-override";
 @import "bi-skiplinks-override";
+@import "bi-button-override";
+@import "bi-dropdown-override";
+@import "bi-link-override";
+@import "bi-card-override";
 @import "typography-design";
 @import "header-design";
 @import "footer-design";
@@ -31,6 +35,9 @@
 @import "table-design";
 @import "tooltip-design";
 @import "utility-design";
+@import "hamburger-design";
+@import "paginator-design";
+@import "bi-navigation-menu";
 
 
 @import "material-icons-design"; 
@@ -38,11 +45,12 @@
 //COMPONENTS
 
 @import "components/bi-steppers-wizard";
+@import "components/bi-card-preference";
 @import "components/bi-checkbox-list-tags";
 @import "components/bi-owl-carousel";
 @import "components/bi-collapse";
 @import "components/bi-modal-override";
-@import "components/bi-form"; // DA CHIEDERE A MARCI NOME CORRETTO
+@import "components/bi-form";
 @import "components/bi-news";
 @import "components/bi-discussions";
 @import "components/bi-community";
@@ -51,8 +59,25 @@
 @import "components/bi-document";
 @import "components/bi-context-menu-widget";
 @import "components/bi-user-list";
+@import "components/bi-tag";
+@import "components/bi-tag-manage";
+@import "components/bi-sondaggi";
+@import "components/bi-attachments";
+@import "components/bi-search-results-item";
+@import "components/bi-widget-myprofile";
+@import "components/bi-proposte-collaborazione";
+@import "components/bi-assistance";
 
 
+//LAYOUT PARTS
+@import "layout-parts/bi-header-search";
+
+//UIKIT CMS
+
+@import "uikit-cms/uikit-buttons";
+@import "uikit-cms/uikit-container";
+@import "uikit-cms/uikit-image";
+@import "uikit-cms/uikit-grid";
 
 //TRICKS AND TEMP
 @import 'bi-IECompatibility-design';

@@ -1,0 +1,11 @@
+.it-navscroll-wrapper {
+    &.navbar.it-bottom-navscroll.affix-top {
+        
+        max-height: 100vh;
+    @include media-breakpoint-up(lg) {
+        z-index: 1;
+        top: 90px;
+    
+    }    
+}
+}

@@ -2,7 +2,7 @@
 
 use open20\design\assets\AgidDesignAsset;
 
-$currentAsset = AgidDesignAsset::register($this);
+$agidAsset = AgidDesignAsset::register($this);
 
 $columnWidth = (isset($columnWidth)) ? $columnWidth : 'col-12';
 $topicTitleIcon = (isset($topicTitleIcon)) ? $topicTitleIcon : 'pin';
@@ -16,7 +16,7 @@ $topicTitleIcon = (isset($topicTitleIcon)) ? $topicTitleIcon : 'pin';
                 <div class="uk-container">
                     <div>
                         <svg class="icon icon-padded rounded-circle icon-white bg-primary d-flex  mr-1 icon-xl" role="img" aria-label="Numero risposte">
-                            <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#<?= $topicTitleIcon ?>"></use>
+                            <use xlink:href="<?= $agidAsset->baseUrl ?>/sprite/material-sprite.svg#<?= $topicTitleIcon ?>"></use>
                         </svg>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ $topicTitleIcon = (isset($topicTitleIcon)) ? $topicTitleIcon : 'pin';
                 <li class="my-2">
                     <a class="list-item active icon-left" href="#">
                         <svg class="icon icon-primary">
-                            <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#calendar"></use>
+                            <use xlink:href="<?= $agidAsset->baseUrl ?>/sprite/material-sprite.svg#calendar"></use>
                         </svg>
                         <span>Eventi questo weekend</span>
                     </a>
@@ -42,7 +42,7 @@ $topicTitleIcon = (isset($topicTitleIcon)) ? $topicTitleIcon : 'pin';
             <a class="el-content d-flex align-items-center" href="/it/tutti-gli-argomenti" title="Esplora argomento">
                 Esplora argomento  
                 <svg class="icon icon-primary d-flex  mr-1 icon-xs" role="img" aria-label="Numero risposte">
-                    <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#arrow-right"></use>
+                    <use xlink:href="<?= $agidAsset->baseUrl ?>/sprite/material-sprite.svg#arrow-right"></use>
                 </svg>               
             </a>
         </div>
