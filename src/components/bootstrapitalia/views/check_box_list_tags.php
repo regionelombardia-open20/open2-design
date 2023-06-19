@@ -12,6 +12,7 @@
 use open20\design\assets\BootstrapItaliaDesignAsset;
 use yii\helpers\VarDumper;
 use yii\web\View;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -65,14 +66,14 @@ JS
                             <svg class="icon icon-<?= $tagIconSize ?> icon-primary" role="img" aria-label="Icona per attivare una preferenza">
                                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#heart"></use>
                             </svg>
-                            <label for="card-input-checkbox-<?= $topicId ?>" class="sr-only">Attiva preferenza</label>
+                            <label for="card-input-checkbox-<?= $topicId ?>" class="sr-only"><?= Module::t('amosdesign', 'Attiva preferenza') ?></label>
                         </div>
 
                         <div class="state p-off ">
                             <svg class="icon icon-<?= $tagIconSize ?> icon-primary" role="img" aria-label="Icona per attivare una preferenza">
                                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#heart-outline"></use>
                             </svg>
-                            <label for="card-input-checkbox-<?= $topicId ?>" class="sr-only">Attiva preferenza</label>
+                            <label for="card-input-checkbox-<?= $topicId ?>" class="sr-only"><?= Module::t('amosdesign', 'Attiva preferenza') ?></label>
                         </div>
                     </div>
                     <div class="card-body p-0 title-one-line">

@@ -2,6 +2,7 @@
 
 use open20\design\utility\DateUtility;
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -13,13 +14,20 @@ $hourLastSyncDrive = DateUtility::getDateHour($dateSyncDrive, 'php:H:i');
 $type = strtoupper($type);
 $date = DateUtility::getDate($date);
 $customTooltipInfo = (isset($customTooltipInfo)) ? $customTooltipInfo . ' (' . $type . ' - ' . $size . ')' : '';
-$lastSyncDrive = (isset($dateSyncDrive)) ? 'Documento Google Drive<br>aggiornato il: ' . $dateLastSyncDrive . ' alle ' . $hourLastSyncDrive  : false;
-$infoDoc = '<strong>Nome file principale:</strong>' . ' ' . $nameFile . '<br>';
-$infoDoc = (isset($nameSurname)) ? $infoDoc .'<strong>Pubblicato da</strong>' . ' ' . $nameSurname . ' ' . 'il' . ' ' . $date . '<br>' : $infoDoc;
-$infoDoc = (isset($category)) ? $infoDoc . '<strong> nella categoria:</strong>' . ' ' . $category  . '<br>' : $infoDoc ;
-$infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong> in community:</strong>' . ' ' . $community : $infoDoc;
+
+
+
+$lastSyncDrive = (isset($dateSyncDrive)) ? Module::t('amosdesign', 'Documento Google Drive') . '<br>' . Module::t('amosdesign', 'aggiornato il') . $dateLastSyncDrive . Module::t('amosdesign', 'alle') . $hourLastSyncDrive  : false;
+$infoDoc = '<strong>'. Module::t('amosdesign', 'Nome file principale'). '</strong>' . ' ' . $nameFile . '<br>';
+$infoDoc = (isset($nameSurname)) ? $infoDoc .'<strong>'. Module::t('amosdesign', 'Pubblicato da') . '</strong>' . ' ' . $nameSurname . ' ' . Module::t('amosdesign', 'il') . ' ' . $date . '<br>' : $infoDoc;
+$infoDoc = (isset($category)) ? $infoDoc . '<strong>'. Module::t('amosdesign', 'nella categoria') . '</strong>' . ' ' . $category  . '<br>' : $infoDoc ;
+$infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong>'.  Module::t('amosdesign', 'in community') .'</strong>' . ' ' . $community : $infoDoc;
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-md-4 col-sm-6';
-$allegatiNum = (isset($allegatiNum)) ?  'Allegati interni: ' . $allegatiNum  : '';
+$allegatiNum = (isset($allegatiNum)) ?  Module::t('amosdesign', 'Allegati interni') . $allegatiNum  : '';
+
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
 ?>
 <div class="<?= $widthColumn ?>">
@@ -65,9 +73,9 @@ $allegatiNum = (isset($allegatiNum)) ?  'Allegati interni: ' . $allegatiNum  : '
           <?php endif ?>
 
           <?php if (!isset($size) && (!isset($typeFolder))) : ?>
-            <span class="text mr-1">LINK ESTERNO</span>
+            <span class="text mr-1"><?= Module::t('amosdesign', 'LINK ESTERNO') ?></span>
           <?php elseif (!isset($size) && (isset($typeFolder))) : ?>
-            <span class="text mr-1">CARTELLA</span>
+            <span class="text mr-1"><?= Module::t('amosdesign', 'CARTELLA') ?></span>
           <?php else : ?>
             <span class="text mr-1"><?= $type ?></span>
           <?php endif ?>
@@ -80,15 +88,7 @@ $allegatiNum = (isset($allegatiNum)) ?  'Allegati interni: ' . $allegatiNum  : '
 
 
           <div class="info-doc-top-right ml-auto d-flex align-items-center">
-            <!-- < ?= ContextMenuWidget::widget([
-              'model' => $model,
-              'layout' => '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget.php',
-
-              // 'actionModify' => "/news/news/update?id=" . $model->id,
-              // 'actionDelete' => "/news/news/delete?id=" . $model->id,
-              // 'labelDeleteConfirm' => AmosNews::t('amosnews', 'Sei sicuro di voler cancellare questa notizia?'),
-              // 'modelValidatePermission' => 'NewsValidate'
-            ]) ?> -->
+            
             <?php if ($allegatiNum) : ?>
               <div class="allegatiNum">
                 <svg class="icon icon-sm icon-secondary" data-toggle="tooltip" title="<?= $allegatiNum ?>">
@@ -99,7 +99,10 @@ $allegatiNum = (isset($allegatiNum)) ?  'Allegati interni: ' . $allegatiNum  : '
             <?php endif; ?>
             <?php
             echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
+              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+              [
+                  'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+              ]
             );
             ?>
 
@@ -108,7 +111,7 @@ $allegatiNum = (isset($allegatiNum)) ?  'Allegati interni: ' . $allegatiNum  : '
 
         </div>
 
-        <a href="<?= $url ?>" class="link-list-title" title="Dettaglio documento <?= $title ?>">
+        <a href="<?= $url ?>" class="link-list-title" title="<?= Module::t('amosdesign', 'Dettaglio documento') ?> <?= $title ?>">
           <h6 class="card-title mb-2 title-three-line"><?= $title ?></h6>
         </a>
 
@@ -127,19 +130,19 @@ $allegatiNum = (isset($allegatiNum)) ?  'Allegati interni: ' . $allegatiNum  : '
 
 
         <?php if (isset($versionFile)) : ?>
-          <div class="blockquote-footer"><cite title="versione file">versione <?= $versionFile ?></cite></div>
+          <div class="blockquote-footer"><cite title="versione file"><?= Module::t('amosdesign', 'versione') ?> <?= $versionFile ?></cite></div>
 
         <?php endif ?>
         <!-- <div class="card-text text-sans-serif">< ?= $infoDoc ?></div> -->
 
 
         <?php if (isset($typeFolder)) : ?>
-          <a class="read-more" href="<?= $url ?>">Apri cartella</a>
+          <a class="read-more" href="<?= $url ?>"><?= Module::t('amosdesign', 'Apri cartella') ?></a>
         <?php elseif (!isset($size) && (!isset($typeFolder))) : ?>
-          <a class="read-more" href="<?= $url ?>">Apri file </a>
+          <a class="read-more" href="<?= $url ?>"><?= Module::t('amosdesign', 'Apri file') ?> </a>
         <?php else : ?>
-          <a href="<?= $fileUrl ?>" title="Scarica il documento principale: <?= $fileName ?>" data-toggle="tooltip" class="read-more" download>
-            Scarica file
+          <a href="<?= $fileUrl ?>" title=<?= Module::t('amosdesign', 'Scarica il documento principale') ?> <?= $fileName ?> data-toggle="tooltip" class="read-more" download>
+          <?= Module::t('amosdesign', 'Scarica file') ?>
           </a>
         <?php endif ?>
 

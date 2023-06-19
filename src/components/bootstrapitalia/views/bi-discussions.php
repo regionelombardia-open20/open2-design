@@ -13,6 +13,11 @@ $updatedAt         = DateUtility::getDate($lastActivityDate);
 $showAvatar        = (isset($showAvatar)) ? $showAvatar : true;
 $numberExpose      = (isset($numberExpose) ? $numberExpose : 4);
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
+
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
+
 ?>
 
 
@@ -21,7 +26,7 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
     <div class="row align-items-center variable-gutters">
         <div class="generic-info d-flex col-12">
             <h3 class="discussion-title h6 lead mb-2 font-weight-semibold">
-                <a class="title-one-line link-list-title" href="<?= $url ?>" title="partecipa alla discussione <?= $title ?>"><?= $title ?></a>
+                <a class="title-one-line link-list-title" href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Partecipa alla discussione {title} ',['title' => $title]) ?>"><?= $title ?></a>
 
             </h3>
             <div class="other-info-item d-flex align-items-center justify-content-end ml-auto">
@@ -53,7 +58,7 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
             <?php endif ?>
             <div class="other-info d-flex small">
                 <div class="d-flex flex-wrap align-items-center">
-                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="Numero visite">
+                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="<?= Module::t('amosdesign', 'Numero di visite') ?>">
                         <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#calendar"></use>
                     </svg>
                     <div class="pr-3 mb-0 "><?= $date ?></div>
@@ -115,25 +120,28 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
         <div class="col-md-4 col-sm-6 small">
 
             <div class="justify-content-between d-flex">
-                <div aria-label="Numero di risposte alla discussione:  <?= $numbersOfAnswer ?> " class="d-flex align-items-center" data-toggle="tooltip" title="Numero di risposte alla discussione">
-                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="Numero risposte">
-                    <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#message-outline"></use>
-                    </svg>
-<?= $numbersOfAnswer ?>
-                </div>
-                <div aria-label="Numero di visite alla discussione: " class="d-flex align-items-center" data-toggle="tooltip" title="Numero visite">
-                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="Numero visite">
-                    <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#eye-outline"></use>
-                    </svg>
-                            
-                    <?= !empty($numbersOfVisits) ? $numbersOfVisits : '0' ?>
+                
 
+                <div aria-label="<?= Module::t('amosdesign', 'Numero di risposte alla discussione: {numbersOfAnswer} ',['numbersOfAnswer' => $numbersOfAnswer]) ?>" class="d-flex align-items-center" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Numero di risposte alla discussione: {numbersOfAnswer} ',['numbersOfAnswer' => $numbersOfAnswer]) ?>">
+                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="<?= Module::t('amosdesign', 'Numero di risposte alla discussione: {numbersOfAnswer} ',['numbersOfAnswer' => $numbersOfAnswer]) ?>">
+                        <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#message-outline"></use>
+                    </svg>
+                    <?= $numbersOfAnswer ?>
                 </div>
-                <div aria-label="Ultima attività nella discussione: " class="d-flex align-items-center" data-toggle="tooltip" title="Ultima attività">
-                    <svg class="icon icon-xs d-flex mr-1" role="img" aria-label="Ultima attività">
+                
+                <div aria-label="<?= Module::t('amosdesign', 'Numero di visite alla discussione: {numbersOfVisits} ',['numbersOfAnswer' => !empty($numbersOfVisits) ? $numbersOfVisits : '0']) ?>" class="d-flex align-items-center" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Numero di visite alla discussione: {numbersOfVisits} ',['numbersOfAnswer' => !empty($numbersOfVisits) ? $numbersOfVisits : '0']) ?>">
+                    <svg class="icon icon-xs d-flex  mr-1" role="img" aria-label="<?= Module::t('amosdesign', 'Numero di visite alla discussione: {numbersOfVisits} ',['numbersOfAnswer' => !empty($numbersOfVisits) ? $numbersOfVisits : '0']) ?>">
+                    <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#eye-outline"></use>
+                    </svg>     
+                    <?= !empty($numbersOfVisits) ? $numbersOfVisits : '0' ?>
+                </div>
+                
+
+                <div aria-label="<?= Module::t('amosdesign', 'Ultima attività nella discussione:  {updatedAt} ',['updatedAt' => $updatedAt]) ?>" class="d-flex align-items-center" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Ultima attività nella discussione:  {updatedAt} ',['updatedAt' => $updatedAt]) ?>">
+                    <svg class="icon icon-xs d-flex mr-1" role="img" aria-label="<?= Module::t('amosdesign', 'Ultima attività nella discussione:  {updatedAt} ',['updatedAt' => $updatedAt]) ?>">
                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#clock-outline"></use>
                     </svg>
-<?= $updatedAt ?>
+                    <?= $updatedAt ?>
                 </div>
             </div>
 

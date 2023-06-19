@@ -9,6 +9,7 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 ?>
 
@@ -24,7 +25,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
                 <a href="#" class="title-one-line link-list-title " title="Vai all'elenco delle puntate">
                     <h3 class="h5 mr-3 mb-0 font-weight-bold"><?= $podcastName ?></h3>
                 </a>
-                <p class="small text-500 mb-0">Ultima puntata: <?= $lastEpisodeDate ?> </p>
+                <p class="small text-500 mb-0"><?= Module::t('amosdesign', 'Ultima puntata') . ': ' ?> <?= $lastEpisodeDate ?> </p>
             </div>
             <!--
             <span class="badge badge-primary font-weight-normal text-uppercase">< ?=$podcastCategory ?></span>
@@ -37,7 +38,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
             </div>
         <?php } ?>
         <div class="flex-grow-1 d-flex align-items-end">
-            <a href="#" title="Vai all'elenco delle puntate" class="read-more mb-0">Elenco puntate</a>
+            <a href="#" title="Vai all'elenco delle puntate" class="read-more mb-0"><?= Module::t('amosdesign', 'Elenco puntate') ?></a>
         </div>
     </div>
 </div>

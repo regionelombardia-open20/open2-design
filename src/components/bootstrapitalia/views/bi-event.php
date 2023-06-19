@@ -43,6 +43,11 @@ $monthStart = DateUtility::getDate($dateHourStart, 'php:M');
 $yearStart = DateUtility::getDate($dateHourStart, 'php:Y');
 $hourStart = DateUtility::getDateHour($dateHourStart, 'php:H:i');
 
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
+
+
 ?>
 
 <div class="event-container d-flex flex-column <?= $theme ?>-theme">
@@ -80,11 +85,14 @@ $hourStart = DateUtility::getDateHour($dateHourStart, 'php:H:i');
                     ?>
                 <?php endif; ?>
                 <div class="ml-2">
-                    <?php
+                <?php
                     echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
+                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                    [
+                        'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                    ]
                     );
-                    ?>
+                ?>
                 </div>
 
             </div>

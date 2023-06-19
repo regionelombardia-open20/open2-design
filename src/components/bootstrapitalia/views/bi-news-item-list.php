@@ -19,7 +19,9 @@ $month = DateUtility::getDate($date, 'php:M');
 $year = DateUtility::getDate($date, 'php:Y');
 $date = DateUtility::getDate($date);
 
-
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
 $labelReadMore = (isset($labelReadMore)) ? $labelReadMore : 'Leggi';
 $titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la notizia' . ' ' . $title;
@@ -51,9 +53,12 @@ $titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la notizia' .
                 <?php endif; ?>
                 <div class="ml-2">
                   <?php
-                  echo $this->render(
-                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
-                  );
+                    echo $this->render(
+                      '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                      [
+                        'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                      ]
+                    );
                   ?>
                 </div>
               </div>

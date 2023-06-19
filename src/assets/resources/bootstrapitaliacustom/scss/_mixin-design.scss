@@ -53,3 +53,18 @@
     height: $height-it-small-header-d;
   }
 }
+
+//mixin line
+@mixin truncate-text-lines($numlines){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $numlines;
+  -webkit-box-orient: vertical;
+
+  @media screen and (-ms-high-contrast: active),
+  screen and (-ms-high-contrast: none) {
+    display: block;
+    white-space: nowrap;
+  }
+}

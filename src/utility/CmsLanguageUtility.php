@@ -39,27 +39,32 @@ class CmsLanguageUtility extends LanguageUtility
             $link        = '';
             $currentLang = Yii::$app->composition['langShortCode'];
             $languages   = self::getDataArray();
+
             if (!empty($languages)) {
                 foreach ($languages as $langData) {
                     $item     = $langData['item'];
                     $lang     = $langData['lang'];
                     $isActive = $currentLang == $lang['short_code'];
-                    if ($item) {
-                        $link = $item->link;
+
+                    if (get_class(\Yii::$app->controller->module) != 'luya\cms\frontend\Module') {
+                        $baseUrl = str_replace('/'.$currentLang, '', \Yii::$app->request->url);
+
+                        $link = '/'.$lang['short_code'].$baseUrl;
+                    } else if ($item) {
+                        $link = $item->itemArray['link'];
                     } else {
                         $link = Yii::$app->urlManager->prependBaseUrl($lang['short_code']);
                     }
                     $voceMenu[] = Html::a(
                             Html::tag('span', strtoupper($lang['short_code'])), null,
                             [
-                                'href' => $link,
-                                'data' => [
-                                    'params' => ['language' => $lang['short_code']],
-                                    'method' => 'post'
-                                ],
-                                'class' => 'list-item',
-                                'title' => Module::t('amoslayout',
-                                    'Cambia lingua in'.' '.$lang['short_code'])
+                            'href' => $link,
+                            'data' => [
+                                'params' => ['language' => $lang['short_code']],
+                                'method' => 'post'
+                            ],
+                            'class' => 'list-item',
+                            'title' => Module::t('amoslayout', 'Cambia lingua in'.' '.$lang['short_code'])
                             ]
                     );
                 }

@@ -98,9 +98,12 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
                 <?php endif; ?>
                   <div class="ml-2">
                     <?php
-                    echo $this->render(
-                      '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
-                    );
+                        echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                        [
+                            'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                        ]
+                        );
                     ?>
                   </div>
               </div>

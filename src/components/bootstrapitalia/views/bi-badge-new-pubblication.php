@@ -1,6 +1,7 @@
 <?php
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -14,6 +15,6 @@ if(empty($class_div_container)){
 
 <div class="<?= $class_span?>">
   <span class="<?=  $class_div_container?>">
-        <?= \open20\design\Module::t('amosdesign', "NEW"); ?>
+        <?= Module::t('amosdesign', "NEW"); ?>
   </span>
 </div>

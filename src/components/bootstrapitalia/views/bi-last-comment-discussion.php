@@ -1,12 +1,13 @@
 <?php
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
 ?>
 
 <div class="last-comment-discussion-wrapper">
-        <small><strong>Ultimo contributo</strong></small>
+        <small><strong><?= Module::t('amosdesign', 'Ultimo contributo') ?></strong></small>
 
         <div class="comment-wrapper lightgrey-bg-c2 p-2 mt-2">
           <?php if (isset(($lastCommentDiscussion))) : ?>
@@ -32,11 +33,11 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
             </div>
           <?php else : ?>
             <div class="last-comment small my-2">
-              <p class="mb-0 text-muted">Puoi essere il primo a lasciare un contributo.</p>
+              <p class="mb-0 text-muted"><?= Module::t('amosdesign', 'Puoi essere il primo a lasciare un contributo') ?></p>
             </div>
           <?php endif ?>
         </div>
         <div class="footer-last-comment lightgrey-bg-c2 d-flex justify-content-end mt-1 p-2">
-          <a href="#" class="btn btn-primary btn-xs">Contribuisci</a>
+          <a href="#" class="btn btn-primary btn-xs"><?= Module::t('amosdesign', 'Contribuisci') ?></a>
         </div>
       </div>

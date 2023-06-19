@@ -10,6 +10,7 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 $espositoreTitle = (isset($espositoreTitle)) ? $espositoreTitle :  'Espositore';
@@ -31,21 +32,21 @@ $espositoreTitle = (isset($espositoreTitle)) ? $espositoreTitle :  'Espositore';
                     <div class="col-md-6  my-2">
                         <?php if ($espositoreSito) { ?>
                             <p class="mb-1">
-                                <span class="font-weight-bold mb-0 pb-0">Sito web: </span>
+                                <span class="font-weight-bold mb-0 pb-0"><?= Module::t('amosdesign', 'Sito web') . ': ' ?> </span>
                                 <a href="<?= $espositoreSito ?>" class="font-weight-normal text-truncate"> <?= $espositoreSito ?></a>
                             </p>
                         <?php } ?>
 
                         <?php if ($espositorePIva) { ?>
                             <p class="mb-1">
-                                <span class="font-weight-bold">Partita IVA:</span>
+                                <span class="font-weight-bold"><?= Module::t('amosdesign', 'Partita IVA') . ': ' ?></span>
                                 <span ><?= $espositorePIva ?></span>
                             </p>
                         <?php } ?>
 
                         <?php if ($espositoreReferente) { ?>
                             <p class="mb-1">
-                                <span class="font-weight-bold">Ref. operativo:</span>
+                                <span class="font-weight-bold"><?= Module::t('amosdesign', 'Referente operativo') . ': ' ?></span>
                                 <span><?= $espositoreReferente ?></span>
                             </p>
                         <?php } ?>
@@ -87,7 +88,7 @@ $espositoreTitle = (isset($espositoreTitle)) ? $espositoreTitle :  'Espositore';
                 </div>
             </div>
             <div>
-                <a href="#" type="button" class="btn btn-primary btn-sm">Associa</a>
+                <a href="#" type="button" class="btn btn-primary btn-sm"><?= Module::t('amosdesign', 'Associa') ?></a>
 
             </div>
         </div>
@@ -102,21 +103,21 @@ $espositoreTitle = (isset($espositoreTitle)) ? $espositoreTitle :  'Espositore';
                     <div class="col-md-6 my-2">
                         <?php if ($espositoreSito) { ?>
                             <div class="d-flex flex-column flex-sm-row pb-1">
-                                <p class=" font-weight-bold mb-0 pb-0"> Sito web: </p>
+                                <p class=" font-weight-bold mb-0 pb-0"><?= Module::t('amosdesign', 'Sito web') . ': ' ?> </p>
                                 <a href="<?= $espositoreSito ?>" class="font-weight-normal text-truncate p-0 mb-0 ml-1"> <?= $espositoreSito ?></a>
                             </div>
                         <?php } ?>
 
                         <?php if ($espositorePIva) { ?>
                             <div class="d-flex flex-column flex-sm-row pb-1">
-                                <p class="font-weight-bold  pb-0 mb-0">Partita IVA:</p>
+                                <p class="font-weight-bold  pb-0 mb-0"><?= Module::t('amosdesign', 'Partita IVA') . ': ' ?></p>
                                 <p class="pb-0 mb-0 ml-1"><?= $espositorePIva ?></p>
                             </div>
                         <?php } ?>
 
                         <?php if ($espositoreReferente) { ?>
                             <div class="d-flex flex-column flex-sm-row pb-1">
-                                <p class="font-weight-bold pb-0 mb-0">Ref. operativo:</p>
+                                <p class="font-weight-bold pb-0 mb-0"><?= Module::t('amosdesign', 'Referente operativo') . ': ' ?></p>
                                 <p class="pb-0 mb-0 ml-1"><?= $espositoreReferente ?></p>
                             </div>
                         <?php } ?>
@@ -162,7 +163,7 @@ $espositoreTitle = (isset($espositoreTitle)) ? $espositoreTitle :  'Espositore';
                     <svg class="icon icon-primary icon-sm p-1" role="img">
                         <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#star-outline"></use>
                     </svg>
-                    Associa
+                    <?= Module::t('amosdesign', 'Associa') ?>
                 </a>
             </div>
         </div>

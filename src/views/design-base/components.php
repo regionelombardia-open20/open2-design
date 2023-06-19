@@ -2050,6 +2050,43 @@ echo $this->render('parts/devs-tools');
                 </section>
             <?php endif; ?>
 
+
+
+            <!--progetti-->
+            <?php /*
+            <?php if(\Yii::$app->getModule('news')): ?>
+            */ ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="news">Progetti</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-project',
+                            [
+                                'category' => 'ULTIME DALLA P.A.',
+                                'actionModify' => '#',
+                                'actionDelete' => '#',
+
+                                'newPublication' => true,
+                               
+                                'categorySize' => 'lead',
+                                'titleSize' => 'h3',
+                                'descriptionSize' => 'lead',
+                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
+                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                               
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php /*
+            <?php endif; ?>
+            */ ?>
+
+
+
+
             <!--risultati di ricerca lista-->
             <section class="py-5">
 

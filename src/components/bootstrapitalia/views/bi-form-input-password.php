@@ -1,17 +1,11 @@
 <?php
 
-use open20\design\assets\BootstrapItaliaDesignAsset;
-
-$bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
-
-
-/**
- * @param string $inputId
- * @param Model $model
- */
-
 use yii\helpers\Html;
 use yii\web\View;
+use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
+
+$bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
 
 $thisId = $inputId;
@@ -61,7 +55,7 @@ if (isset($options['enableStrengthMeter'])) {
         <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-help-circle"></use>
       </svg>
     </span>
-    <span class="sr-only">Informazioni per la corretta compilazione</span>
+    <span class="sr-only"><?= Module::t('amosdesign', 'Informazioni per la corretta compilazione')?></span>
   </a>
 <?php endif ?>
 <input type="<?= $type ?>" name="<?= $name ?>" class="form-control input-password <?= $strengthMeterClass ?>" <?= $placeholder ?> <?= $ariaDescribedBy ?> <?= $confStrengthMeter ?> id="<?= $inputId ?>" value="<?= $value ?>" <?= $required ?>>
@@ -80,4 +74,4 @@ if (isset($options['enableStrengthMeter'])) {
   <?= $label ?>
   <?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?>
 </label>
-<div class="invalid-feedback">Per favore inserisci <?= $label ?>.</div>
+<div class="invalid-feedback"><?= Module::t('amosdesign', 'Per favore inserisci') ?><?= $label ?>.</div>

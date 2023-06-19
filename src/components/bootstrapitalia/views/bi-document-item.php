@@ -14,17 +14,22 @@ use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
-$date  = (isset($date)) ? \Yii::$app->formatter->asDate($date, 'php:d mm yy') : ''; 
+$date  = (isset($date)) ? \Yii::$app->formatter->asDate($date, 'php:d mm yy') : '';
 
-if (!isset($infoDoc)){
+if (!isset($infoDoc)) {
   $infoDoc = '<strong>' . Module::t('amosdesign', 'Pubblicata da') . '</strong>' . ' ' . $nameSurname;
   $infoDoc = (!empty($date)) ? $infoDoc . ' ' . '<strong>' . Module::t('amosdesign', 'il') . '</strong>' . ' ' . $date . ' ' : $infoDoc;
   $infoDoc = (isset($category)) ? $infoDoc . ' ' . '<strong>' . Module::t('amosdesign', 'in') . '</strong>' . ' ' . $category : $infoDoc;
   $infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong>' . Module::t('amosdesign', 'per') . '</strong>' . ' ' . $community : $infoDoc;
 }
 
-$lastSyncDrive = (isset($dateSyncDrive)) ? 'Documento Google Drive<br>aggiornato il: ' . $dateLastSyncDrive . ' alle ' . $hourLastSyncDrive  : false;
+$lastSyncDrive = (isset($dateSyncDrive)) ?  Module::t('amosdesign', 'Documento Google Drive') .'<br>' . Module::t('amosdesign', 'aggiornato il:') . $dateLastSyncDrive . Module::t('amosdesign', 'alle') . $hourLastSyncDrive  : false;
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
+
+$buttons   = (isset($buttons) ? $buttons : []);
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
 ?>
 
@@ -55,7 +60,7 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
             <svg class="icon icon-secondary icon-sm">
               <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#folder-zip"></use>
             </svg>
-          <?php elseif ((in_array(strtolower($typeFolder), ['folder']))) : ?>
+          <?php elseif ($typeFolder) : ?>
             <svg class="icon icon-folder icon-sm">
               <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#folder"></use>
             </svg>
@@ -71,20 +76,20 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
             </svg>
           <?php endif ?>
 
-          <?php if (!isset($size) && (!isset($typeFolder))) : ?>
-            <span class="text mx-1 text-uppercase"><?= Module::t('amosdesign', 'Link esterno')?></span>
-          <?php elseif (!isset($size) && (isset($typeFolder))) : ?>
-            <span class="text mx-1 text-uppercase"><?= Module::t('amosdesign', 'Cartella')?></span>
+          <?php if (isset($size) && $size == 0 && (!$typeFolder)) : ?>
+            <span class="text mx-1 text-uppercase"><?= Module::t('amosdesign', 'Link esterno') ?></span>
+          <?php elseif (isset($size) && $size == 0 && ($typeFolder)) : ?>
+            <span class="text mx-1 text-uppercase"><?= Module::t('amosdesign', 'Cartella') ?></span>
           <?php else : ?>
             <span class="text mx-1 text-uppercase"><?= $type ?></span>
           <?php endif ?>
 
-          <?php if (isset($size)) : ?>
+          <?php if (isset($size) && $size > 0 && (!$typeFolder)) : ?>
             <span class="text text-capitalize"><?= '(' . $size . 'Kb)' ?></span>
+            <span class="text ml-2"><?= '-' . ' ' . Module::t('amosdesign', 'Nome file principale') . ':' . ' ' ?><?= $fileName ?></span>
           <?php endif ?>
-          <span class="text ml-2"><?= '-' . ' ' . Module::t('amosdesign', 'Nome file principale') . ':' . ' '?><?= $fileName ?></span>
         </div>
- 
+
         <div class="other-info-item d-flex align-items-center justify-content-end ml-auto">
 
           <?php if (($newPubblication)) : ?>
@@ -97,17 +102,27 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
             </div>
           <?php endif; ?>
           <div class="ml-2">
+            
             <?php
             echo $this->render(
-              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
+              '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+              [
+                  'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+              ]
             );
             ?>
           </div>
         </div>
       </div>
-      <a class="link-list-title " href="<?= $url ?>" title="Vai al documento <?= $title ?>">
-        <h5 class="mb-0 font-weight-bold"><?= $title ?></h5>
-      </a>
+      <?php if ($typeFolder) : ?>
+        <a class="link-list-title " href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vai alla cartella') ?> <?= $title ?>">
+          <h3 class="h5 mb-0 font-weight-bold"><?= $title ?></h3>
+        </a>
+      <?php else : ?>
+        <a class="link-list-title " href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vai al documento') ?> <?= $title ?>">
+          <h3 class="h5 mb-0 font-weight-bold"><?= $title ?></h3>
+        </a>
+      <?php endif; ?>
       <?php if (isset($description)) : ?>
         <p class="text-secondary mb-2"><?= $description ?></p>
       <?php endif ?>
@@ -115,8 +130,18 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
         <?= $infoDoc ?>
       </div>
       <div>
-        <a href="<?= $fileUrl ?>" title="Scarica il documento <?= $fileName ?>" class="read-more d-inline mr-2" download><?= Module::t('amosdesign', 'Scarica')?></a>
+        <?php if ($typeFolder) : ?>
+          <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Apri la cartella') ?> <?= $fileName ?>" class="read-more d-inline mr-2"><?= Module::t('amosdesign', 'Apri') ?></a>
+        <?php else : ?>
+          <?php if (isset($size) && $size == 0 && (!$typeFolder)) : ?>
+            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento esterno') ?> <?= $fileName ?>" class="read-more d-inline mr-2" ><?= Module::t('amosdesign', 'Dettaglio') ?></a>
 
+          <?php else: ?>
+            <a href="<?= $fileUrl ?>" title="<?= Module::t('amosdesign', 'Scarica il documento') ?> <?= $fileName ?>" class="read-more d-inline mr-2" download><?= Module::t('amosdesign', 'Scarica') ?></a>
+            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento') ?> <?= $fileName ?>" class="read-more d-inline mr-2" ><?= Module::t('amosdesign', 'Dettaglio') ?></a>
+          <?php endif; ?>
+
+        <?php endif; ?>
       </div>
     </div>
 

@@ -47,25 +47,108 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
     endif;
     ?>
 
+    <?php
+    if (isset(\Yii::$app->view->params['hideHamburgerMenuHeader'])) {
+        $hideHamburgerMenuHeaderCheck = (\Yii::$app->view->params['hideHamburgerMenuHeader']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['hideHamburgerMenuHeader'])) {
+            $hideHamburgerMenuHeaderCheck = (\Yii::$app->params['layoutConfigurations']['hideHamburgerMenuHeader']);
+        } else {
+            $hideHamburgerMenuHeaderCheck = false;
+        }
+    }
+    
+    if (isset(\Yii::$app->view->params['hideGlobalSearchHeader'])) {
+        $hideGlobalSearchHeaderCheck = (\Yii::$app->view->params['hideGlobalSearchHeader']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeader'])) {
+            $hideGlobalSearchHeaderCheck = (\Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeader']);
+        } else {
+            $hideGlobalSearchHeaderCheck = false;
+        }
+    }
+
+    if (isset(\Yii::$app->view->params['hideUserMenuHeader'])) {
+        $hideUserMenuHeaderCheck = (\Yii::$app->view->params['hideUserMenuHeader']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['hideUserMenuHeader'])) {
+            $hideUserMenuHeaderCheck = (\Yii::$app->params['layoutConfigurations']['hideUserMenuHeader']);
+        } else {
+            $hideUserMenuHeaderCheck = false;
+        }
+    }
+
+    if (isset(\Yii::$app->view->params['fluidContainerHeader'])) {
+        $fluidContainerHeaderCheck = (\Yii::$app->view->params['fluidContainerHeader']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['fluidContainerHeader'])) {
+            $fluidContainerHeaderCheck = (\Yii::$app->params['layoutConfigurations']['fluidContainerHeader']);
+        } else {
+            $fluidContainerHeaderCheck = false;
+        }
+    }
+
+    if (isset(\Yii::$app->view->params['hideCookieBar'])) {
+        $hideCookieBarCheck = (\Yii::$app->view->params['hideCookieBar']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['hideCookieBar'])) {
+            $hideCookieBarCheck = (\Yii::$app->params['layoutConfigurations']['hideCookieBar']);
+        } else {
+            $hideCookieBarCheck = false;
+        }
+    }
+
+    if (isset(\Yii::$app->view->params['hideAssistance'])) {
+        $hideAssistanceCheck = (\Yii::$app->view->params['hideAssistance']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['hideAssistance'])) {
+            $hideAssistanceCheck = (\Yii::$app->params['layoutConfigurations']['hideAssistance']);
+        } else {
+            $hideAssistanceCheck = false;
+        }
+    }
+
+    if (isset(\Yii::$app->view->params['showSocialHeader'])) {
+        $showSocialHeaderCheck = (\Yii::$app->view->params['showSocialHeader']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['showSocialHeader'])) {
+            $showSocialHeaderCheck = (\Yii::$app->params['layoutConfigurations']['showSocialHeader']);
+        } else {
+            $showSocialHeaderCheck = true;
+        }
+    }
+
+    if (isset(\Yii::$app->view->params['showSocialFooter'])) {
+        $showSocialFooterCheck = (\Yii::$app->view->params['showSocialFooter']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['showSocialFooter'])) {
+            $showSocialFooterCheck = (\Yii::$app->params['layoutConfigurations']['showSocialFooter']);
+        } else {
+            $showSocialFooterCheck = true;
+        }
+    }
+
+    ?>
+
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-header", [
         'currentAsset' => $currentAsset,
         'cmsDefaultMenu' => $cmsDefaultMenu,
         'cmsSecondaryMenu' => $cmsSecondaryMenu,
         'privacyPolicyLink' => \Yii::$app->params['linkConfigurations']['privacyPolicyLinkCommon'],
         'cookiePolicyLink' => \Yii::$app->params['linkConfigurations']['cookiePolicyLinkCommon'],
-        'hideHamburgerMenu' => \Yii::$app->params['layoutConfigurations']['hideHamburgerMenuHeader'],
+        'hideHamburgerMenu' => $hideHamburgerMenuHeaderCheck,
         'alwaysHamburgerMenu' => \Yii::$app->params['layoutConfigurations']['showAlwaysHamburgerMenuHeader'],
         'hideLangSwitchMenu' => \Yii::$app->params['layoutConfigurations']['hideLangSwitchMenuHeader'],
-        'hideGlobalSearch' => \Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeader'],
-        'hideUserMenu' => ((\Yii::$app->params['layoutConfigurations']['hideUserMenuHeader']) || (\Yii::$app->view->params['hideUserMenuHeader'])),
-        'fluidContainerHeader' => ((\Yii::$app->params['layoutConfigurations']['fluidContainerHeader']) || (\Yii::$app->view->params['fluidContainerHeader'])),
+        'hideGlobalSearch' => $hideGlobalSearchHeaderCheck,
+        'hideUserMenu' => $hideUserMenuHeaderCheck,
+        'fluidContainerHeader' => $fluidContainerHeaderCheck,
         'customUserMenu' => \Yii::$app->params['layoutConfigurations']['customUserMenuHeader'],
         'customUserNotLogged' => \Yii::$app->params['layoutConfigurations']['customUserNotLoggedHeader'],
         'customUserMenuLoginLink' => \Yii::$app->params['linkConfigurations']['loginLinkCommon'],
         'customUserMenuLogoutLink' => \Yii::$app->params['linkConfigurations']['logoutLinkCommon'],
         'customUserProfileLink' => \Yii::$app->params['linkConfigurations']['userProfileLinkCommon'],
         'customPlatformPluginMenu' => \Yii::$app->params['layoutConfigurations']['customPlatformPluginMenu'],
-        'showSocial' => \Yii::$app->params['layoutConfigurations']['showSocialHeader'],
+        'showSocial' => $showSocialHeaderCheck,
         'showSecondaryMenu' => \Yii::$app->params['layoutConfigurations']['showSecondaryMenuHeader'],
         'disableThemeLight' => \Yii::$app->params['layoutConfigurations']['disableThemeLightHeader'],
         'disableSmallHeader' => \Yii::$app->params['layoutConfigurations']['disableSmallHeader'],
@@ -119,25 +202,25 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         $customPlatformFooter = \Yii::$app->params['layoutConfigurations']['customPlatformFooter'];
         echo $this->render($customPlatformFooter, [
             'currentAsset' => $currentAsset,
-            'cmsFooterMenu' => $cmsFooterMenu
+            'cmsFooterMenu' => $cmsFooterMenu,
+            'showSocial' => $showSocialFooterCheck,
         ]);
         ?>
     <?php else : ?>
         <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-footer", [
             'currentAsset' => $currentAsset,
             'cmsFooterMenu' => $cmsFooterMenu,
-            'showSocial' => \Yii::$app->params['layoutConfigurations']['showSocialFooter'],
+            'showSocial' => $showSocialFooterCheck,
         ]); ?>
     <?php endif; ?>
-
-    <?php if ((!isset(\Yii::$app->params['layoutConfigurations']['hideCookieBar'])) || (isset(\Yii::$app->params['layoutConfigurations']['hideCookieBar']) && !(\Yii::$app->params['layoutConfigurations']['hideCookieBar']))) : ?>
+    <?php if (!$hidehideCookieBarCheck) : ?>
         <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-cookiebar", [
             'currentAsset' => $currentAsset,
             'cookiePolicyLink' => \Yii::$app->params['linkConfigurations']['cookiePolicyLinkCommon']
         ]); ?>
     <?php endif ?>
     <!-- ASSISTANCE -->
-    <?php if ( !(\Yii::$app->params['assistance']['hideAssistance']) || (\Yii::$app->view->params['hideAssistance']) ) : ?>
+    <?php if (!$hideAssistanceCheck) : ?>
         <?php
         $isMail = ((isset(Yii::$app->params['assistance']['type']) && Yii::$app->params['assistance']['type'] == 'email') || (!isset(Yii::$app->params['assistance']['type']) && isset(\Yii::$app->params['email-assistenza']))) ? true : false;
         $mailAddress = isset(Yii::$app->params['assistance']['email']) ? Yii::$app->params['assistance']['email'] : (isset(\Yii::$app->params['email-assistenza']) ? \Yii::$app->params['email-assistenza'] : '');

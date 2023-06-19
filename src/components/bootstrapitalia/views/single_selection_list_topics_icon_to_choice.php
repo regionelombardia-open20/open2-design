@@ -12,6 +12,7 @@
 use open20\design\assets\BootstrapItaliaDesignAsset;
 use yii\helpers\Html;
 use yii\web\View;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 $isActive = $isActive? 1: 0;
@@ -50,7 +51,7 @@ $isActionDisabledClass = ($isActionDisabled) ? 'action-disabled' : '';
 
                             <a class="stretched-link ml-auto btn-icon d-block mt-auto" href="#" data-tagId="<?= $topic->getId() ?>" id="single-selection-list-topics-icon-anchor-id-<?= $topic->getId() ?>" title="Attiva la tematica">
                             <span class="rounded-icon rounded-primary mx-auto rounded-circle p-1">        
-                            <svg class="icon icon-white" role="img" aria-label="Icona per gestire la preferenza">
+                            <svg class="icon icon-white" role="img" aria-label=<?= Module::t('amosdesign', 'Icona per gestire la preferenza')?>
                                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#heart-outline"></use>
                                 </svg>
                                 </span>

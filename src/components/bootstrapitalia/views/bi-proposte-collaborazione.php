@@ -13,10 +13,19 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
 $expireDate = (isset($expireDate)) ? DateUtility::getDate($expireDate, 'php:d F Y') :  '';
 $publishedAt = (isset($publishedAt)) ? DateUtility::getDate($publishedAt, 'php:d F Y') :  '';
 $labelReadMore = Module::t('amosdesign', 'Dettaglio proposta');
-$statesCounter = (isset($statesCounter)) ? $statesCounter :  '';
+$statesCounter = $model->getExpressionsOfInterestStatesCounter();
 $url =(isset($url)) ? $url :  '';
 $pubblicationRule =(isset($pubblicationRule)) ? CwhUtil::getPublicationRuleLabel($pubblicationRule) :  '';
 $status =(isset($status)) ? $status :  '';
+$loggedUser = \open20\amos\core\user\User::findOne(\Yii::$app->user->id);
+$validatoAlmenoUnaVolta = false;
+if($loggedUser){
+    $validatoAlmenoUnaVolta = $loggedUser->userProfile->validato_almeno_una_volta;
+}
+
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
 
 ?>
@@ -83,17 +92,32 @@ $status =(isset($status)) ? $status :  '';
         <div class="col-md-9">
             <div class="content-proposte-collaborazione h-100 pl-md-3">
                 <div class="d-flex align-items-start mt-2 mt-md-0">
+                    <?php if(!$validatoAlmenoUnaVolta) {?>
+                        <a data-target="#modal-pp-alert" data-toggle = "modal" href="<?= 'javascript:void(0)' ?>"
+                           title="<?= Module::t('amosdesign', 'Vai alla proposta collaborazione') . ': ' ?><?= $model->getTitle() ?>"
+                           class="link-list-title">
+                            <h3 class="title-three-line"><?= $model->getTitle() ?></h3>
+                        </a>
+                    <?php  } else { ?>
                     <a href="<?= $url ?>"
                        title="<?= Module::t('amosdesign', 'Vai alla proposta collaborazione') . ': ' ?><?= $title ?>"
                        class="link-list-title">
                         <h3 class="title-three-line"><?= $title ?></h3>
                     </a>
+                    <?php } ?>
                     <div class="d-flex align-items-center ml-auto pl-3 mt-1">
                         <?php if($model): ?>
                             <?= \open20\design\components\BulletNewWidget::widget(['model' => $model]) ?>
                         <?php endif; ?>
                         <div class="ml-2">
-                            <?php echo $this->render('@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'); ?>
+                        <?php
+                        echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                        [
+                            'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                        ]
+                        );
+                    ?>
                         </div>
                     </div>
                 </div>
@@ -105,9 +129,16 @@ $status =(isset($status)) ? $status :  '';
                             <strong><?= Module::t('amosdesign', 'Manifestazioni di interesse') ?></strong>
                         </div>
                     <?php endif; ?>
+                    <?php if(!$validatoAlmenoUnaVolta) {?>
+                        <a data-target="#modal-pp-alert" data-toggle = "modal" class="read-more ml-auto" href="<?= 'javascript:void(0)' ?>" title="<?= $labelReadMore ?>">
+                            <span class="text"><?= $labelReadMore ?></span>
+                        </a>
+                    <?php  } else { ?>
                     <a class="read-more ml-auto" href="<?= $url ?>" title="<?= $labelReadMore ?>">
                         <span class="text"><?= $labelReadMore ?></span>
                     </a>
+                    <?php } ?>
+
 
                 </div>
             </div>

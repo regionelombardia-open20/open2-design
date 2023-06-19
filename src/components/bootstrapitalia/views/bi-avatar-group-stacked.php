@@ -41,9 +41,9 @@ if ($avatarWrapperSize == 'xl') {
       $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
       $avatarPresence = ($userProfiles[$i]->attivo) ? 'active' : 'hidden';
       if ($avatarPresence == 'hidden') {
-          $avatarPresenceTitle = 'Assente';
+          $avatarPresenceTitle = Module::t('amosdesign', 'Assente');
       } else {
-          $avatarPresenceTitle = 'Attivo';
+          $avatarPresenceTitle = Module::t('amosdesign', 'Attivo');
       }
     }
     ?>
@@ -63,7 +63,7 @@ if ($avatarWrapperSize == 'xl') {
         <?php if ($showAvatarPresence) : ?>
           <div class="avatar-presence <?= $avatarPresence ?>" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Presenza') . ': ' .  $avatarPresenceTitle ?>">
           
-              <span class="sr-only"><?= Module::t('amosdesign', 'Presenza: ') . $avatarPresenceTitle ?> </span>
+              <span class="sr-only"><?= Module::t('amosdesign', 'Presenza') . ': ' . $avatarPresenceTitle ?> </span>
           </div>
         <?php endif ?>
       <?php else : ?>

@@ -9,7 +9,7 @@ $arr         = explode(' ', trim($nameSurname));
 $name        = $arr[0];
 $surname     = $arr[1];
 $initials    = substr($name, 0, 1) . substr($surname, 0, 1);
-$titlelink   = 'Visualizza il profilo di' . ' ' . $nameSurname;
+$titlelink   = Module::t('amosdesign', 'Visualizza il profilo di {nameSurname} ',['nameSurname' => $nameSurname]);
 $tooltipText = '<strong>' . $nameSurname . '</strong>' . (isset($tooltipAdditionalInfo) ? '<br/><em>' . $tooltipAdditionalInfo . '</em>' : '');
 $removeLink  = (isset($removeLink)) ? $removeLink : false;
 $showWelcomeLabel = (isset($showWelcomeLabel)) ? $showWelcomeLabel : false;
@@ -20,9 +20,9 @@ $showAvatarPresence = (isset($showAvatarPresence)) ? $showAvatarPresence : false
 
 $avatarPresence = (isset($avatarPresence)) ? 'active' : 'hidden';
 if ($avatarPresence == 'hidden') {
-    $avatarPresenceTitle = 'Assente';
+    $avatarPresenceTitle = Module::t('amosdesign', 'Assente');
 } else {
-    $avatarPresenceTitle = 'Attivo';
+    $avatarPresenceTitle = Module::t('amosdesign', 'Attivo');
 }
 
 $avatarWrapperSize = (isset($avatarWrapperSize)) ? $avatarWrapperSize : 'md';
@@ -47,7 +47,7 @@ if ($avatarWrapperSize == 'xl') {
     $extraTextSize   = (isset($extraTextSize)) ? $extraTextSize : 'small';
 }
 
-$statoProfilo = (isset($statoProfilo)) ? $statoProfilo : 'Validato';
+$statoProfilo = (isset($statoProfilo)) ? $statoProfilo : Module::t('amosdesign', 'Validato');
 if ($statoProfilo == 'Validato') {
     $statoProfiloIcon = 'check';
     $statoProfiloClass = 'success';

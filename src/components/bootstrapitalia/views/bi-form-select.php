@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
+use open20\design\Module;
 
 $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'required' : '';
 
@@ -23,7 +24,7 @@ if($tmp){
              id="spinner-<?= $inputId ?>" style="display: none;">
             <div class="progress-spinner-inner"></div>
             <div class="progress-spinner-inner"></div>
-            <span class="sr-only">Caricamento...</span>
+            <span class="sr-only"><?= Module::t('amosdesign', 'Caricamento') . '...' ?></span>
         </div>
     </div>
 

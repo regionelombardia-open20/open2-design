@@ -10,6 +10,7 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
 ?>
@@ -20,7 +21,7 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
       <div class="d-flex align-items-center">
         <input type="checkbox" class="mr-2" id="customCheck" name="example1">
         <label class="custom-control-label lead color-primary mb-0 border-0 py-0 h-auto" for="customCheck">
-          <span class="h5 font-weight-normal primary-color">Sono interessato a informazioni per <strong>Cittadini</strong></span>
+          <span class="h5 font-weight-normal primary-color"><?= Module::t('amosdesign', 'Sono interessato a informazioni per')?> <strong><?= Module::t('amosdesign', 'Cittadini')?></strong></span>
         </label>
       </div>
     </div>
@@ -28,8 +29,9 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
   </div>
   <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="heading2">
     <div class="collapse-body mt-4 pt-4 pb-0 border-top tertiary-color">
-      <p ><strong>Dove vuoi essere contattato?</strong><br>
-        Per poter ricevere le comunicazioni di tuo interesse è necessario compilare le modalità di contatto</p>
+      <p ><strong><?= Module::t('amosdesign', 'Dove vuoi essere contattato') . '?'?></strong><br>
+      <?= Module::t('amosdesign', 'Per poter ricevere le comunicazioni di tuo interesse è necessario compilare le modalità di contatto')?>
+        </p>
     </div>
   </div>
 </div>

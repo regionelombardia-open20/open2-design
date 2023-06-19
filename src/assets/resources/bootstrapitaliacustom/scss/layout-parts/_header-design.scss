@@ -1,5 +1,4 @@
 .it-header-wrapper {
-
     /** override BI padding header for boxed header */
     .it-header-slim-wrapper,
     .it-header-center-wrapper {
@@ -11,7 +10,7 @@
 
     .it-header-slim-wrapper-content {
         .navbar-brand {
-            .logo-RL-top-design>img {
+            .logo-RL-top-design > img {
                 @include media-breakpoint-down(md) {
                     width: auto;
                 }
@@ -32,7 +31,7 @@
         }
 
         .it-brand-wrapper {
-            >a>.it-brand-text {
+            > a > .it-brand-text {
                 @include media-breakpoint-up(lg) {
                     max-height: 55px;
                     height: 54px;
@@ -46,12 +45,11 @@
                     }
                 }
 
-                >img {
+                > img {
                     height: $global-height-logo;
                     width: auto;
 
-                    @media screen and (-ms-high-contrast: active),
-                    (-ms-high-contrast: none) {
+                    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
                         width: 100%;
                     }
                 }
@@ -63,7 +61,7 @@
             }
 
             .logo-RL-design {
-                >.it-brand-text>img {
+                > .it-brand-text > img {
                     @include media-breakpoint-down(lg) {
                         width: auto;
                     }
@@ -284,7 +282,7 @@
                 -moz-transition: all 0.4s ease-in-out;
 
                 .it-brand-wrapper {
-                    >a {
+                    > a {
                         .it-brand-text {
                             height: 40px;
 
@@ -315,21 +313,23 @@
             z-index: 0;
         }
 
-        .navbar-nav.cms-menu-container-default {
-            .nav-item {
-                .dropdown-menu {
-                    padding: 0.5rem 1rem;
-                    white-space: nowrap;
-                    background-color: $white;
+        .navbar-nav {
+            &[class*='cms-menu-container-'] {
+                .nav-item {
+                    .dropdown-menu {
+                        padding: 0.5rem 1rem;
+                        white-space: nowrap;
+                        background-color: $white;
 
-                    .list-item {
-                        span {
-                            margin-right: 10px;
+                        .list-item {
+                            span {
+                                margin-right: 10px;
+                            }
                         }
-                    }
 
-                    &::before {
-                        display: none;
+                        &::before {
+                            display: none;
+                        }
                     }
                 }
             }
@@ -375,7 +375,7 @@
     }
 }
 
-#alwaysHamburgerMenu+#headerContent {
+#alwaysHamburgerMenu + #headerContent {
     .it-brand-wrapper {
         padding-left: 60px;
 

@@ -10,14 +10,15 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
 
-$infoDoc = '<strong>Pubblicata da</strong>' . ' ' . $nameSurname . ' ' . '<strong>il</strong>' . ' ' . $date;
-$infoDoc = (isset($category)) ? $infoDoc . ' ' . '<strong>in</strong>' . ' ' . $category : $infoDoc;
-$infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong>per</strong>' . ' ' . $community : $infoDoc;
-$lastSyncDrive = (isset($dateSyncDrive)) ? 'Documento Google Drive<br>aggiornato il: ' . $dateLastSyncDrive . ' alle ' . $hourLastSyncDrive  : false;
+$infoDoc = '<strong>' . Module::t('amosdesign', 'Pubblicata da') . '</strong>' . ' ' . $nameSurname . ' ' . '<strong>' . Module::t('amosdesign', 'il') . '</strong>' . ' ' . $date;
+$infoDoc = (isset($category)) ? $infoDoc . ' ' . '<strong>' . Module::t('amosdesign', 'in') . '</strong>' . ' ' . $category : $infoDoc;
+$infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong>' . Module::t('amosdesign', 'per') . '</strong>' . ' ' . $community : $infoDoc;
+$lastSyncDrive = (isset($dateSyncDrive)) ? Module::t('amosdesign', 'Documento Google Drive').'<br>'. Module::t('amosdesign', 'aggiornato il') . ' ' . ":" . ' ' . $dateLastSyncDrive . Module::t('amosdesign', 'alle') . ' ' . $hourLastSyncDrive  : false;
 
 ?>
 

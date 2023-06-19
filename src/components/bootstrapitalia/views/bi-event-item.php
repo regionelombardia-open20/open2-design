@@ -3,6 +3,7 @@
 use open20\design\utility\DateUtility;
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -28,6 +29,9 @@ $yearEnd = DateUtility::getDate($dateHourEnd, 'php:Y');
 $hourEnd = DateUtility::getDateHour($dateHourEnd, 'php:H:i');
 $dateEnd = DateUtility::getDate($dateHourEnd);
 
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
 ?>
 
@@ -75,18 +79,21 @@ $dateEnd = DateUtility::getDate($dateHourEnd);
                 <?php endif; ?>
                 <div class="ml-2">
                     <?php
-                    echo $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
-                    );
+                        echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                        [
+                            'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                        ]
+                        );
                     ?>
                 </div>
             </div>
             </div>
             <?php if (isset($numPlaces) && !empty($numPlaces)) : ?>
                 <?php if (isset($numPlaces['available'])) : ?>
-                    <p class="mb-0">Numero posti disponibili <?= $numPlaces['available'] ?> <?= isset($numPlaces['tot']) ? 'su ' . $numPlaces['tot']  : '' ?></p>
+                    <p class="mb-0"><?= Module::t('amosdesign', 'Numero posti disponibili') . ' ' . $numPlaces['available'] ?> <?= isset($numPlaces['tot']) ? 'su ' . $numPlaces['tot']  : '' ?></p>
                 <?php else : ?>
-                    <p class="mb-0">Numero posti totali <?= $numPlaces['tot'] ?></p>
+                    <p class="mb-0"><?= Module::t('amosdesign', 'Numero posti totali') . ' ' .  $numPlaces['tot'] ?></p>
                 <?php endif; ?>
             <?php endif; ?>
         

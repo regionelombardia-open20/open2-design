@@ -1,6 +1,7 @@
 <?php
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -9,7 +10,7 @@ $arr = explode(' ', trim($nameSurname));
 $name = $arr[0];
 $surname = $arr[1];
 $initials = substr($name, 0, 1) . substr($surname, 0, 1);
-$titlelink = 'Visualizza il profilo di' . ' ' . $nameSurname;
+$titlelink = Module::t('amosdesign', 'Visualizza il profilo di {nameSurname}',['nameSurname' => $nameSurname]);
 $tooltipText = '<strong>' . $nameSurname . '</strong>' . (isset($tooltipAdditionalInfo) ? '<br/><em>' . $tooltipAdditionalInfo . '</em>' : '');
 $removeLink = (isset($removeLink)) ? $removeLink : false;
 
@@ -33,7 +34,7 @@ if ($avatarWrapperSize == 'xl') {
   $extraTextSize = (isset($extraTextSize)) ? $extraTextSize : 'small';
 }
 
-$statoProfilo = (isset($statoProfilo)) ? $statoProfilo : 'Da validare';
+$statoProfilo = (isset($statoProfilo)) ? $statoProfilo : Module::t('amosdesign', 'Da validare');
 if ($statoProfilo == 'Validato') {
   $statoProfiloIcon = 'account-check';
   $statoProfiloClass = 'success';
@@ -54,7 +55,7 @@ $buttonCtaJoinClass = (isset($buttonCtaJoinClass)) ? $buttonCtaJoinClass : 'btn-
 $isNewUser = (isset($isNewUser)) ? $isNewUser : false;
 
 
-$statoProfilo = (isset($statoProfilo)) ? $statoProfilo : 'Non validato';
+$statoProfilo = (isset($statoProfilo)) ? $statoProfilo : Module::t('amosdesign', 'Non validato');
 if ($statoProfilo == 'Validato') {
     $statoProfiloIcon = 'check';
     $statoProfiloClass = 'success';
@@ -84,7 +85,7 @@ if ($statoProfilo == 'Validato') {
         
       <?php endif ?>
       <?php if (!($statoProfilo == 'Validato' && $hideStatusValidated)) : ?>
-                <div class="avatar-status bg-<?= $statoProfiloClass ?>" data-toggle="tooltip" title="Stato profilo utente: <?= $statoProfilo ?>">
+                <div class="avatar-status bg-<?= $statoProfiloClass ?>" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Stato profilo utente: {statoProfilo}',['statoProfilo' => $statoProfilo])?>">
                     <svg class="icon icon-white">
                     <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#<?=$statoProfiloIcon?>"></use>
 
@@ -116,23 +117,22 @@ if ($statoProfilo == 'Validato') {
         <div class="tooltip-container text-secondary small d-flex align-items-center my-2 my-sm-0">
      
           
-          <div class="text-truncate d-flex align-items-center" data-toggle="tooltip" title="Collaborazione prevalente: <?= $collaborazionePrevalente ?>">
+          <div class="text-truncate d-flex align-items-center" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Collaborazione prevalente: {collaborazionePrevalente}',['collaborazionePrevalente' => $collaborazionePrevalente])?>">
             <span>
               <svg class="icon icon icon-tertiary p-1 mr-1 rounded-circle border border-tertiary">
                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#briefcase-account"></use>
               </svg>
             </span>
-
-            <span class="sr-only">Collaborazione prevalente:<?= $collaborazionePrevalente ?></span>
+            <span class="sr-only"><?= Module::t('amosdesign', 'Collaborazione prevalente: {collaborazionePrevalente}',['collaborazionePrevalente' => $collaborazionePrevalente])?></span>
           </div>
 
-          <div class="text-truncate d-flex align-items-center" data-toggle="tooltip" title="Facilitatore: <?= $facilitatore ?>">
+          <div class="text-truncate d-flex align-items-center" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Facilitatore: {facilitatore}',['facilitatore' => $facilitatore])?>">
             <span>
               <svg class="icon icon icon-tertiary p-1 mr-1 rounded-circle border border-tertiary">
                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#assistant"></use>
               </svg>
             </span>
-            <span class="sr-only">Facilitatore:<?= $facilitatore ?></span>
+            <span class="sr-only"><?= Module::t('amosdesign', 'Facilitatore: {facilitatore}',['facilitatore' => $facilitatore])?></span>
           </div>
          
 
@@ -154,7 +154,7 @@ if ($statoProfilo == 'Validato') {
             <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#email"></use>
           </svg>
         </span>
-        <a href="mailto:<?= $userEmail ?>" title="Invia una mail a <?= $nameSurname ?>">
+        <a href="mailto:<?= $userEmail ?>" title="<?= Module::t('amosdesign', 'Invia una mail a {nameSurname} ',['nameSurname' => $nameSurname]) ?>">
         <?= $userEmail ?>
         </a>
       </div>
@@ -162,8 +162,9 @@ if ($statoProfilo == 'Validato') {
     <div class="fourth-row d-flex justify-content-between flex-column flex-sm-row">
       <?= $descrizionrBreve ?>
       <div class="pull-right">
-        <a href="#" class="btn btn-primary mt-2 mt-sm-0" title="Visualizza il profilo di <?=$nameSurname ?> ">
-          Visualizza
+      
+        <a href="#" class="btn btn-primary mt-2 mt-sm-0" title="<?= Module::t('amosdesign', 'Visualizza il profilo di {nameSurname} ',['nameSurname' => $nameSurname]) ?>">
+          <?= Module::t('amosdesign', 'Visualizza') ?>
         </a>
       </div>
     </div>

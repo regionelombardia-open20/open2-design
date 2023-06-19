@@ -13,18 +13,12 @@ $dateEnd =(isset($dateEnd)) ? DateUtility::getDate($dateEnd, 'php:d F Y') :  '';
 $dateSubmit =(isset($dateSubmit)) ? DateUtility::getDate($dateSubmit, 'php:d F Y') :  '';
 $dateUpdate =(isset($dateUpdate)) ? DateUtility::getDate($dateUpdate, 'php:d F Y') :  '';
 
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
-if(!empty($model)) {
-    //$idProposal = $model->reference_external;
-    //$title = $model->content_title;
-    //$dateEnd = $model->datum_deadline;
-    //$dateSubmit = $model->datum_submit;
-    //$dateUpdate = $model->datum_update;
-    //$country = $model->company_country_label;
-    //$description = $model->content_summary;
-    //$type = $model->getReferenceTypeLabel();
-    //$url = $model->getFullViewUrl();
-}
+
+
 
 
 
@@ -87,9 +81,12 @@ if(!empty($model)) {
               <?php endif; ?>
             <div class="ml-2">
               <?php
-              echo $this->render(
-                '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
-              );
+                echo $this->render(
+                  '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                  [
+                    'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                  ]
+                );
               ?>
             </div>
           </div>

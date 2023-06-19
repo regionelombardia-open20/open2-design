@@ -3,6 +3,7 @@
 use open20\design\assets\BootstrapItaliaDesignAsset;
 
 use open20\design\components\bootstrapitalia\CheckBoxListTopicsIcon;
+use open20\design\Module;
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 ?>
 
@@ -30,11 +31,11 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
             </div>
             
         </div>
-        <button type="button" class="btn btn-primary w-75 d-flex justify-content-center m-auto">Ok grazie</button>
+        <button type="button" class="btn btn-primary w-75 d-flex justify-content-center m-auto"><?= Module::t('amosdesign', 'Ok grazie')?></button>
       </div>
       <div class="modal-footer py-3 border-top d-flex justify-content-between">
-        <p class="m-0">Non hai ricevuto l'email?</p>
-        <a href="#" class="font-weight-bold m-0" title="link per inviare di nuovo la mail">Invia di nuovo la mail</a>
+        <p class="m-0"><?= Module::t('amosdesign', 'Non hai ricevuto email').'?'?></p>
+        <a href="#" class="font-weight-bold m-0" title="link per inviare di nuovo la mail"><?= Module::t('amosdesign', 'Invia di nuovo la mail')?></a>
         
       </div>
     </div>

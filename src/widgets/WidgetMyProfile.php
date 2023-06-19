@@ -184,7 +184,7 @@ class WidgetMyProfile extends Widget
     {
         $lastCommunities = [];
         $communities = Community::find()
-            ->innerJoin('community_user_mm', 'community_user_mm.community_id = community.id = community_user_mm.community_id')
+            ->innerJoin('community_user_mm', 'community_user_mm.community_id = community.id')
             ->andWhere(['community_user_mm.user_id' => \Yii::$app->user->id])
             ->andWhere(['community_user_mm.status' => CommunityUserMm::STATUS_ACTIVE])
             ->limit(5)->orderBy('community_user_mm.id desc')->all();

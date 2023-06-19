@@ -34,21 +34,27 @@ $bulletCountNumber = (isset($bulletCountNumber)) ? $bulletCountNumber : 0;
 
 $iconSecondAction = (isset($iconSecondAction)) ? $iconSecondAction : 'plus-circle-outline';
 
+$socialAuthModule = Yii::$app->getModule('socialauth');
+$labelSigninOrSignup = Module::t('amosdesign', 'Accedi o registrati');
+if ($socialAuthModule && ($socialAuthModule->enableRegister == false)) {
+    $labelSigninOrSignup = Module::t('amosdesign', 'Accedi');
+}
+
 $titlePreventCreate       = (isset($titlePreventCreate)) ? $titlePreventCreate : Module::t(
     'amosdesign',
-    'Accedi o registrati alla piattaforma {platformName} per creare un contenuto',
-    ['platformName' => \Yii::$app->name]
+    '{labelSigninOrSignup} alla piattaforma {platformName} per creare un contenuto',
+    ['labelSigninOrSignup' => $labelSigninOrSignup, 'platformName' => \Yii::$app->name]
 );
 $titleCanNotCreate = (!empty($titleCanNotCreate)) ? $titleCanNotCreate : Module::t(
-    'amoslayout',
+    'amosdesign',
     'Non hai il permesso per creare un contenuto della piattaforma {platformName}',
     ['platformName' => \Yii::$app->name]
 );
 
 $titlePreventSecondAction = (isset($titlePreventSecondAction)) ? $titlePreventSecondAction : Module::t(
     'amosdesign',
-    'Accedi o registrati alla piattaforma {platformName} per eseguire questa operazione',
-    ['platformName' => \Yii::$app->name]
+    '{labelSigninOrSignup} alla piattaforma {platformName} per eseguire questa operazione',
+    ['labelSigninOrSignup' => $labelSigninOrSignup, 'platformName' => \Yii::$app->name]
 );
 
 $moduleCwh = \Yii::$app->getModule('cwh');
@@ -125,19 +131,19 @@ if (isset($moduleCwh) && !empty($moduleCwh->getCwhScope())) {
                                 <?php endif; ?>
                             <?php endif; ?>
                             <?=
-                                SecondActionWidget::widget([
-                                    'type' => SecondActionWidget::TYPE_DESIGN,
-                                    'modelLabel' => $modelLabel,
-                                    'urlSecondAction' => $urlSecondAction,
-                                    'labelSecondAction' => $labelSecondAction,
-                                    'titleSecondAction' => $titleSecondAction,
-                                    'titleScopePreventSecondAction' => $titleScopePreventSecondAction,
-                                    'iconSecondAction' => $iconSecondAction,
-                                    'btnClass' => $btnClass,
-                                    'isScope' => true,
-                                    'hideSecondAction' => $hideSecondAction,
-                                    'canSecondAction' => $canSecondAction
-                                ])
+                            SecondActionWidget::widget([
+                                'type' => SecondActionWidget::TYPE_DESIGN,
+                                'modelLabel' => $modelLabel,
+                                'urlSecondAction' => $urlSecondAction,
+                                'labelSecondAction' => $labelSecondAction,
+                                'titleSecondAction' => $titleSecondAction,
+                                'titleScopePreventSecondAction' => $titleScopePreventSecondAction,
+                                'iconSecondAction' => $iconSecondAction,
+                                'btnClass' => $btnClass,
+                                'isScope' => true,
+                                'hideSecondAction' => $hideSecondAction,
+                                'canSecondAction' => $canSecondAction
+                            ])
                             ?>
                             <?php if (!$hideManage) : ?>
                                 <?php if ($canManage && !empty($manageLinks)) : ?>
@@ -187,17 +193,17 @@ if (isset($moduleCwh) && !empty($moduleCwh->getCwhScope())) {
                                 <?php } ?>
                             <?php endif; ?>
                             <?=
-                                SecondActionWidget::widget([
-                                    'type' => SecondActionWidget::TYPE_DESIGN,
-                                    'modelLabel' => $modelLabel,
-                                    'urlSecondAction' => $urlSecondAction,
-                                    'labelSecondAction' => $labelSecondAction,
-                                    'titleSecondAction' => $titleSecondAction,
-                                    'iconSecondAction' => $iconSecondAction,
-                                    'btnClass' => $btnClass,
-                                    'hideSecondAction' => $hideSecondAction,
-                                    'canSecondAction' => $canSecondAction
-                                ])
+                            SecondActionWidget::widget([
+                                'type' => SecondActionWidget::TYPE_DESIGN,
+                                'modelLabel' => $modelLabel,
+                                'urlSecondAction' => $urlSecondAction,
+                                'labelSecondAction' => $labelSecondAction,
+                                'titleSecondAction' => $titleSecondAction,
+                                'iconSecondAction' => $iconSecondAction,
+                                'btnClass' => $btnClass,
+                                'hideSecondAction' => $hideSecondAction,
+                                'canSecondAction' => $canSecondAction
+                            ])
                             ?>
                             <?php if (!$hideManage) : ?>
                                 <?php if ($canManage && !empty($manageLinks)) : ?>

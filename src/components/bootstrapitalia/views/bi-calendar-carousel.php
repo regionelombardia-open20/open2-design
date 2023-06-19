@@ -10,9 +10,11 @@
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
 use yii\web\View;
+use open20\design\Module;
+
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this); 
 
-$filterList= (isset($filterList))? $filterList :  'Tutto';
+$filterList= (isset($filterList))? $filterList :  Module::t('amosdesign', 'Tutto');
 
 $this->registerJs(
   <<<JS
@@ -64,7 +66,7 @@ JS
         <div class="it-carousel-wrapper it-carousel-landscape-abstract-three-cols it-calendar-wrapper">
           <div class="it-header-block">
             <div class="it-header-block-title">
-              <h4 class="mb-0 text-center text-white">Settembre 2019</h4>
+              <h4 class="mb-0 text-center text-white"><?Module::t('amosdesign', 'Settembre'). " " . "2019"?></h4>
             </div>
           </div>
           <div class="it-carousel-all owl-carousel it-card-bg">
@@ -72,15 +74,15 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom ">15<span>lun</span></h5>
+                    <h5 class="card-title my-0 border-bottom "><?Module::t('amosdesign', '15')?><span><?Module::t('amosdesign', 'lun')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Saldo TASI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Saldo TASI')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Eventi">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Concerto gratuito piazza XX Settembre</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Concerto gratuito piazza XX Settembre')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Consigli-comunali">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Convocazione Consiglio Comunale - Prima seduta</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Convocazione Consiglio Comunale - Prima seduta')?></a>
                     </div>
                   </div>
                 </div>
@@ -90,12 +92,12 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom">16<span>mar</span></h5>
+                    <h5 class="card-title my-0 border-bottom"><?Module::t('amosdesign', '16')?><span><?Module::t('amosdesign', 'mar')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Saldo TASI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Saldo TASI')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Eventi">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Concerto gratuito piazza XX Settembre</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Concerto gratuito piazza XX Settembre')?></a>
                     </div>
                   </div>
                 </div>
@@ -105,15 +107,15 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom ">17<span>mer</span></h5>
+                    <h5 class="card-title my-0 border-bottom "><?Module::t('amosdesign', '17')?><span><?Module::t('amosdesign', 'mer')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Eventi">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Concerto gratuito piazza XX Settembre</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Concerto gratuito piazza XX Settembre')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Consigli-comunali">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Convocazione Consiglio Comunale - Prima seduta</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Convocazione Consiglio Comunale - Prima seduta')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TARI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
                   </div>
                 </div>
@@ -123,18 +125,18 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom">18<span>giov</span></h5>
+                    <h5 class="card-title my-0 border-bottom"><?Module::t('amosdesign', '18')?><span><?Module::t('amosdesign', 'giov')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " >Saldo TASI</a>
+                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Saldo TASI')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Eventi">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Concerto gratuito piazza XX Settembre</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Concerto gratuito piazza XX Settembre')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Consigli-comunali">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Convocazione Consiglio Comunale - Prima seduta</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Convocazione Consiglio Comunale - Prima seduta')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TARI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
                   </div>
                 </div>
@@ -144,20 +146,20 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom ">19<span>sab</span></h5>
+                    <h5 class="card-title my-0 border-bottom "><?Module::t('amosdesign', '19')?><span><?Module::t('amosdesign', 'sab')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Saldo TASI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Saldo TASI')?></a>
                     </div>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Eventi">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Concerto gratuito piazza XX Settembre</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Concerto gratuito piazza XX Settembre')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Consigli-comunali">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Convocazione Consiglio Comunale - Prima seduta</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Convocazione Consiglio Comunale - Prima seduta')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TARI</a>
+                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
                   </div>
                 </div>
@@ -167,9 +169,9 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom ">20<span>dom</span></h5>
+                    <h5 class="card-title my-0 border-bottom "><?Module::t('amosdesign', '20')?><span><?Module::t('amosdesign', 'dom')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TARI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
                   </div>
                 </div>
@@ -179,17 +181,17 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom">21<span>lun</span></h5>
+                    <h5 class="card-title my-0 border-bottom"><?Module::t('amosdesign', '21')?><span><?Module::t('amosdesign', 'lun')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TASI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Consigli-comunali">
-                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " >Convocazione Consiglio Comunale - Prima seduta</a>
+                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Convocazione Consiglio Comunale - Prima seduta')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TARI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
                   </div>
                 </div>
@@ -199,21 +201,21 @@ JS
               <div class="card-wrapper h-100">
                 <div class="card card-bg">
                   <div class="card-body">
-                    <h5 class="card-title my-0 border-bottom ">22<span>mar</span></h5>
+                    <h5 class="card-title my-0 border-bottom "><?Module::t('amosdesign', '22')?><span><?Module::t('amosdesign', 'mar')?></span></h5>
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Saldo TASI</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Saldo TASI')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Eventi">
-                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " >Concerto gratuito piazza XX Settembre</a>
+                      <a href="#" class=" text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Concerto gratuito piazza XX Settembre')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Consigli-comunali">
-                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " >Convocazione Consiglio Comunale - Prima seduta</a>
+                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Convocazione Consiglio Comunale - Prima seduta')?></a>
                     </div>
 
                     <div class="py-3 w-100 border-bottom  event-calendar-text Scadenze">
-                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " >Seconda rata TARI</a>
+                      <a href="#" class="text-decoration-none small w-100 h-100 d-inline-block " ><?Module::t('amosdesign', 'Seconda rata TARI')?></a>
                     </div>
                   </div>
                 </div>

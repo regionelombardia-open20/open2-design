@@ -1,5 +1,6 @@
 <?php
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 $titlelink = 'Vai alla pagina di' . ' ' . $organizzatore;
 $tooltipText = '<strong>' . $organizzatore . '</strong>' . (isset($tooltipAdditionalInfo) ? '<br/><em>' . $role . '</em>' : '');  //se esiste un campo role apposta mettere quel campo al posto di addiotional info
@@ -27,7 +28,7 @@ $tooltipText = '<strong>' . $organizzatore . '</strong>' . (isset($tooltipAdditi
             </a>
         <?php endif; ?>
         <?php if (isset($showCtaEsplora)) : ?>
-          <a href="<?= $url ?>" class="btn btn-xs btn-primary py-1 mt-auto" title="Vai alla pagina di<?= ' ' . $organizzatore?>">Esplora</a>
+          <a href="<?= $url ?>" class="btn btn-xs btn-primary py-1 mt-auto" title="Vai alla pagina di<?= ' ' . $organizzatore?>"><?= Module::t('amosdesign', 'Esplora') ?></a>
         <?php endif; ?>
 
       </div>

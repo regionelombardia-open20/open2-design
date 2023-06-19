@@ -64,6 +64,9 @@ $brandbook-theme-colors: (
 .logo-text-platform-design {
     color: $brandbook-btn-tertiary-color !important; //todo check brandbook
 }
-a.logo-text-platform-design:hover {
-    text-decoration: underline !important;
+a.logo-text-platform-design {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline !important;
+    }
 }

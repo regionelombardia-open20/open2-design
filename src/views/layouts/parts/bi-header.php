@@ -290,7 +290,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                             <?= $this->render("bi-logo-navbar"); ?>
                         </div>
                         <div class="it-header-slim-right-zone">
-                            <?php if ($addItems): ?>
+                            <?php if ($addItems) : ?>
                                 <?= $addItemsObj->addBiItemsToBegin(); ?>
                             <?php endif; ?>
                             <?php if (!$disableSettings && !$disablePlatformLinks && ($ordinamentiDashboard || $gestisciWidget)) : ?>
@@ -377,6 +377,15 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                     } else {
                                         $loginUrl = \Yii::$app->params['platform']['backendUrl'] . '/' . AmosAdmin::getModuleName() . '/security/login';
                                     }
+
+                                    $labelSigninOrSignup = Module::t('amosdesign', 'Accedi o Registrati');
+                                    $titleSigninOrSignup = Module::t('amosdesign', 'Accedi o registrati alla piattaforma {platformName}',['platformName' => \Yii::$app->name]);
+                                    $socialAuthModule = Yii::$app->getModule('socialauth');
+                                    if ($socialAuthModule && ($socialAuthModule->enableRegister == false)) {
+                                        $labelSigninOrSignup = Module::t('amosdesign', 'Accedi');
+                                        $titleSigninOrSignup = Module::t('amosdesign', 'Accedi alla piattaforma {platformName}',['platformName' => \Yii::$app->name]);
+                                    }
+
                                     ?>
                                     <div class="it-access-top-wrapper">
                                         <?php if ($customUserNotLogged) : ?>
@@ -386,13 +395,13 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                             ]);
                                             ?>
                                         <?php else : ?>
-                                            <a href="<?= $loginUrl ?>" class="btn btn-icon btn-full  bg-primary mr-0" title="Accedi o Registrati al portale">
+                                            <a href="<?= $loginUrl ?>" class="btn btn-icon btn-full  bg-primary mr-0" title="<?= $titleSigninOrSignup ?>">
                                                 <span class="rounded-icon border border-white bg-transparent p-1">
                                                     <svg class="icon icon-white">
                                                         <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#key-variant"></use>
                                                     </svg>
                                                 </span>
-                                                <span class="d-none d-sm-block"><?= Module::t('amosdesign', 'Accedi o Registrati') ?></span>
+                                                <span class="d-none d-sm-block"><?= $labelSigninOrSignup ?></span>
                                             </a>
                                         <?php endif ?>
                                     </div>
@@ -426,7 +435,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                             <!-- LANGUAGES -->
                             <?php if (!$hideLangSwitchMenu) : ?>
                                 <div class="nav-item dropdown menu-translation border-left border-white pl-2">
-                                    <a class="nav-link dropdown-toggle pr-0" href="javascript::void(0)" title="Lingua corrente <?= $actualLang ?>" id="dropdownMenuTranslation" data-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle pr-0" href="javascript::void(0)" title="<?= Module::t('amosdesign','Lingua corrente') . ' ' . $actualLang ?>" id="dropdownMenuTranslation" data-toggle="dropdown" aria-expanded="false">
                                         <?= $actualLang ?>
                                         <svg class="icon icon-sm">
                                             <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
@@ -447,7 +456,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                     </div>
                                 </div>
                             <?php endif ?>
-                            <?php if ($addItems): ?>
+                            <?php if ($addItems) : ?>
                                 <?= $addItemsObj->addBiItemsToEnd(); ?>
                             <?php endif; ?>
                         </div>
@@ -472,7 +481,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                     ]); ?>
                                 <?php endif ?>
                                 <?php if (!($hideGlobalSearch)) : ?>
-                                    <?php if (isset($pageSearchLink)): ?>
+                                    <?php if (isset($pageSearchLink)) : ?>
                                         <div class="it-search-wrapper">
                                             <span class="d-none d-md-block"><?= Module::t('amosdesign', 'Cerca') ?></span>
                                             <a class="search-link rounded-icon" aria-label="<?= Module::t('amosdesign', 'Cerca') ?>" title="<?= Module::t('amosdesign', 'Vai alla pagina di ricerca della piattaforma')  . ' ' . \Yii::$app->name ?>" href="<?= $pageSearchLink ?>">
@@ -512,19 +521,19 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                                 <button class="btn close-menu" type="button">
                                                     <span class="it-close sr-only">close</span>
                                                     <svg class="icon">
-                                                        <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#close"></use>
+                                                        <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#close-circle-outline"></use>
                                                     </svg>
                                                 </button>
                                             </div>
-                                            <?= $cmsDefaultMenu ?> 
+                                            <?= $cmsDefaultMenu ?>
                                             <?php
-                                            if($customPlatformPluginMenu):
+                                            if ($customPlatformPluginMenu) :
                                                 echo $this->render($customPlatformPluginMenu, [
                                                     'currentAsset' => $currentAsset,
                                                 ]);
-                                                endif;
+                                            endif;
                                             ?>
-                                       
+
                                             <?php if ($showSecondaryMenu) : ?>
                                                 <?= $cmsSecondaryMenu ?>
                                             <?php endif ?>

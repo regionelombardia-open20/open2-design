@@ -247,7 +247,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
 
                                 <li>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <a class="list-item" href="#configurazioni-cms"><span>secondaryCmsMenu </span></a>
+                                        <a class="list-item" href="#configurazioni-cms"><span>menuCmsConfigurations</span></a>
                                         <a class="list-item large medium right-icon" href="#collapseFour" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
                                             <svg class="icon icon-xs icon-primary right">
                                                 <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
@@ -256,12 +256,20 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                     </div>
                                     <ul class="link-sublist collapse " id="collapseFour">
                                         <li>
-                                            <a class="list-item" href="#configurazioni-cms"><span>footerCmsMenu  </span></a>
+                                            <a class="list-item" href="#configurazioni-cms"><span>footerCmsMenu </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-cms"><span>mainCmsMenu  </span></a>
+                                        </li> 
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-cms"><span>secondaryCmsMenu </span></a>
                                         </li>                                    
-                                        
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-cms"><span>myOpenCmsMenu </span></a>
+                                        </li> 
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-cms"><span>mainEngCmsMenu </span></a>
+                                        </li> 
                                     </ul>
                                 </li>
                                 
@@ -750,6 +758,22 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
                                 </strong> : override main cms menu container (default is 'default')
+                            </li>
+                            <li>
+                                <strong>
+                                    mainEngCmsMenu
+                                    <?php if (\Yii::$app->params['menuCmsConfigurations']['mainEngCmsMenu']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : override mainCmsMenu with alternative EN container (default is 'default-eng')
+                            </li>
+                            <li>
+                                <strong>
+                                    myOpenCmsMenu
+                                    <?php if (\Yii::$app->params['menuCmsConfigurations']['myOpenCmsMenu']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : override main cms menu container (default is 'myopen')
                             </li>
                             <li>
                                 <strong>

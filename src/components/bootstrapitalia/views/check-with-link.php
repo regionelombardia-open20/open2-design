@@ -1,4 +1,5 @@
 <?php
+use open20\design\Module;
 //valori di default variabili
 $externalLink = (isset($externalLink)) ? $externalLink :  true;
 $linkText = (isset($linkText)) ? $linkText :  'leggi l\'informativa sulla privacy';
@@ -13,7 +14,7 @@ $privacyLink = (isset($privacyLink)) ? $privacyLink : \Yii::$app->params['linkCo
    <div>
       <div class="form-check">
          <input id="externalLinkPrivacy" type="checkbox" required>
-         <label for="externalLinkPrivacy">Checkbox di esempio con link esterno <a href="<?= $privacyLink ?>" target="<?= $target ?>" title="<?= $title ?>"><?= $linkText ?>*</a></label>
+         <label for="externalLinkPrivacy"><?= Module::t('amosdesign', 'Checkbox di esempio con link esterno') ?> <a href="<?= $privacyLink ?>" target="<?= $target ?>" title="<?= $title ?>"><?= $linkText ?>*</a></label>
       </div>
    </div>
 
@@ -23,7 +24,7 @@ $privacyLink = (isset($privacyLink)) ? $privacyLink : \Yii::$app->params['linkCo
    <div>
       <div class="form-check">
          <input id="modalLinkPrivacy" type="checkbox" required>
-         <label for="modalLinkPrivacy">Checkbox di esempio con modale <a href="#" data-toggle="modal" data-target="#modalright" target="<?= $target ?>" title="<?= $title ?>"><u class="primary-color">link alla privacy</u></a>*</label>
+         <label for="modalLinkPrivacy"><?= Module::t('amosdesign', 'Checkbox di esempio con modale') ?> <a href="#" data-toggle="modal" data-target="#modalright" target="<?= $target ?>" title="<?= $title ?>"><u class="primary-color">link alla privacy</u></a>*</label>
       </div>
    </div>
 

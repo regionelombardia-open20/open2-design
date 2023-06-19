@@ -28,6 +28,11 @@
         }
     }
 
+    .community-context-menu{
+        top:-5px;
+        right: -5px;
+    }
+
     //FIX PER IE
     @media all and (-ms-high-contrast: none) {
         .community-title-container {

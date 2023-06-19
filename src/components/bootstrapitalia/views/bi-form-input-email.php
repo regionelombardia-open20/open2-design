@@ -5,6 +5,7 @@
  * @param Model $model
  */
 use yii\helpers\Html;
+use open20\design\Module;
 
 
 $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'required' : '';
@@ -18,4 +19,4 @@ $ariaDescribedBy = (isset($options['aria-describedby'])) ? 'aria-describedby="de
 <small id="describedBy<?= $inputId ?>" class="form-text text-muted"><?= $options['aria-describedby'] ?></small>
 <?php endif ?>
 <label for="<?= $inputId ?>"><?= $label ?><?= ($required) ? Html::tag('span','*',['class'=>'required-asterisk']) : ''?></label>
-<div class="invalid-feedback">Per favore inserisci <?= $label ?>.</div>
+<div class="invalid-feedback"><?= Module::t('amosdesign', 'Per favore inserisci') ?> <?= $label ?>.</div>

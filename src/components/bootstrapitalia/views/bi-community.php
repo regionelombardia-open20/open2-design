@@ -37,6 +37,10 @@ $labelCtaWaiting = (isset($customLabelCtaWaiting)) ? $customLabelCtaWaiting : Mo
 $labelCtaWaitingTooltip = (isset($customLabelCtaWaitingTooltip)) ? $customLabelCtaWaitingTooltip : Module::t('amosdesign', 'Sei in attesa che un community manager convalidi la richiesta per poter accedere alla community');
 $labelCtaView = (isset($labelCtaView)) ? $labelCtaView : Module::t('amosdesign', 'Visita la community');
 
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
+
 if ($isClosedCommunity) {
     $tooltipTitle = Module::t('amosdesign', "Community ristretta ai partecipanti");
     $tooltipClass = "bg-danger";
@@ -94,14 +98,25 @@ $this->registerJs($js);
             </svg>
             <span class="sr-only"><?= $tooltipTitle ?></span>
         </a>
+        <div class="ml-2 position-absolute community-context-menu">
+            <?php
+                echo $this->render(
+                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',[
+                        'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                    ]
+                );
+            ?>
+        </div>
+        
     </div>
+    
     <div class="community-title-container mw-100 py-3 ">
         <?php if ($hideAllCtaGuest) : ?>
             <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center title-two-line text-truncate"><?= $title ?></h3>
         <?php elseif ($isClosedCommunity && !$isSigned) : ?>
             <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center title-two-line text-truncate"><?= $title ?></h3>
         <?php else : ?>
-            <a href="<?= $url ?>" class="link-list-title " title="Vai alla community <?= $title ?>">
+            <a href="<?= $url ?>" class="link-list-title " title="<?= Module::t('amosdesign', 'Vai alla community {title} ',['title' => $title]) ?>">
                 <h3 class="community-title h6 font-weight-bold pb-0 mb-0 text-center overflow-hidden title-two-line text-truncate"><?= $title ?></h3>
             </a>
         <?php endif ?>

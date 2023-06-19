@@ -10,6 +10,7 @@
  */
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
+use open20\design\Module;
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
 ?>
@@ -19,10 +20,10 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
     <a data-toggle="collapse" role="button" href="#collapse1" aria-expanded="false" aria-controls="collapse1" class="btn btn-lg border-0 p-0">
       <div class="d-flex flex-wrap align-items-center">
         <img src="https://picsum.photos/40/40?random=2" class="mb-1 pr-3" alt="icona telefono">
-        <div class="h5">Modalità di contatto</div>
+        <div class="h5"><?= Module::t('amosdesign', 'Modalità di contatto') ?></div>
       </div>
 
-      <div class="tertiary-color font-weight-normal">Gestisci i canali di contatto tramite i quali puoi ricevere comunicazioni come <strong>Cittadino</strong></div>
+      <div class="tertiary-color font-weight-normal"><?= Module::t('amosdesign', 'Gestisci i canali di contatto tramite i quali puoi ricevere comunicazioni come ') ?><strong><?= Module::t('amosdesign', 'Cittadino') ?></strong></div>
     </a>
   </div>
   <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="heading1">

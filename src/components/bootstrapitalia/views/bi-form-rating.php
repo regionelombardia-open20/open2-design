@@ -8,6 +8,7 @@
  */
 
 use yii\helpers\Html;
+use open20\design\Module;
 $bootstrapItaliaAsset = \open20\design\assets\BootstrapItaliaDesignAsset::register($this);
 $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'required' : '';
 $value = empty($value)? 0: $value;
@@ -15,7 +16,7 @@ $value = empty($value)? 0: $value;
 
 <div class="form-rating">
     <fieldset class="rating <?= ($readonly)? 'rating-read-only': 'rating-label' ?>">
-        <legend><span class="sr-only">Valutazione</span> <span><?= $value ?> stelle</span> <span class="sr-only">su <?= $starsNumber ?></span></legend>
+        <legend><span class="sr-only"><?= Module::t('amosdesign', 'Valutazione')?></span> <span><?= $value ?> <?= Module::t('amosdesign', 'stelle')?></span> <span class="sr-only"><?= Module::t('amosdesign', 'su')?> <?= $starsNumber ?></span></legend>
 
         <?php
         for ($i = $starsNumber; $i>=1; $i--):
@@ -24,7 +25,7 @@ $value = empty($value)? 0: $value;
             <input type="radio" id="<?= $htmlId ?>" name="<?= $name ?>" value="<?= $i ?>" <?= ($value == $i)? 'checked': '' ?> <?= ($readonly)? 'disabled': '' ?>/>
             <label class = "full" for="<?= $htmlId ?>">
                 <svg class="icon icon-sm"><use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-star-full"></use></svg>
-                <span class="sr-only">Valuta <?= $i ?> stelle su <?= $starsNumber ?></span>
+                <span class="sr-only"><?= Module::t('amosdesign', 'Valuta')?> <?= $i ?> <?= Module::t('amosdesign', 'stelle')?><?= Module::t('amosdesign', 'su')?><?= $starsNumber ?></span>
             </label>
             <?php
         endfor;

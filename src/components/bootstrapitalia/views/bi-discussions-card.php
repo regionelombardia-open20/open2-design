@@ -9,6 +9,11 @@ $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 $avatarWrapperSize = (isset($avatarWrapperSize)) ? $avatarWrapperSize : 'sm';
 $date              = DateUtility::getDate($date);
 $numberExpose      = (isset($numberExpose) ? $numberExpose : 4);
+
+$model     = (isset($model) ? $model : null);
+$actionModify      = (isset($actionModify) ? $actionModify : null);
+$actionDelete      = (isset($actionDelete) ? $actionDelete : null);
+
 ?>
 
 
@@ -24,17 +29,14 @@ $numberExpose      = (isset($numberExpose) ? $numberExpose : 4);
                         <span><?= $date ?></span>
                     </div>
                     <h3 class="discussion-title h5 mb-1 font-weight-bold">
-                        <a class="title-three-line link-list-title" href="<?= $url ?>" title="partecipa alla discussione <?= $title ?>"><?= $title ?></a>
+                        <a class="title-three-line link-list-title" href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Partecipa alla discussione {title} ',['title' => $title]) ?>"><?= $title ?></a>
 
                     </h3>
-
-
-
                 </div>
                 <div class="col-lg-5 order-1 order-mb-2 mb-2 mb-lg-0">
                     <div class="image-discussion-wrapper position-relative">
-                        <a href="<?= $url ?>" title="Vai alla discussione <?= $title ?>">
-                            <img src="<?= $image ?>" alt="immagine discussione" class="img-fluid w-100 mh-100" />
+                        <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vai alla discussione {title} ',['title' => $title]) ?>">
+                            <img src="<?= $image ?>" alt="<?= Module::t('amosdesign', 'Immagine della discussione {title} ',['title' => $title]) ?>" class="img-fluid w-100 mh-100" />
                         </a>
                         <div class="other-info-item d-flex align-items-center pl-3">
                             <?php if (($newPubblication)) : ?>
@@ -46,9 +48,13 @@ $numberExpose      = (isset($numberExpose) ? $numberExpose : 4);
                             <?php endif ?>
                             <div class="ml-2">
                                 <?php
-                                echo $this->render(
-                                    '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget'
-                                );
+                                    echo $this->render(
+                                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
+                                        [
+                                        'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model,
+                                            $actionModify, $actionDelete)
+                                        ]
+                                    );
                                 ?>
                             </div>
 
@@ -112,7 +118,7 @@ $numberExpose      = (isset($numberExpose) ? $numberExpose : 4);
             ?>
 
             <a class="read-more" href="<?= $url ?>" title="<?= $titleReadMore ?>">
-                <span class="text-uppercase">Partecipa</span>
+                <span class="text-uppercase"><?= Module::t('amosdesign', 'Partecipa') ?></span>
             </a>
 
         </div>
