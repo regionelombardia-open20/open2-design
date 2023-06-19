@@ -382,7 +382,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                             ['class' => 'badge badge-pill badge-danger']
                                         ) : '';
                                         ?>
-                                        <div class="nav-item">
+                                        <div class="nav-item d-none d-sm-block">
                                             <a class="nav-link" href="/site/to-menu-url?url=/exportjobs/my-export/index" data-toggle="tooltip" data-placement="bottom" title="<?=
                                                                                                                                                                                     \frontend\modules\exportjobs\AmosExportJobs::t('exportjobs', 'Le mie esportazioni')
                                                                                                                                                                                     ?>">
@@ -559,8 +559,8 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                             </div>
                                             <?= $cmsDefaultMenu ?>
                                             <?php
-                                            if ($customPlatformPluginMenu) :
-                                                echo $this->render($customPlatformPluginMenu, [
+                                            if ($customPlatformMenu) :
+                                                echo $this->render($customPlatformMenu, [
                                                     'currentAsset' => $currentAsset,
                                                 ]);
                                             endif;

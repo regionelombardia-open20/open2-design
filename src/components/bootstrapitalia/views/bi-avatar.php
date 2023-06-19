@@ -26,7 +26,11 @@ if ($avatarPresence == 'hidden') {
 }
 
 $avatarWrapperSize = (isset($avatarWrapperSize)) ? $avatarWrapperSize : 'md';
-if ($avatarWrapperSize == 'xl') {
+if ($avatarWrapperSize == 'xxl') {
+    $avatarClassSize = 'size-xxl';
+    $extraTextSize   = (isset($extraTextSize)) ? $extraTextSize : 'lead';
+    $nameSize        = 'h3';
+} else if ($avatarWrapperSize == 'xl') {
     $avatarClassSize = 'size-xl';
     $extraTextSize   = (isset($extraTextSize)) ? $extraTextSize : 'lead';
     $nameSize        = 'h5';

@@ -1,38 +1,49 @@
 <?php
+
 use open20\design\assets\BootstrapItaliaDesignAsset;
 use open20\design\Module;
-$bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
-$titlelink = 'Vai alla pagina di' . ' ' . $organizzatore;
-$tooltipText = '<strong>' . $organizzatore . '</strong>' . (isset($tooltipAdditionalInfo) ? '<br/><em>' . $role . '</em>' : '');  //se esiste un campo role apposta mettere quel campo al posto di addiotional info
 
+$bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
+
+$labelLinkCta = (isset($labelLinkCta)) ? $labelLinkCta : Module::t('amosdesign', 'Esplora');
+$titleLinkCtaCta = (isset($titleLinkCta)) ? $titleLinkCta : Module::t('amosdesign', 'Vai alla pagina di') . ' ' . $title;
+
+$widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-lg-4 col-md-6';
+
+$hideCta = (isset($hideCta)) ? $hideCta : false;
+
+if (isset($hideAllCtaGuest) && $hideAllCtaGuest) {
+  $hideAllCtaGuest = \Yii::$app->user->isGuest;
+}
 ?>
 
 
-
-  
-  
-<div class="organizzazioni-wrapper mb-0  <?= $widthColumn ?> <?= $additionalClass ?> <?= $singleElementsWidthFullsize ?> <?= $singleElementsWidthMobile ?>">
+<div class="organizzazioni-wrapper border-light border-bottom py-3 <?= $widthColumn ?> <?= $additionalClass ?>">
   <div class="row flex-sm-nowrap h-100">
-    <div class="col-sm-5">
-      <a href="<?= $url ?>" class="organizzazioni d-block" <?= isset($showTooltip) ? 'data-toggle="tooltip" data-html="true" ' : '' ?> title="<?= isset($showTooltip) ? $tooltipText : $titlelink ?>">
-        <?php if (isset($imageOrganizzatore)) : ?>
-          <img class="img-fluid" src="<?= $imageOrganizzatore ?>" alt="<?= $organizzatore ?>">
-        <?php endif ?>
-      </a>
-    </div>  
-    <div class="col-sm-7">
+    <div class="col-12 col-md-4">
+      <?php if ($hideAllCtaGuest) : ?>
+        <img class="img-fluid" src="<?= $image ?>" alt="<?= $title ?>">
+      <?php else : ?>
+        <a href="<?= $url ?>" class="organizzazioni d-block" title="<?= $titleLinkCta ?>">
+          <?php if (isset($image)) : ?>
+            <img class="img-fluid" src="<?= $image ?>" alt="<?= $title ?>">
+          <?php endif ?>
+        </a>
+      <?php endif; ?>
+    </div>
+    <div class="col-12 col-md-8">
       <div class="ml-0 ml-sm-2 mt-2 mt-sm-0 d-flex flex-column align-items-start h-100 <?= $extraTextSize ?> ">
-        <?php if (!(isset($hideOrganizzatore))) : ?>
-            <a href="<?= $url ?>" class="link-list-title mb-1" title="Vai alla pagina di <?= $organizzatore ?>">
-              <h3 class="h5 font-weight-bold mb-0 title-one-line w-100"><?= $organizzatore ?></h3>
-            </a>
+        <?php if (!(isset($hideTitle))) : ?>
+          <a href="<?= $url ?>" class="link-list-title mb-1" title="<?= $titleLinkCta ?>">
+            <h3 class="h5 font-weight-bold mb-0 title-one-line w-100"><?= $title ?></h3>
+          </a>
         <?php endif; ?>
-        <?php if (isset($showCtaEsplora)) : ?>
-          <a href="<?= $url ?>" class="btn btn-xs btn-primary py-1 mt-auto" title="Vai alla pagina di<?= ' ' . $organizzatore?>"><?= Module::t('amosdesign', 'Esplora') ?></a>
+        <?php if (!$hideAllCtaGuest) : ?>
+          <?php if (!$hideCta) : ?>
+            <a href="<?= $url ?>" class="btn btn-xs btn-primary py-1 mt-auto" title="<?= $titleLinkCta ?>"><?= $labelLinkCta ?></a>
+          <?php endif; ?>
         <?php endif; ?>
-
       </div>
     </div>
   </div>
 </div>
- 

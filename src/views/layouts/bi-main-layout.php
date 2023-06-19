@@ -42,7 +42,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
     ]); ?>
 
     <?php
-    if ((!(\Yii::$app->params['layoutConfigurations']['hideCmsMenuPluginHeader'])) && (!\Yii::$app->params['layoutConfigurations']['customPlatformPluginMenu'])) :
+    if (!(\Yii::$app->params['layoutConfigurations']['hideCmsMenuPluginHeader'])) :
         $cmsDefaultMenu .= $cmsPluginMenu;
     endif;
     ?>
@@ -173,7 +173,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         'customUserMenuLoginLink' => \Yii::$app->params['linkConfigurations']['loginLinkCommon'],
         'customUserMenuLogoutLink' => \Yii::$app->params['linkConfigurations']['logoutLinkCommon'],
         'customUserProfileLink' => \Yii::$app->params['linkConfigurations']['userProfileLinkCommon'],
-        'customPlatformPluginMenu' => \Yii::$app->params['layoutConfigurations']['customPlatformPluginMenu'],
+        'customPlatformMenu' => \Yii::$app->params['menuCmsConfigurations']['customPlatformMenu'],
         'showSocial' => $showSocialHeaderCheck,
         'showSecondaryMenu' => \Yii::$app->params['layoutConfigurations']['showSecondaryMenuHeader'],
         'disableThemeLight' => \Yii::$app->params['layoutConfigurations']['disableThemeLightHeader'],

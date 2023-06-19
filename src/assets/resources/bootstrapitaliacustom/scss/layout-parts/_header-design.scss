@@ -203,8 +203,15 @@
                 }
 
                 .it-search-wrapper a {
-                    @include media-breakpoint-up(lg) {
-                        background-color: $primary;
+                    background-color: $primary;
+                    width: $header-center-search-size;
+                    height: $header-center-search-size;
+                    border-radius: $header-center-search-radius;
+                    @media #{map-get($device-media-queries, onlySafary)} {
+                        -webkit-appearance: initial;
+                    }
+                    > .icon {
+                        fill: $white;
                     }
                 }
             }
@@ -339,14 +346,18 @@
 
 .it-search-wrapper {
     a.rounded-icon {
+        font-size: 3em;
+        width: $header-center-search-size;
+        height: $header-center-search-size;
+        border-radius: $header-center-search-radius;
         @media #{map-get($device-media-queries, onlySafary)} {
             -webkit-appearance: initial;
         }
         > .icon {
-            fill: $primary;
-            @include media-breakpoint-up(lg) {
-                fill: get-color-contrast($primary);
-            }
+            fill: get-color-contrast($primary);
+            // @include media-breakpoint-up(lg) {
+            //     fill: get-color-contrast($primary);
+            // }
         }
     }
 }
@@ -390,7 +401,10 @@
                 }
             }
             .btn-always-hamburger-menu {
-                padding: 0 24px;
+                padding-left: 15px;
+                @include media-breakpoint-up(lg) {
+                    padding: 0 ($v-gap * 3);
+                }
             }
         }
     }

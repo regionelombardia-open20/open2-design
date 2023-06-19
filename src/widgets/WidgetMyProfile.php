@@ -129,18 +129,19 @@ class WidgetMyProfile extends Widget
     /**
      * @return array|\yii\db\ActiveRecord[]
      */
-    public function getTagOfInterest()
+    public function getTagOfInterest() 
     {
-        /** @var UserProfile $userProfileModel */
+        /** @var UserProfile $userProfileModel */ 
         $userProfileModel = $this->adminModule->createModel('UserProfile');
         $loggedUserProfile = $userProfileModel::find()->andWhere(['user_id' => \Yii::$app->user->id])->one();
         $tags = Tag::find()
             ->innerJoin('cwh_tag_owner_interest_mm', 'cwh_tag_owner_interest_mm.tag_id = tag.id')
             ->andWhere(['record_id' => $loggedUserProfile->id])
             ->andWhere(['classname' => $this->adminModule->model('UserProfile')])
+            ->andWhere(['cwh_tag_owner_interest_mm.deleted_at' => null])
             ->andWhere(['interest_classname' => 'simple-choice'])->all();
         return $tags;
-    }
+    } 
 
     /**
      * @throws \yii\base\InvalidConfigException

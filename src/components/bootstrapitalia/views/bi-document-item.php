@@ -23,7 +23,7 @@ if (!isset($infoDoc)) {
   $infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong>' . Module::t('amosdesign', 'per') . '</strong>' . ' ' . $community : $infoDoc;
 }
 
-$lastSyncDrive = (isset($dateSyncDrive)) ?  Module::t('amosdesign', 'Documento Google Drive') .'<br>' . Module::t('amosdesign', 'aggiornato il:') . $dateLastSyncDrive . Module::t('amosdesign', 'alle') . $hourLastSyncDrive  : false;
+$lastSyncDrive = (isset($dateSyncDrive)) ?  Module::t('amosdesign', 'Documento Google Drive') . '<br>' . Module::t('amosdesign', 'aggiornato il:') . $dateLastSyncDrive . Module::t('amosdesign', 'alle') . $hourLastSyncDrive  : false;
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
 
 $buttons   = (isset($buttons) ? $buttons : []);
@@ -38,7 +38,7 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
     <div>
       <div class="d-flex align-items-start mb-2">
 
-        <div class="info-file d-flex text-secondary small">
+        <div class="info-file d-flex text-secondary small flex-wrap">
 
           <?php if ((in_array(strtolower($type), ['jpg', 'png', 'jpeg', 'svg']))) : ?>
             <svg class="icon icon-image icon-sm">
@@ -86,7 +86,9 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
 
           <?php if (isset($size) && $size > 0 && (!$typeFolder)) : ?>
             <span class="text text-capitalize"><?= '(' . $size . 'Kb)' ?></span>
-            <span class="text ml-2"><?= '-' . ' ' . Module::t('amosdesign', 'Nome file principale') . ':' . ' ' ?><?= $fileName ?></span>
+            <span class="text ml-2"><?= '-' . ' ' . Module::t('amosdesign', 'Nome file principale') . ':' . ' ' ?>
+              <?= ((strlen($fileName) > 80) ? substr($fileName, 0, 75) . '[...]' : $fileName) . '.' . $type ?>
+            </span>
           <?php endif ?>
         </div>
 
@@ -102,12 +104,12 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
             </div>
           <?php endif; ?>
           <div class="ml-2">
-            
+
             <?php
             echo $this->render(
               '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
               [
-                  'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
               ]
             );
             ?>
@@ -134,11 +136,11 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
           <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Apri la cartella') ?> <?= $fileName ?>" class="read-more d-inline mr-2"><?= Module::t('amosdesign', 'Apri') ?></a>
         <?php else : ?>
           <?php if (isset($size) && $size == 0 && (!$typeFolder)) : ?>
-            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento esterno') ?> <?= $fileName ?>" class="read-more d-inline mr-2" ><?= Module::t('amosdesign', 'Dettaglio') ?></a>
+            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento esterno') ?> <?= $fileName ?>" class="read-more d-inline mr-2"><?= Module::t('amosdesign', 'Dettaglio') ?></a>
 
-          <?php else: ?>
+          <?php else : ?>
             <a href="<?= $fileUrl ?>" title="<?= Module::t('amosdesign', 'Scarica il documento') ?> <?= $fileName ?>" class="read-more d-inline mr-2" download><?= Module::t('amosdesign', 'Scarica') ?></a>
-            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento') ?> <?= $fileName ?>" class="read-more d-inline mr-2" ><?= Module::t('amosdesign', 'Dettaglio') ?></a>
+            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento') ?> <?= $fileName ?>" class="read-more d-inline mr-2"><?= Module::t('amosdesign', 'Dettaglio') ?></a>
           <?php endif; ?>
 
         <?php endif; ?>

@@ -220,7 +220,6 @@ return [
     'Invia di nuovo la mail' => 'Send the email again',
     'Non hai ricevuto email' => 'Did not receive emails',
     'Leggi' => 'Read',
-    'Leggi la notizia' => 'Read the news'
-
-
+    'Leggi la notizia' => 'Read the news',
+    'I miei interessi' => 'My interests'
 ];

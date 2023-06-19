@@ -77,16 +77,20 @@ foreach ($contacts as $contact) {
                 </div>
             <?php endif; ?>
         </div>
-      
+
         <?php if (!empty($tags)) : ?>
             <div id="widgetMyProfile" class="<?= $widgetOpened ?>">
                 <div class="collapse-body mt-2 px-0 pt-3 pb-2">
                     <div class="user-tags-wrapper pb-3">
                         <div class="row">
                             <div class="col">
+                                <p class="text-white mb-0">
+                                    <!-- <svg class="avatar-icon border border-white icon icon-xs bg-white icon-dark rounded-circle">
+                                        <use xlink:href="< ?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#tag"></use>
+                                    </svg> -->
+                                    <?= Module::t('amosdesign', 'I miei interessi') ?>
+                                </p>
                                 <div>
-                                
-                                    
                                     <?php foreach ($tags as $tag) { ?>
 
                                         <?=
@@ -102,14 +106,14 @@ foreach ($contacts as $contact) {
                                             ]
                                         );
                                         ?>
-                                       
+
                                     <?php
                                         if ($i == $maxTags) {
                                             break;
                                         }
                                         $i++;
                                     } ?>
-                                   
+
                                 </div>
                             </div>
                             <div class="col-md-2 text-right">
@@ -173,7 +177,7 @@ foreach ($contacts as $contact) {
                                             <p class="small text-uppercase font-weight-bold mb-0"><?= Module::t('amosdesign', 'Ultimi utenti con cui sei entrato in contatto') ?></p>
                                         </div>
                                         <div class="col-lg-6 d-md-flex justify-content-md-end align-items-end">
-                                       
+
                                             <?php echo
                                             $this->render(
                                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-avatar-group-stacked',
@@ -186,7 +190,7 @@ foreach ($contacts as $contact) {
                                                         'Partecipante'
                                                     ),
                                                     'removeLink' => false,
-                                                   
+
 
                                                 ]
                                             );

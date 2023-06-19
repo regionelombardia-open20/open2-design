@@ -107,33 +107,33 @@ echo $this->render('parts/devs-tools');
                                             <a class="list-item" href="#avatar"><span>Avatar</span></a>
                                         </li>
 
-                <li>
-                  <a class="list-item" href="#bottoni"><span>Bottoni</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#bottoni"><span>Bottoni</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#card-preference"><span>Cards Preference</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#card-preference"><span>Cards Preference</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#carousel"><span>Carousel</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#carousel"><span>Carousel</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#carousel-news"><span>Carousel news</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#carousel-news"><span>Carousel news</span></a>
+                                        </li>
 
-                <li>
-                    <a class="list-item" href="#photogallery"><span>Gallery immagini</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#photogallery"><span>Gallery immagini</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#calendar-carousel"><span>Carousel calendario</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#calendar-carousel"><span>Carousel calendario</span></a>
+                                        </li>
 
-                <li>
-                  <a class="list-item" href="#card-checkbox"><span>Checkbox Cards Preference</span></a>
-                </li>
+                                        <li>
+                                            <a class="list-item" href="#card-checkbox"><span>Checkbox Cards Preference</span></a>
+                                        </li>
 
 
 
@@ -196,7 +196,7 @@ echo $this->render('parts/devs-tools');
                                         <li>
                                             <a class="list-item" href="#news-list"><span>News card</span></a>
                                         </li>
-                                        
+
                                         <!--news lista-->
                                         <li>
                                             <a class="list-item" href="#news-list-item"><span>News lista</span></a>
@@ -295,7 +295,7 @@ echo $this->render('parts/devs-tools');
             </nav>
         </div>
         <div id="jsMain" class="col-12 col-lg-9 it-page-sections-container">
-        
+
             <h1 class="no_toc it-page-section" id="introduzione">Componenti Bootstrap Italia Custom</h1>
             <p class="lead mb-0">Componenti personalizzati per plugin Design</p>
             <div class="mt-3">
@@ -504,8 +504,8 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </div>
             </section>
-            
-        
+
+
             <!-- allegati lista-->
             <section class="py-5">
                 <h2 class="it-page-section" id="list-allegati">Allegati Lista</h2>
@@ -563,7 +563,7 @@ echo $this->render('parts/devs-tools');
                     ?>
                 </div>
             </section>
-           
+
             <!--avatar card-->
             <section class="py-5 ">
                 <h2 class="it-page-section" class="mb-3" id="avatar">Avatar</h2>
@@ -782,7 +782,7 @@ echo $this->render('parts/devs-tools');
 
                 </div>
             </section>
-            
+
             <!--carousel-->
             <section class="py-5">
                 <div>
@@ -796,7 +796,7 @@ echo $this->render('parts/devs-tools');
                     ?>
                 </div>
             </section>
-        
+
             <!--carousel calendario-->
             <section class="py-5">
                 <h2 class="it-page-section" id="calendar-carousel" class="mb-5">Carousel Calendario</h2>
@@ -817,15 +817,15 @@ echo $this->render('parts/devs-tools');
             <section class="py-5">
                 <div>
 
-                <h2 id="checkbox-collapse">Checkbox collapse</h2>
-                <?php
-                echo $this->render(
-                    '@vendor/open20/design/src/components/bootstrapitalia/views/form-checkbox-collapse-preference'
-                );
-                ?>
+                    <h2 id="checkbox-collapse">Checkbox collapse</h2>
+                    <?php
+                    echo $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/form-checkbox-collapse-preference'
+                    );
+                    ?>
                 </div>
             </section>
-            
+
             <!--checkbox link privacy-->
             <section class="py-5 border-bottom">
                 <h2 id="Checkbox-link">Checkbox con link privacy</h2>
@@ -833,10 +833,10 @@ echo $this->render('parts/devs-tools');
                 $this->render(
                     '@vendor/open20/design/src/components/bootstrapitalia/views/check-with-link',
                     [
-                    'externalLink' => false,
-                    'linkText' => 'link esterno alla privacy',
-                    'privacyLink' => '/preferenceuser/contacts/contacts',
-                    'target' => '_blank',
+                        'externalLink' => false,
+                        'linkText' => 'link esterno alla privacy',
+                        'privacyLink' => '/preferenceuser/contacts/contacts',
+                        'target' => '_blank',
                     ]
                 );
                 ?>
@@ -844,22 +844,22 @@ echo $this->render('parts/devs-tools');
 
             <!--collapse-->
             <section class="py-5">
-                    <div>
+                <div>
 
-                        <h2 class="it-page-section" id="collapse" class="pb-2">Collapse</h2>
-                        <div class="bd-example">
-                            <?php
-                            echo $this->render(
-                                '@vendor/open20/design/src/components/bootstrapitalia/views/collapse-preference'
-                            );
-                            ?>
+                    <h2 class="it-page-section" id="collapse" class="pb-2">Collapse</h2>
+                    <div class="bd-example">
+                        <?php
+                        echo $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/collapse-preference'
+                        );
+                        ?>
 
-                        </div>
                     </div>
+                </div>
             </section>
-           
+
             <!--news-->
-            <?php if(\Yii::$app->getModule('news')): ?>
+            <?php if (\Yii::$app->getModule('news')) : ?>
                 <section class="py-5 border-bottom">
                     <h2 id="news">News</h2>
 
@@ -867,42 +867,42 @@ echo $this->render('parts/devs-tools');
                     $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news',
                         [
-                        'category' => 'ULTIME DALLA P.A.',
-                        'image' => 'https://picsum.photos/1600/900?random=6',
-                        'nameSurname' => 'Paolo Bianchi',
-                        'showAvatar' => true,
-                        'newPubblication' => true,
-                        'avatarWrapperSize' => 'lg',
-                        'categorySize' => 'lead',
-                        'titleSize' => 'h3',
-                        'descriptionSize' => 'lead',
-                        'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
-                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        'date' => '2020-12-12'
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=6',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showAvatar' => true,
+                            'newPubblication' => true,
+                            'avatarWrapperSize' => 'lg',
+                            'categorySize' => 'lead',
+                            'titleSize' => 'h3',
+                            'descriptionSize' => 'lead',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'date' => '2020-12-12'
                         ]
                     );
                     ?>
                 </section>
             <?php endif; ?>
 
-            
-            
-            <?php if(\Yii::$app->getModule('news')): ?>
+
+
+            <?php if (\Yii::$app->getModule('news')) : ?>
                 <section class="py-5 border-bottom">
                     <h2 id="news-list-item">Listato News</h2>
                     <?=
                     $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
                         [
-                        'category' => 'ULTIME DALLA P.A.',
-                        'image' => 'https://picsum.photos/1600/900?random=21',
-                        'nameSurname' => 'Paolo Bianchi',
-                        'showSignature' => true,
-                        'newPubblication' => true,
-                        'titleSize' => 'h5',
-                        'title' => 'Lorem ipsum dolor sit amet',
-                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        'date' => '2020-12-12'
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=21',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showSignature' => true,
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'date' => '2020-12-12'
 
                         ]
                     );
@@ -911,14 +911,14 @@ echo $this->render('parts/devs-tools');
                     $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
                         [
-                        'category' => 'ULTIME DALLA P.A.',
-                        'image' => 'https://picsum.photos/1600/900?random=22',
-                        'nameSurname' => 'Paolo Bianchi',
-                        'showSignature' => true,
-                        'titleSize' => 'h5',
-                        'title' => 'Lorem ipsum dolor sit amet',
-                        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        'date' => '2020-12-12'
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=22',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showSignature' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Lorem ipsum dolor sit amet',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                            'date' => '2020-12-12'
 
                         ]
                     );
@@ -927,15 +927,15 @@ echo $this->render('parts/devs-tools');
                     $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-news-item-list',
                         [
-                        'category' => 'ULTIME DALLA P.A.',
-                        'image' => 'https://picsum.photos/1600/900?random=2',
-                        'nameSurname' => 'Paolo Bianchi',
-                        'showSignature' => true,
-                        'newPubblication' => true,
-                        'titleSize' => 'h5',
-                        'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                        'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
-                        'date' => '2020-12-12'
+                            'category' => 'ULTIME DALLA P.A.',
+                            'image' => 'https://picsum.photos/1600/900?random=2',
+                            'nameSurname' => 'Paolo Bianchi',
+                            'showSignature' => true,
+                            'newPubblication' => true,
+                            'titleSize' => 'h5',
+                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
+                            'description' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare or incididunt ut laboree',
+                            'date' => '2020-12-12'
 
                         ]
                     );
@@ -943,30 +943,9 @@ echo $this->render('parts/devs-tools');
                 </section>
             <?php endif; ?>
 
-         
 
-            <!--Organizzazioni-->
-            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
-                <section class="py-5 border-bottom">
-                    <h2 id="organization">Organizzazioni</h2>
-                    <?=
-                    $this->render(
-                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
-                        [
-                        'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
-                        'organizzatore' => 'Pesce Azzurro Cefalù',
-                        'removeLink' => true,
-                        'showCtaEsplora' => true,
-                        'showIcon' => true,
-                        ]
-                    );
-                    ?>
-                </section>
-            <?php endif; ?>
-            
- 
             <!--Community card-->
-            <?php if(\Yii::$app->getModule('community')): ?>
+            <?php if (\Yii::$app->getModule('community')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="Community-card">Community Card</h2>
                     <p>Le card community mostrano diverse informazioni: </p>
@@ -1022,7 +1001,7 @@ echo $this->render('parts/devs-tools');
             <?php endif; ?>
 
             <!--discussioni card-->
-            <?php if(\Yii::$app->getModule('discussioni')): ?>
+            <?php if (\Yii::$app->getModule('discussioni')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="discussioni-card">Discussioni card</h2>
                     <p>Le card delle discussioni mostrano diverse informazioni:</p>
@@ -1153,9 +1132,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!--discussioni lista-->
-            <?php if(\Yii::$app->getModule('discussioni')): ?>
+            <?php if (\Yii::$app->getModule('discussioni')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="discussioni">Discussioni lista</h2>
                     <p>Gli elementi della lista discussioni mostrano diverse informazioni (oltre a quelle delle card):</p>
@@ -1210,9 +1189,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-        
+
             <!--documenti card-->
-            <?php if(\Yii::$app->getModule('documenti')): ?>
+            <?php if (\Yii::$app->getModule('documenti')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="documents-card">Documenti card</h2>
                     <p>Le card dei documenti mostrano diverse informazioni:</p>
@@ -1332,7 +1311,7 @@ echo $this->render('parts/devs-tools');
             <?php endif; ?>
 
             <!--documenti lista-->
-            <?php if(\Yii::$app->getModule('documenti')): ?>
+            <?php if (\Yii::$app->getModule('documenti')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="document-list">Documenti lista</h2>
 
@@ -1404,7 +1383,7 @@ echo $this->render('parts/devs-tools');
 
 
             <!-- eventi card-->
-            <?php if(\Yii::$app->getModule('events')): ?>
+            <?php if (\Yii::$app->getModule('events')) : ?>
                 <section class="pt-5 ">
                     <h2 class="it-page-section" id="events-list">Eventi Card</h2>
                     <p>Le card dei documenti mostrano diverse informazioni:</p>
@@ -1452,9 +1431,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!-- eventi lista-->
-            <?php if(\Yii::$app->getModule('events')): ?>
+            <?php if (\Yii::$app->getModule('events')) : ?>
                 <section class="pt-5">
                     <h2 class="it-page-section" id="events-list">Eventi Lista</h2>
                     <div class="bd-example">
@@ -1503,9 +1482,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!-- eventi scope-->
-            <?php if(\Yii::$app->getModule('events')): ?>
+            <?php if (\Yii::$app->getModule('events')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="events-scope">Eventi scope</h2>
                     <div class="bd-example">
@@ -1534,7 +1513,7 @@ echo $this->render('parts/devs-tools');
                 </section>
             <?php endif; ?>
 
-          
+
             <!--modali-->
             <section class="py-5">
                 <div>
@@ -1551,7 +1530,7 @@ echo $this->render('parts/devs-tools');
                 </div>
             </section>
             <!--news-->
-            <?php if(\Yii::$app->getModule('news')): ?>
+            <?php if (\Yii::$app->getModule('news')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="news">News</h2>
                     <div class="bd-example">
@@ -1577,9 +1556,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!--news card-->
-            <?php if(\Yii::$app->getModule('news')): ?>
+            <?php if (\Yii::$app->getModule('news')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="news-list">News card</h2>
                     <div class="bd-example">
@@ -1684,7 +1663,7 @@ echo $this->render('parts/devs-tools');
             <?php endif; ?>
 
             <!--News Carousel-->
-            <?php if(\Yii::$app->getModule('news')): ?>
+            <?php if (\Yii::$app->getModule('news')) : ?>
                 <section class="py-5">
                     <div>
                         <h2 class="it-page-section" id="carousel-news" class="pb-2">News Carousel</h2>
@@ -1698,9 +1677,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!--news lista-->
-            <?php if(\Yii::$app->getModule('news')): ?>
+            <?php if (\Yii::$app->getModule('news')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="news-list-item">News lista</h2>
                     <div class="bd-example">
@@ -1754,9 +1733,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!--Organizzazioni card-->
-            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+            <?php if (\Yii::$app->getModule('organizzazioni')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="organization">Organizzazioni card</h2>
                     <div class="bd-example">
@@ -1764,10 +1743,10 @@ echo $this->render('parts/devs-tools');
                         $this->render(
                             '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
                             [
-                                'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=4',
-                                'organizzatore' => 'Pesce Azzurro Cefalù',
+                                'image' => 'https://picsum.photos/1600/900?random=4',
+                                'title' => 'Pesce Azzurro Cefalù',
                                 'removeLink' => true,
-                                'showCtaEsplora' => true,
+                                'showCta' => true,
                                 'showIcon' => true,
                             ]
                         );
@@ -1775,9 +1754,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
+
             <!--organizzazioni lista-->
-            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+            <?php if (\Yii::$app->getModule('organizzazioni')) : ?>
                 <section class="py-5 ">
                     <h2 class="it-page-section" id="organization-list">Organizzazioni lista</h2>
                     <div class="bd-example">
@@ -1786,12 +1765,8 @@ echo $this->render('parts/devs-tools');
                             $this->render(
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
                                 [
-                                    'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=1',
-                                    'organizzatore' => 'Fidagel',
-                                    'removeLink' => true,
-                                    'showCtaEsplora' => true,
-                                    'additionalClass' => 'border-light border-bottom py-3',
-                                    'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
+                                    'image' => 'https://picsum.photos/1600/900?random=1',
+                                    'title' => 'Fidagel',
                                 ]
                             );
                             ?>
@@ -1800,13 +1775,8 @@ echo $this->render('parts/devs-tools');
                             $this->render(
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
                                 [
-                                    'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=2',
-                                    'organizzatore' => 'Pesce Azzurro Cefalù',
-                                    'removeLink' => true,
-                                    'showCtaEsplora' => true,
-                                    'additionalClass' => 'border-light border-bottom py-3',
-                                    'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
-
+                                    'image' => 'https://picsum.photos/1600/900?random=2',
+                                    'title' => 'Pesce Azzurro Cefalù',
                                 ]
                             );
                             ?>
@@ -1815,13 +1785,8 @@ echo $this->render('parts/devs-tools');
                             $this->render(
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-organizzazioni',
                                 [
-                                    'imageOrganizzatore' => 'https://picsum.photos/1600/900?random=3',
-                                    'organizzatore' => 'Ittica Taddeo Lucia & Co',
-                                    'removeLink' => true,
-                                    'showCtaEsplora' => true,
-                                    'additionalClass' => 'border-light border-bottom py-3',
-                                    'singleElementsWidthFullsize' => 'col-xl-3 col-md-4',
-
+                                    'image' => 'https://picsum.photos/1600/900?random=3',
+                                    'title' => 'Ittica Taddeo Lucia & Co',
                                 ]
                             );
                             ?>
@@ -1832,7 +1797,7 @@ echo $this->render('parts/devs-tools');
             <?php endif; ?>
 
             <!--Organizzazioni Scope-->
-            <?php if(\Yii::$app->getModule('organizzazioni')): ?>
+            <?php if (\Yii::$app->getModule('organizzazioni')) : ?>
                 <section class="py-5 ">
                     <h2 class="it-page-section" id="scope-organizzazioni">Organizzazioni scope</h2>
                     <div class="bd-example">
@@ -1856,7 +1821,7 @@ echo $this->render('parts/devs-tools');
             <?php endif; ?>
 
             <!--Podcast lista-->
-            <?php if(\Yii::$app->getModule('podcast')): ?>
+            <?php if (\Yii::$app->getModule('podcast')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="podcast-list">Podcast lista</h2>
                     <div class="bd-example">
@@ -1911,7 +1876,7 @@ echo $this->render('parts/devs-tools');
             <?php endif; ?>
 
             <!--podcast card-->
-            <?php if(\Yii::$app->getModule('podcast')): ?>
+            <?php if (\Yii::$app->getModule('podcast')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="podcast-puntate-list">Podcast card </h2>
                     <div class="bd-example">
@@ -1955,26 +1920,19 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </section>
             <?php endif; ?>
-            
-            
+
+
             <!--proposte di collaborazione-->
-            <?php if(\Yii::$app->getModule('partnershipprofiles')): ?>
+            <?php if (\Yii::$app->getModule('partnershipprofiles')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="proposte-collaborazione">Proposte di collaborazione</h2>
                     <div class="bd-example">
-
-                        <?=
+                        finchè Michele non toglie il model, commento la sezione sennò la pagina è irraggiungibile
+                        <!-- < ?=
                         $this->render(
                             '@vendor/open20/design/src/components/bootstrapitalia/views/bi-proposte-collaborazione',
                             [
                                 'model' => \open20\amos\partnershipprofiles\models\PartnershipProfiles::findOne(293),
-                                //                            'dateEnd' => '12-12-2021',
-                                //                            'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
-                                //                            'newPubblication' => true,
-                                //                            'description' => 'La comunicazione può essere strumento di intervento per attenuare o eliminare lo stress in ambito lavorativo. La comunicazione può avere un impatto positivo prima, durante e dopo che il rischio stress si verifichi.',
-                                //                            'forUsers' => 'Tutti gli utenti',
-                                //                            'status' => 'Validata',
-                                //                            'numInteressi' => '8',
                                 'url'=> '#',
                                 'title' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
                                 'shortTitle' => 'io sono una stringa cortina',
@@ -1985,15 +1943,15 @@ echo $this->render('parts/devs-tools');
 
                             ]
                         );
-                        ?>
-                   
+                        ?> -->
+
 
                     </div>
                 </section>
             <?php endif; ?>
-          
+
             <!--proposte di collaborazione een-->
-            <?php if(\Yii::$app->getModule('een')): ?>
+            <?php if (\Yii::$app->getModule('een')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="proposte-collaborazione-een">Proposte di collaborazione EEN</h2>
                     <div class="bd-example">
@@ -2056,30 +2014,30 @@ echo $this->render('parts/devs-tools');
             <?php /*
             <?php if(\Yii::$app->getModule('news')): ?>
             */ ?>
-                <section class="py-5">
-                    <h2 class="it-page-section" id="news">Progetti</h2>
-                    <div class="bd-example">
-                        <?=
-                        $this->render(
-                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-project',
-                            [
-                                'category' => 'ULTIME DALLA P.A.',
-                                'actionModify' => '#',
-                                'actionDelete' => '#',
+            <section class="py-5">
+                <h2 class="it-page-section" id="news">Progetti</h2>
+                <div class="bd-example">
+                    <?=
+                    $this->render(
+                        '@vendor/open20/design/src/components/bootstrapitalia/views/bi-project',
+                        [
+                            'category' => 'ULTIME DALLA P.A.',
+                            'actionModify' => '#',
+                            'actionDelete' => '#',
 
-                                'newPublication' => true,
-                               
-                                'categorySize' => 'lead',
-                                'titleSize' => 'h3',
-                                'descriptionSize' => 'lead',
-                                'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
-                                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                               
-                            ]
-                        );
-                        ?>
-                    </div>
-                </section>
+                            'newPublication' => true,
+
+                            'categorySize' => 'lead',
+                            'titleSize' => 'h3',
+                            'descriptionSize' => 'lead',
+                            'title' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit…',
+                            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+
+                        ]
+                    );
+                    ?>
+                </div>
+            </section>
             <?php /*
             <?php endif; ?>
             */ ?>
@@ -2131,9 +2089,9 @@ echo $this->render('parts/devs-tools');
                     </div>
                 </div>
             </section>
-            
+
             <!--sondaggi card-->
-            <?php if(\Yii::$app->getModule('sondaggi')): ?>
+            <?php if (\Yii::$app->getModule('sondaggi')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="sondaggi-card">Sondaggi card</h2>
                     <div class="bd-example">
@@ -2157,9 +2115,9 @@ echo $this->render('parts/devs-tools');
                 </section>
             <?php endif; ?>
 
-            
+
             <!-- sondaggi lista-->
-            <?php if(\Yii::$app->getModule('sondaggi')): ?>
+            <?php if (\Yii::$app->getModule('sondaggi')) : ?>
                 <section class="py-5">
                     <h2 class="it-page-section" id="sondaggi-lista">Sondaggi lista</h2>
                     <div class="bd-example">
@@ -2224,7 +2182,7 @@ echo $this->render('parts/devs-tools');
                 </div>
             </section>
             <!--tag-->
-            <?php if(\Yii::$app->getModule('tag')): ?>
+            <?php if (\Yii::$app->getModule('tag')) : ?>
                 <section class="py-5">
                     <div>
                         <h2 class="it-page-section" id="tag-manage" class="pb-2">Tag </h2>
@@ -2293,9 +2251,9 @@ echo $this->render('parts/devs-tools');
 
                 </section>
             <?php endif; ?>
-            
+
             <!--tag-element-->
-            <?php if(\Yii::$app->getModule('tag')): ?>
+            <?php if (\Yii::$app->getModule('tag')) : ?>
                 <section class="py-5">
                     <div>
                         <h2 class="it-page-section" id="tag" class="pb-2">Tag</h2>
@@ -2339,10 +2297,10 @@ echo $this->render('parts/devs-tools');
                             'nameSurname' => 'Paolo Bianchi',
                             'avatarWrapperSize' => 'xl',
                             'url' => '#',
-                            'userEmail'=>'prova@gmail.com',
+                            'userEmail' => 'prova@gmail.com',
                             'additionalInfo' => 'Programmatore',
-                            'isNewUser'=>true,
-                            'descrizionrBreve'=>'Lorem ipsum',
+                            'isNewUser' => true,
+                            'descrizionrBreve' => 'Lorem ipsum',
                             'collaborazionePrevalente' => 'Unità di Ricerca INSTM presso Dipartimento di Scienza dei Materiali - Univ- Milano Bicocca',
                             'facilitatore' => 'Redazione Open Innovation',
                             'statoProfilo' => 'Validato',
@@ -2357,11 +2315,11 @@ echo $this->render('parts/devs-tools');
                         [
                             'nameSurname' => 'Michelito La Fresca',
                             'avatarWrapperSize' => 'xl',
-                            'isNewUser'=>true,
+                            'isNewUser' => true,
                             'url' => '#',
-                            'userEmail'=>'prova@gmail.com',
+                            'userEmail' => 'prova@gmail.com',
                             'additionalInfo' => 'Web Designer',
-                            'descrizionrBreve'=>'Lorem ipsum',
+                            'descrizionrBreve' => 'Lorem ipsum',
                             'collaborazionePrevalente' => 'Elite Division srl',
                             'facilitatore' => 'Marco Bianchi',
                             'statoProfilo' => 'Modifica in corso',
@@ -2376,10 +2334,10 @@ echo $this->render('parts/devs-tools');
                         [
                             'nameSurname' => 'Luca Lodiato',
                             'avatarWrapperSize' => 'xl',
-                            'isNewUser'=>true,
+                            'isNewUser' => true,
                             'url' => '#',
-                            'userEmail'=>'prova@gmail.com',
-                            'descrizionrBreve'=>'Lorem ipsum',
+                            'userEmail' => 'prova@gmail.com',
+                            'descrizionrBreve' => 'Lorem ipsum',
                             'additionalInfo' => 'Presidentissimo',
                             'collaborazionePrevalente' => 'Mads srl',
                             'facilitatore' => 'Angelo Rocchi',
@@ -2396,8 +2354,8 @@ echo $this->render('parts/devs-tools');
                             'nameSurname' => 'Marcello Aiello',
                             'avatarWrapperSize' => 'xl',
                             'url' => '#',
-                            'userEmail'=>'prova@gmail.com',
-                            'descrizionrBreve'=>'Lorem ipsum',
+                            'userEmail' => 'prova@gmail.com',
+                            'descrizionrBreve' => 'Lorem ipsum',
                             'additionalInfo' => 'maestro',
                             'collaborazionePrevalente' => 'Divita snc',
                             'facilitatore' => 'Andrea Fiori',
@@ -2435,8 +2393,8 @@ echo $this->render('parts/devs-tools');
                     <h2 class="it-page-section" id="widget-mio-profilo" class="pb-2">Widget Il mio profilo</h2>
                 </div>
                 <div class="bd-example">
-                
-                        
+
+
                     <?php
                     echo $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-widget-myprofile',
@@ -2449,39 +2407,39 @@ echo $this->render('parts/devs-tools');
                             'isFacilitator' => true,
                             'isCommunityManager' => true,
                             'tags' => [
-                               1=>[
-                                'label' => 'Design',
-                                'depth' => '1',
-        
-                               ],
-                               2 =>[
-                                'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
-                                'depth' => '2',
-                                
-                               ]
+                                1 => [
+                                    'label' => 'Design',
+                                    'depth' => '1',
+
+                                ],
+                                2 => [
+                                    'label' => 'SISTEMI PRODUTTIVI PER LA SOSTENIBILITÀ DELLE BIORISORSE',
+                                    'depth' => '2',
+
+                                ]
                             ],
                             'totCounter' => 4,
-                            'counters' =>[
-                                   1=>[
-                                       'url' => '#',
-                                       'name' => 'Notizie',
-                                       'counter' => '2',
-                                   ],
-                                   2=>[
+                            'counters' => [
+                                1 => [
+                                    'url' => '#',
+                                    'name' => 'Notizie',
+                                    'counter' => '2',
+                                ],
+                                2 => [
                                     'url' => '#',
                                     'name' => 'Discussioni',
                                     'counter' => '10',
-                                   ],
-                                   3=>[
+                                ],
+                                3 => [
                                     'url' => '#',
                                     'name' => 'Prposte di collaborazione',
                                     'counter' => '1',
-                                   ],
-                                   4=>[
+                                ],
+                                4 => [
                                     'url' => '#',
                                     'name' => 'Proposte dal mondo',
                                     'counter' => '2',
-                                   ]
+                                ]
                             ],
                         ]
                     );
@@ -2678,8 +2636,8 @@ echo $this->render('parts/devs-tools');
                     </div>
             </section>
 
-   
-            
+
+
             <section class="py-5 border-bottom">
                 <h2 class="it-page-section" id="toggle" class="mb-5">Toggles</h2>
                 <div>
@@ -2735,7 +2693,7 @@ echo $this->render('parts/devs-tools');
                 );
                 ?>
             </section>
-    
+
         </div>
     </div>
 </div>

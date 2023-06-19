@@ -219,7 +219,6 @@ return [
     "Invia di nuovo la mail" => "Invia di nuovo la mail",
     "Non hai ricevuto email" => "Non hai ricevuto email",
     "Leggi" => "Leggi",
-    "Leggi la notizia" => "Leggi la notizia"
-
-
+    "Leggi la notizia" => "Leggi la notizia",
+    "I miei interessi" => "I miei interessi"
 ];

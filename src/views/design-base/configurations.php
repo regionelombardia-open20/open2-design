@@ -84,10 +84,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         </li>
 
                                         <li>
-                                            <a class="list-item" href="#configurazioni-layout"><span>customPlatformPluginMenu </span></a>
-                                        </li>
-
-                                        <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customUserMenuHeader </span></a>
                                         </li>
                                         <li>
@@ -266,6 +262,9 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-cms"><span>myOpenCmsMenu </span></a>
+                                        </li>
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-cms"><span>customPlatformMenu </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-cms"><span>mainEngCmsMenu </span></a>
@@ -450,14 +449,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
                                 </strong> : path list link user not logged view custom
-                            </li>
-                            <li>
-                                <strong>
-                                    customPlatformPluginMenu
-                                    <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformPluginMenu']) : ?>
-                                        <span class="badge badge-success">Attivo</span>
-                                    <?php endif ?>
-                                </strong> : path view custom for plugin menu
                             </li>
                             <li>
                                 <strong>
@@ -651,7 +642,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
 'layoutConfigurations' => [
     'customPlatformHead' => '@common/views/layouts/parts/bi-head',
     'customPlatformFooter' => '@common/views/layouts/parts/footer-custom',
-    'customPlatformPluginMenu' => '@common/views/layouts/parts/plugin-menu-custom',
     'customUserMenuHeader' => '@common/views/layouts/parts/header-usermenu-custom',
     'fluidContainerHeader' => false,
     'hideHamburgerMenuHeader' => false,
@@ -809,6 +799,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             </li>
                             <li>
                                 <strong>
+                                    customPlatformMenu
+                                    <?php if (\Yii::$app->params['menuCmsConfigurations']['customPlatformMenu']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : path view custom platform menu
+                            </li>
+                            <li>
+                                <strong>
                                     footerCmsMenu
                                     <?php if (\Yii::$app->params['menuCmsConfigurations']['footerCmsMenu']) : ?>
                                         <span class="badge badge-success">Attivo</span>
@@ -825,6 +823,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
 'menuCmsConfigurations' => [
     'mainCmsMenu' => 'mainMenuDesign',
     'footerCmsMenu' => 'footerMenuDesign'
+    'customPlatformMenu' => '@common/views/layouts/parts/plugin-menu-custom',
 ],
                             </code>
                         </pre>
