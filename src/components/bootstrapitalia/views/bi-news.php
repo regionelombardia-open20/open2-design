@@ -67,7 +67,8 @@ if (strlen($description) > 150) {
                             echo $this->render(
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
                                 [
-                                    'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                                    'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete),
+                                    'model' => $model
                                 ]
                             );
                             ?>
@@ -104,7 +105,7 @@ if (strlen($description) > 150) {
                 <?php endif; ?>
 
 
-                <h3 class="card-title mb-2 <?= $titleSize ?> font-weight-bold">
+                <div class="card-title mb-2 <?= $titleSize ?> font-weight-bold">
                     <a href="<?= $url ?>" class=" link-list-title d-inline" title="Vai alla news <?= $title ?>">
                         <?= $title ?>
                     </a>
@@ -116,7 +117,7 @@ if (strlen($description) > 150) {
                             <span class="sr-only"><?= $contentScopesAvatar ?></span>
                         </a>
                     <?php endif; ?>
-                </h3>
+                </div>
 
 
 

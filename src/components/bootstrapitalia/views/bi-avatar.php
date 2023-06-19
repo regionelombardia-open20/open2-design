@@ -9,14 +9,24 @@ $arr         = explode(' ', trim($nameSurname));
 $name        = $arr[0];
 $surname     = $arr[1];
 $initials    = substr($name, 0, 1) . substr($surname, 0, 1);
-$titlelink   = Module::t('amosdesign', 'Visualizza il profilo di {nameSurname} ',['nameSurname' => $nameSurname]);
+$titlelink   = Module::t('amosdesign', 'Visualizza il profilo di {nameSurname} ', ['nameSurname' => $nameSurname]);
 $tooltipText = '<strong>' . $nameSurname . '</strong>' . (isset($tooltipAdditionalInfo) ? '<br/><em>' . $tooltipAdditionalInfo . '</em>' : '');
 $removeLink  = (isset($removeLink)) ? $removeLink : false;
 $showWelcomeLabel = (isset($showWelcomeLabel)) ? $showWelcomeLabel : false;
-$welcomeLabel  = (isset($welcomeLabel)) ? $welcomeLabel : Module::t('amosdesign', 'Ciao');
+$welcomeLabel  = (isset($welcomeLabel)) ? $welcomeLabel : '<span class="font-weight-normal">' . Module::t('amosdesign', 'Ciao') . '</span>';
 $hideNameSurname = (isset($hideNameSurname)) ? $hideNameSurname : false;
 $hideStatusValidated = (isset($hideStatusValidated)) ? $hideStatusValidated : true;
 $showAvatarPresence = (isset($showAvatarPresence)) ? $showAvatarPresence : false;
+$showCallToAction = (isset($showCallToAction)) ? $showCallToAction : false;
+$showAvatarPresence = (isset($showAvatarPresence)) ? $showAvatarPresence : false;
+
+$enableVerticalAvatar = (isset($enableVerticalAvatar)) ? $enableVerticalAvatar : false;
+$wrapperFlexDir = '';
+$textAlign = '';
+if($enableVerticalAvatar) {
+    $wrapperFlexDir = 'flex-column';
+    $textAlign = 'text-center';
+}
 
 $avatarPresence = (isset($avatarPresence)) ? 'active' : 'hidden';
 if ($avatarPresence == 'hidden') {
@@ -25,11 +35,13 @@ if ($avatarPresence == 'hidden') {
     $avatarPresenceTitle = Module::t('amosdesign', 'Attivo');
 }
 
+$widthColumn = (isset($widthColumn)) ? $widthColumn :  '';
+
 $avatarWrapperSize = (isset($avatarWrapperSize)) ? $avatarWrapperSize : 'md';
 if ($avatarWrapperSize == 'xxl') {
     $avatarClassSize = 'size-xxl';
     $extraTextSize   = (isset($extraTextSize)) ? $extraTextSize : 'lead';
-    $nameSize        = 'h3';
+    $nameSize        = 'h5';
 } else if ($avatarWrapperSize == 'xl') {
     $avatarClassSize = 'size-xl';
     $extraTextSize   = (isset($extraTextSize)) ? $extraTextSize : 'lead';
@@ -66,19 +78,15 @@ if ($statoProfilo == 'Validato') {
     $statoProfiloClass = 'warning';
 }
 
-if(!empty($model)){
+if (!empty($model)) {
     $nameSurname = $model->nomeCognome;
     $imageAvatar = $model->getAvatarUrl('card_users');
-    $url = \open20\amos\admin\AmosAdmin::getModuleName().'/user-profile/view?id='.$model->id;
+    $url = \open20\amos\admin\AmosAdmin::getModuleName() . '/user-profile/view?id=' . $model->id;
 }
 
-
-
-$buttonCtaMsgClass  = (isset($buttonCtaMsgClass)) ? $buttonCtaMsgClass : 'btn-primary';
-$buttonCtaJoinClass = (isset($buttonCtaJoinClass)) ? $buttonCtaJoinClass : 'btn-secondary';
 ?>
 
-<div class="avatar-wrapper avatar-extra-text mb-0  justify-content-start <?= $additionalClass ?> <?= $singleElementsWidthFullsize ?> <?= $singleElementsWidthMobile ?>">
+<div class="avatar-wrapper avatar-extra-text mb-0 justify-content-start <?= $wrapperFlexDir ?> <?= $widthColumn ?> <?= $additionalClass ?>">
     <?php if (!$removeLink || $showTooltip) : ?>
         <div class="avatar-box-img position-relative avatar <?= $avatarClassSize ?>">
             <a href="<?= ($removeLink == true ? 'javascript::void(0)' : $url) ?>" class="avatar <?= $avatarClassSize ?>" <?= isset($showTooltip) ? 'data-toggle="tooltip" data-html="true" ' : '' ?> title="<?= isset($showTooltip) ? $tooltipText : $titlelink ?>">
@@ -92,9 +100,9 @@ $buttonCtaJoinClass = (isset($buttonCtaJoinClass)) ? $buttonCtaJoinClass : 'btn-
 
             </a>
             <?php if ($showAvatarPresence) : ?>
-            <div class="avatar-presence <?= $avatarPresence ?>" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Presenza') . ': ' .  $avatarPresenceTitle ?>">
-                <span class="sr-only"><?= Module::t('amosdesign', 'Presenza: ') . $avatarPresenceTitle ?> </span>
-            </div>
+                <div class="avatar-presence <?= $avatarPresence ?>" data-toggle="tooltip" title="<?= Module::t('amosdesign', 'Presenza') . ': ' .  $avatarPresenceTitle ?>">
+                    <span class="sr-only"><?= Module::t('amosdesign', 'Presenza: ') . $avatarPresenceTitle ?> </span>
+                </div>
             <?php endif ?>
             <?php if (!($statoProfilo == 'Validato' && $hideStatusValidated)) : ?>
                 <div class="avatar-status bg-<?= $statoProfiloClass ?>" data-toggle="tooltip" title="Stato profilo utente: <?= $statoProfilo ?>">
@@ -155,16 +163,19 @@ $buttonCtaJoinClass = (isset($buttonCtaJoinClass)) ? $buttonCtaJoinClass : 'btn-
             <?php endif; ?>
         </div>
     <?php endif; ?>
-    <div class="ml-2 <?= $extraTextSize ?> ">
-    
+    <div class="<?= ($enableVerticalAvatar) ? 'my-2 mx-0' : 'ml-2'?> <?= $extraTextSize ?> <?= $textAlign ?>">
         <?php if (!$hideNameSurname) : ?>
-            <?php if ($showWelcomeLabel) : ?>
-                <span><?= $welcomeLabel . ',' ?></span>
-                <?php endif ?>
             <?php if ($removeLink) : ?>
-                <span class="font-weight-bold mb-0 avatar-name <?= $nameSize ?>"><?= $nameSurname ?></span>
+                <p class="font-weight-bold <?= ($enableVerticalAvatar) ? 'mb-2' : 'mb-0'?> avatar-name <?= $nameSize ?>">
+                    <?= ($showWelcomeLabel) ? $welcomeLabel . ',' . ' ' . $nameSurname : $nameSurname ?>
+                </p>
             <?php else : ?>
-                <span class="font-weight-bold mb-0 avatar-name <?= $nameSize ?>"><a href="<?= $url ?>" class="namesurname" title="<?= $titlelink ?>"><?= $nameSurname ?></a></span>
+                <p class="font-weight-bold <?= ($enableVerticalAvatar) ? 'mb-2' : 'mb-0'?> avatar-name <?= $nameSize ?>">
+                    <?= ($showWelcomeLabel) ? $welcomeLabel . ',' . ' ' : '' ?>
+                    <a href="<?= $url ?>" class="namesurname" title="<?= $titlelink ?>">
+                        <?= $nameSurname ?>
+                    </a>
+                </p>
             <?php endif ?>
         <?php endif; ?>
         <?php if (!empty($additionalInfo)) : ?>
@@ -174,12 +185,12 @@ $buttonCtaJoinClass = (isset($buttonCtaJoinClass)) ? $buttonCtaJoinClass : 'btn-
             <p class="additional-info font-weight-normal mb-0 text-secondary small"><?= $scopes ?></p>
         <?php endif; ?>
 
-        <?php if (isset($showCtaMsg)) : ?>
-            <a href="<?= $urlCtaMsg ?>" class="btn <?= $buttonCtaMsgClass ?> btn-xs py-1" title="<?= $ctaTitleMsg ?> <?= ' ' . $nameSurname ?>"><?= $ctaMsg ?></a>
+        <?php if ($showCallToAction) : ?>
+            <a href="<?= $urlCallToAction ?>" class="btn <?= $buttonCallToActionClass ?> btn-xs py-1" title="<?= $titleCallToAction ?> <?= ' ' . $nameSurname ?>"><?= $callToAction ?></a>
         <?php endif; ?>
 
-        <?php if (isset($showCtaJoin)) : ?>
-            <a href="<?= $urlCtaJoin ?>" class="btn <?= $buttonCtaJoinClass ?> btn-xs py-1" title="<?= $ctaJoinMsg ?> <?= ' ' . $nameSurname ?> "> <?= $ctaJoinMsg ?></a>
+        <?php if (!empty($customCallsToAction)) : ?>
+            <?= $customCallsToAction ?>
         <?php endif; ?>
 
     </div>

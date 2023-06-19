@@ -11,6 +11,9 @@
         color: $label-form-text-color;
         line-height: calc(2.667rem - 1px);
     }
+    input:autofill{
+        background: transparent;
+    }
     //per autocomplete
     input.js-fake-not-readonly[readonly] {
         background-color: $white;

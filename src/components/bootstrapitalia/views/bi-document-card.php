@@ -95,7 +95,7 @@ $actionDelete = (!empty($actionDelete) ? $actionDelete : null);
                         </svg>
                     <?php endif ?>
 
-                    <?php if (empty($size) && ($type != 'FOLDER')) : ?>
+                    <?php if (!empty($link_document) && ($type != 'FOLDER')) : ?>
                         <span class="text mr-1"><?= Module::t('amosdesign', 'LINK ESTERNO') ?></span>
                     <?php elseif (empty($size) && ($type == 'FOLDER')) : ?>
                         <span class="text mr-1"><?= Module::t('amosdesign', 'CARTELLA') ?></span>
@@ -125,7 +125,8 @@ $actionDelete = (!empty($actionDelete) ? $actionDelete : null);
                             '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
                             [
                             'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model,
-                                $actionModify, $actionDelete)
+                                $actionModify, $actionDelete),
+                                'model' => $model
                             ]
                         );
                         ?>

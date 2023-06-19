@@ -37,12 +37,23 @@ class ItemDocumentCardWidget extends Widget
     private $title;
 
     /**
+     * 'row' render @vendor/open20/design/src/components/bootstrapitalia/views/bi-hierarchical-document-list, 
+     * 'card' render @vendor/open20/design/src/components/bootstrapitalia/views/bi-hierarchical-document-card
+     * @var string $typeView
+     */
+    private $typeView = 'row';
+
+    /**
      * {@inheritdoc}
      */
     public function run()
     {
-        return $this->render('@vendor/open20/design/src/components/bootstrapitalia/views/bi-list-document-befe',
-                [
+        if ($this->typeView == 'row') {
+            $view = '@vendor/open20/design/src/components/bootstrapitalia/views/bi-hierarchical-document-list';
+        } else {
+            $view = '@vendor/open20/design/src/components/bootstrapitalia/views/bi-hierarchical-document-card';
+        }
+        return $this->render($view, [
                 'widget' => $this,
         ]);
     }

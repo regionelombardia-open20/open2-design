@@ -14,10 +14,12 @@ use open20\amos\admin\AmosAdmin;
 use open20\amos\admin\base\ConfigurationManager;
 use open20\amos\admin\models\UserContact;
 use open20\amos\admin\models\UserProfile;
+use open20\amos\community\AmosCommunity;
 use open20\amos\community\models\Community;
 use open20\amos\community\models\CommunityUserMm;
-use open20\amos\tag\models\Tag;
+use open20\amos\cwh\utility\CwhUtil;
 use yii\base\Widget;
+use yii\db\ActiveQuery;
 
 /**
  * Class WidgetMyProfile
@@ -131,17 +133,11 @@ class WidgetMyProfile extends Widget
      */
     public function getTagOfInterest() 
     {
-        /** @var UserProfile $userProfileModel */ 
-        $userProfileModel = $this->adminModule->createModel('UserProfile');
-        $loggedUserProfile = $userProfileModel::find()->andWhere(['user_id' => \Yii::$app->user->id])->one();
-        $tags = Tag::find()
-            ->innerJoin('cwh_tag_owner_interest_mm', 'cwh_tag_owner_interest_mm.tag_id = tag.id')
-            ->andWhere(['record_id' => $loggedUserProfile->id])
-            ->andWhere(['classname' => $this->adminModule->model('UserProfile')])
-            ->andWhere(['cwh_tag_owner_interest_mm.deleted_at' => null])
-            ->andWhere(['interest_classname' => 'simple-choice'])->all();
-        return $tags;
-    } 
+        if (method_exists(CwhUtil::class, 'findInterestTagsByUser')) {
+            return CwhUtil::findInterestTagsByUser(\Yii::$app->user->identity->userProfile->id);
+        }
+        return [];
+    }
 
     /**
      * @throws \yii\base\InvalidConfigException
@@ -176,6 +172,39 @@ class WidgetMyProfile extends Widget
         }
         return $users;
     }
+    
+    /**
+     * This method returns the last communities query that retrieve the last communities to display.
+     * The method returns null if the community module is not configured in the platform.
+     * @param int $userId
+     * @param string $status
+     * @param int $limit
+     * @return ActiveQuery|null
+     * @throws \yii\base\InvalidConfigException
+     */
+    public function getLastCommunitiesQuery($userId = 0, $status = '', $limit = 5)
+    {
+        if (!$userId) {
+            $userId = \Yii::$app->user->id;
+        }
+        if (empty($status)) {
+            $status = CommunityUserMm::STATUS_ACTIVE;
+        }
+        /** @var AmosCommunity $communityModule */
+        $communityModule = AmosCommunity::instance();
+        if (!is_null($communityModule)) {
+            /** @var Community $communityModel */
+            $communityModel = $communityModule->createModel('Community');
+            /** @var ActiveQuery $query */
+            $query = $communityModel::find();
+            $query->innerJoin('community_user_mm', 'community_user_mm.community_id = community.id')
+                ->andWhere(['community_user_mm.user_id' => $userId])
+                ->andWhere(['community_user_mm.status' => $status])
+                ->limit($limit)->orderBy('community_user_mm.id desc');
+            return $query;
+        }
+        return null;
+    }
 
     /**
      * @return array
@@ -184,11 +213,7 @@ class WidgetMyProfile extends Widget
     public function getLastCommunities()
     {
         $lastCommunities = [];
-        $communities = Community::find()
-            ->innerJoin('community_user_mm', 'community_user_mm.community_id = community.id')
-            ->andWhere(['community_user_mm.user_id' => \Yii::$app->user->id])
-            ->andWhere(['community_user_mm.status' => CommunityUserMm::STATUS_ACTIVE])
-            ->limit(5)->orderBy('community_user_mm.id desc')->all();
+        $communities = $this->getLastCommunitiesQuery()->all();
 
         /** @var  $community Community */
         foreach ($communities as $community) {

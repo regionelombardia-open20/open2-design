@@ -114,7 +114,8 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
                         echo $this->render(
                         '@vendor/open20/design/src/components/bootstrapitalia/views/bi-context-menu-widget',
                         [
-                            'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete)
+                            'buttons' => \open20\amos\core\utilities\ButtonUtility::composeContextMenuButtons($model, $actionModify, $actionDelete),
+                            'model' => $model
                         ]
                         );
                     ?>

@@ -9,6 +9,6 @@ $customPaginationClass = (isset($customPaginationClass)) ? $customPaginationClas
 <div class='list-view-design row it-list-wrapper <?= $customListClass ?>'>
     {items}
 </div>
-<nav class='pagination-wrapper justify-content-center pagination-design <?= $customPaginationClass ?>'>
+<nav role="navigation" aria-label="Pagination" class='pagination-wrapper justify-content-center pagination-design <?= $customPaginationClass ?>'>
     {pager}
 </nav>
