@@ -135,9 +135,9 @@ $actionDelete = (!empty($actionDelete) ? $actionDelete : null);
 
                 </div>
                 <?php
-                if (!empty($actionView)) {
+                if (!empty($url)) {
                     ?>
-                    <a href="<?= $actionView ?>" class="link-list-title" title="<?=
+                    <a href="<?= $url ?>" class="link-list-title" title="<?=
                     Module::t('amosdesign', 'Dettaglio documento')
                     ?> <?= $title ?>">
                         <h6 class="card-title mb-2 title-three-line"><?= $title ?></h6>

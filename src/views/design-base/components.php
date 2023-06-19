@@ -177,13 +177,16 @@ echo $this->render('parts/devs-tools');
                                         </li>
                                         <!--eventi lista-->
                                         <li>
-                                            <a class="list-item" href="#events-list"><span>Lista eventi</span></a>
+                                            <a class="list-item" href="#events-list"><span>Eventi lista</span></a>
                                         </li>
                                         <!--eventi scope-->
                                         <li>
                                             <a class="list-item" href="#events-scope"><span>Eventi scope</span></a>
                                         </li>
-
+                                        <!--faq lista-->
+                                        <li>
+                                            <a class="list-item" href="#faq-list"><span>Faq lista</span></a>
+                                        </li>
                                         <!--modali-->
                                         <li>
                                             <a class="list-item" href="#modal"><span>Modali</span></a>
@@ -1513,6 +1516,22 @@ echo $this->render('parts/devs-tools');
                 </section>
             <?php endif; ?>
 
+            <?php if (\Yii::$app->getModule('ticket')) : ?>
+                <section class="py-5">
+                    <h2 class="it-page-section" id="faq-list">FAQs list</h2>
+                    <div class="bd-example">
+                        <?=
+                        $this->render(
+                            '@vendor/open20/design/src/components/bootstrapitalia/views/bi-faq-item-list',
+                            [
+                                'faqId' => 1,
+                                'faqCatId' => 2,
+                            ]
+                        );
+                        ?>
+                    </div>
+                </section>
+            <?php endif; ?>
 
             <!--modali-->
             <section class="py-5">
