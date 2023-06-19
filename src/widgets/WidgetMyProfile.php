@@ -158,9 +158,9 @@ class WidgetMyProfile extends Widget
             /** @var UserProfile $userProfileModel */
             $userProfileModel = $this->adminModule->createModel('UserProfile');
             if ($contact->user_id != \Yii::$app->user->id) {
-                $userProfile = $userProfileModel::find()->andWhere(['user_id' => $contact->user_id])->one();
+                $userProfile = $userProfileModel::find()->andWhere(['user_id' => $contact->user_id, 'attivo'=>1])->one();
             } else {
-                $userProfile = $userProfileModel::find()->andWhere(['user_id' => $contact->contact_id])->one();
+                $userProfile = $userProfileModel::find()->andWhere(['user_id' => $contact->contact_id, 'attivo'=>1])->one();
             }
             if ($userProfile) {
                 $users[] = [
@@ -200,7 +200,9 @@ class WidgetMyProfile extends Widget
             $query->innerJoin('community_user_mm', 'community_user_mm.community_id = community.id')
                 ->andWhere(['community_user_mm.user_id' => $userId])
                 ->andWhere(['community_user_mm.status' => $status])
-                ->limit($limit)->orderBy('community_user_mm.id desc');
+                ->andWhere(['community_user_mm.deleted_at' => null])
+                ->limit($limit)
+                ->orderBy([CommunityUserMm::tableName() . '.created_at' => SORT_DESC]);
             return $query;
         }
         return null;
@@ -319,7 +321,7 @@ class WidgetMyProfile extends Widget
                 'module' => 'een',
                 'query' => 'searchWidgetIconEen',
                 'label' => \Yii::t('app', "Proposte dal mondo"),
-                'url' => '/een/een-partership-proposal/own-interest-een'
+                'url' => '/een/een-partnership-proposal/own-interest'
             ],
             'open20\amos\partnershipprofiles\models\PartnershipProfiles' => [
                 'class' => $namespaceDriverUtility . '\bcDriverPartnershipprofiles',
@@ -327,6 +329,14 @@ class WidgetMyProfile extends Widget
                 'query' => 'searchWidgetIconPartnershipProfilesOwnIntrerest',
                 'label' => \Yii::t('app', "Proposte di collaborazione"),
                 'url' => '/partnershipprofiles/partnership-profiles/own-interest'
+            ],
+            'open20\amos\collaborations\models\CollaborationProposals' => [
+                'class' => $namespaceDriverUtility . '\bcDriverCollaborationProposals',
+                'module' => 'collaborations',
+                'query' => 'searchWidgetIconCollaborationProposalsOwnInterest',
+                'label' => \Yii::t('amoscollaborations', "Proposte di collaborazione"),
+                'url' => '/collaborations/collaboration-proposals/own-interest'
+
             ]
         ];
         if (!empty($query[$modelClassname])) {

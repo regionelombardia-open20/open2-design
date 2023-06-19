@@ -27,26 +27,6 @@ if (isset($dateEnd)) {
     $dateEnd  = DateUtility::getDate($dateEnd);
 }
 
-
-// if (isset($pollState)) {
-//     if ($pollState == 'pubblicato') {
-//         $stateLabel = Module::t('amosdesign', 'Nuovo');
-//         $stateClass = "state-new";
-//         $callToAction = Module::t('amosdesign', 'Apri');
-//         $titleReadMore = Module::t('amosdesign', 'Apri il sondaggio');
-//     } else if ($pollState == '2') {
-//         $stateLabel = Module::t('amosdesign', 'Concluso');
-//         $stateClass = "state-completed";
-//         $callToAction = Module::t('amosdesign', 'Visualizza');
-//         $titleReadMore = Module::t('amosdesign', 'Visualizza il sondaggio');
-//     } else {
-//         $stateLabel = Module::t('amosdesign', 'Da completare');
-//         $stateClass = "state-to-complete";
-//         $callToAction = Module::t('amosdesign', 'Completa');
-//         $titleReadMore = Module::t('amosdesign', 'Completa il sondaggio');
-//     }
-// };
-
 $stateLabel = $pollState;
 $stateClass = "state" . '-' . str_replace(' ','-',strtolower($pollState));
 $callToAction = Module::t('amosdesign', 'Visualizza');
@@ -61,9 +41,9 @@ $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-12';
   <div class="card-wrapper">
     <div class="card">
       <div class="card-body border-bottom border-light px-0">
-        <div class="row">
+        <div class="d-flex">
           <div class="date-list mb-1">
-            <div class="date-start d-flex flex-sm-row flex-md-row flex-lg-column text-center text-uppercase h-100 justify-content-center">
+            <div class="date-start d-flex flex-sm-row flex-md-row flex-lg-column text-center text-uppercase h-100 justify-content-center border-primary">
                 <span class="font-weight-light text-600 small"> <?=Module::t('amosdesign','Aperto il').' '?></span>
                 <span class="card-day font-weight-bold text-600 lead"><?= $dayStart ?></span>
                 <span class="card-month font-weight-bold text-600"><?= $monthStart ?></span>

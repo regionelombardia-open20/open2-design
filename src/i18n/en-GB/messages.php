@@ -84,6 +84,7 @@ return [
     'Dalla piattaforma' => 'From the platform',
     'Scadenza' => 'Expiration date',
     'Pubblicata il' => 'Published on the',
+    'Pubblicato il' => 'Published on the',
     'per' => 'for',
     'Vai alla proposta collaborazione' => 'Go to the collaboration proposal',
     'Manifestazioni di interesse' => 'Expressions of interest',

@@ -8,7 +8,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
 
 ?>
 
-<!-- usata per CMS Luya -->
+<!-- usata per CMS -->
 <?php $customBehavior ?>
 
 
@@ -35,6 +35,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
 </head>
 
 <body class="bg-body position-relative d-flex flex-column">
+
     <?php $this->beginBody() ?>
 
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-skiplink", [
@@ -154,6 +155,12 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         }
     }
 
+    if (isset(\Yii::$app->params['layoutConfigurations']['customCopyleftFooter'])) {
+        $customCopyleftFooter = (\Yii::$app->params['layoutConfigurations']['customCopyleftFooter']);
+    } else {
+        $customCopyleftFooter = 'Powered by Open 2.0';
+    }
+
     ?>
 
     <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-header", [
@@ -187,6 +194,14 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
     <div id="mainContent" class="d-flex <?= \Yii::$app->view->params['customClassMainContent'] ?>">
 
         <main role="main" class="w-100 bg-white <?= (\Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader']) ? 'mt-0' : '' ?>">
+
+            <?php if (\Yii::$app->params['layoutConfigurations']['enableBtnModifyCmsPage']) : ?>
+                <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-modify-cms-page", [
+                    'currentAsset' => $currentAsset,
+                    'currentPageUrl' => $currentPageUrl
+                ]); ?>
+            <?php endif ?>
+
             <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-messages", [
                 'currentAsset' => $currentAsset
             ]); ?>
@@ -232,16 +247,18 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
             'currentAsset' => $currentAsset,
             'cmsFooterMenu' => $cmsFooterMenu,
             'showSocial' => $showSocialFooterCheck,
+            'customCopyleftFooter' => $customCopyleftFooter,
         ]);
         ?>
     <?php else : ?>
         <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-footer", [
+            'customCopyleftFooter' => $customCopyleftFooter,
             'currentAsset' => $currentAsset,
             'cmsFooterMenu' => $cmsFooterMenu,
             'showSocial' => $showSocialFooterCheck,
         ]); ?>
     <?php endif; ?>
-    <?php if (!$hidehideCookieBarCheck) : ?>
+    <?php if (!$hideCookieBarCheck) : ?>
         <?= $this->render("parts" . DIRECTORY_SEPARATOR . "bi-cookiebar", [
             'currentAsset' => $currentAsset,
             'cookiePolicyLink' => \Yii::$app->params['linkConfigurations']['cookiePolicyLinkCommon']

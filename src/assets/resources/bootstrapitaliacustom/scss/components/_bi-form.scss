@@ -204,3 +204,9 @@ textarea::placeholder {
         }
     }
 }
+// FILE UPLOAD 
+
+.file-caption-name:not(.file-caption-disabled) {
+    border: none;
+    width: 100%;
+}

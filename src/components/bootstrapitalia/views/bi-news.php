@@ -3,7 +3,9 @@
 use open20\design\Module;
 use open20\design\utility\DateUtility;
 use open20\design\assets\BootstrapItaliaDesignAsset;
+\open20\design\assets\ShimmerDesignAsset::register($this);
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
+
 
 $direction = (isset($itemDirection)) ? 'flex-xl-' . $itemDirection : '';
 $categorySize = (isset($categorySize)) ? $categorySize : 'h6';
@@ -43,8 +45,8 @@ if (strlen($description) > 150) {
             <?php if ((isset($image))) : ?>
                 <div class="img-responsive-wrapper position-relative">
                     <div class="image-wrapper position-relative h-100">
-                        <a href="<?= $url ?>" title="Vai alla news <?= $title ?>">
-                            <img src="<?= $image ?>" alt="<?= Module::t('amosdesign', 'immagine della notizia') ?>" class="news-image img-fluid w-100 mh-100" />
+                        <a href="<?= $url ?>" title="Vai alla news <?= $title ?>" class="img-shimmer">
+                            <img src="<?= $image ?>" alt="<?= Module::t('amosdesign', 'immagine della notizia') ?>" class="news-image shimmer-image img-fluid w-100 mh-100" />
                         </a>
                         <div class="card-calendar d-flex flex-column justify-content-center position-absolute rounded-0 text-uppercase">
                             <span class="card-day font-weight-bold text-600 lead"><?= $day ?></span>

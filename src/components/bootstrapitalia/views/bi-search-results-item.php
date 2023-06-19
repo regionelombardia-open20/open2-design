@@ -8,22 +8,27 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
 ?>
 
 <li>
-  <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Visualizza la pagina') . ' ' . $title ?>">
-    <div class="it-right-zone">
+    <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Visualizza la pagina') . ' ' . $title ?>">
+        <div class="it-right-zone">
       <span class="text">
-        <span class="badge badge-secondary mr-1">
+           <?php if (!empty($publicationDate)) { ?>
+               <div>
+                    <em><?= Module::t('amosdesign',"Pubblicato il").' '. $publicationDate ?></em>
+                </div>
+           <?php } ?>
+          <span class="badge badge-secondary mr-1">
           <?= $type ?>
         </span>
-        <?= $title ?>
-        <em>
+          <?= $title ?>
+          <em>
           <?= $description ?>
         </em>
       </span>
-      <span class="it-multiple">
+            <span class="it-multiple">
         <svg class="icon icon-primary">
           <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#arrow-right"></use>
         </svg>
       </span>
-    </div>
-  </a>
+        </div>
+    </a>
 </li>

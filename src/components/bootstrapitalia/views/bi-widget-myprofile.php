@@ -129,7 +129,7 @@ foreach ($contacts as $contact) {
                         </div>
                         <div id="allTags" class="collapse">
                             <div>
-                                <?php $j = 1; ?>
+                                <?php $j = 0; ?>
                                 <?php foreach ($tags as $tag) {
                                     if ($j > $i) {
                                 ?>

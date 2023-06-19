@@ -27,12 +27,13 @@ class BootstrapItaliaDesignAsset extends AssetBundle
         'js/owl-carousel-design.js',
         'js/footer-height.js',
         'js/hamburger-menu.js',
+        // 'js/counter.js',
         'node_modules/svgxuse/svgxuse.min.js', //per far vedere le icone in IE
     ];
 
     public $css = [
       'MaterialDesign-Webfont-master/css/materialdesignicons.min.css',
-      'https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css',
+      'css/pretty-checkbox.min.css',
       'scss/main-design.scss'
     ];
 

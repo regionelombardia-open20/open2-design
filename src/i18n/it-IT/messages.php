@@ -84,6 +84,7 @@ return [
     'Dalla piattaforma' => 'Dalla piattaforma',
     'Scadenza' => 'Scadenza',
     'Pubblicata il' => 'Pubblicata il',
+    'Pubblicato il' => 'Pubblicato il',
     'per' => 'per',
     'Vai alla proposta collaborazione' => 'Vai alla proposta collaborazione',
     'Manifestazioni di interesse' => 'Manifestazioni di interesse',

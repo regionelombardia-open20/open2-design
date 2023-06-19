@@ -6,7 +6,6 @@ use open20\design\utility\CmsLanguageUtility;
 use open20\amos\core\helpers\Html;
 use open20\amos\core\utilities\CurrentUser;
 use open20\amos\dashboard\AmosDashboard;
-use open20\amos\chat\AmosChat;
 use open20\amos\myactivities\AmosMyActivities;
 use open20\amos\admin\AmosAdmin;
 use open20\design\Module;
@@ -275,6 +274,18 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                 </div>
                 <div class="modal-body">
                     <?= $cmsDefaultMenu ?>
+                    <?php
+                    if ($customPlatformMenu) :
+                        echo $this->render($customPlatformMenu, [
+                            'currentAsset' => $currentAsset,
+                        ]);
+                    endif;
+                    ?>
+
+                    <?php if ($showSecondaryMenu) : ?>
+                        
+                        <?= $cmsSecondaryMenu ?>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -326,7 +337,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
 
                                 <!-- CHAT MODULE -->
                                 <?php if (!Yii::$app->user->isGuest) : ?>
-                                    <?php if (\Yii::$app->getModule('chat')) : ?>
+                                    <?php if (!empty(\Yii::$app->getModule('chat'))){ ?>
                                         <?php
                                         $chatModuleWidget          = new \open20\amos\chat\widgets\icons\WidgetIconChat();
                                         $chatModuleBulletCount     = $chatModuleWidget->getBulletCount();
@@ -337,15 +348,15 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                         ) : '';
                                         ?>
                                         <div class="nav-item">
-                                            <a class="nav-link" href="/site/to-menu-url?url=/messages" data-toggle="tooltip" data-placement="bottom" title="<?= AmosChat::t('amoschat', 'Messaggi privati') ?>">
+                                            <a class="nav-link" href="/site/to-menu-url?url=/messages" data-toggle="tooltip" data-placement="bottom" title="<?= \open20\amos\chat\AmosChat::t('amoschat', 'Messaggi privati') ?>">
                                                 <svg class="icon">
                                                     <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#forum"></use>
                                                 </svg>
                                                 <?= $menuChatModuleBulletCount ?>
-                                                <span class="sr-only"><?= AmosChat::t('amoschat', 'Messaggi privati') ?></span>
+                                                <span class="sr-only"><?= \open20\amos\chat\AmosChat::t('amoschat', 'Messaggi privati') ?></span>
                                             </a>
                                         </div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
 
                                     <!-- MY ACTIVITIES MODULE -->
@@ -365,7 +376,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                                     <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#bell"></use>
                                                 </svg>
                                                 <?= $menuMyActivitiesModuleBulletCount ?>
-                                                <span class="sr-only"><?= AmosChat::t('amoschat', 'Notifiche sulle mie attività') ?></span>
+                                                <span class="sr-only"><?= \Yii::t('design', 'Notifiche sulle mie attività') ?></span>
                                             </a>
                                         </div>
                                     <?php endif; ?>
@@ -503,7 +514,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                 <div class="row">
                     <div class="col-12">
                         <div class="it-header-center-content-wrapper">
-                            <div class="it-brand-wrapper d-flex <?= ($hideHamburgerMenu || (!$alwaysHamburgerMenu)) ? 'pl-0' : (($fluidContainerHeader) ? 'pl-lg-0' : 'pl-lg-0') ?>">
+                            <div class="it-brand-wrapper d-flex <?= ($hideHamburgerMenu || (!$alwaysHamburgerMenu)) ? 'pl-0' : (($fluidContainerHeader) ? 'pl-lg-0' : 'pl-lg-0')?> <?= (($fluidContainerHeader && $alwaysHamburgerMenu) ? 'alwaysmenu-with-container-fluid' : '') ?>">
                                 <?= $this->render("bi-logo"); ?>
                             </div>
                             <div class="it-right-zone">
@@ -567,6 +578,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                             ?>
 
                                             <?php if ($showSecondaryMenu) : ?>
+                                               
                                                 <?= $cmsSecondaryMenu ?>
                                             <?php endif ?>
 

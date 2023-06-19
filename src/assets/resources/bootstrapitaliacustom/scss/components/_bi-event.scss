@@ -65,6 +65,10 @@
         .link-list-title {
             @include get-color-contrast($tertiary);
         }
+        .btn-link {
+            color: #FFF;
+            text-decoration: underline;
+        }
     }
 
 

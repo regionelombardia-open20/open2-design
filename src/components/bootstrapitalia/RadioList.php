@@ -85,9 +85,9 @@ class RadioList extends Widget {
         $classInline = ''; 
         
         if ($this->model === null) {
-            $inputId = $this->attribute . '-id';
+            $inputId = $this->attribute;
         } else {
-            $inputId = BaseHtml::getInputId($this->model, $this->attribute) . '-id';
+            $inputId = BaseHtml::getInputId($this->model, $this->attribute);
         }
 
         if ($this->model === null) {

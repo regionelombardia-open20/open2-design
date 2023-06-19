@@ -71,7 +71,9 @@ $PrismJSAsset = PrismJSAsset::register($this);
 
 
                                     <ul class="link-sublist collapse " id="collapseTwo">
-
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-layout"><span>customCopyleftFooter </span></a>
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformFooter </span></a>
                                         </li>
@@ -97,9 +99,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                             <a class="list-item" href="#configurazioni-layout"><span>disableThemeLightHeader </span></a>
                                         </li>
                                         <li>
+                                            <a class="list-item" href="#configurazioni-layout"><span>enableBtnModifyCmsPage </span></a>
+                                        </li>
+                                        <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>enableHeaderStickyHeader </span></a>
                                         </li>
-
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-layout"><span>enableMenuDoubleAction </span></a>
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#list-allegati"><span>fluidContainerHeader </span></a>
                                         </li>
@@ -113,7 +120,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideCookieBar </span></a>
                                         </li>
-
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideGlobalSearchHeader </span></a>
                                         </li>
@@ -503,6 +509,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             </li>
                             <li>
                                 <strong>
+                                    enableMenuDoubleAction
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['enableMenuDoubleAction']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true enable double action on dropdown menu (label + icon)
+                            </li>
+                            <li>
+                                <strong>
                                     alwaysHamburgerMenuRight
                                     <?php if (\Yii::$app->params['layoutConfigurations']['alwaysHamburgerMenuRight']) : ?>
                                         <span class="badge badge-success">Attivo</span>
@@ -550,6 +564,17 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                 </strong> : true => nasconde il menu di default dei plugin (attualmente configurato in common/frontend/configs/modules.php nell'array 'backendobjects')
                             </li>
                         </ul>
+                        <h3>Pagina</h3>
+                        <ul>
+                            <li>
+                                <strong>
+                                    enableBtnModifyCmsPage
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['enableBtnModifyCmsPage']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => enable edit cms button in page
+                            </li>
+                        </ul>
                         <h3>Footer</h3>
                         <ul>
                             <li>
@@ -562,12 +587,22 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                 </strong> : path view custom
                             </li>
                             <li>
+
+                                <strong>
+                                    customCopyleftFooter
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['customCopyleftFooter']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : copyleft string
+                            </li>
+
+                            <li>
                                 <strong>
                                     showSocialFooter
                                     <?php if (\Yii::$app->params['layoutConfigurations']['showSocialFooter']) : ?>
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
-                                </strong> : true => show social in header
+                                </strong> : true => show social in footer
                             </li>
                             <li>
 
@@ -758,7 +793,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
 
             <!-- contenitori menu CMS-->
             <section class="py-5">
-                <h2 class="it-page-section" id="configurazioni-cms">Configurazioni contenitori menu CMS</h2>
+                <h2 class="it-page-section" id="configurazioni-cms">Configurazioni menu CMS</h2>
                 <p>Array unico di configurazione denominato <strong>menuCmsConfigurations</strong> (gli override valgono per tutta la piattaforma)</p>
                 <div class="row variable-gutters mt-5">
                     <div class="col-md-6">

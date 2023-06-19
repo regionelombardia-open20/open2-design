@@ -2451,7 +2451,7 @@ echo $this->render('parts/devs-tools');
                                 ],
                                 3 => [
                                     'url' => '#',
-                                    'name' => 'Prposte di collaborazione',
+                                    'name' => 'Proposte di collaborazione',
                                     'counter' => '1',
                                 ],
                                 4 => [

@@ -93,16 +93,16 @@ $this->registerJs($js);
 
 <div class="community-container p-3 <?= $widthColumn ?> d-flex flex-column justify-content-center align-items-center mb-3 mb-md-5">
     <div class="position-relative">
-        <div class="community-image rounded">
+        <div class="community-image img-shimmer rounded">
             <?php if ($hideAllCtaGuest) : ?>
-                <img alt="immagine community" class="h-100 w-100" src="<?= $image ?>">
+                <img alt="immagine community" class="h-100 w-100 shimmer-image" src="<?= $image ?>">
             <?php elseif ($isClosedCommunity && !$isSigned) : ?>
-                <img alt="immagine community" class=" h-100 w-100" src="<?= $image ?>">
+                <img alt="immagine community" class=" h-100 w-100 shimmer-image" src="<?= $image ?>">
             <?php elseif ($isGuest) : ?>
-                <img alt="immagine community" class=" h-100 w-100" src="<?= $image ?>">
+                <img alt="immagine community" class=" h-100 w-100 shimmer-image" src="<?= $image ?>">
             <?php else : ?>
                 <a href="<?= $url ?>" title="<?= $title ?>">
-                    <img alt="immagine community" class="h-100 w-100" src="<?= $image ?>">
+                    <img alt="immagine community" class="h-100 w-100 shimmer-image" src="<?= $image ?>">
                 </a>
             <?php endif; ?>
         </div>

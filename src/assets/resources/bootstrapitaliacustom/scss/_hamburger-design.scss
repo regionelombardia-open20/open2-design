@@ -1,5 +1,4 @@
 .modal-always-hamburger-menu {
-
   .modal-dialog.modal-dialog-left,
   .modal-dialog.modal-dialog-right {
     width: inherit;
@@ -50,6 +49,17 @@
               @extend .border-bottom;
               @extend .border-light;
 
+              &.cms-menu-double-action {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                > .nav-link + .dropdown-toggle + .dropdown-menu {
+                  width: 100%;
+                }
+              }
+
               .nav-link {
                 @extend .font-weight-semibold;
                 @extend .p-3;
@@ -60,7 +70,7 @@
                 display: flex;
                 align-items: center;
                 text-decoration: none;
-
+                white-space: normal;
                 .icon {
                   @extend .ml-auto;
                   fill: $black;
@@ -98,6 +108,7 @@
                   text-transform: inherit !important;
                   font-weight: normal !important;
                   padding: 0 !important;
+                  white-space: normal;
                   + .dropdown-menu {
                     &.show {
                       background-color: $brandbook-neutral-1-color;
@@ -216,6 +227,7 @@
         display: flex;
         align-items: center;
         text-decoration: none;
+        white-space: normal;
         .icon {
           @extend .ml-auto;
           fill: $black;
@@ -247,6 +259,7 @@
           text-transform: inherit !important;
           @extend .font-weight-normal;
           @extend .p-0;
+          white-space: normal;
           + .dropdown-menu {
             &.show {
               background-color: $brandbook-neutral-1-color;
@@ -349,7 +362,7 @@
         @extend .mt-sm-0;
       }
 
-      .it-brand-text{
+      .it-brand-text {
         @extend .pl-3;
       }
     }

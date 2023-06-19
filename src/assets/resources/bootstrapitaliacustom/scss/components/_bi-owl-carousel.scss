@@ -22,7 +22,7 @@
         margin-top: 0;
       }
 
-      display: block;
+      //display: block;
       font-size: 50px !important;
 
       .owl-prev,
@@ -83,7 +83,7 @@
   }
 
   // CAROUSEL NEWS
-  &.it-carousel-landscape-abstract-one-cols{
+  &.it-carousel-landscape-abstract-one-cols {
     .container-news {
       .card-wrapper {
         height: 100%;
@@ -97,6 +97,45 @@
             }
           }
         }
+      }
+    }
+  }
+
+  /**
+  * CAROUSEL WITH HERO BANNER ITEM
+  */
+  &.owl-carousel-herobanner-design {
+    .owl-stage-outer {
+      padding: 0 !important;
+      .owl-stage {
+        padding: 0 !important;
+        .owl-item {
+          margin: 0 !important;
+        }
+      }
+    }
+    .owl-nav {
+      .owl-prev {
+        left: 1rem;
+      }
+      .owl-next {
+        right: 1rem;
+      }
+      .owl-prev,
+      .owl-next {
+        span {
+          color: $white;
+        }
+      }
+    }
+    .owl-dots {
+      position: absolute;
+      bottom: 1rem;
+      margin: 0 auto;
+      width: 100%;
+      .owl-dot{
+        background: $white;
+        opacity: 1;
       }
     }
   }

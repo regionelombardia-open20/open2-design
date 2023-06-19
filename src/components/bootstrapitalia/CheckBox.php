@@ -84,7 +84,7 @@ class CheckBox extends Widget
         return $this->model instanceof Model && $this->attribute !== null;
     }
 
-    public function run()
+    public function run($type = '')
     {
 
         // Questo calcolo è già stato fatto in init. $this->options['id'] contiene già il valore calcolato
@@ -101,6 +101,12 @@ class CheckBox extends Widget
         } else {
             $name = BaseHtml::getInputName($this->model, $this->attribute);
             $label = (is_null($this->label)) ? $this->model->getAttributeLabel($this->attribute) : $this->label;
+        }
+        
+        if($type == 'checkboxList'){
+            if (substr($name, -2) !== '[]') {
+                $name .= '[]';
+            }
         }
 
         if (!empty($this->options['value'])) {

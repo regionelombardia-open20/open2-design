@@ -180,20 +180,20 @@
 
 .it-header-center-wrapper {
     padding-top: 0;
-
-    &.theme-light {
-        .it-header-center-content-wrapper {
-            padding: 0;
-
-            .it-brand-wrapper {
-                a {
-                    &.logo-RL-design {
-                        @include media-breakpoint-down(sm) {
-                            display: none;
-                        }
+    .it-header-center-content-wrapper {
+        .it-brand-wrapper {
+            a {
+                &.logo-RL-design {
+                    @include media-breakpoint-down(sm) {
+                        display: none;
                     }
                 }
             }
+        }
+    }
+    &.theme-light {
+        .it-header-center-content-wrapper {
+            padding: 0;
 
             .it-right-zone {
                 color: $primary;
@@ -354,7 +354,7 @@
             -webkit-appearance: initial;
         }
         > .icon {
-            fill: get-color-contrast($primary);
+            fill: $white;
             // @include media-breakpoint-up(lg) {
             //     fill: get-color-contrast($primary);
             // }
@@ -399,12 +399,22 @@
                 @media (min-width: 992px) and (max-width: 1310px) {
                     padding-left: 45px !important;
                 }
+                &.alwaysmenu-with-container-fluid {
+                    // left: 65px;
+                    margin-left: 66px !important;
+                    padding-left: 0 !important;
+                    // @include media-breakpoint-up(lg) { 
+                    //     left: 74px; 
+                    // }
+                }
             }
             .btn-always-hamburger-menu {
-                padding-left: 15px;
-                @include media-breakpoint-up(lg) {
-                    padding: 0 ($v-gap * 3);
-                }
+                // padding-left: 15px;
+                margin: 0 20px;
+                padding: 0;
+                // @include media-breakpoint-up(lg) {
+                //     padding: 0 ($v-gap * 3);
+                // }
             }
         }
     }

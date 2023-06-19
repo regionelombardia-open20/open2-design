@@ -42,7 +42,9 @@ class ActiveField extends yiiActiveField
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+        $this->addAriaAttributes($options);
         $this->adjustLabelFor($options);
+
         $label = Html::activeLabel($this->model, $this->attribute, ['class' => "control-label"]);
 
         $html = "<div class='it-datepicker-wrapper'>".
@@ -79,6 +81,10 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $input->value           = $value;
         $this->parts['{input}'] = $input->run();
         return $this;
@@ -101,6 +107,10 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $input->value           = $value;
         $input->type            = 'search';
         $this->parts['{input}'] = $input->run();
@@ -124,6 +134,10 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $input->value           = $value;
         $input->type            = 'textarea';
         $this->parts['{input}'] = $input->run();
@@ -151,6 +165,10 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $input->value           = $value;
         $input->type            = 'password';
         $this->parts['{input}'] = $input->run();
@@ -170,6 +188,10 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $radio->value           = $value;
         $this->parts['{input}'] = $radio->run();
         return $this;
@@ -192,6 +214,10 @@ JS;
             unset($options['label']);
         }
         $select         = new Select(['model' => $this->model, 'attribute' => $this->attribute, 'label' => $label, 'items' => $items, 'options' => $options]);
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $select->value          = $value;
         $this->parts['{input}'] = $select->run();
         return $this;
@@ -216,6 +242,10 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $checkbox->value        = $value;
         $this->parts['{input}'] = $checkbox->run();
         return $this;
@@ -235,8 +265,12 @@ JS;
         } else {
             $value = Html::getAttributeValue($this->model, $this->attribute);
         }
+
+        $this->addAriaAttributes($options);
+        $this->adjustLabelFor($options);
+
         $checkbox->value        = $value;
-        $this->parts['{input}'] = $checkbox->run();
+        $this->parts['{input}'] = $checkbox->run('checkboxList');
         return $this;
     }
 }

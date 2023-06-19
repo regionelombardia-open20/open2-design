@@ -1,8 +1,25 @@
 <?php
 /* versione piattaforma */
-$versione = Yii::t('amoscore', 'Versione') . ' ' . ((isset(\Yii::$app->params['versione'])) ? \Yii::$app->params['versione'] : '1.0');
+$versione = Yii::t('amoscore', 'Versione') . ' ' . ((isset(Yii::$app->params['versione'])) ? Yii::$app->params['versione'] : '1.0');
 
+use luya\cms\models\NavContainer;
+use luya\cms\models\NavItemPage;
+use luya\cms\models\NavItem;
 use yii\helpers\Html;
+
+$container = NavContainer::findOne(['alias' => 'footercms']);
+$cms_content = "";
+if(!is_null($container)){
+    $navs = $container->navs;
+    $nav = reset($navs);
+        if(!is_null($nav)){
+            $item = NavItem::findOne(['nav_id' => $nav->id]);
+            if(!empty($item)){
+                $page = NavItemPage::findOne(['nav_item_id' => $item->id]);
+                $cms_content = $page->getContent();
+            }         
+        } 
+}
 ?>
 
 <footer id="footerContent" class="it-footer w-100 mt-auto z-index-1">
@@ -41,11 +58,12 @@ use yii\helpers\Html;
                 </div>
 
             </div>
+            <?= $cms_content ?>
             <div role="contentinfo" aria-label="Copyleft" class="py-1 py-md-4">
                 <hr class="border-white">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p class="white-color" dir="ltr"><small>Powered by Open 2.0</small></p>
+                        <p class="white-color" dir="ltr"><small><?= $customCopyleftFooter ?></small></p>
                     </div>
                 </div>
             </div>
@@ -54,7 +72,7 @@ use yii\helpers\Html;
 </footer>
 
 <?php
-if ($socialModule = \Yii::$app->getModule('social') && class_exists('\kartik\social\GoogleAnalytics')) :
+if ($socialModule = Yii::$app->getModule('social') && class_exists('\kartik\social\GoogleAnalytics')) :
     if (YII_ENV_PROD && !empty($socialModule->googleAnalytics)) :
         echo \kartik\social\GoogleAnalytics::widget([]);
     endif;

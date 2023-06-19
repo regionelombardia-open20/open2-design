@@ -79,9 +79,15 @@ if ($statoProfilo == 'Validato') {
 }
 
 if (!empty($model)) {
-    $nameSurname = $model->nomeCognome;
-    $imageAvatar = $model->getAvatarUrl('card_users');
-    $url = \open20\amos\admin\AmosAdmin::getModuleName() . '/user-profile/view?id=' . $model->id;
+    if (!isset($nameSurname)) {
+        $nameSurname = $model->nomeCognome;
+    }
+    if (!isset($imageAvatar)) {
+        $imageAvatar = $model->getAvatarUrl('card_users');
+    }
+    if (!isset($url)) {
+        $url = \open20\amos\admin\AmosAdmin::getModuleName() . '/user-profile/view?id=' . $model->id;
+    }
 }
 
 ?>
