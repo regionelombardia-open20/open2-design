@@ -342,6 +342,12 @@
         @media #{map-get($device-media-queries, onlySafary)} {
             -webkit-appearance: initial;
         }
+        > .icon {
+            fill: $primary;
+            @include media-breakpoint-up(lg) {
+                fill: get-color-contrast($primary);
+            }
+        }
     }
 }
 
@@ -383,7 +389,7 @@
                     padding-left: 45px !important;
                 }
             }
-            .btn-always-hamburger-menu{
+            .btn-always-hamburger-menu {
                 padding: 0 24px;
             }
         }
@@ -397,7 +403,7 @@
                     padding-right: 45px !important;
                 }
             }
-            .btn-always-hamburger-menu{
+            .btn-always-hamburger-menu {
                 padding: 0 24px;
                 right: 0;
             }

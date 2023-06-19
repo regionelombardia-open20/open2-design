@@ -40,8 +40,8 @@
 
 @import "material-icons-design"; 
 
-//COMPONENTS
 
+//COMPONENTS
 @import "components/bi-steppers-wizard";
 @import "components/bi-checkbox-list-tags";
 @import "components/bi-owl-carousel";
@@ -72,14 +72,16 @@
 @import "layout-parts/footer-design";
 @import "layout-parts/bi-cookiebar";
 
-//UIKIT CMS
 
+//UIKIT CMS
 @import "uikit-cms/uikit-buttons";
 @import "uikit-cms/uikit-container";
 @import "uikit-cms/uikit-image";
 @import "uikit-cms/uikit-grid";
 @import "uikit-cms/uikit-component-herobanner";
 @import "uikit-cms/uikit-binder-page";
+@import "uikit-cms/uikit-box-evidence";
+
 
 //TRICKS AND TEMP
 @import 'bi-IECompatibility-design';

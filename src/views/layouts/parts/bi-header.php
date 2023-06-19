@@ -178,7 +178,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
             $btnLogoutUrl,
             [
                 'class' => 'list-item p-0',
-                'title' => Module::t('amosdesign','Esci dalla piattaforma {platformName}',['platformName' => \Yii::$app->name])
+                'title' => Module::t('amosdesign', 'Esci dalla piattaforma {platformName}', ['platformName' => \Yii::$app->name])
             ]
         ),
         [
@@ -282,7 +282,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
 <?php endif ?>
 <div id="headerContent" class="it-header-wrapper <?= ($enableHeaderSticky) ? 'it-header-sticky' : 'position-fixed' ?> w-100 z-index-8 shadow-sm">
 
-    <?php if ( !($hideTopHeaderForGuestUser) ) : ?>
+    <?php if (!($hideTopHeaderForGuestUser)) : ?>
 
         <div class="it-header-slim-wrapper d-flex align-items-center py-0 bg-primary">
             <div class="<?= ($fluidContainerHeader) ? 'container-fluid' : 'container' ?>">
@@ -369,6 +369,32 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                             </a>
                                         </div>
                                     <?php endif; ?>
+
+                                    <!-- EXPORTJOBS MODULE -->
+                                    <?php if (\Yii::$app->getModule('exportjobs') && !\Yii::$app->user->isGuest && Yii::$app->user->can('EXPORT_READER')) : ?>
+                                        <?php
+                                        $widget      = new \frontend\modules\exportjobs\models\TaskExportJob();
+                                        $myReportModuleBulletCount     = 0;
+                                        $myReportModuleBulletCount     = $widget->getBulletCount();
+                                        $menuMyReportModuleBulletCount = ($myReportModuleBulletCount > 0) ? Html::tag(
+                                            'span',
+                                            $myReportModuleBulletCount,
+                                            ['class' => 'badge badge-pill badge-danger']
+                                        ) : '';
+                                        ?>
+                                        <div class="nav-item">
+                                            <a class="nav-link" href="/site/to-menu-url?url=/exportjobs/my-export/index" data-toggle="tooltip" data-placement="bottom" title="<?=
+                                                                                                                                                                                    \frontend\modules\exportjobs\AmosExportJobs::t('exportjobs', 'Le mie esportazioni')
+                                                                                                                                                                                    ?>">
+                                                <svg class="icon">
+                                                    <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#chart-bar"></use>
+                                                </svg>
+                                                <?= $menuMyReportModuleBulletCount ?>
+                                                <span class="sr-only"><?= \frontend\modules\exportjobs\AmosExportJobs::t('exportjobs', 'Lista delle richieste di esportazione dati') ?></span>
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
+
                                 <?php endif; ?>
 
                                 <!-- USER -->
