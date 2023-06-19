@@ -243,6 +243,26 @@ class DateUtility
     }
 
     /**
+     * A full hour
+     * @param string $date
+     * @param type $format
+     * @return string Null only in case of errors
+     */
+    public static function getHour($date = null, $format = 'php:H:i:s')
+    {
+        try {
+            if (empty($date)) {
+                $date = date('H:i:s');
+            }
+            return \Yii::$app->formatter->asDate("$date", $format);
+        } catch (Exception $ex) {
+            pr($ex->getTrace());die;
+            Yii::trace($ex->getTrace(), 'DateUtility - getDateHour()');
+            return null;
+        }
+    }
+
+    /**
      * 
      * @param string $date
      * @return string

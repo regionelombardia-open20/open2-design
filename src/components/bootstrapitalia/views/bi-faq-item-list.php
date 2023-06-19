@@ -33,7 +33,7 @@ $linkCtaMoreHelp = Html::a(
 );
 
 $textMoreHelp1 = isset($textMoreHelp1) ? $textMoreHelp1 : Module::t('amosdesign', '<strong>Hai bisogno di ulteriore assistenza?</strong>');
-$textMoreHelp2 = isset($textMoreHelp2) ? $textMoreHelp2 : Module::t('amosdesign', '{cta} per aprire un nuovo ticket e ricevere supporto!',['cta' => $linkCtaMoreHelp]);
+$textMoreHelp2 = isset($textMoreHelp2) ? $textMoreHelp2 : Module::t('amosdesign', '{cta} per aprire un nuovo ticket e ricevere supporto!', ['cta' => $linkCtaMoreHelp]);
 
 $classBgActive = (isset($activeBgActive) && $activeBgActive) ? 'collapse-background-active' : '';
 $classBgHover = (isset($activeBgHover) && $activeBgHover) ? 'collapse-background-hover' : '';
@@ -42,20 +42,23 @@ $classBgHover = (isset($activeBgHover) && $activeBgHover) ? 'collapse-background
 
 
 
-<div id="collapseListFaqCat<?= $faqCatId ?>" class="bi-faq collapse-div <?= $classBgActive ?> <?= $classBgHover ?>" role="tablist">
+<div id="collapseListFaqCat<?= $faqCatId ?>" class="bi-faq col-12 collapse-div <?= $classBgActive ?> <?= $classBgHover ?>" role="tablist">
     <div class="collapse-header" id="headingCat<?= $faqCatId ?>Faq<?= $faqId ?>">
-        <button class="<?= (!$hideIcon) ? 'p-0' : '' ?>" data-toggle="collapse" data-target="#collapseCat<?= $faqCatId ?>Faq<?= $faqId ?>" aria-expanded="false" aria-controls="collapseCat<?= $faqCatId ?>Faq<?= $faqId ?>">
-            <svg class="icon icon-<?= $faqIconSize ?>">
-                <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-help-circle"></use>
-            </svg>
-            <span><?= $faqQuestion ?></span>
+        <button class="<?= (!$hideIcon) ? '' : '' ?>" data-toggle="collapse" data-target="#collapseCat<?= $faqCatId ?>Faq<?= $faqId ?>" aria-expanded="false" aria-controls="collapseCat<?= $faqCatId ?>Faq<?= $faqId ?>">
+            <div class="d-flex align-items-center">
+                <svg class="icon icon-<?= $faqIconSize ?> mr-2">
+                    <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-help-circle"></use>
+                </svg>
+                <span><?= $faqQuestion ?></span>
+            </div>
+
         </button>
     </div>
     <div id="collapseCat<?= $faqCatId ?>Faq<?= $faqId ?>" class="collapse" role="tabpanel" aria-labelledby="headingCat<?= $faqCatId ?>Faq<?= $faqId ?>">
         <div class="collapse-body">
             <?= $faqAnswer ?>
             <?php if ($showMoreHelp) : ?>
-                <p class="mt-5">
+                <p class="mt-3 p-2 lightgrey-bg-a1">
                     <?= $textMoreHelp1 . ' ' . $textMoreHelp2 ?>
                 </p>
             <?php endif; ?>

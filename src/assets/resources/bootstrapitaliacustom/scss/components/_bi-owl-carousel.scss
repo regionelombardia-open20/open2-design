@@ -45,7 +45,7 @@
       }
     }
 
-    .owl-dots {
+    .owl-dots:not(.disabled) {
       margin-top: 20px;
       margin-bottom: 30px;
       display: flex;

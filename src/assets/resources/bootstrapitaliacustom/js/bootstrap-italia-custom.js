@@ -13,9 +13,11 @@ $('.popover-dismiss').popover({
 
 /* EFFETTO SHRINK HEADER */
 $(document).on("scroll", function () {
+  var headerHeight = $('#headerContent').outerHeight();
   if
     ($(document).scrollTop() > 200) {
     $("body").addClass("shrink");
+    $('#mainContent > #sidebarLeftRedattore > .sidebar-nav.affix-top').css('top', Number(headerHeight) + (Number(20)));
   }
   else {
     $("body").removeClass("shrink");
@@ -88,3 +90,8 @@ $(document).ready(function () {
   },1);
 });
 
+
+function toggleSidebar() {
+  var element = document.getElementById("sidebarLeftRedattore");
+  element.classList.toggle("sidebar-small");
+}

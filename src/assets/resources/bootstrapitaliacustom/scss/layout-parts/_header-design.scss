@@ -1,4 +1,5 @@
 .it-header-wrapper {
+
     /** override BI padding header for boxed header */
     .it-header-slim-wrapper,
     .it-header-center-wrapper {
@@ -10,7 +11,7 @@
 
     .it-header-slim-wrapper-content {
         .navbar-brand {
-            .logo-RL-top-design > img {
+            .logo-RL-top-design>img {
                 @include media-breakpoint-down(md) {
                     width: auto;
                 }
@@ -23,6 +24,9 @@
 
         .it-header-navbar-wrapper {
             nav {
+                padding-left: 10px;
+                padding-right: 10px;
+
                 @include media-breakpoint-up(lg) {
                     padding-left: 0;
                     padding-right: 0;
@@ -31,7 +35,7 @@
         }
 
         .it-brand-wrapper {
-            > a > .it-brand-text {
+            >a>.it-brand-text {
                 @include media-breakpoint-up(lg) {
                     max-height: 55px;
                     height: 54px;
@@ -45,11 +49,12 @@
                     }
                 }
 
-                > img {
+                >img {
                     height: $global-height-logo;
                     width: auto;
 
-                    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+                    @media screen and (-ms-high-contrast: active),
+                    (-ms-high-contrast: none) {
                         width: 100%;
                     }
                 }
@@ -61,7 +66,7 @@
             }
 
             .logo-RL-design {
-                > .it-brand-text > img {
+                >.it-brand-text>img {
                     @include media-breakpoint-down(lg) {
                         width: auto;
                     }
@@ -131,6 +136,7 @@
             .header-organization-name {
                 padding: 0.5rem 0.6rem;
             }
+
             .dropdown-menu-right {
                 padding: 0.5rem;
                 top: 0px !important;
@@ -180,8 +186,13 @@
 
 .it-header-center-wrapper {
     padding-top: 0;
+
     .it-header-center-content-wrapper {
         .it-brand-wrapper {
+            @include media-breakpoint-down(md){
+                margin-left: 58px;
+            }
+
             a {
                 &.logo-RL-design {
                     @include media-breakpoint-down(sm) {
@@ -191,6 +202,7 @@
             }
         }
     }
+
     &.theme-light {
         .it-header-center-content-wrapper {
             padding: 0;
@@ -202,15 +214,19 @@
                     fill: $primary;
                 }
 
+                .global-header-form {}
+
                 .it-search-wrapper a {
                     background-color: $primary;
                     width: $header-center-search-size;
                     height: $header-center-search-size;
                     border-radius: $header-center-search-radius;
+
                     @media #{map-get($device-media-queries, onlySafary)} {
                         -webkit-appearance: initial;
                     }
-                    > .icon {
+
+                    >.icon {
                         fill: $white;
                     }
                 }
@@ -289,7 +305,7 @@
                 -moz-transition: all 0.4s ease-in-out;
 
                 .it-brand-wrapper {
-                    > a {
+                    >a {
                         .it-brand-text {
                             height: 40px;
 
@@ -350,10 +366,12 @@
         width: $header-center-search-size;
         height: $header-center-search-size;
         border-radius: $header-center-search-radius;
+
         @media #{map-get($device-media-queries, onlySafary)} {
             -webkit-appearance: initial;
         }
-        > .icon {
+
+        >.icon {
             fill: $white;
             // @include media-breakpoint-up(lg) {
             //     fill: get-color-contrast($primary);
@@ -370,6 +388,12 @@
             z-index: 1;
             top: 90px;
         }
+    }
+}
+.custom-navbar-toggler {
+    .icon {
+        width: 32px;
+        height: 32px;
     }
 }
 
@@ -390,15 +414,17 @@
         border-radius: 50%;
     }
 }
+
 #alwaysHamburgerMenu {
     &.modal-always-hamburger-menu-left {
-        + #headerContent {
+        +#headerContent {
             .it-brand-wrapper {
                 padding-left: 60px;
 
                 @media (min-width: 992px) and (max-width: 1310px) {
                     padding-left: 45px !important;
                 }
+
                 &.alwaysmenu-with-container-fluid {
                     // left: 65px;
                     margin-left: 66px !important;
@@ -408,6 +434,7 @@
                     // }
                 }
             }
+
             .btn-always-hamburger-menu {
                 // padding-left: 15px;
                 margin: 0 20px;
@@ -418,8 +445,9 @@
             }
         }
     }
+
     &.modal-always-hamburger-menu-right {
-        + #headerContent {
+        +#headerContent {
             .it-brand-wrapper {
                 padding-right: 60px;
 
@@ -427,10 +455,64 @@
                     padding-right: 45px !important;
                 }
             }
+
             .btn-always-hamburger-menu {
                 padding: 0 24px;
                 right: 0;
             }
+        }
+    }
+}
+
+/**
+RICERCA CON FORM
+*/
+.global-header-form {
+    @media (max-width:575px) {
+        left: 0px;
+        position: fixed;
+        top: 56px;
+        right: 65px;
+        z-index: 10;
+        background: white;
+        padding: 24px;
+    }
+
+    &.collapse {
+        @media (min-width:576px) {
+            display: block;
+        }
+    }
+
+    .form-group {
+        border: 1px solid $gray-secondary;
+        border-radius: 4px;
+
+        input[type="search"],
+        .input-group .btn {
+            border: none;
+        }
+    }
+}
+.shrink {
+    .global-header-form {
+        top:48px;
+        padding: 0 24px;
+        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+    }
+}
+.btn-collapse-search {
+    .icon-close {
+        display: none;
+    }
+    &[aria-expanded="true"]{
+        .icon-search {
+            display: none;
+        }
+        .icon-close {
+            display: block;
         }
     }
 }

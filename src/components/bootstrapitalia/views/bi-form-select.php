@@ -37,11 +37,11 @@ if ($multiple) {
 ?>
 
 <div class="bootstrap-select-wrapper" id="<?= $inputId ?>-wrapper">
-    <label for="<?= $inputId ?>"><?= $label ?><?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?></label>
+    <label for="<?=$inputId ?>"><?= $label ?><?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?></label>
     <select <?= $attrMultiple ?> title="<?= $placeholder ?>" data-live-search="true" class="<?=
     $relatedId ? 'rellable-drop' : '';
     ?>" data-releted="<?= $relatedId; ?>" data-valued="<?= $value; ?>" data-action="<?= $dataAction; ?>" data-live-search-placeholder="Cerca" name="<?= $name ?>" id="<?= $inputId ?>">
-<!--            <option value="" title="Scegli una opzione" data-content="Annulla <span class='reset-label'></span>"></option>-->
+    <!--            <option value="" title="Scegli una opzione" data-content="Annulla <span class='reset-label'></span>"></option>-->
 
         <?php if ($enableGroup) { ?>
             <?php foreach ($items as $labelGroup => $itemsValue) { ?>

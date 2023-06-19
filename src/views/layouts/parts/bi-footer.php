@@ -22,7 +22,7 @@ if(!is_null($container)){
 }
 ?>
 
-<footer id="footerContent" class="it-footer w-100 mt-auto z-index-1">
+<footer id="footerContent" class="it-footer w-100 mt-auto <?=($existSidebarRedattore) ? 'z-index-3 position-relative' : 'z-index-1'?>">
     <div class="it-footer-main py-4 bg-tertiary">
         <div class="container noprint">
             <div class="row">

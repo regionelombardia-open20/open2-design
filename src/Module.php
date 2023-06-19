@@ -36,6 +36,12 @@ class Module extends AmosModule implements ModuleInterface, BootstrapInterface
      * @inheritdoc
      */
     public $controllerNamespace = 'open20\design\controllers';
+    
+    /**
+     *  true if must check user permission in CMS tables.
+     * @var boolean
+     */
+    public $checkCmsPermissions = false;
 
     /**
      * @inheritdoc

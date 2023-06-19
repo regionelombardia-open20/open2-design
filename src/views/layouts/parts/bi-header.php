@@ -81,6 +81,27 @@ if (!$disableSettings) {
     );
 }
 
+/**
+ * slideshow
+ */
+if (\Yii::$app->getModule('slideshow')) {
+    $slideshow = new \open20\amos\slideshow\models\Slideshow;
+    $route = "/" . \Yii::$app->request->getPathInfo();
+    $idSlideshow = $slideshow->hasSlideshow($route);
+
+    if (empty($idSlideshow)) {
+        $route2 = \Yii::$app->urlManager->parseRequest(\Yii::$app->request);
+        if (!empty($route2[1])) {
+            $route = "/" . $route2[0];
+            $idSlideshow = $slideshow->hasSlideshow($route);
+        }
+    }
+    if ($idSlideshow) {
+        $slideshowLabel = $slideshow->findOne($idSlideshow)->label;
+        echo \open20\amos\slideshow\widgets\SlideshowWidget::widget(['route' => $route]);
+    }
+}
+
 /* languages */
 $actualLang = CmsLanguageUtility::getAppLanguage();
 $languages = CmsLanguageUtility::getTranslationMenu();
@@ -244,17 +265,17 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
 }
 ?>
 
-<?php if (!($hideGlobalSearch)) : ?>
-    <?php
-    //MODALE DI RICERCA NON UTILIZZATA - TODO DELETE
-    $this->render(
-        "bi-header-search",
-        [
-            'currentAsset' => $currentAsset,
-        ]
-    );
-    ?>
-<?php endif ?>
+<!-- < ?php if (!($hideGlobalSearch)) : ?> -->
+<?php
+//MODALE DI RICERCA NON UTILIZZATA - TODO DELETE
+// $this->render(
+//     "bi-header-search",
+//     [
+//         'currentAsset' => $currentAsset,
+//     ]
+// );
+?>
+<!-- < ?php endif ?> -->
 
 <?php if (!($hideHamburgerMenu) && $alwaysHamburgerMenu) : ?>
     <!-- MODALE PER HAMBURGER MENU -->
@@ -283,7 +304,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                     ?>
 
                     <?php if ($showSecondaryMenu) : ?>
-                        
+
                         <?= $cmsSecondaryMenu ?>
                     <?php endif ?>
                 </div>
@@ -337,7 +358,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
 
                                 <!-- CHAT MODULE -->
                                 <?php if (!Yii::$app->user->isGuest) : ?>
-                                    <?php if (!empty(\Yii::$app->getModule('chat'))){ ?>
+                                    <?php if (!empty(\Yii::$app->getModule('chat'))) { ?>
                                         <?php
                                         $chatModuleWidget          = new \open20\amos\chat\widgets\icons\WidgetIconChat();
                                         $chatModuleBulletCount     = $chatModuleWidget->getBulletCount();
@@ -395,8 +416,8 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                         ?>
                                         <div class="nav-item d-none d-sm-block">
                                             <a class="nav-link" href="/site/to-menu-url?url=/exportjobs/my-export/index" data-toggle="tooltip" data-placement="bottom" title="<?=
-                                                                                                                                                                                    \frontend\modules\exportjobs\AmosExportJobs::t('exportjobs', 'Le mie esportazioni')
-                                                                                                                                                                                    ?>">
+                                                                                                                                                                                \frontend\modules\exportjobs\AmosExportJobs::t('exportjobs', 'Le mie esportazioni')
+                                                                                                                                                                                ?>">
                                                 <svg class="icon">
                                                     <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#chart-bar"></use>
                                                 </svg>
@@ -447,7 +468,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                         </div>
                                     <?php else : ?>
                                         <div class="dropdown menu-profile">
-                                            <a id="dropdownMenuProfile" href="#" class="btn btn-primary btn-icon btn-full dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= Module::t('amosdesign', 'Apri menu utente') ?>">
+                                            <a id="dropdownMenuProfile" href="javascript:void(0)" class="btn btn-primary btn-icon btn-full dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= Module::t('amosdesign', 'Apri menu utente') ?>">
                                                 <span class="rounded-icon">
                                                     <img class="icon icon-primary rounded-circle" src="<?= $userImage ?>" alt="<?= $userAltImg ?>">
                                                 </span>
@@ -514,7 +535,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                 <div class="row">
                     <div class="col-12">
                         <div class="it-header-center-content-wrapper">
-                            <div class="it-brand-wrapper d-flex <?= ($hideHamburgerMenu || (!$alwaysHamburgerMenu)) ? 'pl-0' : (($fluidContainerHeader) ? 'pl-lg-0' : 'pl-lg-0')?> <?= (($fluidContainerHeader && $alwaysHamburgerMenu) ? 'alwaysmenu-with-container-fluid' : '') ?>">
+                            <div class="it-brand-wrapper d-flex <?= ($hideHamburgerMenu || (!$alwaysHamburgerMenu)) ? 'pl-0' : (($fluidContainerHeader) ? 'pl-lg-0' : 'pl-lg-0') ?> <?= (($fluidContainerHeader && $alwaysHamburgerMenu) ? 'alwaysmenu-with-container-fluid' : '') ?>">
                                 <?= $this->render("bi-logo"); ?>
                             </div>
                             <div class="it-right-zone">
@@ -524,17 +545,50 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                     ]); ?>
                                 <?php endif ?>
                                 <?php if (!($hideGlobalSearch)) : ?>
-                                    <?php if (isset($pageSearchLink)) : ?>
-                                        <div class="it-search-wrapper">
-                                            <span class="d-none d-md-block"><?= Module::t('amosdesign', 'Cerca') ?></span>
-                                            <a class="search-link rounded-icon" aria-label="<?= Module::t('amosdesign', 'Cerca') ?>" title="<?= Module::t('amosdesign', 'Vai alla pagina di ricerca della piattaforma')  . ' ' . \Yii::$app->name ?>" href="<?= $pageSearchLink ?>">
-                                                <svg class="icon">
+                                    <?php if (!($hideGlobalSearchForGuest)) : ?>
+                                        <?php if ($enableGlobalSearchForm) : ?>
+                                            <a class="btn btn-xs border-tertiary btn-collapse-search d-block d-sm-none" data-toggle="collapse" href="#collapseGlobalHeaderForm" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <svg class="icon icon-primary icon-search">
                                                     <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-search"></use>
                                                 </svg>
+                                                <svg class="icon icon-secondary icon-close">
+                                                    <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-close"></use>
+                                                </svg>
+                                                <span class="sr-only"><?= Module::t('amosdesign', 'Cerca') ?></span>
                                             </a>
-                                        </div>
-                                    <?php endif ?>
-                                <?php endif ?>
+                                            <div id="collapseGlobalHeaderForm" class="global-header-form pr-2 collapse">
+                                                <form class="needs-validation form-rounded" novalidate action="<?= $pageSearchLink ?>" method="GET">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-12 mb-0">
+                                                            <?= $this->render("@vendor/open20/design/src/components/bootstrapitalia/views/bi-form-input-search", [
+                                                                'currentAsset' => $currentAsset,
+                                                                'type' => 'search',
+                                                                'name' => 'global-search',
+                                                                'inputId' => 'globalSearch',
+                                                                'label' => '<span class="sr-only">' . Module::t('amosdesign', 'Cerca nel sito') . '</span>',
+                                                                'options' => [
+                                                                    'placeholder' => Module::t('amosdesign', 'Cerca nel sito'),
+                                                                    'searchIconClass' => 'icon-primary'
+                                                                ]
+                                                            ]); ?>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        <?php else : ?>
+                                            <?php if (isset($pageSearchLink)) : ?>
+                                                <div class="it-search-wrapper">
+                                                    <span class="d-none d-md-block"><?= Module::t('amosdesign', 'Cerca') ?></span>
+                                                    <a class="search-link rounded-icon" aria-label="<?= Module::t('amosdesign', 'Cerca') ?>" title="<?= Module::t('amosdesign', 'Vai alla pagina di ricerca della piattaforma')  . ' ' . \Yii::$app->name ?>" href="<?= $pageSearchLink ?>">
+                                                        <svg class="icon">
+                                                            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-search"></use>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -578,7 +632,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                                             ?>
 
                                             <?php if ($showSecondaryMenu) : ?>
-                                               
+
                                                 <?= $cmsSecondaryMenu ?>
                                             <?php endif ?>
 

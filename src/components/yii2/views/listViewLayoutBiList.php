@@ -7,7 +7,7 @@ $customPaginationClass = (isset($customPaginationClass)) ? $customPaginationClas
     {summary}
 </div>
 <div class='list-view-design row it-list-wrapper <?= $customListClass ?>'>
-    <ul class='it-list'>
+    <ul class='it-list w-100'>
         {items}
     </ul>
 </div>

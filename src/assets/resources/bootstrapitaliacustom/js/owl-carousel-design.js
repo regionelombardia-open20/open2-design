@@ -132,6 +132,13 @@ $('.owl-carousel-herobanner-design .owl-carousel').owlCarousel({
 
 });
 
+$('.it-carousel-landscape-abstract.autoplay .owl-carousel').owlCarousel({
+  autoplay: true,
+  autoplayTimeout: 10000,
+  items: 1,
+  loop: true,
+});
+
 $(".owl-prev").html('<span class="mdi mdi-chevron-left"></span><span class="sr-only">Slider precedenti</span>');
 $(".owl-next").html('<span class="mdi mdi-chevron-right"></span><span class="sr-only">Slider successive</span>');
 $(".owl-dot").html('<span></span><span class="sr-only">Slide</span>');

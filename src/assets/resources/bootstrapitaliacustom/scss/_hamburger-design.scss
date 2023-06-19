@@ -85,6 +85,11 @@
                 //   border-left: 5px solid $primary;
                 //   background-color: lighten($primary, 65);
                 // }
+
+                + .nav-link.dropdown-toggle{
+                  @extend .border-light;
+                  @extend .border-left;
+                }
               }
             }
 
@@ -257,9 +262,11 @@
         @extend .border-bottom-0;
         .nav-link {
           text-transform: inherit !important;
-          @extend .font-weight-normal;
+          // @extend .font-weight-normal;
           @extend .p-0;
           white-space: normal;
+          border-left: 0;
+          margin-left: 0;
           + .dropdown-menu {
             &.show {
               background-color: $brandbook-neutral-1-color;

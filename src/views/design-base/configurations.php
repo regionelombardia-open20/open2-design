@@ -77,7 +77,9 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformFooter </span></a>
                                         </li>
-
+										<li>
+                                            <a class="list-item" href="#configurazioni-layout"><span>customPlatformGuide </span></a>
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformHead </span></a>
                                         </li>
@@ -122,6 +124,12 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideGlobalSearchHeader </span></a>
+                                        </li>
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-layout"><span>hideGlobalSearchHeaderForGuest </span></a>
+                                        </li>
+                                        <li>
+                                            <a class="list-item" href="#configurazioni-layout"><span>enableGlobalSearchForm </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideHamburgerMenuHeader </span></a>
@@ -466,6 +474,22 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             </li>
                             <li>
                                 <strong>
+                                    hideGlobalSearchHeaderForGuest
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['hideGlobalSearchHeaderForGuest']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => hide global search for guest users
+                            </li>
+                            <li>
+                                <strong>
+                                    enableGlobalSearchForm
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['enableGlobalSearchForm']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => show direct search form brandbook compliant
+                            </li>
+                            <li>
+                                <strong>
                                     disableSmallHeader
                                     <?php if (\Yii::$app->params['layoutConfigurations']['disableSmallHeader']) : ?>
                                         <span class="badge badge-success">Attivo</span>
@@ -574,6 +598,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                     <?php endif ?>
                                 </strong> : true => enable edit cms button in page
                             </li>
+                            <li>
+                                <strong>
+                                    showSidebarRedattore
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['showSidebarRedattore']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => enable sidebar action for redattore
+                            </li>
                         </ul>
                         <h3>Footer</h3>
                         <ul>
@@ -666,6 +698,17 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
                                 </strong> : true => hide assistance in layout, also enabled as a <u>view parameter</u>
+                            </li>
+                        </ul>
+                        <h3>Guide</h3>
+                        <ul>
+                            <li>
+                                <strong>
+                                    customPlatformGuide
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformGuide']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : path view custom, also enabled as a <u>view parameter</u>
                             </li>
                         </ul>
                     </div>

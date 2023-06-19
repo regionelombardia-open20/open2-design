@@ -64,7 +64,7 @@ class CmsLanguageUtility extends LanguageUtility
                                 'method' => 'post'
                             ],
                             'class' => 'list-item',
-                            'title' => Module::t('amoslayout', 'Cambia lingua in'.' '.$lang['short_code'])
+                            'title' => Module::t('amosdesign', 'Cambia lingua').' '. strtoupper($lang['short_code'])
                             ]
                     );
                 }

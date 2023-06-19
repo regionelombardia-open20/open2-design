@@ -11,6 +11,7 @@
 
 use open20\design\assets\BootstrapItaliaDesignAsset;
 use open20\design\Module;
+use open20\design\utility\DesignUtility;
 
 $bootstrapItaliaAsset = BootstrapItaliaDesignAsset::register($this);
 
@@ -72,7 +73,7 @@ $lastSyncDrive = (isset($dateSyncDrive)) ? Module::t('amosdesign', 'Documento Go
         </a>
         </div>
         <?php if (isset($size)) : ?>
-          <div class="ml-2 small text-muted d-flex"><span class="text-uppercase mr-1"><?= $type ?></span><span class="ml-1">(<?= $size ?>Kb)</span></div>
+          <div class="ml-2 small text-muted d-flex"><span class="text-uppercase mr-1"><?= $type ?></span><span class="ml-1">(<?= DesignUtility::bytesFormat($size) ?>)</span></div>
         <?php endif ?>
       </div>
     </div>

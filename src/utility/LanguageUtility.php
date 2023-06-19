@@ -58,7 +58,7 @@ class LanguageUtility
                                     'method' => 'post'
                                 ],
                                 'class' => 'list-item',
-                                'title' => Module::t('amosplanner', 'Cambia lingua in'.' '.$Lang['name'])
+                                'title' => Module::t('amosdesign', 'Cambia lingua').' '.strtoupper($Lang['name'])
                                 ]
                         );
                     }

@@ -19,7 +19,11 @@ $required = (isset($model) && $model->isAttributeRequired($attribute)) ? 'requir
 $minCharsNumber = (isset($options['minCharsNumber'])) ?: '3';
 
 $placeholder = (isset($options['placeholder'])) ? 'placeholder="' . $options['placeholder'] . '"' : false;
+$searchIconClass = (isset($options['searchIconClass'])) ? $options['searchIconClass'] : 'icon-tertiary';
 $ariaDescribedBy = (isset($options['aria-describedby']) && ($ariaDescribedBy == true) ) ? 'aria-describedby="describedBy' . $inputId . '"' : false;
+
+$submitButtonId = $inputId . 'Btn';
+
 
 $html_options = "";
 if(isset($htmlOptions))
@@ -40,7 +44,7 @@ var input = document.getElementById('{$inputId}');
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
    event.preventDefault();
-   document.getElementById("myInput").click();
+   document.getElementById("{submitButtonId}").click();
   }
 });
 
@@ -69,15 +73,15 @@ $this->registerJs($jsInputSearch, View::POS_READY);
         <small id="describedBy<?= $inputId ?>" class="form-text text-muted"><?= $options['aria-describedby'] ?></small>
     <?php endif ?>
     <label for="<?= $inputId ?>"><?= $label ?><?= ($required) ? Html::tag('span', '*', ['class' => 'required-asterisk']) : '' ?></label>
-    <div class="input-group-append">
+    <div class="input-group-append d-flex align-items-center">
         <button title="Resetta filtro di ricerca" class="btn btn-xs border-tertiary d-none" type="reset" id="btnjsInputReset<?=$inputId?>">
             <svg class="icon icon-tertiary">
                 <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-close"></use>
             </svg>
-            <span class="sr-only"><?= Module::t('amosdesign','Resetta filtro di ricerca')?></span>
+            <span class="sr-only"><?= Module::t('amosdesign','Resetta ricerca')?></span>
         </button>
-        <button id="myInput" title="Cerca" class="btn btn-xs border-tertiary" type="submit">
-            <svg class="icon icon-tertiary mr-1">
+        <button id="<?=$submitButtonId?>" title="<?= Module::t('amosdesign','Cerca')?>" class="btn btn-xs border-tertiary" type="submit">
+            <svg class="icon <?=$searchIconClass?> mr-1">
                 <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-search"></use>
             </svg>
             <span class="sr-only"><?= Module::t('amosdesign','Cerca')?></span>

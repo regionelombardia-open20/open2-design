@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: michele.lafrancesca
@@ -16,14 +17,16 @@ class DesignUtility
     /**
      * @return string
      */
-    public static function getTextSigninOrSignup(){
+    public static function getTextSigninOrSignup()
+    {
         return Module::t('amosdesign', "accedi o registrati alla piattaforma");
     }
 
     /**
      * @return array
      */
-    public static function listViewPagerConfig(){
+    public static function listViewPagerConfig()
+    {
         $prevPaginatorIcon = DesignIcon::show('chevron-left', DesignIcon::ICON_MD, 'icon icon-sm');
         $nextPaginatorIcon = DesignIcon::show('chevron-right', DesignIcon::ICON_MD, 'icon icon-sm');
         $startPaginatorIcon = DesignIcon::show('chevron-double-left', DesignIcon::ICON_MD, 'icon icon-sm');
@@ -53,15 +56,41 @@ class DesignUtility
      * @param bool $withSummary
      * @return string
      */
-    public static function getLayoutSummary($withSummary = true){
+    public static function getLayoutSummary($withSummary = true)
+    {
         $listViewLayoutSummary = \Yii::$app->controller->view->render('@vendor/open20/design/src/components/yii2/views/parts/_listViewLayoutSummary');
         $listViewLayoutSummaryWithoutPagination = \Yii::$app->controller->view->render('@vendor/open20/design/src/components/yii2/views/parts/_listViewLayoutSummaryWithoutPagination');
 
-        if($withSummary){
+        if ($withSummary) {
             return $listViewLayoutSummary;
         }
         return $listViewLayoutSummaryWithoutPagination;
     }
 
+    /**
+     * Funzione per risalire al plugin di un widget dato il suo namespace
+     * @param $widgetPath
+     * @return false|string[]
+     */
+    public static function getWidgetPlugin($widgetPath)
+    {
+        $partialPath = substr($widgetPath, 0, strpos($widgetPath, '\widgets'));
+        $plugin = end(explode('\\', $partialPath));
+        return $plugin;
+    }
 
+    public static function bytesFormat($bytes)
+    {
+        if ($bytes >= 1073741824) {
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+        } elseif ($bytes >= 1048576) {
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+        } elseif ($bytes >= 1024) {
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
+        } else {
+            $bytes = $bytes . ' byte';
+        }
+
+        return $bytes;
+    }
 }

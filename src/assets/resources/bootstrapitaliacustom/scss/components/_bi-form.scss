@@ -11,7 +11,7 @@
         color: $label-form-text-color;
         line-height: calc(2.667rem - 1px);
     }
-    input:autofill{
+    input:autofill {
         background: transparent;
     }
     //per autocomplete
@@ -77,16 +77,15 @@
         }
     }
 
-    &.has-error{
-        input[type="password"]{
-            + .password-strength-meter{
-                .form-text{
+    &.has-error {
+        input[type="password"] {
+            + .password-strength-meter {
+                .form-text {
                     position: relative; //fix strength-meter text with form in error
                 }
             }
         }
     }
-
 }
 
 textarea::placeholder {

@@ -521,7 +521,7 @@ echo $this->render('parts/devs-tools');
                         [
 
                             'type' => 'xls',
-                            'size' => '350',
+                            'size' => '0',
                             'fileUrl' => 'url/del/documento',
                             'fileName' => 'nome_del_documento',
 
@@ -534,7 +534,7 @@ echo $this->render('parts/devs-tools');
                         [
 
                             'type' => 'pdf',
-                            'size' => '350',
+                            'size' => '3502',
                             'fileUrl' => 'url/del/documento',
                             'fileName' => 'nome_del_documento',
                         ]
@@ -546,7 +546,7 @@ echo $this->render('parts/devs-tools');
                         [
 
                             'type' => 'doc',
-                            'size' => '350',
+                            'size' => '350343432',
                             'fileUrl' => 'url/del/documento',
                             'fileName' => 'nome_del_documento',
                         ]

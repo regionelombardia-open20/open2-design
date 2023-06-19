@@ -222,5 +222,7 @@ return [
     'Non hai ricevuto email' => 'Did not receive emails',
     'Leggi' => 'Read',
     'Leggi la notizia' => 'Read the news',
-    'I miei interessi' => 'My interests'
+    'I miei interessi' => 'My interests',
+    "Cambia lingua" => "Change laguage in",
+
 ];

@@ -36,8 +36,6 @@
 @import "hamburger-design";
 @import "paginator-design";
 @import "bi-navigation-menu";
-
-
 @import "material-icons-design"; 
 
 
@@ -67,7 +65,6 @@
 @import "components/bi-assistance";
 @import "components/bi-modify-cms-page-btn";
 
-
 //LAYOUT PARTS
 @import "layout-parts/bi-header-search";
 @import "layout-parts/header-design";
@@ -83,6 +80,16 @@
 @import "uikit-cms/uikit-component-herobanner";
 @import "uikit-cms/uikit-binder-page";
 @import "uikit-cms/uikit-box-evidence";
+
+
+// TEMP NEW DXP
+$dashboard-color-primary: #F8F7F3;
+
+@import "uikit-cms/layout-cms-new-dxp";
+
+@import "components/bi-sidebar-redattore";
+@import "components/bi-layout-cdr";
+@import "components/bi-widget-cdr";
 
 
 //TRICKS AND TEMP

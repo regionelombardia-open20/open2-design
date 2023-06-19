@@ -15,7 +15,9 @@ if (!empty($dateSyncDrive)) {
             'aggiornato il').$dateLastSyncDrive.Module::t('amosdesign', 'alle').$hourLastSyncDrive;
 }
 
-
+if(isset($typeFolder)){
+    $type = $typeFolder ? 'FOLDER' :$type;
+}
 $type = strtoupper($type);
 if (!empty($date)) {
     $date = DateUtility::getDate($date);

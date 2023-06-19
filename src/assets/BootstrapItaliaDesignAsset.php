@@ -27,7 +27,7 @@ class BootstrapItaliaDesignAsset extends AssetBundle
         'js/owl-carousel-design.js',
         'js/footer-height.js',
         'js/hamburger-menu.js',
-        // 'js/counter.js',
+        'js/btn-modify-cms-page.js',
         'node_modules/svgxuse/svgxuse.min.js', //per far vedere le icone in IE
     ];
 

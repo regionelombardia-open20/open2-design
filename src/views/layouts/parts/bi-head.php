@@ -19,5 +19,5 @@ use yii\helpers\Html;
 <title><?= Html::encode(Yii::$app->name)?><?= (isset($this->title)) ? ' ' . '-' . ' ' . Html::encode($this->title) : ''?></title>
 <link rel="shortcut icon" href="<?= Yii::$app->request->baseUrl . Yii::$app->params['favicon'] ?>" type="image/x-icon" />
 <?php $this->head() ?>
-<?php $this->registerJs("window.__PUBLIC_PATH__ = '{$currentAsset->baseUrl}/node_modules/bootstrap-italia/dist/fonts'", \yii\web\View::POS_HEAD); ?>
+<?php $this->registerJs("window.__PUBLIC_PATH__ = '{$currentAsset->baseUrl}/node_modules/bootstrap-italia/dist/fonts';", \yii\web\View::POS_HEAD); ?>
 

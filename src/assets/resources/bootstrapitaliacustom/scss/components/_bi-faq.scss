@@ -8,9 +8,6 @@ FAQ design item lists
         display: none;
     }
 
-    button {
-        @extend .border-top-0;
-    }
 
     &.collapse-background-active {
         button[aria-expanded="true"] {
@@ -52,11 +49,11 @@ FAQ design item lists
             }
         }
 
-        .collapse-body {
-            padding-left: 26px;
-            margin-left: 22px;
-            border-left: 4px solid $primary;
-            background-color: $brandbook-neutral-1-color;
-        }
+
+    }
+}
+.list-Faq-container {
+    p {
+        margin-bottom: 0;
     }
 }

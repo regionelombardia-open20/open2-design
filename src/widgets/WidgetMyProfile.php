@@ -200,6 +200,7 @@ class WidgetMyProfile extends Widget
             $query->innerJoin('community_user_mm', 'community_user_mm.community_id = community.id')
                 ->andWhere(['community_user_mm.user_id' => $userId])
                 ->andWhere(['community_user_mm.status' => $status])
+                ->andWhere(['community.context' => get_class($communityModel)])
                 ->andWhere(['community_user_mm.deleted_at' => null])
                 ->limit($limit)
                 ->orderBy([CommunityUserMm::tableName() . '.created_at' => SORT_DESC]);
