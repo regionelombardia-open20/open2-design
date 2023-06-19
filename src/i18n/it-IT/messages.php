@@ -28,6 +28,7 @@ return [
     'Accedi' => 'Accedi',
     'Accedi o Registrati' => 'Accedi o Registrati',
     'Accedi o registrati alla piattaforma {platformName}' => 'Accedi o registrati alla piattaforma {platformName}',
+    'Esci dalla piattaforma {platformName}' => 'Esci dalla piattaforma {platformName}',
     'Apri menu utente' => 'Apri menu utente',
     'Non sono disponibili altre lingue' => 'Non sono disponibili altre lingue',
     'Cerca' => 'Cerca',
@@ -216,7 +217,9 @@ return [
     "Preferenza attivata con successo" => "Preferenza attivata con successo",
     "La tematica è stata aggiunta alle tue preferenze, riceverai comunicazioni sui canali da te indicati" => "La tematica è stata aggiunta alle tue preferenze, riceverai comunicazioni sui canali da te indicati",
     "Invia di nuovo la mail" => "Invia di nuovo la mail",
-    "Non hai ricevuto email" => "Non hai ricevuto email"
+    "Non hai ricevuto email" => "Non hai ricevuto email",
+    "Leggi" => "Leggi",
+    "Leggi la notizia" => "Leggi la notizia"
 
 
 ];

@@ -314,7 +314,7 @@
         }
 
         .navbar-nav {
-            &[class*='cms-menu-container-'] {
+            &[class*="cms-menu-container-"] {
                 .nav-item {
                     .dropdown-menu {
                         padding: 0.5rem 1rem;
@@ -337,25 +337,6 @@
     }
 }
 
-.btn-always-hamburger-menu {
-    position: absolute;
-    top: 25%;
-    bottom: 25%;
-    padding: 0 24px;
-
-    .icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    .bullet-navbar {
-        margin-left: -9px;
-        margin-top: -16px;
-        border: 2px solid $white;
-        border-radius: 50%;
-    }
-}
-
 .it-search-wrapper {
     a.rounded-icon {
         @media #{map-get($device-media-queries, onlySafary)} {
@@ -375,12 +356,51 @@
     }
 }
 
-#alwaysHamburgerMenu + #headerContent {
-    .it-brand-wrapper {
-        padding-left: 60px;
+.btn-always-hamburger-menu {
+    position: absolute;
+    top: 25%;
+    bottom: 25%;
 
-        @media (min-width: 992px) and (max-width: 1310px) {
-            padding-left: 45px !important;
+    .icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .bullet-navbar {
+        margin-left: -9px;
+        margin-top: -16px;
+        border: 2px solid $white;
+        border-radius: 50%;
+    }
+}
+#alwaysHamburgerMenu {
+    &.modal-always-hamburger-menu-left {
+        + #headerContent {
+            .it-brand-wrapper {
+                padding-left: 60px;
+
+                @media (min-width: 992px) and (max-width: 1310px) {
+                    padding-left: 45px !important;
+                }
+            }
+            .btn-always-hamburger-menu{
+                padding: 0 24px;
+            }
+        }
+    }
+    &.modal-always-hamburger-menu-right {
+        + #headerContent {
+            .it-brand-wrapper {
+                padding-right: 60px;
+
+                @media (min-width: 992px) and (max-width: 1310px) {
+                    padding-right: 45px !important;
+                }
+            }
+            .btn-always-hamburger-menu{
+                padding: 0 24px;
+                right: 0;
+            }
         }
     }
 }

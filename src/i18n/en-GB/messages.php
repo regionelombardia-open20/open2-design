@@ -28,6 +28,7 @@ return [
     'Accedi' => 'Log-in',
     'Accedi o Registrati' => 'Log-in or Register',
     'Accedi o registrati alla piattaforma {platformName}' => 'Log-in or register to the platform {platformName}',
+    'Esci dalla piattaforma {platformName}' => 'Logout from {platformName}',
     'Apri menu utente' => 'Open user menu',
     'Non sono disponibili altre lingue' => 'No other languages ​​are available',
     'Cerca' => 'Search',
@@ -217,7 +218,9 @@ return [
     'Preferenza attivata con successo' => 'Preference successfully activated',
     'La tematica è stata aggiunta alle tue preferenze, riceverai comunicazioni sui canali da te indicati' => 'The topic has been added to your preferences, you will receive communications on the channels you indicate',
     'Invia di nuovo la mail' => 'Send the email again',
-    'Non hai ricevuto email' => 'Did not receive emails'
+    'Non hai ricevuto email' => 'Did not receive emails',
+    'Leggi' => 'Read',
+    'Leggi la notizia' => 'Read the news'
 
 
 ];

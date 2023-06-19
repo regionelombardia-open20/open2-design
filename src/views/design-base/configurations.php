@@ -31,7 +31,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
                     <div class="menu-wrapper">
                         <div class="link-list-wrapper">
                             <ul class="link-list">
-                                <li  >
+                                <li>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a href="#configurazioni-assistenza"><span>assistance</span>
                                         </a>
@@ -41,9 +41,9 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                             </svg>
                                         </a>
                                     </div>
-                                    
+
                                     <ul class="link-sublist collapse " id="collapseOne">
-                                        
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-assistenza"><span>hideAssistance</span></a>
                                         </li>
@@ -58,7 +58,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         </li>
                                     </ul>
                                 </li>
-                               
+
                                 <li>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a class="list-item" href="#configurazioni-layout"><span>layoutConfigurations</span></a>
@@ -68,56 +68,56 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                             </svg>
                                         </a>
                                     </div>
-                                    
-                                   
+
+
                                     <ul class="link-sublist collapse " id="collapseTwo">
-                                       
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformFooter </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformHead </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformPrivacyCheck </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customPlatformPluginMenu </span></a>
                                         </li>
-                                        
+
                                         <li>
-                                            <a class="list-item" href="#configurazioni-layout"><span>customUserMenuHeader  </span></a>
+                                            <a class="list-item" href="#configurazioni-layout"><span>customUserMenuHeader </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>customUserNotLoggedHeader </span></a>
                                         </li>
-                                        
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>disableSmallHeader </span></a>
-                                        </li> 
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>disableThemeLightHeader </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>enableHeaderStickyHeader </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#list-allegati"><span>fluidContainerHeader </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideBreadcrumbs </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideCmsMenuPluginHeader </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideCookieBar </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideGlobalSearchHeader </span></a>
                                         </li>
@@ -130,16 +130,16 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideSpidDescriptionLogin </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>hideUserMenuHeader </span></a>
                                         </li>
-                                         
-                                         
+
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>showAlwaysHamburgerMenuHeader </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>showLiteModeLogin </span></a>
                                         </li>
@@ -149,12 +149,12 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#list-allegati"><span>showSocialFooter </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>showSocialHeader </span></a>
                                         </li>
-                                         
-                                         
+
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-layout"><span>url</span></a>
                                         </li>
@@ -169,19 +169,19 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                             </svg>
                                         </a>
                                     </div>
-                                    
-                                   
+
+
                                     <ul class="link-sublist collapse " id="collapseFive">
                                         <li>
-                                            <a class="list-item" href="#configurazioni-logo"><span>logoAlt  </span></a>
+                                            <a class="list-item" href="#configurazioni-logo"><span>logoAlt </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-logo"><span>logoClass</span></a>
                                         </li>
                                         <li>
-                                            <a class="list-item" href="#configurazioni-logo"><span>logoImg  </span></a>
+                                            <a class="list-item" href="#configurazioni-logo"><span>logoImg </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-logo"><span>logoText </span></a>
                                         </li>
@@ -191,16 +191,16 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#configurazioni-logo"><span>logoUrl </span></a>
                                         </li>
-                                         
-                                        
-                                        
+
+
+
                                         <li>
-                                            <a class="list-item" href="#configurazioni-logo"><span>logoUrlTarget   </span></a>
+                                            <a class="list-item" href="#configurazioni-logo"><span>logoUrlTarget </span></a>
                                         </li>
                                         <li>
-                                            <a class="list-item" href="#configurazioni-logo"><span>positionTop  </span></a>
+                                            <a class="list-item" href="#configurazioni-logo"><span>positionTop </span></a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li>
                                 <li>
@@ -219,8 +219,8 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#configurazioni-link"><span>forgotPasswordLinkCommon </span></a>
                                         </li>
-                                         
-                                       
+
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-link"><span>loginLinkCommon </span></a>
                                         </li>
@@ -230,18 +230,18 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <li>
                                             <a class="list-item" href="#configurazioni-link"><span>pageSearchLinkCommon </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-link"><span>privacyPolicyLinkCommon </span></a>
                                         </li>
-                                         
+
                                         <li>
                                             <a class="list-item" href="#configurazioni-link"><span>registrationLinkCommon </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-link"><span>userProfileLinkCommon </span></a>
                                         </li>
-                                         
+
                                     </ul>
                                 </li>
 
@@ -259,20 +259,20 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                             <a class="list-item" href="#configurazioni-cms"><span>footerCmsMenu </span></a>
                                         </li>
                                         <li>
-                                            <a class="list-item" href="#configurazioni-cms"><span>mainCmsMenu  </span></a>
-                                        </li> 
+                                            <a class="list-item" href="#configurazioni-cms"><span>mainCmsMenu </span></a>
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-cms"><span>secondaryCmsMenu </span></a>
-                                        </li>                                    
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-cms"><span>myOpenCmsMenu </span></a>
-                                        </li> 
+                                        </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-cms"><span>mainEngCmsMenu </span></a>
-                                        </li> 
+                                        </li>
                                     </ul>
                                 </li>
-                                
+
                                 <li>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a class="list-item" href="#configurazioni-social"><span>socialConfigurations</span></a>
@@ -284,12 +284,12 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                     </div>
                                     <ul class="link-sublist collapse " id="collapseSix">
                                         <li>
-                                            <a class="list-item" href="#configurazioni-social"><span>facebook   </span></a>
+                                            <a class="list-item" href="#configurazioni-social"><span>facebook </span></a>
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-social"><span>instagram</span></a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li>
 
@@ -317,15 +317,15 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         </li>
                                         <li>
                                             <a class="list-item" href="#configurazioni-social"><span>textContrastBgPrimaryDark</span></a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </div>
                 </div>
-                
+
             </nav>
         </div>
         <div id="jsMain" class="col-12 col-lg-9 it-page-sections-container">
@@ -409,7 +409,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             <li>
 
                                 <strong>
-                                customPlatformHead
+                                    customPlatformHead
                                     <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformHead']) : ?>
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
@@ -429,13 +429,20 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             </li>
                             <li>
                                 <strong>
+                                    hideTopHeaderForGuestUser
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['hideTopHeaderForGuestUser']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => hide color top header for guest user and auto enable alternative login link in menu
+                            </li>
+                            <li>
+                                <strong>
                                     fluidContainerHeader
                                     <?php if (\Yii::$app->params['layoutConfigurations']['fluidContainerHeader']) : ?>
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
                                 </strong> : if true switch container class with container-fluid, also enabled as a <u>view parameter</u>
                             </li>
-
                             <li>
                                 <strong>
                                     customUserNotLoggedHeader
@@ -446,15 +453,12 @@ $PrismJSAsset = PrismJSAsset::register($this);
                             </li>
                             <li>
                                 <strong>
-                                customPlatformPluginMenu
+                                    customPlatformPluginMenu
                                     <?php if (\Yii::$app->params['layoutConfigurations']['customPlatformPluginMenu']) : ?>
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
                                 </strong> : path view custom for plugin menu
                             </li>
-
-
-
                             <li>
                                 <strong>
                                     hideGlobalSearchHeader
@@ -505,6 +509,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
                                 </strong> : true => hamburger menu persistent for all media
+                            </li>
+                            <li>
+                                <strong>
+                                    alwaysHamburgerMenuRight
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['alwaysHamburgerMenuRight']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => hamburger menu right modal
                             </li>
                             <li>
                                 <strong>
@@ -619,6 +631,17 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                 </strong> : path view custom
                             </li>
                         </ul>
+                        <h3>Assistance</h3>
+                        <ul>
+                            <li>
+                                <strong>
+                                    hideAssistance
+                                    <?php if (\Yii::$app->params['layoutConfigurations']['hideAssistance']) : ?>
+                                        <span class="badge badge-success">Attivo</span>
+                                    <?php endif ?>
+                                </strong> : true => hide assistance in layout, also enabled as a <u>view parameter</u>
+                            </li>
+                        </ul>
                     </div>
                     <div class="col-md-7">
                         <p class="text-uppercase">Esempio</p>
@@ -640,7 +663,8 @@ $PrismJSAsset = PrismJSAsset::register($this);
     'hideCookieBar' => true,
     'showLiteModeLogin' => false,
     'showSocialHeader' => false,
-    'disableSmallHeader' => true
+    'disableSmallHeader' => true,
+    'hideAssistance' => true
     ],
                             </code>
                         </pre>
@@ -819,14 +843,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
                         <ul>
                             <li>
                                 <strong>
-                                    hideAssistance
-                                    <?php if (\Yii::$app->params['assistance']['hideAssistance']) : ?>
-                                        <span class="badge badge-success">Attivo</span>
-                                    <?php endif ?>
-                                </strong> : false => hide assistance in layout, also enabled as a <u>view parameter</u>
-                            </li>
-                            <li>
-                                <strong>
                                     type
                                     <?php if (\Yii::$app->params['assistance']['type']) : ?>
                                         <span class="badge badge-success">Attivo</span>
@@ -857,7 +873,6 @@ $PrismJSAsset = PrismJSAsset::register($this);
                         <pre>
                             <code class="language-php">
 'assistance' => [
-    'hideAssistance' => false, //disable the assistance button
     'type' => 'url', //Assistance button mode: url or email
     'email' => 'ticket@openinnovationlombardia.it', //Assistance mail
     'url' => 'tickets' //Url to the assistance page
@@ -906,7 +921,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
 ]
                             </code>
                         </pre>
-                    </div>           
+                    </div>
                 </div>
             </section>
             <section class="py-5">
@@ -957,7 +972,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                     <?php endif ?>
                                 </strong> : testo da visualizzare nella mail come logo
                             </li>
-                            
+
                             <li>
                                 <strong>
                                     bgPrimary
@@ -966,14 +981,14 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                     <?php endif ?>
                                 </strong> : colore sfondo primario mail
                             </li>
-                            
+
                             <li>
                                 <strong>
                                     bgPrimaryDark
                                     <?php if (\Yii::$app->params['layoutMailConfigurations']['bgPrimaryDark']) : ?>
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
-                                </strong> : colore sfondo primario più scuro 
+                                </strong> : colore sfondo primario più scuro
                             </li>
                             <li>
                                 <strong>
@@ -981,7 +996,7 @@ $PrismJSAsset = PrismJSAsset::register($this);
                                     <?php if (\Yii::$app->params['layoutMailConfigurations']['textContrastBgPrimary']) : ?>
                                         <span class="badge badge-success">Attivo</span>
                                     <?php endif ?>
-                                </strong> : colore testo a contrato del primario 
+                                </strong> : colore testo a contrato del primario
                             </li>
                             <li>
                                 <strong>
@@ -1013,12 +1028,9 @@ $PrismJSAsset = PrismJSAsset::register($this);
 ]
                             </code>
                         </pre>
-                    </div>           
+                    </div>
                 </div>
             </section>
         </div>
     </div>
 </div>
-
-
-

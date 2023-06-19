@@ -57,7 +57,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
             $hideHamburgerMenuHeaderCheck = false;
         }
     }
-    
+
     if (isset(\Yii::$app->view->params['hideGlobalSearchHeader'])) {
         $hideGlobalSearchHeaderCheck = (\Yii::$app->view->params['hideGlobalSearchHeader']);
     } else {
@@ -108,13 +108,39 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         }
     }
 
+    if (isset(\Yii::$app->view->params['hideTopHeaderForGuestUser'])) {
+        $hideTopHeaderForGuestUserCheck = (\Yii::$app->view->params['hideTopHeaderForGuestUser']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['hideTopHeaderForGuestUser'])) {
+            $hideTopHeaderForGuestUserCheck = (\Yii::$app->params['layoutConfigurations']['hideTopHeaderForGuestUser']);
+        } else {
+            $hideTopHeaderForGuestUserCheck = false;
+        }
+    }
+    if ($hideTopHeaderForGuestUserCheck == true && \Yii::$app->user->isGuest) {
+        $hideTopHeaderForGuestUserCheck = true;
+    } else {
+        $hideTopHeaderForGuestUserCheck = false;
+    }
+
+    if (isset(\Yii::$app->view->params['alwaysHamburgerMenuRight'])) {
+        $alwaysHamburgerMenuRightCheck = (\Yii::$app->view->params['alwaysHamburgerMenuRight']);
+    } else {
+        if (isset(\Yii::$app->params['layoutConfigurations']['alwaysHamburgerMenuRight'])) {
+            $alwaysHamburgerMenuRightCheck = (\Yii::$app->params['layoutConfigurations']['alwaysHamburgerMenuRight']);
+        } else {
+            $alwaysHamburgerMenuRightCheck = false;
+        }
+    }
+
+
     if (isset(\Yii::$app->view->params['showSocialHeader'])) {
         $showSocialHeaderCheck = (\Yii::$app->view->params['showSocialHeader']);
     } else {
         if (isset(\Yii::$app->params['layoutConfigurations']['showSocialHeader'])) {
             $showSocialHeaderCheck = (\Yii::$app->params['layoutConfigurations']['showSocialHeader']);
         } else {
-            $showSocialHeaderCheck = true;
+            $showSocialHeaderCheck = false;
         }
     }
 
@@ -124,7 +150,7 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         if (isset(\Yii::$app->params['layoutConfigurations']['showSocialFooter'])) {
             $showSocialFooterCheck = (\Yii::$app->params['layoutConfigurations']['showSocialFooter']);
         } else {
-            $showSocialFooterCheck = true;
+            $showSocialFooterCheck = false;
         }
     }
 
@@ -154,6 +180,8 @@ $currentAsset = BootstrapItaliaDesignAsset::register($this);
         'disableSmallHeader' => \Yii::$app->params['layoutConfigurations']['disableSmallHeader'],
         'enableHeaderSticky' => \Yii::$app->params['layoutConfigurations']['enableHeaderStickyHeader'],
         'pageSearchLink' => \Yii::$app->params['linkConfigurations']['pageSearchLinkCommon'],
+        'hideTopHeaderForGuestUser' => $hideTopHeaderForGuestUserCheck,
+        'alwaysHamburgerMenuRight' => $alwaysHamburgerMenuRightCheck
     ]); ?>
 
     <div id="mainContent" class="d-flex <?= \Yii::$app->view->params['customClassMainContent'] ?>">

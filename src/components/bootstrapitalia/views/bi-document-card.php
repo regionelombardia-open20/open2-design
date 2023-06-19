@@ -23,7 +23,7 @@ $infoDoc = (isset($nameSurname)) ? $infoDoc .'<strong>'. Module::t('amosdesign',
 $infoDoc = (isset($category)) ? $infoDoc . '<strong>'. Module::t('amosdesign', 'nella categoria') . '</strong>' . ' ' . $category  . '<br>' : $infoDoc ;
 $infoDoc = (isset($community)) ? $infoDoc . ' ' . '<strong>'.  Module::t('amosdesign', 'in community') .'</strong>' . ' ' . $community : $infoDoc;
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-md-4 col-sm-6';
-$allegatiNum = (isset($allegatiNum)) ?  Module::t('amosdesign', 'Allegati interni') . $allegatiNum  : '';
+$allegatiNum = (isset($allegatiNum)) ?  Module::t('amosdesign', 'Allegati interni ') . $allegatiNum  : '';
 
 $model     = (isset($model) ? $model : null);
 $actionModify      = (isset($actionModify) ? $actionModify : null);
@@ -56,7 +56,7 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
               <svg class="icon icon-secondary">
               <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#folder-zip"></use>
               </svg>
-            <?php elseif ((in_array(strtolower($typeFolder), ['folder']))) : ?>
+            <?php elseif ($typeFolder) : ?>
               <svg class="icon icon-folder">
               <use xlink:href="<?= $bootstrapItaliaAsset->baseUrl ?>/sprite/material-sprite.svg#folder"></use>
               </svg>
@@ -72,16 +72,16 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
             </svg>
           <?php endif ?>
 
-          <?php if (!isset($size) && (!isset($typeFolder))) : ?>
-            <span class="text mr-1"><?= Module::t('amosdesign', 'LINK ESTERNO') ?></span>
-          <?php elseif (!isset($size) && (isset($typeFolder))) : ?>
-            <span class="text mr-1"><?= Module::t('amosdesign', 'CARTELLA') ?></span>
+          <?php if (isset($size) && $size == 0 && (!$typeFolder)) : ?>
+            <span class="text mx-1 text-uppercase"><?= Module::t('amosdesign', 'Link esterno') ?></span>
+          <?php elseif (isset($size) && $size == 0 && ($typeFolder)) : ?>
+            <span class="text mx-1 text-uppercase"><?= Module::t('amosdesign', 'Cartella') ?></span>
           <?php else : ?>
-            <span class="text mr-1"><?= $type ?></span>
+            <span class="text mx-1 text-uppercase"><?= $type ?></span>
           <?php endif ?>
 
-          <?php if (isset($size)) : ?>
-            <span class="text text-capitalize">(<?= $size ?>Kb)</span>
+          <?php if (isset($size) && $size > 0 && (!$typeFolder)) : ?>
+            <span class="text text-capitalize"><?= '(' . $size . 'Kb)' ?></span>
           <?php endif ?>
 
 
@@ -136,15 +136,15 @@ $actionDelete      = (isset($actionDelete) ? $actionDelete : null);
         <!-- <div class="card-text text-sans-serif">< ?= $infoDoc ?></div> -->
 
 
-        <?php if (isset($typeFolder)) : ?>
-          <a class="read-more" href="<?= $url ?>"><?= Module::t('amosdesign', 'Apri cartella') ?></a>
-        <?php elseif (!isset($size) && (!isset($typeFolder))) : ?>
-          <a class="read-more" href="<?= $url ?>"><?= Module::t('amosdesign', 'Apri file') ?> </a>
+        <?php if ($typeFolder) : ?>
+          <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Apri la cartella') ?> <?= $fileName ?>" class="read-more d-inline mr-2"><?= Module::t('amosdesign', 'Apri cartella') ?></a>
         <?php else : ?>
-          <a href="<?= $fileUrl ?>" title=<?= Module::t('amosdesign', 'Scarica il documento principale') ?> <?= $fileName ?> data-toggle="tooltip" class="read-more" download>
-          <?= Module::t('amosdesign', 'Scarica file') ?>
-          </a>
-        <?php endif ?>
+          <?php if (isset($size) && $size == 0 && (!$typeFolder)) : ?>
+            <a href="<?= $url ?>" title="<?= Module::t('amosdesign', 'Vedi il dettaglio del documento esterno') ?> <?= $fileName ?>" class="read-more d-inline mr-2" ><?= Module::t('amosdesign', 'Dettaglio') ?></a>
+          <?php else: ?>
+            <a href="<?= $fileUrl ?>" title="<?= Module::t('amosdesign', 'Scarica il documento') ?> <?= $fileName ?>" class="read-more d-inline mr-2" download><?= Module::t('amosdesign', 'Scarica') ?></a>
+          <?php endif; ?>
+        <?php endif; ?>
 
         <a href="javascript:void(0)" data-toggle="tooltip" data-html="true" title="<?= $infoDoc ?>" class="info-doc">
           <svg class="icon icon-sm icon-info">

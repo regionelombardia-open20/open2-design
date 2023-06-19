@@ -25,8 +25,8 @@ $month = DateUtility::getDate($date, 'php:M');
 $year  = DateUtility::getDate($date, 'php:Y');
 $date  = DateUtility::getDate($date);
 
-$labelReadMore = (isset($labelReadMore)) ? $labelReadMore : 'Leggi';
-$titleReadMore = (isset($titleReadMore)) ? $titleReadMore : 'Leggi la notizia' . ' ' . $title;
+$labelReadMore = (isset($labelReadMore)) ? $labelReadMore : Module::t('amosdesign', 'Leggi');
+$titleReadMore = (isset($titleReadMore)) ? $titleReadMore : Module::t('amosdesign', 'Leggi la notizia') . ' ' . $title;
 $widthColumn = (isset($widthColumn)) ? $widthColumn :  'col-lg-4 col-md-6';
 
 if (strlen($description) > 150) {

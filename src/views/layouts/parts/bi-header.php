@@ -178,7 +178,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
             $btnLogoutUrl,
             [
                 'class' => 'list-item p-0',
-                'title' => Module::t('amosdesign', 'Esci')
+                'title' => Module::t('amosdesign','Esci dalla piattaforma {platformName}',['platformName' => \Yii::$app->name])
             ]
         ),
         [
@@ -259,8 +259,8 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
 
 <?php if (!($hideHamburgerMenu) && $alwaysHamburgerMenu) : ?>
     <!-- MODALE PER HAMBURGER MENU -->
-    <div class="modal-always-hamburger-menu modal it-dialog-scrollable fade" tabindex="-1" role="dialog" id="alwaysHamburgerMenu">
-        <div class="modal-dialog modal-dialog-left" role="document">
+    <div class="modal-always-hamburger-menu <?= ($alwaysHamburgerMenuRight) ? 'modal-always-hamburger-menu-right' : 'modal-always-hamburger-menu-left' ?> modal it-dialog-scrollable fade" tabindex="-1" role="dialog" id="alwaysHamburgerMenu">
+        <div class="modal-dialog <?= ($alwaysHamburgerMenuRight) ? 'modal-dialog-right' : 'modal-dialog-left' ?>" role="document">
             <div class="modal-content">
                 <div class="modal-header px-4">
                     <div class="it-brand-wrapper d-flex align-items-center">
@@ -281,197 +281,203 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
     </div>
 <?php endif ?>
 <div id="headerContent" class="it-header-wrapper <?= ($enableHeaderSticky) ? 'it-header-sticky' : 'position-fixed' ?> w-100 z-index-8 shadow-sm">
-    <div class="it-header-slim-wrapper d-flex align-items-center py-0 bg-primary">
-        <div class="<?= ($fluidContainerHeader) ? 'container-fluid' : 'container' ?>">
-            <div class="row">
-                <div class="col-12">
-                    <div class="it-header-slim-wrapper-content">
-                        <div class="navbar-brand">
-                            <?= $this->render("bi-logo-navbar"); ?>
-                        </div>
-                        <div class="it-header-slim-right-zone">
-                            <?php if ($addItems) : ?>
-                                <?= $addItemsObj->addBiItemsToBegin(); ?>
-                            <?php endif; ?>
-                            <?php if (!$disableSettings && !$disablePlatformLinks && ($ordinamentiDashboard || $gestisciWidget)) : ?>
-                                <div class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-toggle-second="tooltip" data-placement="left" aria-expanded="false" title="<?= Module::t('amosdesign', 'Impostazioni') ?>">
-                                        <svg class="icon">
-                                            <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#ic_settings"></use>
-                                        </svg>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="link-list-wrapper">
-                                                    <ul class="link-list">
-                                                        <?php
-                                                        if ($ordinamentiDashboard) {
-                                                            echo $menuOrdinamentiDashboard;
-                                                        }
-                                                        if ($gestisciWidget) {
-                                                            echo $menuGestisciWidget;
-                                                        }
-                                                        ?>
-                                                    </ul>
+
+    <?php if ( !($hideTopHeaderForGuestUser) ) : ?>
+
+        <div class="it-header-slim-wrapper d-flex align-items-center py-0 bg-primary">
+            <div class="<?= ($fluidContainerHeader) ? 'container-fluid' : 'container' ?>">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="it-header-slim-wrapper-content">
+                            <div class="navbar-brand">
+                                <?= $this->render("bi-logo-navbar"); ?>
+                            </div>
+                            <div class="it-header-slim-right-zone">
+                                <?php if ($addItems) : ?>
+                                    <?= $addItemsObj->addBiItemsToBegin(); ?>
+                                <?php endif; ?>
+                                <?php if (!$disableSettings && !$disablePlatformLinks && ($ordinamentiDashboard || $gestisciWidget)) : ?>
+                                    <div class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-toggle-second="tooltip" data-placement="left" aria-expanded="false" title="<?= Module::t('amosdesign', 'Impostazioni') ?>">
+                                            <svg class="icon">
+                                                <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#ic_settings"></use>
+                                            </svg>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="link-list-wrapper">
+                                                        <ul class="link-list">
+                                                            <?php
+                                                            if ($ordinamentiDashboard) {
+                                                                echo $menuOrdinamentiDashboard;
+                                                            }
+                                                            if ($gestisciWidget) {
+                                                                echo $menuGestisciWidget;
+                                                            }
+                                                            ?>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php endif; ?>
-
-                            <!-- CHAT MODULE -->
-                            <?php if (!Yii::$app->user->isGuest) : ?>
-                                <?php if (\Yii::$app->getModule('chat')) : ?>
-                                    <?php
-                                    $chatModuleWidget          = new \open20\amos\chat\widgets\icons\WidgetIconChat();
-                                    $chatModuleBulletCount     = $chatModuleWidget->getBulletCount();
-                                    $menuChatModuleBulletCount = ($chatModuleBulletCount > 0) ? Html::tag(
-                                        'span',
-                                        $chatModuleBulletCount,
-                                        ['class' => 'badge badge-pill badge-danger']
-                                    ) : '';
-                                    ?>
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="/site/to-menu-url?url=/messages" data-toggle="tooltip" data-placement="bottom" title="<?= AmosChat::t('amoschat', 'Messaggi privati') ?>">
-                                            <svg class="icon">
-                                                <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#forum"></use>
-                                            </svg>
-                                            <?= $menuChatModuleBulletCount ?>
-                                            <span class="sr-only"><?= AmosChat::t('amoschat', 'Messaggi privati') ?></span>
-                                        </a>
-                                    </div>
                                 <?php endif; ?>
 
-
-                                <!-- MY ACTIVITIES MODULE -->
-                                <?php if (\Yii::$app->getModule('myactivities')) : ?>
-                                    <?php
-                                    $myactivitiesModuleWidget          = new \open20\amos\myactivities\widgets\icons\WidgetIconMyActivities();
-                                    $myactivitiesModuleBulletCount     = $myactivitiesModuleWidget->getBulletCount();
-                                    $menuMyActivitiesModuleBulletCount = ($myactivitiesModuleBulletCount > 0) ? Html::tag(
-                                        'span',
-                                        $myactivitiesModuleBulletCount,
-                                        ['class' => 'badge badge-pill badge-danger']
-                                    ) : '';
-                                    ?>
-                                    <div class="nav-item">
-                                        <a class="nav-link" href="/site/to-menu-url?url=/myactivities/my-activities/index" data-toggle="tooltip" data-placement="bottom" title="<?= AmosMyActivities::t('amosmyactivities', 'My activities') ?>">
-                                            <svg class="icon">
-                                                <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#bell"></use>
-                                            </svg>
-                                            <?= $menuMyActivitiesModuleBulletCount ?>
-                                            <span class="sr-only"><?= AmosChat::t('amoschat', 'Notifiche sulle mie attività') ?></span>
-                                        </a>
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>
-
-                            <!-- USER -->
-                            <?php if (!$hideUserMenu) : ?>
-
-                                <?php if (Yii::$app->user->isGuest) : ?>
-                                    <?php if ($customUserMenuLoginLink) {
-                                        $loginUrl = $customUserMenuLoginLink;
-                                    } else {
-                                        $loginUrl = \Yii::$app->params['platform']['backendUrl'] . '/' . AmosAdmin::getModuleName() . '/security/login';
-                                    }
-
-                                    $labelSigninOrSignup = Module::t('amosdesign', 'Accedi o Registrati');
-                                    $titleSigninOrSignup = Module::t('amosdesign', 'Accedi o registrati alla piattaforma {platformName}',['platformName' => \Yii::$app->name]);
-                                    $socialAuthModule = Yii::$app->getModule('socialauth');
-                                    if ($socialAuthModule && ($socialAuthModule->enableRegister == false)) {
-                                        $labelSigninOrSignup = Module::t('amosdesign', 'Accedi');
-                                        $titleSigninOrSignup = Module::t('amosdesign', 'Accedi alla piattaforma {platformName}',['platformName' => \Yii::$app->name]);
-                                    }
-
-                                    ?>
-                                    <div class="it-access-top-wrapper">
-                                        <?php if ($customUserNotLogged) : ?>
-                                            <?php
-                                            echo $this->render($customUserNotLogged, [
-                                                'currentAsset' => $currentAsset,
-                                            ]);
-                                            ?>
-                                        <?php else : ?>
-                                            <a href="<?= $loginUrl ?>" class="btn btn-icon btn-full  bg-primary mr-0" title="<?= $titleSigninOrSignup ?>">
-                                                <span class="rounded-icon border border-white bg-transparent p-1">
-                                                    <svg class="icon icon-white">
-                                                        <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#key-variant"></use>
-                                                    </svg>
-                                                </span>
-                                                <span class="d-none d-sm-block"><?= $labelSigninOrSignup ?></span>
+                                <!-- CHAT MODULE -->
+                                <?php if (!Yii::$app->user->isGuest) : ?>
+                                    <?php if (\Yii::$app->getModule('chat')) : ?>
+                                        <?php
+                                        $chatModuleWidget          = new \open20\amos\chat\widgets\icons\WidgetIconChat();
+                                        $chatModuleBulletCount     = $chatModuleWidget->getBulletCount();
+                                        $menuChatModuleBulletCount = ($chatModuleBulletCount > 0) ? Html::tag(
+                                            'span',
+                                            $chatModuleBulletCount,
+                                            ['class' => 'badge badge-pill badge-danger']
+                                        ) : '';
+                                        ?>
+                                        <div class="nav-item">
+                                            <a class="nav-link" href="/site/to-menu-url?url=/messages" data-toggle="tooltip" data-placement="bottom" title="<?= AmosChat::t('amoschat', 'Messaggi privati') ?>">
+                                                <svg class="icon">
+                                                    <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#forum"></use>
+                                                </svg>
+                                                <?= $menuChatModuleBulletCount ?>
+                                                <span class="sr-only"><?= AmosChat::t('amoschat', 'Messaggi privati') ?></span>
                                             </a>
-                                        <?php endif ?>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="dropdown menu-profile">
-                                        <a id="dropdownMenuProfile" href="#" class="btn btn-primary btn-icon btn-full dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= Module::t('amosdesign', 'Apri menu utente') ?>">
-                                            <span class="rounded-icon">
-                                                <img class="icon icon-primary rounded-circle" src="<?= $userImage ?>" alt="<?= $userAltImg ?>">
-                                            </span>
-                                            <span class="d-none d-lg-block text-capitalize"><?= $userNomeCognome ?></span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuProfile">
-                                            <?php if ($customUserMenu) : ?>
+                                        </div>
+                                    <?php endif; ?>
+
+
+                                    <!-- MY ACTIVITIES MODULE -->
+                                    <?php if (\Yii::$app->getModule('myactivities')) : ?>
+                                        <?php
+                                        $myactivitiesModuleWidget          = new \open20\amos\myactivities\widgets\icons\WidgetIconMyActivities();
+                                        $myactivitiesModuleBulletCount     = $myactivitiesModuleWidget->getBulletCount();
+                                        $menuMyActivitiesModuleBulletCount = ($myactivitiesModuleBulletCount > 0) ? Html::tag(
+                                            'span',
+                                            $myactivitiesModuleBulletCount,
+                                            ['class' => 'badge badge-pill badge-danger']
+                                        ) : '';
+                                        ?>
+                                        <div class="nav-item">
+                                            <a class="nav-link" href="/site/to-menu-url?url=/myactivities/my-activities/index" data-toggle="tooltip" data-placement="bottom" title="<?= AmosMyActivities::t('amosmyactivities', 'My activities') ?>">
+                                                <svg class="icon">
+                                                    <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#bell"></use>
+                                                </svg>
+                                                <?= $menuMyActivitiesModuleBulletCount ?>
+                                                <span class="sr-only"><?= AmosChat::t('amoschat', 'Notifiche sulle mie attività') ?></span>
+                                            </a>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                                <!-- USER -->
+                                <?php if (!$hideUserMenu) : ?>
+
+                                    <?php if (Yii::$app->user->isGuest) : ?>
+                                        <?php if ($customUserMenuLoginLink) {
+                                            $loginUrl = $customUserMenuLoginLink;
+                                        } else {
+                                            $loginUrl = \Yii::$app->params['platform']['backendUrl'] . '/' . AmosAdmin::getModuleName() . '/security/login';
+                                        }
+
+                                        $labelSigninOrSignup = Module::t('amosdesign', 'Accedi o Registrati');
+                                        $titleSigninOrSignup = Module::t('amosdesign', 'Accedi o registrati alla piattaforma {platformName}', ['platformName' => \Yii::$app->name]);
+                                        $socialAuthModule = Yii::$app->getModule('socialauth');
+                                        if ($socialAuthModule && ($socialAuthModule->enableRegister == false)) {
+                                            $labelSigninOrSignup = Module::t('amosdesign', 'Accedi');
+                                            $titleSigninOrSignup = Module::t('amosdesign', 'Accedi alla piattaforma {platformName}', ['platformName' => \Yii::$app->name]);
+                                        }
+
+                                        ?>
+                                        <div class="it-access-top-wrapper">
+                                            <?php if ($customUserNotLogged) : ?>
                                                 <?php
-                                                echo $this->render($customUserMenu, [
+                                                echo $this->render($customUserNotLogged, [
                                                     'currentAsset' => $currentAsset,
                                                 ]);
                                                 ?>
                                             <?php else : ?>
-                                                <div class="link-list-wrapper">
-                                                    <ul class="link-list">
-                                                        <?= $menuUser ?>
-                                                    </ul>
-                                                </div>
+                                                <a href="<?= $loginUrl ?>" class="btn btn-icon btn-full  bg-primary mr-0" title="<?= $titleSigninOrSignup ?>">
+                                                    <span class="rounded-icon border border-white bg-transparent p-1">
+                                                        <svg class="icon icon-white">
+                                                            <use xlink:href="<?= $currentAsset->baseUrl ?>/sprite/material-sprite.svg#key-variant"></use>
+                                                        </svg>
+                                                    </span>
+                                                    <span class="d-none d-sm-block"><?= $labelSigninOrSignup ?></span>
+                                                </a>
                                             <?php endif ?>
                                         </div>
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif ?>
-
-                            <!-- LANGUAGES -->
-                            <?php if (!$hideLangSwitchMenu) : ?>
-                                <div class="nav-item dropdown menu-translation border-left border-white pl-2">
-                                    <a class="nav-link dropdown-toggle pr-0" href="javascript::void(0)" title="<?= Module::t('amosdesign','Lingua corrente') . ' ' . $actualLang ?>" id="dropdownMenuTranslation" data-toggle="dropdown" aria-expanded="false">
-                                        <?= $actualLang ?>
-                                        <svg class="icon icon-sm">
-                                            <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
-                                        </svg>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuTranslation">
-                                        <div class="link-list-wrapper">
-                                            <ul class="link-list">
-                                                <?php if ($uniqueLang) : ?>
-                                                    <li>
-                                                        <p class="p-2 mb-0"><?= Module::t('amosdesign', 'Non sono disponibili altre lingue') ?></p>
-                                                    </li>
+                                    <?php else : ?>
+                                        <div class="dropdown menu-profile">
+                                            <a id="dropdownMenuProfile" href="#" class="btn btn-primary btn-icon btn-full dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= Module::t('amosdesign', 'Apri menu utente') ?>">
+                                                <span class="rounded-icon">
+                                                    <img class="icon icon-primary rounded-circle" src="<?= $userImage ?>" alt="<?= $userAltImg ?>">
+                                                </span>
+                                                <span class="d-none d-lg-block text-capitalize"><?= $userNomeCognome ?></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuProfile">
+                                                <?php if ($customUserMenu) : ?>
+                                                    <?php
+                                                    echo $this->render($customUserMenu, [
+                                                        'currentAsset' => $currentAsset,
+                                                    ]);
+                                                    ?>
                                                 <?php else : ?>
-                                                    <?= $menuLanguages ?>
+                                                    <div class="link-list-wrapper">
+                                                        <ul class="link-list">
+                                                            <?= $menuUser ?>
+                                                        </ul>
+                                                    </div>
                                                 <?php endif ?>
-                                            </ul>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif ?>
+
+                                <!-- LANGUAGES -->
+                                <?php if (!$hideLangSwitchMenu) : ?>
+                                    <div class="nav-item dropdown menu-translation border-left border-white pl-2">
+                                        <a class="nav-link dropdown-toggle pr-0" href="javascript::void(0)" title="<?= Module::t('amosdesign', 'Lingua corrente') . ' ' . $actualLang ?>" id="dropdownMenuTranslation" data-toggle="dropdown" aria-expanded="false">
+                                            <?= $actualLang ?>
+                                            <svg class="icon icon-sm">
+                                                <use xlink:href="<?= $currentAsset->baseUrl ?>/node_modules/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                                            </svg>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuTranslation">
+                                            <div class="link-list-wrapper">
+                                                <ul class="link-list">
+                                                    <?php if ($uniqueLang) : ?>
+                                                        <li>
+                                                            <p class="p-2 mb-0"><?= Module::t('amosdesign', 'Non sono disponibili altre lingue') ?></p>
+                                                        </li>
+                                                    <?php else : ?>
+                                                        <?= $menuLanguages ?>
+                                                    <?php endif ?>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php endif ?>
-                            <?php if ($addItems) : ?>
-                                <?= $addItemsObj->addBiItemsToEnd(); ?>
-                            <?php endif; ?>
+                                <?php endif ?>
+                                <?php if ($addItems) : ?>
+                                    <?= $addItemsObj->addBiItemsToEnd(); ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    <?php endif; ?>
+
     <div class="it-nav-wrapper">
         <div class="it-header-center-wrapper <?= ($disableThemeLight) ? '' : 'theme-light' ?> <?= ($disableSmallHeader) ? '' : 'it-small-header' ?>">
             <div class="<?= ($fluidContainerHeader) ? 'container-fluid' : 'container' ?>">
                 <div class="row">
                     <div class="col-12">
                         <div class="it-header-center-content-wrapper">
-                            <div class="it-brand-wrapper d-flex <?= ($hideHamburgerMenu) ? 'pl-0' : (($fluidContainerHeader) ? 'pl-lg-0' : 'pl-lg-0') ?>">
+                            <div class="it-brand-wrapper d-flex <?= ($hideHamburgerMenu || (!$alwaysHamburgerMenu)) ? 'pl-0' : (($fluidContainerHeader) ? 'pl-lg-0' : 'pl-lg-0') ?>">
                                 <?= $this->render("bi-logo"); ?>
                             </div>
                             <div class="it-right-zone">
@@ -498,7 +504,7 @@ if (!$hideUserMenu && !Yii::$app->user->isGuest) {
                 </div>
             </div>
         </div>
-        <?php if (!($hideHamburgerMenu)) : ?>
+        <?php if (!$hideHamburgerMenu) : ?>
             <?php if (!$alwaysHamburgerMenu) : ?>
                 <div class="it-header-navbar-wrapper <?= ($disableThemeLight) ? '' : 'theme-light-desk' ?> shadow-none">
                     <div class="<?= ($fluidContainerHeader) ? 'container-fluid' : 'container' ?>">

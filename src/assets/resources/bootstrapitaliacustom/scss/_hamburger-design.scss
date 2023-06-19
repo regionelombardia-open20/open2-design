@@ -1,5 +1,8 @@
 .modal-always-hamburger-menu {
-  .modal-dialog.modal-dialog-left {
+
+  .modal-dialog.modal-dialog-left,
+  .modal-dialog.modal-dialog-right {
+    width: inherit;
     margin: 0;
     .modal-content {
       .modal-header {
