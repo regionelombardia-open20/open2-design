@@ -38,7 +38,7 @@ if ($avatarWrapperSize == 'xl') {
       $arr         = explode(' ', trim($nameSurname));
       $name        = $arr[0];
       $surname     = $arr[1];
-      $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
+      $initials    = (($avatarWrapperSize == 'sm' || $avatarWrapperSize == 'xs') ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1));
       $avatarPresence = ($userProfiles[$i]->attivo) ? 'active' : 'hidden';
       if ($avatarPresence == 'hidden') {
           $avatarPresenceTitle = Module::t('amosdesign', 'Assente');
@@ -104,7 +104,7 @@ if ($avatarWrapperSize == 'xl') {
                     $arr         = explode(' ', trim($nameSurname));
                     $name        = $arr[0];
                     $surname     = $arr[1];
-                    $initials    = (in_array('sm,xs', $avatarWrapperSize)) ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1);
+                    $initials    = (($avatarWrapperSize == 'sm' || $avatarWrapperSize == 'xs') ? substr($name, 0, 1) : substr($name, 0, 1) . substr($surname, 0, 1));
                   endif;
                   ?>
                   <li class="avatar-wrapper">

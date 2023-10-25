@@ -522,7 +522,7 @@ echo $this->render('parts/devs-tools');
 
                             'type' => 'xls',
                             'size' => '0',
-                            'fileUrl' => 'url/del/documento',
+                            'fileUrl' => ['/url/del/documento'],
                             'fileName' => 'nome_del_documento',
 
                         ]
@@ -535,7 +535,7 @@ echo $this->render('parts/devs-tools');
 
                             'type' => 'pdf',
                             'size' => '3502',
-                            'fileUrl' => 'url/del/documento',
+                            'fileUrl' => ['/url/del/documento'],
                             'fileName' => 'nome_del_documento',
                         ]
                     );
@@ -547,7 +547,7 @@ echo $this->render('parts/devs-tools');
 
                             'type' => 'doc',
                             'size' => '350343432',
-                            'fileUrl' => 'url/del/documento',
+                            'fileUrl' => ['/url/del/documento'],
                             'fileName' => 'nome_del_documento',
                         ]
                     );
@@ -559,7 +559,7 @@ echo $this->render('parts/devs-tools');
 
                             'type' => 'xxx',
                             'size' => '350',
-                            'fileUrl' => 'url/del/documento',
+                            'fileUrl' => ['/url/del/documento'],
                             'fileName' => 'aaaaaaaaasjaksjksjaksjadksjdksdjdkfjdkfjdfkdjfkdjfkdjfkdjfkdjfkdjfdkfjdkfjdkfjdkfjdkfjdkfjdfkjdfkdjfkdjfdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdfkdjfkdjfkdjfkdjfkdjfdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkfjdkjfdkfjdkfjdkfjdkfjdkfjdkjf',
                         ]
                     );
@@ -1212,7 +1212,7 @@ echo $this->render('parts/devs-tools');
                                 [
                                     'title' => '2020 Verso la Strategia Regionale per lo Sviluppo Sostenibile',
                                     'fileName' => 'nome_del_file.doc',
-                                    'fileUrl' => 'url/di/esempio',
+                                    'fileUrl' => ['/url/del/documento'],
                                     'type' => 'doc',
                                     'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
                                     'nameSurname' => 'Mario Rossi',
@@ -1231,7 +1231,7 @@ echo $this->render('parts/devs-tools');
                                 [
                                     'title' => 'ARIA S.p.A., genesi e orizzonti',
                                     'fileName' => 'nome_del_file.zip',
-                                    'fileUrl' => 'url/di/esempio',
+                                    'fileUrl' => ['/url/del/documento'],
                                     'type' => 'zip',
                                     'description' => 'io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
                                     'nameSurname' => 'Mario Rossi',
@@ -1250,7 +1250,7 @@ echo $this->render('parts/devs-tools');
                                 [
                                     'title' => 'Io sono una stringa da 75 caratteri totali e da qui in poi non so cosa fare',
                                     'fileName' => 'nome_del_file.jpg',
-                                    'fileUrl' => 'url/di/esempio',
+                                    'fileUrl' => ['/url/del/documento'],
                                     'type' => 'jpg',
                                     'description' => 'io sono una stringa',
                                     'nameSurname' => 'Mario Rossi',
@@ -1268,7 +1268,7 @@ echo $this->render('parts/devs-tools');
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
                                 [
                                     'title' => 'Documentazione (Rapporto Preliminare VAS, Documento di Orientamento del PPSSC, altro materiale)',
-                                    'fileUrl' => 'url/di/esempio',
+                                    'fileUrl' => ['/url/del/documento'],
                                     'typeFolder' => 'folder',
                                     'nameSurname' => 'Mario Rossi',
                                     'nameFile' => 'nome_esempio_file',
@@ -1282,7 +1282,7 @@ echo $this->render('parts/devs-tools');
                                 [
                                     'title' => 'Verbale seduta di insediamento',
                                     'fileName' => 'nome_del_file.xls',
-                                    'fileUrl' => 'url/di/esempio',
+                                    'fileUrl' => ['/url/del/documento'],
                                     'type' => 'xls',
                                     'description' => 'io sono una stringa',
                                     'nameSurname' => 'Mario Rossi',
@@ -1299,7 +1299,7 @@ echo $this->render('parts/devs-tools');
                                 '@vendor/open20/design/src/components/bootstrapitalia/views/bi-document-card',
                                 [
                                     'title' => 'Guida per i partecipanti - Community Primo Forum pubblico procedura di VAS',
-                                    'fileUrl' => 'url/di/esempio',
+                                    'fileUrl' => ['/url/del/documento'],
                                     'description' => 'io sono una stringa',
                                     'nameSurname' => 'Mario Rossi',
                                     'category' => 'Presentazioni e materiale',
@@ -1333,7 +1333,7 @@ echo $this->render('parts/devs-tools');
                                 'nameSurname' => 'Mario Rossi',
                                 'community' => 'Community Common',
                                 'url' => 'url/del/dettaglio',
-                                'fileUrl' => 'url/del/documento',
+                                'fileUrl' => ['/url/del/documento'],
                                 'fileName' => 'nome_del_documento.pdf',
                                 'newPubblication' => true,
 
@@ -1354,7 +1354,7 @@ echo $this->render('parts/devs-tools');
                                 'nameSurname' => 'Mario Rossi',
                                 'community' => 'Community Common',
                                 'url' => 'url/del/dettaglio',
-                                'fileUrl' => 'url/del/documento',
+                                'fileUrl' => ['/url/del/documento'],
                                 'fileName' => 'nome_del_documento.pdf',
                             ]
                         );
@@ -1373,7 +1373,7 @@ echo $this->render('parts/devs-tools');
                                 'nameSurname' => 'Mario Rossi',
                                 'community' => 'Community Common',
                                 'url' => 'url/del/dettaglio',
-                                'fileUrl' => 'url/del/documento',
+                                'fileUrl' => ['/url/del/documento'],
                                 'fileName' => 'nome_del_documento.pdf',
                                 'dateSyncDrive' => '2012-12-27 12:30:00',
                             ]

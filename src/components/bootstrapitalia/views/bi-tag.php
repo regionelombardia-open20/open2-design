@@ -14,9 +14,9 @@ $icon = ($depth <= 0) ? 'tag' : 'tag-multiple';
 $tooltipOption = 'data-toggle="tooltip"';
 
 $i = 0;
-$y = count($treeDepthLabels) - 1;
 $titleLink = '';
 if (is_array($treeDepthLabels)) {
+    $y = count($treeDepthLabels) - 1;
     foreach ($treeDepthLabels as $singleDepthLabel) {
         if($i < $y) {
             $treeDepth .= $singleDepthLabel . ' ' . ' / ' . ' ';
@@ -26,7 +26,7 @@ if (is_array($treeDepthLabels)) {
         $i++;
     }
 }
-$titleLink = $treeDepth;
+$titleLink = (!empty($treeDepth)? $treeDepth : '');
 ?>
 
 
